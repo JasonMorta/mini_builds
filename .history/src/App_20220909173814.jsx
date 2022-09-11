@@ -1,5 +1,10 @@
+import logo from './logo.svg';
 import './App.css';
-import StateManager from './StateManager';
+import StateManager from './components/StateManager';
+
+
+
+
 
 function App() {
   return (

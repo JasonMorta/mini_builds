@@ -1,13 +1,11 @@
 import React, { useContext } from 'react';
-import { StateContext } from '../StateManager';
+import { state } from '../StateManager';
 import './menu.css';
 
 export default function Menu() {
 
 
- const value = useContext(StateContext)
-
- let [state, setState] = value
+ const data = useContext(state);
 
 
   return (
