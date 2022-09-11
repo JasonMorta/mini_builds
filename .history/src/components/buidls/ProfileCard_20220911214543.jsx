@@ -11,11 +11,6 @@ export default function ProfileCard() {
     <div className="container">
      <h2><b>John Doe</b></h2>
      <p>Lorem ipsum dolor sit</p>
-     <ul>
-      <li>Lorem ipsum dolor sit</li>
-      <li>Lorem ipsum dolor sit</li>
-      <li>Lorem ipsum dolor sit</li>
-     </ul>
     </div>
    </div>
   )

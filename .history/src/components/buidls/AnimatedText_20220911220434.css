@@ -1,0 +1,7 @@
+.animated_text {
+ display: flex;
+}
+
+.animated_text h1 {
+ font-size: clamp(2rem, 2vw, 3rem);
+}

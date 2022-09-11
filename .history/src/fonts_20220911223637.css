@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Bangers&family=Black+Ops+One&family=Bungee+Inline&family=Concert+One&family=Henny+Penny&family=Lobster+Two&family=Luckiest+Guy&family=Poiret+One&family=Reggae+One&family=Tapestry&family=Wallpoet&family=Water+Brush&display=swap');
+
+/* Custom google fonts
+
+font-family: 'Audiowide', cursive;
+font-family: 'Bangers', cursive;
+font-family: 'Black Ops One', cursive;
+font-family: 'Bungee Inline', cursive;
+font-family: 'Concert One', cursive;
+font-family: 'Henny Penny', cursive;
+font-family: 'Lobster Two', cursive;
+font-family: 'Luckiest Guy', cursive;
+font-family: 'Poiret One', cursive;
+font-family: 'Reggae One', cursive;
+font-family: 'Tapestry', cursive;
+font-family: 'Wallpoet', cursive;
+font-family: 'Water Brush', cursive; */
+
+h1 {
+ font-family: 'Black Ops One', cursive;
+}

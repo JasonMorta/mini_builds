@@ -23,7 +23,7 @@ function StateManager() {
     name: 'Profile Card',
     link: 'profilecard'
   }, {
-    name: 'Animated Text',
+    name: 'Animate Text',
     link: 'animatetext'
   }]
  });

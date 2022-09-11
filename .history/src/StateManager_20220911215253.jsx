@@ -3,7 +3,6 @@ import Menu from './components/Menu';
 import Main from './components/Main';
 import { Routes, Route } from 'react-router-dom';
 import ProfileCard from './components/buidls/ProfileCard';
-import AnimatedText from './components/buidls/AnimatedText';
 
 
 
@@ -23,7 +22,7 @@ function StateManager() {
     name: 'Profile Card',
     link: 'profilecard'
   }, {
-    name: 'Animated Text',
+    name: 'Animate Text',
     link: 'animatetext'
   }]
  });
@@ -32,17 +31,15 @@ function StateManager() {
   return (
   <>
      <StateContext.Provider value={[state, setState]} className="App">
-  
-      <Menu />
-          <div className='content_section'>
-      <Routes>
       
+      <Menu />
+      <Routes>
+      <div className='content_section'>
         <Route  index  path="/" element={ <Main />}/>
         <Route  index  path="/profilecard" element={ <ProfileCard />}/>
-        <Route  index  path="/animatetext" element={ <AnimatedText />}/>
-   
+      </div>
       </Routes>
-   </div>
+
      
       </StateContext.Provider>
   </>

@@ -28,7 +28,6 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
  flex-direction: column;
  align-items: stretch;
  width: 95%;
- margin-bottom: 10px;
 }
 .container p {
  overflow: auto;
@@ -41,9 +40,18 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
  font-family: cursive;
  word-spacing: 0px;
 }
+/* Hide scrollbar for Chrome, Safari and Opera */
+.container p::-webkit-scrollbar {
+display: none;
+}
 
+/* Hide scrollbar for IE, Edge and Firefox */
+.container p {
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
+}
 
 .container ul {
  text-align: initial;
- margin: 0;
+ margin: 0%;
 }

@@ -1,0 +1,7 @@
+.animated_text {
+ display: flex;
+}
+
+.animated_text h1 {
+ font-size: 4rem;
+}

@@ -1,0 +1,13 @@
+.animated_text {
+ display: flex;
+}
+
+.animated_text h1 {
+ font-size: clamp(2rem, 10vw, 4rem);
+ transition: .2s ease-in-out;
+}
+
+.animated_text h1:hover {
+color: hotpink;
+transition: .2s
+}
