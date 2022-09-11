@@ -24,8 +24,7 @@ export default function Menu() {
       onClick={chooseBuild}
       to={`/${item.link}`}
       className="menu_items"
-      >
-        {item.name}
+      Home>{item.name}
       </Link>
   
      ))}

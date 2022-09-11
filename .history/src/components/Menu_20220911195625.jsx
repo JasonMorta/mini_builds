@@ -20,12 +20,11 @@ export default function Menu() {
      {state.menuItems.map((item, index) =>(
       <Link 
       data-mini={item.name}
-      key={index} 
+      key={index.name} 
       onClick={chooseBuild}
       to={`/${item.link}`}
       className="menu_items"
-      >
-        {item.name}
+      Home>{item.name}
       </Link>
   
      ))}

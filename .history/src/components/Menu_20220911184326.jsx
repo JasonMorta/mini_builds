@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { StateContext } from '../StateManager';
 import './menu.css';
-import { Link } from "react-router-dom";
 
 export default function Menu() {
 
@@ -18,16 +17,7 @@ export default function Menu() {
     
     <div className='menu_section'>
      {state.menuItems.map((item, index) =>(
-      <Link 
-      data-mini={item.name}
-      key={index} 
-      onClick={chooseBuild}
-      to={`/${item.link}`}
-      className="menu_items"
-      >
-        {item.name}
-      </Link>
-  
+      <h5 className='menu_items' data-mini={item} key={index} onClick={chooseBuild}>{item}</h5>
      ))}
     </div>
   ) 

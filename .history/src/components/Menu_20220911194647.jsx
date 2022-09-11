@@ -19,13 +19,12 @@ export default function Menu() {
     <div className='menu_section'>
      {state.menuItems.map((item, index) =>(
       <Link 
-      data-mini={item.name}
+      data-mini={item}
       key={index} 
       onClick={chooseBuild}
-      to={`/${item.link}`}
+      to={`/${item}`}
       className="menu_items"
-      >
-        {item.name}
+      Home>{item}
       </Link>
   
      ))}

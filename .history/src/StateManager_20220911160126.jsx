@@ -1,8 +1,6 @@
 import React, { createContext, useState } from 'react'
 import Menu from './components/Menu';
-import Main from './components/Main';
-import { Routes, Route } from 'react-router-dom';
-import ProfileCard from './components/buidls/ProfileCard';
+import Preview from './components/Preview';
 
 
 
@@ -14,17 +12,7 @@ export const StateContext = createContext();
 function StateManager() {
 
  const [state, setState] = useState({
-  menuItems: [
-    {
-      name: 'Home',
-      link: ''
-    },{
-    name: 'Profile Card',
-    link: 'profilecard'
-  }, {
-    name: 'Animate Text',
-    link: 'animatetext'
-  }]
+  menuItems: ['Profile Card', 'Animate Text' ]
  });
 
 
@@ -33,11 +21,7 @@ function StateManager() {
      <StateContext.Provider value={[state, setState]} className="App">
       
       <Menu />
-      <Routes>
-      <Route  index  path="/" element={ <Main />}/>
-      <Route  index  path="/profilecard" element={ <ProfileCard />}/>
-      </Routes>
-
+      <Preview />
      
       </StateContext.Provider>
   </>

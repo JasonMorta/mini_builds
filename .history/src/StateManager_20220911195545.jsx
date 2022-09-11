@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react'
 import Menu from './components/Menu';
-import Main from './components/Main';
+import Preview from './components/Preview';
 import { Routes, Route } from 'react-router-dom';
 import ProfileCard from './components/buidls/ProfileCard';
 
@@ -14,11 +14,7 @@ export const StateContext = createContext();
 function StateManager() {
 
  const [state, setState] = useState({
-  menuItems: [
-    {
-      name: 'Home',
-      link: ''
-    },{
+  menuItems: [{
     name: 'Profile Card',
     link: 'profilecard'
   }, {
@@ -34,8 +30,8 @@ function StateManager() {
       
       <Menu />
       <Routes>
-      <Route  index  path="/" element={ <Main />}/>
-      <Route  index  path="/profilecard" element={ <ProfileCard />}/>
+      <Route  index  path="/" element={ <Preview />}/>
+      <Route  index  path="/Profile Card" element={ <ProfileCard />}/>
       </Routes>
 
      

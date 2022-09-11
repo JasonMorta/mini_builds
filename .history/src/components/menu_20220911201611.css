@@ -17,11 +17,11 @@
 }
 
 .menu_items:hover {
- text-decoration: underline;
+ background-color: rosybrown;
 }
 
 .menu_items:active {
-   color: black;
+   background-color: rebeccapurple;
 }
 
 .menu_section a {

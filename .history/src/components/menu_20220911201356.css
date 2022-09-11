@@ -17,14 +17,9 @@
 }
 
 .menu_items:hover {
- text-decoration: underline;
+ background-color: rosybrown;
 }
 
 .menu_items:active {
-   color: black;
-}
-
-.menu_section a {
-    text-decoration: none;
-    color: inherit;
+   background-color: rebeccapurple;
 }

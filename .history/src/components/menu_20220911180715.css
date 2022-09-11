@@ -1,0 +1,11 @@
+.menu_section {
+    width: 300px;
+    background-color: gray;
+    position: relative;
+    height: 100vh;
+    overflow: auto;
+}
+
+.menu_items {
+    cursor: pointer;
+}

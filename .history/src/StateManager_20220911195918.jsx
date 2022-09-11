@@ -17,7 +17,7 @@ function StateManager() {
   menuItems: [
     {
       name: 'Home',
-      link: ''
+      link: 'home'
     },{
     name: 'Profile Card',
     link: 'profilecard'

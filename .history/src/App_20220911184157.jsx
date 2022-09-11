@@ -1,4 +1,4 @@
-import { BrowserRouter} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import StateManager from './StateManager';
 
@@ -7,7 +7,6 @@ function App() {
     <BrowserRouter>
     <div className="App">
       <StateManager />
-    
     </div>
     </BrowserRouter>
   );

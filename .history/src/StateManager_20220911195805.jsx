@@ -14,11 +14,7 @@ export const StateContext = createContext();
 function StateManager() {
 
  const [state, setState] = useState({
-  menuItems: [
-    {
-      name: 'Home',
-      link: ''
-    },{
+  menuItems: [{
     name: 'Profile Card',
     link: 'profilecard'
   }, {
