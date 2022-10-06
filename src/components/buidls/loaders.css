@@ -1,0 +1,22 @@
+.h3Style {
+ background: #f2f2f2;
+ width: 100%;
+ position: absolute;
+ left: 50%;
+ transform: translate(-50%, 10px);
+ border: 1px solid gray;
+ overflow: hidden;
+ z-index: 0;
+ color: rgb(27, 27, 27);
+}
+
+.h3Style::before {
+ content: "";
+
+ height: 100%;
+ background-color: rgb(63, 153, 51);
+ top: 0;
+ left: 0;
+ position: absolute;
+ z-index: -1;
+}
