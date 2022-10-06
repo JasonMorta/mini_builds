@@ -2,9 +2,10 @@ import React, { createContext, useState } from 'react'
 import Menu from './components/Menu';
 import Main from './components/Main';
 import { Routes, Route } from 'react-router-dom';
-import ProfileCard from './components/buidls/ProfileCard';
-import AnimatedText from './components/buidls/AnimatedText';
-import Loaders from './components/buidls/Loaders';
+import ProfileCard from './components/builds/ProfileCard';
+import AnimatedText from './components/builds/AnimatedText';
+import Loaders from './components/builds/Loaders/Loaders';
+import ImageHover from './components/builds/ImageEffects/ImageHover';
 
 
 
@@ -21,13 +22,17 @@ function StateManager() {
     link: ''
   }, {
     name: 'Profile Card',
-    link: 'profilecard'
+    link: 'profileCard'
   }, {
     name: 'Animated Text',
-    link: 'animatetext'
+    link: 'animatedText'
   }, {
     name: 'Loaders',
     link: 'loaders'
+  }
+  , {
+    name: 'Image:Hover',
+    link: 'imageEffects'
   }]
  });
 
@@ -41,9 +46,10 @@ function StateManager() {
       <Routes>
       
         <Route  index  path="/" element={ <Main />}/>
-        <Route  index  path="/profilecard" element={ <ProfileCard />}/>
-        <Route  index  path="/animatetext" element={ <AnimatedText />}/>
+        <Route  index  path="/profileCard" element={ <ProfileCard />}/>
+        <Route  index  path="/animatedText" element={ <AnimatedText />}/>
         <Route  index  path="/loaders" element={ <Loaders />}/>
+        <Route  index  path="/imageEffects" element={ <ImageHover />}/>
    
       </Routes>
    </div>

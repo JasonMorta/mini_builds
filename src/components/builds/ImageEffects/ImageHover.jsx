@@ -1,5 +1,5 @@
 import React from 'react';
-import "./imageHove.css"
+import "./imageHover.css"
 
 export default function ImageHover() {
   return (
