@@ -10,14 +10,17 @@
   color: rgb(71, 71, 71);
   text-align: center;
   font-size: large;
+  overflow: hidden;
 }
 
 .content_section {
   display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    max-width: 700px;
-    padding: 10px;
-    margin: auto;
-    position: relative;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 700px;
+  padding: 10px;
+  margin: auto;
+  position: relative;
+  width: 100%;
+  justify-content: center;
 }

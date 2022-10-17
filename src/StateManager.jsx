@@ -6,6 +6,7 @@ import ProfileCard from './components/builds/ProfileCard';
 import AnimatedText from './components/builds/AnimatedText';
 import Loaders from './components/builds/Loaders/Loaders';
 import ImageHover from './components/builds/ImageEffects/ImageHover';
+import Tile from './components/tiles/Tile';
 
 
 
@@ -29,10 +30,12 @@ function StateManager() {
   }, {
     name: 'Loaders',
     link: 'loaders'
-  }
-  , {
+  }, {
     name: 'Image:Hover',
     link: 'imageEffects'
+  }, {
+    name: 'Tile Slides',
+    link: 'tiles'
   }]
  });
 
@@ -50,6 +53,7 @@ function StateManager() {
         <Route  index  path="/animatedText" element={ <AnimatedText />}/>
         <Route  index  path="/loaders" element={ <Loaders />}/>
         <Route  index  path="/imageEffects" element={ <ImageHover />}/>
+        <Route  index  path="/tiles" element={ <Tile />}/>
    
       </Routes>
    </div>
