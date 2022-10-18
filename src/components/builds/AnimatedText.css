@@ -10,11 +10,16 @@
         transition: .5s ease-in-out;
         color: #f8f8ff;
         margin: 0;
+        cursor: default;
 }
 
 .animated_text h1:hover {
         color: hotpink;
         transition: .3s;
+}
+
+.stayDown {
+        animation: none !important;
 }
 
 .text-pop-up-top:hover {
