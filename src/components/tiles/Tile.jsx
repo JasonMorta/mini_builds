@@ -11,12 +11,10 @@ export default function Tile() {
   let divs = [];
   let inc = 0;
 
-  function clickTile(e){
-    e.target.style.backgroundColor = "#2196f3"
-    console.log(e)
-  }
+
 
   for (let i = 0; i < 6; i++) {
+
     let RN = Math.random().toFixed(2);
     divs.push(
       <div
@@ -24,7 +22,7 @@ export default function Tile() {
         onAnimationEnd ={animationEnd}
         onAnimationIteration={animationIteration}
         className="tile"
-        onClick={clickTile}
+        onClick={(e)=> {e.target.style.backgroundColor = "#2196f3"}}
         style={{
           left: `${0 + inc}px`,
           animationDelay: `${RN}s`,
@@ -57,6 +55,8 @@ export default function Tile() {
   function animationIteration(){
     
     setBgc("#FF6F61")
+    
+    console.log(bgc);
   
   }
 }
