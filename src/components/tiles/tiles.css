@@ -6,18 +6,18 @@
  display: flex;
  align-items: center;
  justify-content: center;
-
+cursor: pointer;
  margin: 0px 5px 0px;
  position: absolute;
  left: 0;
- animation: slide 3s;
+ animation: slide;
  animation-timing-function: linear;
 
  transform: translate(0px, -160px);
 }
 
 .tile-container {
- width: 90%;
+ width: 60%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -28,12 +28,40 @@
     /* overflow: hidden; */
 }
 
+.select-counter{
+    position: absolute;
+    left: 0;
+    top: -59px;
+    font-size: larger;
+    z-index: 5;
+}
+
+.hide-cards-top{
+    height: 425px;
+    width: 100%;
+    z-index: 4;
+    position: absolute;
+    top: -421px;
+    background-color: #f2f2f2;
+    /* display: none; */
+}
+
+.hide-cards-bot{
+    height: 504px;
+    width: 100%;
+    z-index: 4;
+    position: absolute;
+    bottom: -501px;
+    background-color: #f2f2f2;
+    /* display: none; */
+}
+
 
 @keyframes slide  {
  0% {
-     top: 0px;
+     top: -100px;
  }
 
 
- 100% {top:950px}
+ 100% {top:1150px}
 }
