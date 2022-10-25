@@ -8,11 +8,14 @@ export default function Loaders() {
 
  const [currentTime, setCurrentTime ] = useState(0);
  const [loadText, setLoadText] = useState("Loading...")
+const [divEl, setDivEl] = useState(["3", "l"])
 
 
- const tick = ()=>{
+let allSlides = divEl.map(i => <div className='slide'>{i}</div>)
 
-  //Stop weh bar is full 
+//
+ const progress = ()=>{
+  //Stop when bar is full 
   if (currentTime !== 100){ 
    setCurrentTime(state => state + 1)
   }
@@ -25,9 +28,10 @@ export default function Loaders() {
  
  //Increment every 20ns
   useEffect(() => {
-   const timer = setInterval( tick, 20 );
+
+   const timer = setInterval( progress, 20 );
    return () => clearInterval(timer);
- }, [tick] );
+ }, [progress] );
 
 //Use styled-components package to access the ::before attribute
  const H3 = styled.h3`
@@ -38,6 +42,10 @@ export default function Loaders() {
 `;
 
 
+
+
+
+
   return (
     <div>
      <p>useEffect with setInterval trick</p>
@@ -45,6 +53,7 @@ export default function Loaders() {
      <H3 className='h3Style' >
     {loadText}
      </H3>
+     {allSlides}
     </div>
   )
 }

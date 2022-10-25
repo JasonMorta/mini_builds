@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
+import Counter from './Counter';
 import "./tiles.css";
 
 export default function Tile() {
@@ -86,9 +87,7 @@ export default function Tile() {
           e.target.style.backgroundColor = "rgb(33, 150, 243)"
           //setSelectCounter(prev => prev +1)
           selectedCount.current++
-          
-       
-         
+
         }}
 
         
@@ -126,7 +125,7 @@ export default function Tile() {
   function animationIteration(e){
     e.target.style.backgroundColor = "#FF6F61";
     
-    console.log(selectedCount.current);
+    //console.log(selectedCount.current);
   }
 }
 
@@ -136,11 +135,10 @@ export default function Tile() {
     <div className="tile-container">
       <div className='hide-cards-top'></div>
       {divs}
-      {divs2}
-      {divs3}
-   
-      <p className='select-counter'>You score: {cardCounter}</p>
 
+   
+
+      <Counter LCounter={selectedCount.current} />
       <div className="tile-column1"> </div>
       <div className='hide-cards-bot'></div>
     </div>
