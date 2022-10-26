@@ -12,7 +12,7 @@ export default function Jokes() {
 
   const [joke, setJoke] = useState(["1", "2", "3"])
   const [count, setCount] = useState([])
-
+  const [num, setNum] = useState(0)
 
 
 useEffect(() => {
@@ -33,22 +33,28 @@ useEffect(() => {
    }
 }, [])
 
-const [num, setNum] = useState(0)
+
 
 function getJokes(){
+
+  if (count.length >= 3) {
+    setNum(0);
+    setCount([]);
+  }
+
+  
   fetch("https://api.chucknorris.io/jokes/random")
   .then((res) => res.json())
   .then((result) => {
-    setNum(0)
 
-  //  while (num < 3) {
-    setCount(prev => [...prev, result.value])
-    setNum(prev => prev + 1)
-    console.log(num);
-  //  }
-    //console.log(count);
- 
-  })
+  while (num < 3) {
+    //setNum(prev => prev + 1)
+    //setCount(prev => [...prev, result.value])
+    //onsole.log(num);
+  }
+
+  });
+
 }
 
 
