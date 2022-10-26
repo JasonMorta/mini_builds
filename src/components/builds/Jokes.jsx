@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-pascal-case */
 import React from 'react';
 import "./Jokes.css";
@@ -12,18 +13,42 @@ export default function Jokes() {
   const [joke, setJoke] = useState(["1", "2", "3"])
   const [count, setCount] = useState([])
 
+
+
+useEffect(() => {
+
+  //loads 3 jokes on page  load
+  for (let i = 0; i < 3; i++) {
+    fetch("https://api.chucknorris.io/jokes/random")
+    .then((res) => res.json())
+    .then((result) => {
+    // console.log('result', result.value)
+      //console.log('result', result)
+      //setCount(result.value)
+      // for (let i = 0; i < count.length; i++) {
+         setCount(prev => [...prev, result.value])
+      //  }
+      console.log(count);
+    })
+   }
+}, [])
+
+const [num, setNum] = useState(0)
+
 function getJokes(){
   fetch("https://api.chucknorris.io/jokes/random")
   .then((res) => res.json())
   .then((result) => {
-    console.log('result', result.value)
-    console.log('result', result)
-    setCount(result.value)
-  })
-}
+    setNum(0)
 
-for (let i = 0; i < 3; i++) {
- getJokes()
+  //  while (num < 3) {
+    setCount(prev => [...prev, result.value])
+    setNum(prev => prev + 1)
+    console.log(num);
+  //  }
+    //console.log(count);
+ 
+  })
 }
 
 
@@ -34,13 +59,8 @@ for (let i = 0; i < 3; i++) {
     </div>
     <div className="container">
      <h2><b>John Doe{chuck}</b></h2>
-     <p>Lorem ipsum dolor sit</p>
-     <ul>
-      <li>Lorem ipsum dolor sit</li>
-      <li>Lorem ipsum dolor sit</li>
-      <li>Lorem ipsum dolor sit</li>
-   
-     </ul>
+     <p>{count[idx]}</p>
+
    
     </div>
    </div>
