@@ -11,12 +11,13 @@
   text-align: center;
   font-size: large;
   overflow: hidden;
+  position: relative;
 }
 
 .content_section {
   max-width: 700px;
   margin: auto;
-  position: relative;
+  /* position: relative; */
   width: 100%;
   justify-content: center;
 }
