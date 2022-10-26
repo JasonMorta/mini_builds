@@ -1,23 +1,27 @@
 .menu_section {
     width: 225px;
-    background-color: gray;
     position: relative;
     height: 100vh;
     overflow: auto;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     padding-left: 10px;
     font-size: x-large;
+    background: rgb(244, 244, 244);
+    border-right: 2px solid rgb(221, 221, 221);
+    align-items: flex-start;
+    text-align: initial;
 }
 
 .menu_items {
     cursor: pointer;
     margin: 0;
+    transition: .2s;
 }
 
 .menu_items:hover {
- text-decoration: underline;
+ text-shadow: none;
+ transition: .2s;
 }
 
 .menu_items:active {

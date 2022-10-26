@@ -2,7 +2,7 @@ import React, { createContext, useState } from 'react'
 import Menu from './components/Menu';
 import Main from './components/Main';
 import { Routes, Route } from 'react-router-dom';
-import ProfileCard from './components/builds/ProfileCard';
+import Jokes from './components/builds/Jokes';
 import AnimatedText from './components/builds/AnimatedText';
 import Loaders from './components/builds/Loaders/Loaders';
 import ImageHover from './components/builds/ImageEffects/ImageHover';
@@ -22,8 +22,8 @@ function StateManager() {
     name: 'Home',
     link: ''
   }, {
-    name: 'Profile Card',
-    link: 'profileCard'
+    name: 'Chuck Norris Jokes',
+    link: 'chuckNorris'
   }, {
     name: 'Animated Text',
     link: 'animatedText'
@@ -49,7 +49,7 @@ function StateManager() {
       <Routes>
       
         <Route  index  path="/" element={ <Main />}/>
-        <Route  index  path="/profileCard" element={ <ProfileCard />}/>
+        <Route  index  path="/chuckNorris" element={ <Jokes />}/>
         <Route  index  path="/animatedText" element={ <AnimatedText />}/>
         <Route  index  path="/loaders" element={ <Loaders />}/>
         <Route  index  path="/imageEffects" element={ <ImageHover />}/>
