@@ -2,7 +2,7 @@ import React, { createContext, useState } from 'react'
 import Menu from './components/Menu';
 import Main from './components/Main';
 import { Routes, Route } from 'react-router-dom';
-import Jokes from './components/builds/Jokes';
+import Jokes from './components/builds/Jokes/Jokes';
 import AnimatedText from './components/builds/AnimatedText';
 import Loaders from './components/builds/Loaders/Loaders';
 import ImageHover from './components/builds/ImageEffects/ImageHover';
@@ -18,25 +18,53 @@ export const StateContext = createContext();
 function StateManager() {
 
  const [state, setState] = useState({
-  menuItems: [{
-    name: 'Home',
-    link: ''
-  }, {
-    name: 'Chuck Norris Jokes',
-    link: 'chuckNorris'
-  }, {
-    name: 'Animated Text',
-    link: 'animatedText'
-  }, {
-    name: 'Loaders',
-    link: 'loaders'
-  }, {
-    name: 'Image:Hover',
-    link: 'imageEffects'
-  }, {
-    name: 'Tile Slides',
-    link: 'tiles'
-  }]
+   menuItems: [
+     {
+       name: "Home",
+       link: "",
+     },
+     {
+       name: "Chuck Norris Jokes",
+       link: "chuckNorris",
+     },
+     {
+       name: "Animated Text",
+       link: "animatedText",
+     },
+     {
+       name: "Loaders",
+       link: "loaders",
+     },
+     {
+       name: "Image:Hover",
+       link: "imageEffects",
+     },
+     {
+       name: "Tile Slides",
+       link: "tiles",
+     },
+   ],
+   nextJoke: false,
+   catagories: [
+     "none",
+     "animal",
+     "career",
+     "celebrity",
+     "dev",
+     "explicit",
+     "fashion",
+     "food",
+     "history",
+     "money",
+     "movie",
+     "music",
+     "political",
+     "religion",
+     "science",
+     "sport",
+     "travel",
+   ],
+   activeCat: "none",
  });
 
 

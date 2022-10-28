@@ -3,8 +3,6 @@ import './Main.css';
 
 export default function Main() {
 
-
-
 const [heading, setHeading] = useState("Mini.Builds")
 
 let header = heading.split("").map((char, idx) => (
