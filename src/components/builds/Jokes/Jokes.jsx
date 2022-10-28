@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-pascal-case */
+import chuckie from "./pics/chuck.png";
 import React, { useContext } from 'react';
 import "./Jokes.css";
 import { useState, useEffect } from 'react';
@@ -16,7 +17,8 @@ const value = useContext(StateContext);
 let [state, setState] = value
 
   return (
-  <section >
+  <section  >
+    <img src={chuckie} width={300} className="chuck slide-in-blurred-top" alt="chuck" />
   <div className='chuck-jokes'>
 
     <FetchJoke />
