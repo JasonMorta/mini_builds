@@ -22,26 +22,32 @@ function StateManager() {
      {
        name: "Home",
        link: "",
+       active: false
      },
      {
        name: "Chuck Norris Jokes",
        link: "chuckNorris",
+       active: false
      },
      {
        name: "Animated Text",
        link: "animatedText",
+       active: false
      },
      {
        name: "Loaders",
        link: "loaders",
+       active: false
      },
      {
        name: "Image:Hover",
        link: "imageEffects",
+       active: false
      },
      {
        name: "Tile Slides",
        link: "tiles",
+       active: false
      },
    ],
    nextJoke: false,

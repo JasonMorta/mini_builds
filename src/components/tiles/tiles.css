@@ -16,6 +16,10 @@ cursor: pointer;
  transform: translate(0px, -160px);
 }
 
+h1 {
+    text-shadow: 1px 1px 2px black;
+}
+
 .tile-container {
  width: 60%;
     display: flex;

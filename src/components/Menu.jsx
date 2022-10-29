@@ -1,3 +1,4 @@
+/* eslint-disable no-cond-assign */
 import React, { useContext } from 'react';
 import { StateContext } from '../StateManager';
 import './menu.css';
@@ -10,9 +11,7 @@ export default function Menu() {
 
  let [state, setState] = value
 
- function chooseBuild(e){
-  console.log(e.target.dataset.mini)
- }
+
 
   return (
     
@@ -21,9 +20,12 @@ export default function Menu() {
       <Link 
       data-mini={item.name}
       key={index} 
-      onClick={chooseBuild}
+      onClick={()=> {
+        setState(i => ({...i, active: state.menuItems.map((x, i) => x.active = !x.active)}))
+        console.log(item.active);
+      }}
       to={`/${item.link}`}
-      className="menu_items"
+      className={`menu_items ${item.active ? " active_build": ""}`}
       >
         {item.name}
       </Link>

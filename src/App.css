@@ -1,13 +1,13 @@
 
 .App {
-  background-color: #ffffff;
+  background-color: #F2BB16;
   min-height: 100vh;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
   font-size: calc(10px + 2vmin);
-  color: rgb(0, 0, 0);
+
   text-align: center;
   font-size: large;
   overflow: hidden;
@@ -22,3 +22,6 @@
   justify-content: center;
 }
 
+p {
+  color: #403814;
+}

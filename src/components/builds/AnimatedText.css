@@ -3,10 +3,11 @@
         padding: 10px;
         flex-direction: row;
         flex-wrap: wrap;
+        justify-content: space-evenly;
 }
 
 .animated_text h1 {
-        font-size: clamp(2rem, 10vw, 6rem);
+        font-size: clamp(2rem, 5vw, 6rem);
         transition: .5s ease-in-out;
         color: #f8f8ff;
         margin: 0;
@@ -20,6 +21,11 @@
 
 .stayDown {
         animation: none !important;
+}
+
+.index-container {
+     
+        display: flex;
 }
 
 .text-pop-up-top:hover {

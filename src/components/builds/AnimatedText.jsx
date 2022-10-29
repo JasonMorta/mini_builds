@@ -4,13 +4,18 @@ import './AnimatedText.css'
 
 export default function AnimatedText() {
 
-  const [state, setState]= useState("Animated Text")
+  const [state, setState]= useState("Animated Text");
+  const [animate, setanimate] = useState({
+    
+  })
+  
   const [stay, setStay]= useState(false)
 
 let speed = 0.5;
 
 function textInput(e){
-setState(e.target.value)
+setState(e.target.value);
+console.log('state', state.split(" "));
 }
 
 //keeps the selected letter down
@@ -25,9 +30,9 @@ function stayDown(e){
         e.target.style.color = "#f8f8ff"
         setStay(false)
       }
-  console.log(e.target.className)
+  //console.log(e.target.className)
   //setStay(prev => !prev)
-  console.log(stay)
+  //console.log(stay)
   setStay(true)
 }
 
@@ -35,24 +40,27 @@ function stayDown(e){
 
   return (
     <>
-    <p>Enter some text</p>
-     <div id="inputField">
-              < input onInput={textInput} 
-                type="text" 
-                defaultChecked={state}   
-                className="inputs"
-                placeholder={state} 
-                id="x" />
+      <p>Enter some text</p>
+      <div id="inputField">
+                < input onInput={textInput} 
+                  type="text" 
+                  defaultChecked={state}   
+                  className="inputs"
+                  placeholder={state} 
+                  id="x" />
+            </div>
+        <div className='animated_text'>
+          
+        {state.split(" ").map((item, index) => (
+          <div className='index-container'>
+             {item.split("").map((char,i) => 
+              <h1 onClick={stayDown}
+              className="text-pop-up-top"
+              key={i}
+              style={{'animationDuration': `${speed}s`}}>{char}</h1>
+             )}
           </div>
-      <div className='animated_text'>
-         
-      {state.split("").map((item, index) =>(
-       <h1 onClick={stayDown}
-
-        className="text-pop-up-top"
-        key={index}
-        style={{'animationDuration': `${speed}s`}}>{item}</h1>
-       ))}
+        ))}
       </div>
     </>
   )

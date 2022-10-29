@@ -5,6 +5,7 @@
   flex-direction: row;
   align-items: flex-start;
   padding-left: 30px;
-  justify-content: space-evenly;
-  width: 35%;
+  /* width: 35%; */
+  margin: auto;
+  justify-content: center;
 }

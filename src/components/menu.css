@@ -7,10 +7,11 @@
     flex-direction: column;
     padding-left: 10px;
     font-size: x-large;
-    background: rgb(244, 244, 244);
-    border-right: 2px solid rgb(221, 221, 221);
+    background: #0D0D0D;
+    border-right: 2px solid #F2CE16;
     align-items: flex-start;
     text-align: initial;
+    
 }
 
 .menu_items {
@@ -22,13 +23,21 @@
 .menu_items:hover {
  text-shadow: none;
  transition: .2s;
+ color: #F2CE16;
 }
 
 .menu_items:active {
-   color: black;
+   /* color: black; */
 }
 
 .menu_section a {
     text-decoration: none;
-    color: inherit;
+    color: #F2CE16;
+    font-size: large;
+}
+
+.active_build {
+    background-color: #403814;
+    border-radius: 30px;
+    padding: 0px 5px 0px 5px;
 }
