@@ -3,7 +3,7 @@
         padding: 10px;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-evenly;
+        justify-content: flex-start;
 }
 
 .animated_text h1 {
@@ -24,7 +24,7 @@
 }
 
 .index-container {
-     
+        margin: 0px 7px 0px 7px;
         display: flex;
 }
 

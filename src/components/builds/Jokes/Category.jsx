@@ -1,5 +1,5 @@
 import React from 'react'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { StateContext } from '../../../StateManager';
 import Dropdown from 'react-bootstrap/Dropdown';
 
@@ -9,6 +9,9 @@ export default function Category() {
 
   const [state, setState] = value;
   //console.log('state', state)
+useEffect(() => {
+  setState(prev => ({...prev, activeCat: "none"}))
+}, [])
 
 
   return (
@@ -23,7 +26,7 @@ export default function Category() {
         key={i}
         onClick={()=> {
           setState(prev => ({...prev, activeCat: cat}))
-          console.log(state.activeCat);
+          console.log(cat);
         }}>{cat}</Dropdown.Item>
       ))}
    

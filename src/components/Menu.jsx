@@ -1,3 +1,4 @@
+/* eslint-disable no-self-compare */
 /* eslint-disable no-cond-assign */
 import React, { useContext } from 'react';
 import { StateContext } from '../StateManager';
@@ -21,7 +22,7 @@ export default function Menu() {
       data-mini={item.name}
       key={index} 
       onClick={()=> {
-        setState(i => ({...i, active: state.menuItems.map((x, i) => x.active = !x.active)}))
+        //setState(i => i.map(x => x === x ? {...x, active: !x.active} : x) )
         console.log(item.active);
       }}
       to={`/${item.link}`}

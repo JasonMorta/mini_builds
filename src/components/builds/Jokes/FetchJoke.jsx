@@ -13,15 +13,14 @@ export default function FetchJoke(props) {
   
 useEffect(() => {
 //fetch random jokes if category is === "none"
-  state.catagories[0] === "none" ?
+  state.activeCat === "none" ?
   fetch("https://api.chucknorris.io/jokes/random")
   .then(response => response.json())
   .then(data => setJoke(data.value)) 
   :
   fetch(`https://api.chucknorris.io/jokes/random?category=${state.activeCat}`)
     .then(response => response.json())
-    .then(data => console.log(data.value
-      ));
+    .then(data => setJoke(data.value));
 
 }, [state])
 
