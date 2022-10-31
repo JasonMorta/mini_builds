@@ -72,10 +72,7 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .chuck {
-  position: absolute;
-  top: 15px;
-  left: 50%;
-  transform: translate(0%, 0vh);
+        margin: 30px;
 }
 
 

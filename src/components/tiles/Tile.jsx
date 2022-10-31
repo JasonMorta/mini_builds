@@ -1,12 +1,20 @@
 import React from 'react';
+import { useContext } from 'react';
 import { useState, useEffect, useRef } from 'react';
+import { StateContext } from '../../StateManager';
 import Counter from './Counter';
 import "./tiles.css";
 
 export default function Tile() {
+
+  const value = useContext(StateContext);
+
+  let [state, setState] = value
+
+
   const [tiles, setTiles] = useState("Card");
-  const [bgc, setBgc] = useState("#FF6F61")
-  const [count, setCount] = useState(112)
+  const [bgc, setBgc] = useState("#fff")
+  const [count, setCount] = useState(11)//card loops
   const [totalCards, setTotalCards] = useState(0)
   const [speed, setSpeed] = useState(3)
   const selectedCount = useRef(0);
@@ -24,7 +32,7 @@ export default function Tile() {
   
 
 //create each card with loop
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 6; i++) {
 
     //gives each card a random start time(0-1sec)
   divs.push(
@@ -35,12 +43,10 @@ export default function Tile() {
         className="tile"
         onMouseDown={(e)=> {
           e.target.style.backgroundColor = "rgb(33, 150, 243)"
-          //setSelectCounter(prev => prev +1)
+          setState(prev => ({...prev, score: state.score +1}))
           selectedCount.current++
-          console.log( selectedCount.current);
+          console.log(state.score);
         }}
-
-        
         style={{
           left: `${0 + inc}px`,
           animationDelay: `0.${Math.floor(Math.random() * 4)}s`,
@@ -52,80 +58,31 @@ export default function Tile() {
         
       </div>
     );
-  divs2.push(
-      <div
-        onAnimationStart={animationStart }
-        onAnimationEnd ={animationEnd}
-        onAnimationIteration={animationIteration}
-        className="tile"
-        onMouseDown={(e)=> {
-          e.target.style.backgroundColor = "rgb(33, 150, 243)"
-          //setSelectCounter(prev => prev +1)
-          selectedCount.current++
-          console.log( selectedCount.current);
-        }}
-
-        
-        style={{
-          left: `${0 + inc}px`,
-          animationDelay: `1.${Math.floor(Math.random() * 4)}s`,
-          backgroundColor: bgc,
-          animationIterationCount: count,
-          animationDuration: `${speed}s`
-        }}
-      >
-        
-      </div>
-    );
-  divs3.push(
-      <div
-        onAnimationStart={animationStart }
-        onAnimationEnd ={animationEnd}
-        onAnimationIteration={animationIteration}
-        className="tile"
-        onMouseDown={(e)=> {
-          e.target.style.backgroundColor = "rgb(33, 150, 243)"
-          //setSelectCounter(prev => prev +1)
-          selectedCount.current++
-
-        }}
-
-        
-        style={{
-          left: `${0 + inc}px`,
-          animationDelay: `2.${Math.floor(Math.random() * 4)}s`,
-          backgroundColor: bgc,
-          animationIterationCount: count,
-          animationDuration: `${speed}s`
-        }}
-      >
-        
-      </div>
-    );
-
-
     inc += 105;
 
     //Animation start Event
   function animationStart(){
     //console.log(bgc);
     setBgc("")
-    setBgc("#FF6F61")
+    setBgc("#fff")
   }
 
   //Animation End event
   function animationEnd(){
-    console.log("ended")
-    setTotalCards(selectedCount.current)
+    //console.log("ended")
+    //setTotalCards(selectedCount.current)
   }
 
   //Animation each iteration event
   //reset the bgc of the selected card on each loop
   // eslint-disable-next-line no-loop-func
   function animationIteration(e){
-    e.target.style.backgroundColor = "#FF6F61";
+    if ( e.target.style.backgroundColor = "rgb(33, 150, 243)") {
+      //
+    }
+    e.target.style.backgroundColor = "#fff";
     
-    //console.log(selectedCount.current);
+    //console.log(state);
   }
 }
 
@@ -133,14 +90,15 @@ export default function Tile() {
 
   return (
     <div className="tile-container">
-      <div className='hide-cards-top'></div>
+ 
       {divs}
+      {divs2}
 
    
 
-      <Counter LCounter={selectedCount.current} />
+      {/* <Counter LCounter={selectedCount.current} /> */}
       <div className="tile-column1"> </div>
-      <div className='hide-cards-bot'></div>
+
     </div>
   );
 }

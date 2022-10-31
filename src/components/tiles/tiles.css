@@ -21,15 +21,18 @@ h1 {
 }
 
 .tile-container {
- width: 60%;
+    width: 60%;
+    margin: 75px auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    background-color: #6B5B95;
+    background-color: #0D0D0D;
     height: 700px;
     border-radius: 3px;
     position: relative;
-    /* overflow: hidden; */
+    overflow: hidden;
+    box-shadow: inset 0px 0px 18px 1px #f2ce16;
+    z-index: 2;
 }
 
 .select-counter{
@@ -38,26 +41,6 @@ h1 {
     top: -59px;
     font-size: larger;
     z-index: 5;
-}
-
-.hide-cards-top{
-    height: 425px;
-    width: 100%;
-    z-index: 4;
-    position: absolute;
-    top: -421px;
-    background-color: #f2f2f2;
-    /* display: none; */
-}
-
-.hide-cards-bot{
-    height: 504px;
-    width: 100%;
-    z-index: 4;
-    position: absolute;
-    bottom: -501px;
-    background-color: #f2f2f2;
-    /* display: none; */
 }
 
 

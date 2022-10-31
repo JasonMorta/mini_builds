@@ -1,11 +1,13 @@
 .main_section {
-  height: 100vh;
+  position: relative;
+  height: 100%;
   overflow: auto;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  padding-left: 30px;
-  /* width: 35%; */
-  margin: auto;
+  padding-left: 10px;
+  font-size: x-large;
+  align-items: center;
+  text-align: initial;
+  z-index: 2;
   justify-content: center;
 }

@@ -7,7 +7,7 @@
 }
 
 .animated_text h1 {
-        font-size: clamp(2rem, 5vw, 6rem);
+        font-size: clamp(3.5rem, 5vw, 6rem);
         transition: .5s ease-in-out;
         color: #f8f8ff;
         margin: 0;

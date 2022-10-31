@@ -5,10 +5,6 @@ import './AnimatedText.css'
 export default function AnimatedText() {
 
   const [state, setState]= useState("Animated Text");
-  const [animate, setanimate] = useState({
-    
-  })
-  
   const [stay, setStay]= useState(false)
 
 let speed = 0.5;

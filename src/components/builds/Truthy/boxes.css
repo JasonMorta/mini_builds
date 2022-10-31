@@ -1,0 +1,25 @@
+.box {
+  width: 80px;
+  height: 80px;
+  margin: 4px;
+  background-color: #080808;
+  color: #F2CE16;
+  display: flex;
+  align-items: center;
+   justify-content: center;
+   cursor: pointer;
+   user-select: none;
+}
+
+.boxes {
+  display: flex;
+  justify-content: center;
+  width: min-content;
+  box-shadow: 0px 0px 2px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.truth-container h1 {
+  margin-top: 40px;
+}

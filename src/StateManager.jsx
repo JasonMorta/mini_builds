@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import Jokes from './components/builds/Jokes/Jokes';
 import AnimatedText from './components/builds/AnimatedText';
 import Loaders from './components/builds/Loaders/Loaders';
-import ImageHover from './components/builds/ImageEffects/ImageHover';
+import Truthy from './components/builds/Truthy/Truthy';
 import Tile from './components/tiles/Tile';
 
 
@@ -40,8 +40,8 @@ function StateManager() {
        active: false
      },
      {
-       name: "Image:Hover",
-       link: "imageEffects",
+       name: "Truthy",
+       link: "truthy",
        active: false
      },
      {
@@ -71,6 +71,7 @@ function StateManager() {
      "travel",
    ],
    activeCat: "none",
+   score: 0,
  });
 
 
@@ -86,7 +87,7 @@ function StateManager() {
         <Route  index  path="/chuckNorris" element={ <Jokes />}/>
         <Route  index  path="/animatedText" element={ <AnimatedText />}/>
         <Route  index  path="/loaders" element={ <Loaders />}/>
-        <Route  index  path="/imageEffects" element={ <ImageHover />}/>
+        <Route  index  path="/truthy" element={ <Truthy />}/>
         <Route  index  path="/tiles" element={ <Tile />}/>
    
       </Routes>
