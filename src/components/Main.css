@@ -10,4 +10,9 @@
   text-align: initial;
   z-index: 2;
   justify-content: center;
+  overflow: hidden;
+}
+
+.main_section h1 {
+  font-size: xxx-large;
 }

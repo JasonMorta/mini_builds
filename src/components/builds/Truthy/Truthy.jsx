@@ -43,16 +43,18 @@ export default function ImageHover() {
   //These two boxes flip's the values on click
   let unaware = array.map((bx, i) =>(
     <Box 
-      key={i}
-      context={bx.on.toString()}
-      toggle={()=> toggle(bx.id)} />
+    key={i}
+    textColor={bx.on ? "#03a9f4": "#ff5722"}
+    handleClick={()=> toggle(bx.id, bx.on)}
+    context={bx.on.toString()} />
   )) 
 
   let aware = array.map((val, idx) => (
     <BoxAware 
       key={idx}
+      textColor={val.on ? "green": "red"}
       handleClick={()=> boxAware(val.id, val.on)}
-      context={val.on.toString() +" "+ val.id} />
+      context={val.on.toString()} />
   ))
 
 
