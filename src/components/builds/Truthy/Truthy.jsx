@@ -15,19 +15,31 @@ export default function ImageHover() {
   }
 
   //toggle aware boxes
-  function boxAware(on){
-    console.log(array);
-  
-      setArray(prev => prev.map(item => 
-        item.on === on ?
-        ({...item, on: !prev.on})
-        :
-        ({...item, on: !item.on})
-        ))
-    
-  
-  }
+  function boxAware(id, on){
+   
+    //setArray(prev => prev.map(x => ({...x, on: !x.on})))
 
+      // setArray(prev => prev.map(item => {
+    
+        if (on) {
+         
+          setArray(prev => prev.map(x => ({...x, on:true})))//first set all on's to false
+          setArray(prev => prev.map(x => x.id === id ? ({...x, on:!x.on}): x))//only flip selected on
+
+        } else {
+          setArray(prev => prev.map(x => ({...x, on:false})))
+          setArray(prev => prev.map(x => x.id === id ? ({...x, on:!x.on}): x))
+
+        }
+
+      
+  }
+    
+
+       
+
+
+  
   //These two boxes flip's the values on click
   let unaware = array.map((bx, i) =>(
     <Box 
@@ -39,7 +51,7 @@ export default function ImageHover() {
   let aware = array.map((val, idx) => (
     <BoxAware 
       key={idx}
-      handleClick={()=> boxAware(val.id)}
+      handleClick={()=> boxAware(val.id, val.on)}
       context={val.on.toString() +" "+ val.id} />
   ))
 
@@ -53,11 +65,12 @@ export default function ImageHover() {
       <div className='boxes'>
         {unaware}
         </div>
-
+        <p>Flip the selected truthy only</p>
         <h1>Aware boxes</h1>
       <div className='boxes'>
       {aware}
       </div>
+      <p>Flip the selected truthy and flip the two remaining to opposite</p>
     </div>
   )
 }
