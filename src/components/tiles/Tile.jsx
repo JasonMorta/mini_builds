@@ -1,3 +1,4 @@
+/* eslint-disable no-loop-func */
 import React from 'react';
 import { useContext } from 'react';
 import { useState, useEffect, useRef } from 'react';
@@ -14,15 +15,16 @@ export default function Tile() {
 
   const [tiles, setTiles] = useState("Card");
   const [bgc, setBgc] = useState("#fff")
-  const [count, setCount] = useState(11)//card loops
+
   const [totalCards, setTotalCards] = useState(0)
-  const [speed, setSpeed] = useState(3)
+  let speed = 3;
   const selectedCount = useRef(0);
 
   let divs = [];// holds all teh cards
   let divs2 = [];
   let divs3 = [];
   let cardCounter = 0;
+  let count = 11;
   let inc = 0;//used to set the distance between each card
 
   // useEffect(() => {
@@ -42,10 +44,10 @@ export default function Tile() {
         onAnimationIteration={animationIteration}
         className="tile"
         onMouseDown={(e)=> {
-          e.target.style.backgroundColor = "rgb(33, 150, 243)"
-          setState(prev => ({...prev, score: state.score +1}))
+          e.target.style.backgroundColor = "rgb(33, 150, 243)";
+          cardCounter++
           selectedCount.current++
-          console.log(state.score);
+          console.log(cardCounter );
         }}
         style={{
           left: `${0 + inc}px`,
@@ -90,7 +92,7 @@ export default function Tile() {
 
   return (
     <div className="tile-container">
- 
+      <p >{cardCounter}</p>
       {divs}
       {divs2}
 
