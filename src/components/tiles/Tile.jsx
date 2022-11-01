@@ -24,7 +24,7 @@ export default function Tile() {
   let divs3 = [];
   let cardCounter = 0;
   let inc = 0;//used to set the distance between each card
-
+  let scor = 0
   // useEffect(() => {
   //   selectedCount.current =  selectedCount.current +1
   
@@ -43,8 +43,8 @@ export default function Tile() {
         className="tile"
         onMouseDown={(e)=> {
           e.target.style.backgroundColor = "rgb(33, 150, 243)"
-          setState(prev => ({...prev, score: state.score +1}))
-          selectedCount.current++
+          //setState(prev => ({...prev, score: state.score +1}))
+          scor = selectedCount.current++
           console.log(state.score);
         }}
         style={{
@@ -82,23 +82,22 @@ export default function Tile() {
     }
     e.target.style.backgroundColor = "#fff";
     
-    //console.log(state);
+
+    console.log('scor', scor)
   }
 }
 
-  
-
   return (
-    <div className="tile-container">
- 
-      {divs}
-      {divs2}
-
+   <>
+    <Counter scores={scor} />
+      <div className="tile-container">
    
-
-      {/* <Counter LCounter={selectedCount.current} /> */}
-      <div className="tile-column1"> </div>
-
-    </div>
+        {divs}
+        {divs2}
+       
+        <div className="tile-column1"> </div>
+  
+      </div>
+   </>
   );
 }

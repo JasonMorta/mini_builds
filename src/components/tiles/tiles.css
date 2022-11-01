@@ -36,11 +36,10 @@ h1 {
 }
 
 .select-counter{
-    position: absolute;
-    left: 0;
-    top: -59px;
     font-size: larger;
+    transform: translate(0px, 32px);
     z-index: 5;
+    height: fit-content;
 }
 
 

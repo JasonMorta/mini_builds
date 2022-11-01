@@ -1,12 +1,15 @@
-import React from 'react'
-import { useState } from 'react'
+import React from 'react';
+import { useEffect, useState } from 'react';
+
 
 export default function Counter(props) {
 
- const [selectCounter, setSelectCounter] = useState(props.LCounter)
- console.log('selectCounter = ', selectCounter)
+const [score, setScore] = useState(props.scores)
+console.log('score', score)
+
+
 
   return (
-    <p className='select-counter'>You score: {selectCounter}</p>
+    <p className='select-counter'>You score: {score}</p>
   )
 }

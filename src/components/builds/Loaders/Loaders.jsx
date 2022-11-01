@@ -30,6 +30,7 @@ export default function Loaders() {
       key={i}
       className='slide slide-in-left'
       style={{
+        width: `${i === 0 ? 1 : i+1}0%`,
       animationDuration: `0.7${+ i}s`,
       animationDelay:` 0.${i}s`
     }}
@@ -48,10 +49,6 @@ export default function Loaders() {
    width: ${currentTime}%
  }
 `;
-
-
-
-
 
   return (
     <div>

@@ -1,29 +1,27 @@
-import React from 'react';
-import { useState } from 'react';
-import Boxes from "./Box"
+import React, { useState } from 'react';
 import Box from './Box';
 import BoxAware from './BoxAware';
 
 export default function ImageHover() {
+  
 
   const [array, setArray] = useState([{id: 1, on: true },{id: 2,on: false},{id: 3,on: false,}]);
-
 
   //toggle unaware boxes
   function toggle(id){
     setArray(prev => prev.map(item => item.id === id ? {...item, on: !item.on}: item ))
   }
 
+
+
+
+
+
   //toggle aware boxes
   function boxAware(id, on){
-   
-    //setArray(prev => prev.map(x => ({...x, on: !x.on})))
 
-      // setArray(prev => prev.map(item => {
-    
         if (on) {
-         
-          setArray(prev => prev.map(x => ({...x, on:true})))//first set all on's to false
+          setArray(prev => prev.map(x => ({...x, on:true})))//first set all on: false
           setArray(prev => prev.map(x => x.id === id ? ({...x, on:!x.on}): x))//only flip selected on
 
         } else {
