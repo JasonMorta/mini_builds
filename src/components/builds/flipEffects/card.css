@@ -45,6 +45,9 @@
 
    .h2-heading {
       margin-bottom: 0px;
+      color: #F2E416;
+      transition: .3s;
+      backface-visibility: hidden;
 
    }
 
@@ -71,3 +74,49 @@
    .card-back{
     transform: rotateY(180deg);
    }
+
+   .card-back > h2{
+      transform: rotateY(180deg);
+}
+
+
+
+
+/***** BUTTON style *****/
+
+.btn-cont {
+   display: flex;
+   align-items: center;
+   height: 35px;
+   justify-content: center;
+}
+
+.night {
+   display: inline-block;
+   background: -webkit-linear-gradient(top, rgb(0 0 0), hsl(0deg 0% 9% / 70%) 50%, rgb(0 0 0 / 68%) 50%, rgb(8 6 6));
+   padding: 8px 18px;
+   border-radius: 50px;
+   border: 2px solid rgba(0, 0, 0, 0.7);
+   border-bottom: 2px solid rgba(0, 0, 0, 0.7);
+   border-top: 2px solid #000;
+   color: rgba(255, 255, 255, 0.8);
+   font-family: Helvetica, Arial, sans-serif;
+   font-weight: bold;
+   font-size: 13px;
+   transition: .1s;
+   text-decoration: none;
+   text-shadow: 0 -1px 0 rgb(0 0 0 / 75%);
+   box-shadow: inset 0px 0px 0 rgb(255 255 255 / 5%);
+}
+
+.night:hover {
+   background: -webkit-linear-gradient(top, rgb(0 0 0), hsl(0deg 0% 9% / 84%) 50%, rgb(0 0 0 / 80%) 50%, rgb(8 6 6));
+   color: #F2E416;
+}
+
+.night:active {
+   border: 1px solid black;
+   box-shadow: inset 0px 0px 0 rgb(255 255 255 / 5%);
+   color: #F2CE16;
+   transform: scale(0.99);
+}

@@ -6,19 +6,45 @@ export default class FlipsMain extends Component {
     super(props)
   
     this.state = {
-       flipped: true
+      cardData: "",
+      gameOver: false
     }
   }
 
-
+//On page load, cardData will be "", but on click it will be given a number/the selected cards id.
+//this will be used to add the flip CSS
   flipCard(e){
-    //alert("clicked")
-    console.log(e.target.dataset)
+   this.setState({
+    cardData: Number(e.target.dataset.cardData),
+    gameOver: true
+   })
+   console.log("card ID", Number(e.target.dataset.cardData))
   }
+
+  restart(){
+    this.setState({
+      cardData: "",
+      gameOver: false
+     })
+  }
+
   render() {
     return (
       <div>
-        <Card handleClick={this.flipCard.bind(this)}/>
+        <Card 
+          gameOver={this.state.gameOver}
+          cardData={this.state.cardData}
+          handleClick={this.flipCard.bind(this)}
+          />
+
+          
+          {this.state.gameOver ? <div className="btn-cont">
+             <button 
+             onClick={this.restart.bind(this)}
+              className="night">Restart</button>
+          </div>
+          :
+          <></>}
       </div>
     )
   }
