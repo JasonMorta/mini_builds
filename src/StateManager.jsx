@@ -7,6 +7,7 @@ import AnimatedText from './components/builds/AnimatedText';
 import Loaders from './components/builds/Loaders/Loaders';
 import Truthy from './components/builds/Truthy/Truthy';
 import Tile from './components/tiles/Tile';
+import FlipsMain from './components/builds/flipEffects/FlipsMain';
 
 
 
@@ -49,6 +50,11 @@ function StateManager() {
        link: "tiles",
        active: false
      },
+      {
+       name: "Flip This",
+       link: "flip",
+       active: false
+     },
    ],
    nextJoke: false,
    catagories: [
@@ -89,6 +95,7 @@ function StateManager() {
         <Route  index  path="/loaders" element={ <Loaders />}/>
         <Route  index  path="/truthy" element={ <Truthy />}/>
         <Route  index  path="/tiles" element={ <Tile />}/>
+        <Route  index  path="/flip" element={ <FlipsMain />}/>
    
       </Routes>
    </div>
