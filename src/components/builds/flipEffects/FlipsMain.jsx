@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Partic from '../Partic'
 import Card from './Card'
 
 export default class FlipsMain extends Component {
@@ -7,7 +8,8 @@ export default class FlipsMain extends Component {
   
     this.state = {
       cardData: "",
-      gameOver: false
+      gameOver: false,
+      didWin: false
     }
   }
 
@@ -16,21 +18,26 @@ export default class FlipsMain extends Component {
   flipCard(e){
    this.setState({
     cardData: Number(e.target.dataset.cardData),
-    gameOver: true
+    gameOver: true, 
+    didWin: e.target.dataset.getTruth,
+   },()=>{
+    console.log(this.state.didWin);
    })
-   console.log("card ID", Number(e.target.dataset.cardData))
+ 
   }
 
   restart(){
     this.setState({
       cardData: "",
-      gameOver: false
+      gameOver: false,
+      didWin: false
      })
   }
 
   render() {
     return (
       <div>
+        { this.state.didWin === "true" ? <Partic /> :  <></>}
         <Card 
           gameOver={this.state.gameOver}
           cardData={this.state.cardData}

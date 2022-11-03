@@ -9,12 +9,13 @@ export default function Card(props) {
   //the winning number is chosen when the page loads.
   //if the winning number matches the selected cards id, change the text to win else lose
 
-function handleClick(){
+function handleClick(e){
  
   if (!props.gameOver) {
     setWinningNum(Math.floor(Math.random() * 3))
   }
  
+  console.log(winningNum, e.target.dataset.cardData);
 }
 
 
@@ -25,6 +26,7 @@ function handleClick(){
       id="mainDiv1"
        key={i}
        data-card-data={card.id}
+       data-get-truth={winningNum === card.id}
        onClick={props.handleClick}
        onMouseDown={handleClick}
        >
