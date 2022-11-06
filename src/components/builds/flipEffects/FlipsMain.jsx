@@ -16,13 +16,15 @@ export default class FlipsMain extends Component {
 //On page load, cardData will be "", but on click it will be given a number/the selected cards id.
 //this will be used to add the flip CSS
   flipCard(e){
-   this.setState({
-    cardData: Number(e.target.dataset.cardData),
-    gameOver: true, 
-    didWin: e.target.dataset.getTruth,
-   },()=>{
-    console.log(this.state.didWin);
-   })
+   if (!this.state.gameOver) {
+    this.setState({
+      cardData: Number(e.target.dataset.cardData),
+      gameOver: true, 
+      didWin: e.target.dataset.getTruth,
+     },()=>{
+      console.log(this.state.didWin);
+     })
+   }
  
   }
 
