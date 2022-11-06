@@ -15,17 +15,14 @@ export default class FlipsMain extends Component {
 
 //On page load, cardData will be "", but on click it will be given a number/the selected cards id.
 //this will be used to add the flip CSS
-  flipCard(e){
-   if (!this.state.gameOver) {
-    this.setState({
-      cardData: Number(e.target.dataset.cardData),
-      gameOver: true, 
-      didWin: e.target.dataset.getTruth,
-     },()=>{
-      console.log(this.state.didWin);
-     })
-   }
- 
+  flipCard(e) {
+    if (!this.state.gameOver) {
+        this.setState({
+        cardData: Number(e.target.dataset.cardData),
+        gameOver: true,
+        didWin: e.target.dataset.getTruth,
+      })
+    }
   }
 
   restart(){
@@ -45,12 +42,10 @@ export default class FlipsMain extends Component {
           cardData={this.state.cardData}
           handleClick={this.flipCard.bind(this)}
           />
-
-          
           {this.state.gameOver ? <div className="btn-cont">
              <button 
              onClick={this.restart.bind(this)}
-              className="night">Restart</button>
+              className={`${this.state.gameOver ? "night shake-horizontal": " night"}`}>Restart</button>
           </div>
           :
           <></>}

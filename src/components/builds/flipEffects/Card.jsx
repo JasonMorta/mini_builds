@@ -9,13 +9,12 @@ export default function Card(props) {
   //the winning number is chosen when the page loads.
   //if the winning number matches the selected cards id, change the text to win else lose
 
+  //check if game is over ? don't update state with new random number
+  //making only the restart button clickable
 function handleClick(e){
- 
   if (!props.gameOver) {
     setWinningNum(Math.floor(Math.random() * 3))
   }
- 
-  console.log(winningNum, e.target.dataset.cardData);
 }
 
 

@@ -12,30 +12,16 @@ export default function ImageHover() {
     setArray(prev => prev.map(item => item.id === id ? {...item, on: !item.on}: item ))
   }
 
-
-
-
-
-
   //toggle aware boxes
   function boxAware(id, on){
-
         if (on) {
           setArray(prev => prev.map(x => ({...x, on:true})))//first set all on: false
           setArray(prev => prev.map(x => x.id === id ? ({...x, on:!x.on}): x))//only flip selected on
-
         } else {
           setArray(prev => prev.map(x => ({...x, on:false})))
           setArray(prev => prev.map(x => x.id === id ? ({...x, on:!x.on}): x))
-
-        }
-
-      
+        }  
   }
-    
-
-       
-
 
   
   //These two boxes flip's the values on click
@@ -54,9 +40,6 @@ export default function ImageHover() {
       handleClick={()=> boxAware(val.id, val.on)}
       context={val.on.toString()} />
   ))
-
-
-
 
 
   return (
