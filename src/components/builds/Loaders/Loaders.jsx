@@ -47,8 +47,7 @@ export default function Loaders() {
   font-weight: bold;
   &:before {
    width: ${currentTime}%
- }
-`;
+ }`
 
   return (
     <div>

@@ -3,7 +3,7 @@ import Menu from './components/Menu';
 import Main from './components/Main';
 import { Routes, Route } from 'react-router-dom';
 import Jokes from './components/builds/Jokes/Jokes';
-import AnimatedText from './components/builds/AnimatedText';
+import AnimatedText from './components/builds/animatedText/AnimatedText';
 import Loaders from './components/builds/Loaders/Loaders';
 import Truthy from './components/builds/Truthy/Truthy';
 import Tile from './components/tiles/Tile';
