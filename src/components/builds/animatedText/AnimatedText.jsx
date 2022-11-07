@@ -75,6 +75,7 @@ color: green,
         ))}
       </div>
       <p>Remove animation effect from selected letters</p>
+      <p>Choose transition</p>
       <FontDrop_down 
         title={animationClass}
         handleClick={menuItem}/>

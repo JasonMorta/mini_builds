@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import Box from './Box';
 import BoxAware from './BoxAware';
+import SwitchExample from './Switch';
 
 export default function ImageHover() {
   
 
   const [array, setArray] = useState([{id: 1, on: true },{id: 2,on: false},{id: 3,on: false,}]);
+  const [flip, setFlip] = useState(false)
 
   //toggle unaware boxes
   function toggle(id){
@@ -41,9 +43,24 @@ export default function ImageHover() {
       context={val.on.toString()} />
   ))
 
+ function flipSwitched(e){
+
+  }
+  
+  function flipSwitch(e){
+
+    setFlip(prev => !prev)
+    e.target.checked = !flip
+
+  
+  }
+
+ 
 
   return (
+
     <div className='truth-container'>
+
       <h1>Unaware boxes</h1>
       <div className='boxes'>
         {unaware}
@@ -54,6 +71,16 @@ export default function ImageHover() {
       {aware}
       </div>
       <p>Flip the selected truthy and flip the two remaining to opposite</p>
+
+      <SwitchExample 
+        checked={flip}
+        handleSwitch={flipSwitched}
+        />
+         <SwitchExample 
+          
+          handleSwitch={flipSwitch}
+        />
     </div>
+
   )
 }
