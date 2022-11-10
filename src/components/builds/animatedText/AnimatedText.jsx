@@ -3,13 +3,15 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import './AnimatedText.css'
 import FontDrop_down from './FontDrop_down';
+import Slider from './Slider';
 
 export default function AnimatedText() {
 
   const [state, setState]= useState("Animated Text");
   const [stay, setStay]= useState(false);
-  const [speed, setSpeed] = useState(0.5)
-  const [animationClass, setAnimationClass] = useState("text-pop-up-top")
+  const [speed, setSpeed] = useState(0.5);
+  const [animationClass, setAnimationClass] = useState("text-pop-up-top");
+  const [fontSize, setFontSize] = useState(50);
 
     //let anName = "tracking-in-contract-bck-top"
 
@@ -44,7 +46,10 @@ color: green,
   font-size: 50px
 }`
 
-//console.log(state.replaceAll(" ", "").split(""))
+function onchange(e){
+  setFontSize(e.target.value)
+
+}
 
   return (
     <>
@@ -67,6 +72,7 @@ color: green,
               className={`animate-my-text ${animationClass}`}
               key={i}
               style={{
+                'fontSize': `${fontSize}px`,
                 'animationDuration': `${speed + i / 5}s`,
               }}>{char}
               </Anime>
@@ -76,9 +82,14 @@ color: green,
       </div>
       <p>Remove animation effect from selected letters</p>
       <p>Choose transition</p>
-      <FontDrop_down 
-        title={animationClass}
-        handleClick={menuItem}/>
+        <FontDrop_down 
+          title={animationClass}
+          handleClick={menuItem}
+          />
+        <Slider 
+          text={`Font-Size ${fontSize}px`}
+          onChange={onchange}
+          className="font-slider"/>
     </>
   )
 }

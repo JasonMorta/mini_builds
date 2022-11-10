@@ -31,6 +31,7 @@
   /* position: absolute; */
   z-index: 1;
   margin: 1px;
+  transition: .2s;
 
 }
 
@@ -46,4 +47,12 @@
 
 .loading-bar {
   margin: 50px 0px 100px 0px;
+}
+
+.slide:hover{
+  background-color: #F2E416;
+  cursor: pointer;
+  transition: .2s;
+  border: 5px solid #575209;
+  transform: rotateY(80deg);
 }
