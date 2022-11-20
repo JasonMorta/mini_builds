@@ -7,7 +7,7 @@ import AnimatedText from './components/builds/animatedText/AnimatedText';
 import Loaders from './components/builds/Loaders/Loaders';
 import Truthy from './components/builds/Truthy/Truthy';
 import Tile from './components/tiles/Tile';
-import FlipsMain from './components/builds/flipEffects/FlipsMain';
+import FlipsMain from './components/builds/cardFlip/FlipsMain';
 
 
 

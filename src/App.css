@@ -1,6 +1,6 @@
 
 .App {
-  background-color: #F2BB16;
+  background-color: #141619;
   min-height: 100vh;
   display: flex;
   flex-direction: row;
@@ -21,6 +21,9 @@
   overflow: auto;
   max-width: 1105px;
   margin-left: initial;
+  box-shadow:7px 0px 10px #ffd8006e;
+  background-color: #F2BB16;
+  padding: 20px;
 }
 
 p {
