@@ -8,6 +8,7 @@ import Loaders from './components/builds/Loaders/Loaders';
 import Truthy from './components/builds/Truthy/Truthy';
 import Tile from './components/tiles/Tile';
 import FlipsMain from './components/builds/cardFlip/FlipsMain';
+import Expand from './components/builds/expandingSections/Expand';
 
 
 
@@ -54,7 +55,12 @@ function StateManager() {
        name: "Flip This",
        link: "flip",
        active: false
-     },
+      },
+      {
+        name: "Expanded",
+        link: "expand",
+        active: false
+       },
    ],
    nextJoke: false,
    catagories: [
@@ -96,6 +102,7 @@ function StateManager() {
         <Route  index  path="/truthy" element={ <Truthy />}/>
         <Route  index  path="/tiles" element={ <Tile />}/>
         <Route  index  path="/flip" element={ <FlipsMain />}/>
+        <Route  index  path="/expand" element={ <Expand />}/>
    
       </Routes>
    </div>
