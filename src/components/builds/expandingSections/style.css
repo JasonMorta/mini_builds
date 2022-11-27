@@ -16,9 +16,33 @@
     cursor: pointer;
     margin: 5px;
     transition: .5s ease-in !important;
+    position: relative;
+}
+
+.content:active{
+    transform: scale(.95);
+    transition: .2s;
 }
 
 .active {
     width: 500px !important;
     transition: .5s ease-in;
+}
+
+.text {
+    color: #f2bb16;
+    font-size: x-large;
+    margin: 0;
+    opacity: 0;
+    transition: 0.3s ease-in;
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    
+}
+
+.activeText {
+    opacity: 1 !important;
+    transition: 1.5s ease-in;
 }
