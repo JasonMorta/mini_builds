@@ -6,7 +6,7 @@
 }
 
 .container > .content{
-    
+    box-shadow: 4px 4px 3px #00000061;
     height: 50vh;
     width: 50px;
     background-repeat: no-repeat;
