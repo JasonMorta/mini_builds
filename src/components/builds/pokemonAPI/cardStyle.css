@@ -1,0 +1,95 @@
+.pokemonAPI {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: initial;
+    max-width: 300px;
+    box-shadow: 0px 0px 1px 2px #3761a8, 0px 0px 1px 3.5px #000000c7;
+    padding: 0px 10px 10px;
+    transition: .3s;
+}
+
+.card-container p {
+    margin: 0;
+}
+
+.pokemon-info {
+    display: flex;
+    flex-direction: column;
+    font-size: smaller;
+    max-width: 250px;
+}
+
+.pokemon-info p {
+    width: max-content;
+}
+
+
+.pokemon-info2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    font-size: small;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.abilities {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+.abilities p{
+    border: 1px solid black;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-container > img {
+    
+    border-radius: 5px;
+    max-width: 280px;
+    margin: 10px 0;
+    transition: .3s;
+}
+
+.card-container > img:hover {
+background-color: #00000030;
+transition: .3s;
+}
+
+.card-outer {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    transition: .3s;
+}
+.moreNames {
+    transition: .3s;
+}
+
+.card-outer h3{
+    margin: 10px;
+}
+
+.moreNames ul {
+    max-height: 370px;
+    overflow: auto;
+}

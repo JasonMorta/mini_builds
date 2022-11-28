@@ -90,6 +90,8 @@ function StateManager() {
    ],
    activeCat: "none",
    score: 0,
+   pokemonName: "PIKACHU",
+   pokeData: {},
  });
 
 
