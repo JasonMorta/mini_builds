@@ -9,6 +9,7 @@ import Truthy from './components/builds/Truthy/Truthy';
 import Tile from './components/tiles/Tile';
 import FlipsMain from './components/builds/cardFlip/FlipsMain';
 import Expand from './components/builds/expandingSections/Expand';
+import Pokerball from './components/builds/pokemonAPI/Pokerball';
 
 
 
@@ -61,6 +62,11 @@ function StateManager() {
         link: "expand",
         active: false
        },
+       {
+        name: "Pokemon-API",
+        link: "pokemon",
+        active: false
+       },
    ],
    nextJoke: false,
    catagories: [
@@ -103,6 +109,7 @@ function StateManager() {
         <Route  index  path="/tiles" element={ <Tile />}/>
         <Route  index  path="/flip" element={ <FlipsMain />}/>
         <Route  index  path="/expand" element={ <Expand />}/>
+        <Route  index  path="/pokemon" element={ <Pokerball />}/>
    
       </Routes>
    </div>
