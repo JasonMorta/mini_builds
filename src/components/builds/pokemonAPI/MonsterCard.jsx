@@ -9,6 +9,7 @@ export default function MonsterCard(props) {
 
     const value = useContext(StateContext);
     
+    const [inputVal, setInputVal] = useState("")
     const [state, setState] = value;
     const [moreNames, setMoreNames] = useState({})
     const [pokeData, setPokeData] = useState({})
@@ -16,7 +17,8 @@ export default function MonsterCard(props) {
 
 
     let cathPokemon = async () => {
-        console.log(state.pokemonName);
+        console.log(inputVal);
+        //console.log(state.pokemonName);
         try {
             const response = await fetch('https://pokeapi.co/api/v2/pokemon/'+state.pokemonName.toLowerCase());
             const results = await response.json();
@@ -31,8 +33,18 @@ export default function MonsterCard(props) {
     function enterBtn(event){
         if (event.key === "Enter") {
             event.preventDefault();
+            console.log(state.pokemonName);
             cathPokemon()
           }
+    }
+
+    function onInputField(e){
+           //console.log(e);
+           //setInputVal(e.target.innerText)
+           console.log(typeof e.target.value);
+           console.log(e.target.defaultValue);
+           console.log(e.target.innerText);
+    
     }
 
     useEffect(() => {
@@ -58,17 +70,18 @@ export default function MonsterCard(props) {
 
   return (
     <div className='pokemonAPI'>
-        <br/>
+  
         <h4>Search for pokemon</h4>
         
       <InputGroup className="mb-1" style={{width:" 50%", margin: "auto"}}>
         <Form.Control
-          placeholder={state.pokemonName}
-          aria-label="Enter Pokemon Name"
-          aria-describedby="basic-addon2"
-          defaultValue={state.pokemonName}
-          onChange={(e) =>  setState(prev => ({...prev, pokemonName: e.target.innerText}))}
-          onKeyDown={enterBtn}
+            type="text"
+            placeholder="Enter Pokemon Name"
+            aria-label="Enter Pokemon Name"
+            aria-describedby="basic-addon2"
+            defaultValue={inputVal}
+            onChange={onInputField}
+            //onKeyDown={enterBtn}
         />
         <Button 
             variant="danger" 
