@@ -109,8 +109,8 @@ export default function MonsterCard(props) {
                         <p style={{width: '100%'}}>#{pokeData.id}</p>
                         <p style={{width: '100%', fontWeight: 800}}>{pokeData.name.toUpperCase()}</p>
                         <div className="abilities">
-                            {pokeData.abilities.map(ab => (
-                            <p class="power" style={{width: '45%'}}>{ab.ability.name}</p>
+                            {pokeData.abilities.map((skill, i) => (
+                            <p key={i} class="power" style={{width: '45%'}}>{skill.ability.name}</p>
                             ) )}
     		            </div>
                     
@@ -134,14 +134,17 @@ export default function MonsterCard(props) {
              
                     <ul> 
                      { typeof moreNames.results === "object" ?
-                        moreNames.results.sort().map(i => (
-                            <li 
-                            onClick={(e) => {
-                                
+                        moreNames.results.sort().map((i,index) => (
+                            <li key={index}
+                                onClick={(e) => {
                                 setState(prev => ({...prev, pokemonName: e.target.innerText}))
-                                
                                 console.log(state.pokemonName);
                                 cathPokemon()
+                               
+                                e.target.style.fontWeight === 900 ?
+                                e.target.style.fontWeight = 400:
+                                e.target.style.fontWeight = 900
+                                console.log(e.target.style.fontWeight);
                             }}
                             style={{cursor: 'pointer'}}
                             >{i.name}</li>
