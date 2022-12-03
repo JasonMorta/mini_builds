@@ -6,7 +6,7 @@
     flex-wrap: wrap;
 }
 
-.card-container {
+.pokeCard-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +19,7 @@
     transition: .3s;
 }
 
-.card-container p {
+.pokeCard-container p {
     margin: 0;
 }
 
@@ -60,7 +60,7 @@
     align-items: center;
 }
 
-.card-container > img {
+.pokeCard-container > img {
     
     border-radius: 5px;
     max-width: 280px;
@@ -68,7 +68,7 @@
     transition: .3s;
 }
 
-.card-container > img:hover {
+.pokeCard-container > img:hover {
 background-color: #00000030;
 transition: .3s;
 }

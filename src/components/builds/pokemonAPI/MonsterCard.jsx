@@ -91,7 +91,7 @@ export default function MonsterCard(props) {
                 
                
                 <>
-                    <div className='card-container'>
+                    <div className='pokeCard-container'>
                     <img 
                         src={pokeData.sprites.other["official-artwork"].front_default} 
                         alt={pokeData.name+ " image"} 
