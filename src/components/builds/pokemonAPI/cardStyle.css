@@ -92,5 +92,6 @@ transition: .3s;
 .moreNames ul {
     max-height: 370px;
     overflow: auto;
+    text-align: left;
 }
 

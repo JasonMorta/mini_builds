@@ -90,7 +90,7 @@ function StateManager() {
    ],
    activeCat: "none",
    score: 0,
-   pokemonName: "PIKACHU",
+   pokemonName: "pikachu-gmax",
    pokeData: {},
  });
 

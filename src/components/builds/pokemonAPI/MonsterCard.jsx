@@ -17,8 +17,8 @@ export default function MonsterCard(props) {
 
 
     let cathPokemon = async () => {
-        console.log(inputVal);
-        //console.log(state.pokemonName);
+      console.log('stateName', state.pokemonName);
+      
         try {
             const response = await fetch('https://pokeapi.co/api/v2/pokemon/'+state.pokemonName.toLowerCase());
             const results = await response.json();
@@ -34,14 +34,14 @@ export default function MonsterCard(props) {
     function enterBtn(event){
         if (event.key === "Enter") {
             event.preventDefault();
-           
+            setState(prev => ({...prev, pokemonName: inputVal}))
             cathPokemon()
           }
     }
 
     function onInputField(e){
            //console.log(e);
-           setState(prev => ({...prev, pokemonName: e.target.value}))
+           setInputVal(e.target.value)
            
            //console.log(e.target.defaultValue);
            console.log(e.target.value);
@@ -49,19 +49,19 @@ export default function MonsterCard(props) {
     }
 
     useEffect(() => {
+      
         const url = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0";
 
         const fetchData = async () => {
           try {
             const response = await fetch(url);
             const results = await response.json();
-            //console.log(json);
             setMoreNames(results)
-  
           } catch (error) {
             console.log("error", error);
           }
         };
+       
         cathPokemon()
         fetchData();
 
@@ -84,13 +84,13 @@ export default function MonsterCard(props) {
             onChange={onInputField}
             onKeyDown={enterBtn}
         />
-        <Button 
+        {/* <Button 
             variant="danger" 
             id="button-addon2"
             onClick={cathPokemon}
             >
           GET
-        </Button>
+        </Button> */}
       </InputGroup>
 
       {/* CARD */}
@@ -111,7 +111,7 @@ export default function MonsterCard(props) {
                         <p style={{width: '100%', fontWeight: 800}}>{pokeData.name.toUpperCase()}</p>
                         <div className="abilities">
                             {pokeData.abilities.map((skill, i) => (
-                            <p key={i} class="power" style={{width: '45%'}}>{skill.ability.name}</p>
+                            <p key={i} className="power" style={{width: '45%'}}>{skill.ability.name}</p>
                             ) )}
     		            </div>
                     
@@ -139,8 +139,10 @@ export default function MonsterCard(props) {
                             <li key={index}
                                 onClick={(e) => {
                                 setState(prev => ({...prev, pokemonName: e.target.innerText}))
-                                console.log(e.target.innerText);
-                                setState(prev => ({...prev, pokemonName: e.target.innerText}))
+                                console.log('e.target.innerText', e.target.innerText)
+                              
+                                //setInputVal(state.pokemonName)
+                        
                                 cathPokemon()
                              
                                 e.target.style.fontWeight = 900
