@@ -27,23 +27,24 @@ export default function MonsterCard(props) {
           } catch (error){
             console.log("error", error);
           }
+          console.log(state.pokemonName);
         };
     
 
     function enterBtn(event){
         if (event.key === "Enter") {
             event.preventDefault();
-            console.log(state.pokemonName);
+           
             cathPokemon()
           }
     }
 
     function onInputField(e){
            //console.log(e);
-           //setInputVal(e.target.innerText)
-           console.log(typeof e.target.value);
-           console.log(e.target.defaultValue);
-           console.log(e.target.innerText);
+           setState(prev => ({...prev, pokemonName: e.target.value}))
+           
+           //console.log(e.target.defaultValue);
+           console.log(e.target.value);
     
     }
 
@@ -79,9 +80,9 @@ export default function MonsterCard(props) {
             placeholder="Enter Pokemon Name"
             aria-label="Enter Pokemon Name"
             aria-describedby="basic-addon2"
-            defaultValue={inputVal}
+            defaultValue={state.pokemonName}
             onChange={onInputField}
-            //onKeyDown={enterBtn}
+            onKeyDown={enterBtn}
         />
         <Button 
             variant="danger" 
@@ -138,13 +139,11 @@ export default function MonsterCard(props) {
                             <li key={index}
                                 onClick={(e) => {
                                 setState(prev => ({...prev, pokemonName: e.target.innerText}))
-                                console.log(state.pokemonName);
+                                console.log(e.target.innerText);
+                                setState(prev => ({...prev, pokemonName: e.target.innerText}))
                                 cathPokemon()
-                               
-                                e.target.style.fontWeight === 900 ?
-                                e.target.style.fontWeight = 400:
+                             
                                 e.target.style.fontWeight = 900
-                                console.log(e.target.style.fontWeight);
                             }}
                             style={{cursor: 'pointer'}}
                             >{i.name}</li>
