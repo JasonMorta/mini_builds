@@ -8,7 +8,6 @@ import'./cardStyle.css'
 export default function MonsterCard(props) {
 
     const value = useContext(StateContext);
-    
     const [inputVal, setInputVal] = useState("")
     const [state, setState] = value;
     const [moreNames, setMoreNames] = useState({})
@@ -17,17 +16,13 @@ export default function MonsterCard(props) {
 
 
     let cathPokemon = async () => {
-      console.log('stateName', state.pokemonName);
-      
         try {
             const response = await fetch('https://pokeapi.co/api/v2/pokemon/'+state.pokemonName.toLowerCase());
             const results = await response.json();
             setPokeData(results)
-       
           } catch (error){
             console.log("error", error);
           }
-          console.log(state.pokemonName);
         };
     
 
@@ -40,12 +35,7 @@ export default function MonsterCard(props) {
     }
 
     function onInputField(e){
-           //console.log(e);
            setInputVal(e.target.value)
-           
-           //console.log(e.target.defaultValue);
-           console.log(e.target.value);
-    
     }
 
     useEffect(() => {
@@ -132,23 +122,25 @@ export default function MonsterCard(props) {
                }                 
             <div className='moreNames'>
                 <h3>Also try these names</h3>
-             
+                {typeof moreNames.results === "object" ?
+                <p style={{margin: "0"}}>{moreNames.results.length} Pokemon</p>
+              : <></>}
                     <ul> 
                      { typeof moreNames.results === "object" ?
                         moreNames.results.sort().map((i,index) => (
-                            <li key={index}
-                                onClick={(e) => {
-                                setState(prev => ({...prev, pokemonName: e.target.innerText}))
-                                console.log('e.target.innerText', e.target.innerText)
+                         <>
+                            
+                              <li key={index}
+                                  onClick={(e) => {
+                                  setState(prev => ({...prev, pokemonName: e.target.innerText}))
+                                  cathPokemon()
+                                  e.target.style.fontWeight = 900
+                              }}
+                              style={{cursor: 'pointer'}}
+                              >{i.name}
                               
-                                //setInputVal(state.pokemonName)
-                        
-                                cathPokemon()
-                             
-                                e.target.style.fontWeight = 900
-                            }}
-                            style={{cursor: 'pointer'}}
-                            >{i.name}</li>
+                              </li>
+                         </>
                         ))
                         :
                         <></>
