@@ -12,6 +12,7 @@ export default function MonsterCard(props) {
     const [state, setState] = value;
     const [moreNames, setMoreNames] = useState({})
     const [pokeData, setPokeData] = useState({})
+    const [nameManipulate, setNameManipulate] = useState()
 
 
 
@@ -47,6 +48,8 @@ export default function MonsterCard(props) {
             const response = await fetch(url);
             const results = await response.json();
             setMoreNames(results)
+            setNameManipulate(results.results)
+            
           } catch (error) {
             console.log("error", error);
           }
@@ -101,7 +104,7 @@ export default function MonsterCard(props) {
                         <p style={{width: '100%', fontWeight: 800}}>{pokeData.name.toUpperCase()}</p>
                         <div className="abilities">
                             {pokeData.abilities.map((skill, i) => (
-                            <p key={i} className="power" style={{width: '45%'}}>{skill.ability.name}</p>
+                            <p key={i} className="power">{skill.ability.name}</p>
                             ) )}
     		            </div>
                     
@@ -151,7 +154,24 @@ export default function MonsterCard(props) {
             </div>
 
        </div>
+       
+       <h1> Name manipulation</h1>
+                    <section className='name-manip'>
+                   
+                        {typeof nameManipulate === "object" ?
+                        
+                        nameManipulate.map((poke, idx) => (
+                          
+                          <p key={idx}>{poke.name}</p>
 
+                        )).sort((a, b) => {
+                          return a.name - b.name
+                        })
+                      :
+                      <>
+                      </>}
+                      
+                    </section>
 
     </div>
   )
