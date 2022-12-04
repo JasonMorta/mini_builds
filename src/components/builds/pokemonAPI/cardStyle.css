@@ -27,7 +27,6 @@
     display: flex;
     flex-direction: column;
     font-size: smaller;
-    max-width: 250px;
 }
 
 .pokemon-info p {
@@ -50,6 +49,7 @@
     flex-direction: row;
     text-align: center;
     justify-content: space-evenly;
+    font-size: smaller;
 }
 
 .abilities p{
@@ -58,6 +58,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: fit-content;
+    padding: 0px 5px;
 }
 
 .pokeCard-container > img {
@@ -98,3 +100,17 @@ transition: .3s;
     border-radius: 5px;
 }
 
+.name-manip {
+    display: flex;
+    height: 500px;
+    overflow: auto;
+    width: 100%;
+    background-color: darkcyan;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.name-manip p{
+    margin: 10px 10px;
+}

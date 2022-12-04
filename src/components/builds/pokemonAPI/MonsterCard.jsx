@@ -1,3 +1,4 @@
+/* eslint-disable no-lone-blocks */
 /* eslint-disable no-undef */
 import React, { useContext } from 'react'
 import { useState, useEffect } from 'react'
@@ -9,6 +10,7 @@ export default function MonsterCard(props) {
 
     const value = useContext(StateContext);
     const [inputVal, setInputVal] = useState("")
+    const [update, setUpdate] = useState(false)
     const [state, setState] = value;
     const [moreNames, setMoreNames] = useState({})
     const [pokeData, setPokeData] = useState({})
@@ -60,6 +62,24 @@ export default function MonsterCard(props) {
 
     }, [state.pokemonName])
     
+
+    //sort names from A-Z
+    function sortNames() {
+      nameManipulate.sort((a, b) => {
+        let az = a.name.toLowerCase(),
+            za = b.name.toLowerCase();
+    
+        if (az < za) {
+            return -1;
+        }
+        if (za > az) {
+            return 1;
+        }
+        return 0;
+    })
+    //rerender components
+    setUpdate(prev => !prev)
+    }
 
 
   return (
@@ -156,22 +176,7 @@ export default function MonsterCard(props) {
        </div>
        
        <h1> Name manipulation</h1>
-                    <section className='name-manip'>
-                   
-                        {typeof nameManipulate === "object" ?
-                        
-                        nameManipulate.map((poke, idx) => (
-                          
-                          <p key={idx}>{poke.name}</p>
-
-                        )).sort((a, b) => {
-                          return a.name - b.name
-                        })
-                      :
-                      <>
-                      </>}
-                      
-                    </section>
+        <button type="button" onClick={sortNames} className="btn btn-primary">Sort A-Z</button>
 
     </div>
   )
