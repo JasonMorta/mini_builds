@@ -45,14 +45,83 @@ export default function SetUrl() {
         label="Student Number" 
         variant="filled"
         defaultValue={newUrl}
-        onInput={(e)=>setNewUrl(e.target.value)}  />
+        onInput={(e)=>{
+                setNewUrl(e.target.value)
+              }}  />
+                 {/* <InputGroup className="mb-3">
+        <Form.Control
+          placeholder="Recipient's username"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+        />
+        <InputGroup.Text id="basic-addon2">@example.com</InputGroup.Text>
+      </InputGroup> */}
    
-    </Box>
+
      
+    {/* </Box> */}
+
+
+
+<Form>
+      {['radio'].map((type) => (
+        <div key={`inline-${type}`} className="mb-3" >
+          <h3>Bootcamp</h3>
+           <Form.Check
+            inline
+            label=" - None"
+            name="group1"
+            type={type}
+            data-bc={" "}
+            id={`inline-${type}-1`}
+            onClick={(e)=>  setDopDown(e.target.dataset.bc)}
+          />
+          <Form.Check
+            inline
+            label=" - Web Development"
+            name="group1"
+            type={type}
+            data-bc={"Web%20Development%20Bootcamp"}
+            id={`inline-${type}-1`}
+            onClick={(e)=>  setDopDown(e.target.dataset.bc)}
+          />
+          <Form.Check
+            inline
+            label=" - Software Engineering"
+            name="group1"
+            type={type}
+            data-bc={"Software%20Engineer%20Bootcamp"}
+            id={`inline-${type}-2`}
+            onClick={(e)=>  setDopDown(e.target.dataset.bc)}
+          />
+          <Form.Check
+            inline
+            label="3 DS"
+            name="group1"
+            type={type}
+            data-bc={"Data%20Science%20Bootcamp"}
+            id={`inline-${type}-1`}
+            onClick={(e)=> setDopDown(e.target.dataset.bc)}
+          />
+                    {/* <Form.Check
+                 
+            label="Data Science"
+            name="group3"
+            type={type}
+            id={`reverse-${type}-3`}
+          /> */}
+        </div>
+      ))}
+    </Form>
+
+
+
+
+
     <Radios 
       handleBootcamps={handleBootcamps}/>
 
-    <a href={`https://www.dropbox.com/work/${newUrl}/${selectBC === "none" ? "": selectBC}`} 
+    <a href={`https://www.dropbox.com/work/${newUrl}/${dopDown}/${selectBC === "none" ? "": selectBC}`} 
         target="_blank" 
         >
       <button 
