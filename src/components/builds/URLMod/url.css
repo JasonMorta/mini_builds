@@ -103,3 +103,13 @@
           flex-wrap: wrap;
           align-items: center;
       }
+
+      .mb-3 {
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 20%;
+        margin: auto;
+    }
+

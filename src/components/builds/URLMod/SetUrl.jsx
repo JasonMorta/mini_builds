@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import BootCampList from './BootCampList';
-import './url.css'
+import './url.css';
+import Form from 'react-bootstrap/Form';
 
 export default function SetUrl() {
 
@@ -39,12 +40,59 @@ export default function SetUrl() {
               onInput={(e)=>setNewUrl(e.target.value)} 
               name="sNumber"/>
       </div>
-      <BootCampList 
+      {/* <BootCampList 
         boots={bootCapms}
         dops={dopDown}
-        handleSelect={handleSelect}/>
+        handleSelect={handleSelect}/> */}
 
-    <a  href={`https://www.dropbox.com/work/${newUrl}`} 
+
+
+<Form>
+      {['radio'].map((type) => (
+        <div key={`inline-${type}`} className="mb-3" >
+          <Form.Check
+            inline
+            label="1 WD"
+            name="group1"
+            type={type}
+            data-bc={"Web "}
+            id={`inline-${type}-1`}
+            onClick={(e)=>  setDopDown(e.target.dataset.bc)}
+          />
+          <Form.Check
+            inline
+            label="2 SE"
+            name="group1"
+            type={type}
+            data-bc={"Software%20Engineer%20Bootcamp"}
+            id={`inline-${type}-2`}
+            onClick={(e)=>  setDopDown(e.target.dataset.bc)}
+          />
+          <Form.Check
+            inline
+            label="3 DS"
+            name="group1"
+            type={type}
+            data-bc={"Data%20Science%20Bootcamp"}
+            id={`inline-${type}-1`}
+            onClick={(e)=> setDopDown(e.target.dataset.bc)}
+          />
+                    {/* <Form.Check
+            
+            label="Data Science"
+            name="group3"
+            type={type}
+            id={`reverse-${type}-3`}
+          /> */}
+        </div>
+      ))}
+    </Form>
+
+
+
+
+
+    <a  href={`https://www.dropbox.com/work/${newUrl}/${dopDown}`} 
         target="_blank" 
         rel="noreferrer"
         >
