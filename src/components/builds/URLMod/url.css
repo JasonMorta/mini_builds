@@ -103,3 +103,9 @@
           flex-wrap: wrap;
           align-items: center;
       }
+
+.get_student {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

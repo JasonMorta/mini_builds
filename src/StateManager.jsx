@@ -11,7 +11,7 @@ import FlipsMain from './components/builds/cardFlip/FlipsMain';
 import Expand from './components/builds/expandingSections/Expand';
 import Pokerball from './components/builds/pokemonAPI/Pokerball';
 import SetUrl from './components/builds/URLMod/SetUrl';
-import GetUrl from './components/builds/URLMod/GetUrl';
+import GetHTML from './components/builds/URLMod/GetHTML';
 
 
 
@@ -70,8 +70,8 @@ function StateManager() {
         active: false
        },
        {
-        name: "Get URL",
-        link: "getUrl",
+        name: "GetHTML Elem",
+        link: "getHTML",
         active: false
        },
        {
@@ -125,7 +125,7 @@ function StateManager() {
         <Route  index  path="/expand" element={ <Expand />}/>
         <Route  index  path="/pokemon" element={ <Pokerball />}/>
         <Route  index  path="/setUrl" element={ <SetUrl />}/>
-        <Route  index  path="/getUrl" element={ <GetUrl />}/>
+        <Route  index  path="/getHTML" element={ <GetHTML />}/>
    
       </Routes>
    </div>

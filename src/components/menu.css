@@ -7,8 +7,8 @@
     flex-direction: column;
     padding-left: 10px;
     font-size: x-large;
-    background: #0D0D0D;
-    border-right: 2px solid #F2CE16;
+    background: #E7E9EB;
+    border-right: 2px solid rgb(187, 187, 187);
     align-items: flex-start;
     text-align: initial;
     
@@ -25,7 +25,8 @@
 .menu_items:hover {
  text-shadow: none;
  transition: .2s;
- color: #F2CE16;
+ color: #000000;
+ font-size: 1rem;
 }
 
 .menu_items:active {
@@ -34,7 +35,7 @@
 
 .menu_section a {
     text-decoration: none;
-    color: #F2CE16;
+    color: #222222;
     font-size: large;
 }
 

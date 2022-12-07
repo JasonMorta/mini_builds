@@ -24,7 +24,7 @@ export default function BootCampList(props) {
             id="dropdown-basic"
             
             >
-          {props.dops}
+          {props.list}
         </Dropdown.Toggle>
     
         <Dropdown.Menu>
