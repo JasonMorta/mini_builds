@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import BootCampList from './BootCampList';
 import './url.css';
+import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 
 export default function SetUrl() {
@@ -37,9 +38,21 @@ export default function SetUrl() {
               type="text" 
               className="url-inputs" 
               defaultValue={newUrl}
-              onInput={(e)=>setNewUrl(e.target.value)} 
+              onInput={(e)=>{
+                setNewUrl(e.target.value)
+              }} 
               name="sNumber"/>
+                 {/* <InputGroup className="mb-3">
+        <Form.Control
+          placeholder="Recipient's username"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+        />
+        <InputGroup.Text id="basic-addon2">@example.com</InputGroup.Text>
+      </InputGroup> */}
       </div>
+
+     
       {/* <BootCampList 
         boots={bootCapms}
         dops={dopDown}
@@ -50,18 +63,28 @@ export default function SetUrl() {
 <Form>
       {['radio'].map((type) => (
         <div key={`inline-${type}`} className="mb-3" >
-          <Form.Check
+          <h3>Bootcamp</h3>
+           <Form.Check
             inline
-            label="1 WD"
+            label=" - None"
             name="group1"
             type={type}
-            data-bc={"Web "}
+            data-bc={" "}
             id={`inline-${type}-1`}
             onClick={(e)=>  setDopDown(e.target.dataset.bc)}
           />
           <Form.Check
             inline
-            label="2 SE"
+            label=" - Web Development"
+            name="group1"
+            type={type}
+            data-bc={"Web%20Development%20Bootcamp"}
+            id={`inline-${type}-1`}
+            onClick={(e)=>  setDopDown(e.target.dataset.bc)}
+          />
+          <Form.Check
+            inline
+            label=" - Software Engineering"
             name="group1"
             type={type}
             data-bc={"Software%20Engineer%20Bootcamp"}
