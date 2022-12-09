@@ -115,9 +115,9 @@ export default function MonsterCard(props) {
                
                 <>
                     <div className='pokeCard-container'>
-                    <img 
-                        src={pokeData.sprites.other["official-artwork"].front_default} 
-                        alt={pokeData.name+ " image"} 
+                    <img  className='bounce-in-fwd pokeImage' 
+                          src={pokeData.sprites.other["official-artwork"].front_default} 
+                          alt={pokeData.name+ " image"} 
                         />
                     <div className='pokemon-info'>
                         <p style={{width: '100%'}}>#{pokeData.id}</p>

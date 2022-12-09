@@ -75,7 +75,7 @@ function StateManager() {
         active: false
        },
        {
-        name: "Set URL",
+        name: "Student Dropbox",
         link: "setUrl",
         active: false
        },
