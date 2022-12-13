@@ -32,6 +32,7 @@ export default function SetUrl() {
   }
 
 
+
   return (
     <div className='get_student'>
     <p>Opens student dropbox folder</p>
@@ -63,3 +64,4 @@ export default function SetUrl() {
     </div>
   )
 }
+
