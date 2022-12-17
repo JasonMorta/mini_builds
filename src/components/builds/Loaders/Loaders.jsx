@@ -31,8 +31,8 @@ export default function Loaders() {
       className='slide slide-in-left'
       style={{
         width: `${i === 0 ? 1 : i+1}0%`,
-      animationDuration: `0.7${+ i}s`,
-      animationDelay:` 0.${i}s`
+        animationDuration: `0.7${+ i}s`,
+        animationDelay:` 0.${i}s`
     }}
       ></div>) 
   }
@@ -41,13 +41,19 @@ export default function Loaders() {
    const timer = setInterval( progress, 20 );
    return () => clearInterval(timer);
  }, [progress] );
-
+ 
 //Use styled-components package to access the ::before attribute
  const H3 = styled.h3`
   font-weight: bold;
   &:before {
-   width: ${currentTime}%
- }`
+    width: 100%;
+    animation: example 1s ease-out;
+ }
+ @keyframes example {
+  from {width: 0%;}
+  to {width: 100%;}
+}
+ `
 
   return (
     <div>
