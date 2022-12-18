@@ -23,6 +23,7 @@ export default function MonsterCard(props) {
             const response = await fetch('https://pokeapi.co/api/v2/pokemon/'+state.pokemonName.toLowerCase());
             const results = await response.json();
             setPokeData(results)
+            console.log('results', results)
           } catch (error){
             console.log("error", error);
           }
@@ -121,7 +122,7 @@ export default function MonsterCard(props) {
                         />
                     <div className='pokemon-info'>
                         <p style={{width: '100%'}}>#{pokeData.id}</p>
-                        <p style={{width: '100%', fontWeight: 800}}>{pokeData.name.toUpperCase()}</p>
+                        <p className='poki-name'>{pokeData.name.toUpperCase()}</p>
                         <div className="abilities">
                             {pokeData.abilities.map((skill, i) => (
                             <p key={i} className="power">{skill.ability.name}</p>
