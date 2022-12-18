@@ -7,11 +7,11 @@ import "./IOP.css"
 export default function IntersectionOP() {
 
     const [isVis, setIsVis] = useState()
-    const {ref: section3, inView: isVis3} = useInView({threshold: 0.6,});
-    const {ref: section1, inView: isVis1,} = useInView({threshold: 0.6,});
-    const {ref: section2, inView: isVis2,} = useInView({threshold: 0.6,});
-    const {ref: section4, inView: isVis4,} = useInView({threshold: 0.6,});
-    const {ref: section5, inView: isVis5,} = useInView({threshold: 0.6,});
+    const {ref: section3, inView: isVis3} = useInView({threshold: 0.4,});
+    const {ref: section1, inView: isVis1,} = useInView({threshold: 0.4,});
+    const {ref: section2, inView: isVis2,} = useInView({threshold: 0.4,});
+    const {ref: section4, inView: isVis4,} = useInView({threshold: 0.4,});
+    const {ref: section5, inView: isVis5,} = useInView({threshold: 0.4,});
 
 
       
@@ -52,7 +52,7 @@ export default function IntersectionOP() {
        </> :<></>}
     </div>
     <div ref={section5} className='contents section5'>
-        {isVis5 ? <h1 className='slide-in-elliptic-bottom-fwd '>END</h1> : <></>}
+        {isVis5 ? <h1 className='slide-in-elliptic-bottom-fwd ' style={{fontSize: '10vw'}}>END</h1> : <></>}
         
     </div>
     </section>
