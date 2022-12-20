@@ -145,7 +145,7 @@ export default function MonsterCard(props) {
         
                }                 
             <div className='moreNames'>
-                <h3>Also try these names</h3>
+                <h3>Select a Pokemon</h3>
                 {typeof moreNames.results === "object" ?
                 <p style={{margin: "0"}}>{moreNames.results.length} Pokemon</p>
               : <></>}
