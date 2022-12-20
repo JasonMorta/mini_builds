@@ -12,6 +12,8 @@
   font-size: large;
   overflow: hidden;
   position: relative;
+  scroll-behavior: smooth;
+  /* 'scroll-behavior' is not supported by Safari < 15.4, Safari on iOS < 15.4. */
 }
 
 .content_section {

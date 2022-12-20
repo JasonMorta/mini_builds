@@ -12,6 +12,7 @@ import Expand from './components/builds/expandingSections/Expand';
 import Pokerball from './components/builds/pokemonAPI/Pokerball';
 import SetUrl from './components/builds/URLMod/SetUrl';
 import GetHTML from './components/builds/URLMod/GetHTML';
+import IntersectionOP from './components/builds/IntersectionOP/IntersectionOP';
 
 
 
@@ -79,6 +80,11 @@ function StateManager() {
         link: "setUrl",
         active: false
        },
+       {
+        name: "Intersection Observer API",
+        link: "IOP",
+        active: false
+       }
    ],
    nextJoke: false,
    catagories: [
@@ -126,6 +132,7 @@ function StateManager() {
         <Route  index  path="/pokemon" element={ <Pokerball />}/>
         <Route  index  path="/setUrl" element={ <SetUrl />}/>
         <Route  index  path="/getHTML" element={ <GetHTML />}/>
+        <Route  index  path="/IOP" element={ <IntersectionOP />}/>
    
       </Routes>
    </div>

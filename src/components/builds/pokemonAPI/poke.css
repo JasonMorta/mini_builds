@@ -5,3 +5,20 @@
     flex-direction: column;
     flex-wrap: wrap;
 }
+
+.poki-name {
+    width: 80%;
+    height: 45px;
+    font-weight: 800;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 4px);
+    background-color: #3f51b5a1;
+    border-radius: 5px;
+    border: 5px ridge #c0c0c0a1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
