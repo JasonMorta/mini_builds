@@ -22,7 +22,7 @@ export default function IntersectionOP() {
         {/* <div className='view_port'>
     <div className='view_box'></div>
     </div> */}
-    <h1>React-Intersection-Observer</h1>
+    <h1>React Intersection Observer API</h1>
     <p>The Intersection Observer API provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's viewport.</p>
     <p>React implementation of the Intersection Observer API to tell you when an element enters or leaves the viewport. Contains both a Hooks, render props and plain children implementation.</p>
     <section className='text_section'>

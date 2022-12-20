@@ -13,6 +13,7 @@ import Pokerball from './components/builds/pokemonAPI/Pokerball';
 import SetUrl from './components/builds/URLMod/SetUrl';
 import GetHTML from './components/builds/URLMod/GetHTML';
 import IntersectionOP from './components/builds/IntersectionOP/IntersectionOP';
+import Button from './components/builds/buttons/Button';
 
 
 
@@ -76,13 +77,19 @@ function StateManager() {
         active: false
        },
        {
-        name: "Student Dropbox",
+        name: "S - Dropbox",
         link: "setUrl",
         active: false
        },
        {
-        name: "Intersection Observer API",
+        name: "RIO API",
         link: "IOP",
+        active: false
+       }
+       ,
+       {
+        name: "Buttons",
+        link: "btn",
         active: false
        }
    ],
@@ -133,6 +140,7 @@ function StateManager() {
         <Route  index  path="/setUrl" element={ <SetUrl />}/>
         <Route  index  path="/getHTML" element={ <GetHTML />}/>
         <Route  index  path="/IOP" element={ <IntersectionOP />}/>
+        <Route  index  path="/btn" element={ <Button />}/>
    
       </Routes>
    </div>

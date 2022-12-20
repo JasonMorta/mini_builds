@@ -125,14 +125,14 @@ export default function MonsterCard(props) {
                         <p className='poki-name'>{pokeData.name.toUpperCase()}</p>
                         <div className="abilities">
                             {pokeData.abilities.map((skill, i) => (
-                            <p key={i} className="power">{skill.ability.name}</p>
+                            <p key={i} className="power">{skill.ability.name.replace("-", " ")}</p>
                             ) )}
     		            </div>
                     
                         <div className='pokemon-info2'>
                         <p>HP: {pokeData.stats[0].base_stat}</p>
-                        <p>Height: {pokeData.height} /decimetre</p>
-                        <p>Wight: {pokeData.weight} /hectograms</p>
+                        <p>Height: {(pokeData.height*0.1).toFixed(1)}m</p>
+                        <p>Wight: {(pokeData.weight*0.1).toFixed(1)}kg</p>
                         </div>
                     </div>
                     </div>
