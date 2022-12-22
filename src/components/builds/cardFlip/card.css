@@ -15,7 +15,7 @@
       height: 150px;
       position: relative;
       transition: .3s;
-      user-select: none;
+      -webkit-user-select: none;
       cursor: pointer;
       transform: rotateY(0deg);
    }
@@ -48,6 +48,7 @@
       margin-bottom: 0px;
       color: #F2E416;
       transition: .3s;
+      -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
 
    }
@@ -87,9 +88,9 @@
 
 .btn-cont {
    display: flex;
-   align-items: center;
-   height: 35px;
-   justify-content: center;
+    align-items: center;
+    margin: 5px;
+    justify-content: center;
 }
 
 .night {
