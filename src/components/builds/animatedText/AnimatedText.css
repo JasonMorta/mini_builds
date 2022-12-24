@@ -4,6 +4,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
+        min-height: 140px;
 }
 
 .animate-my-text {
@@ -12,6 +13,7 @@
         color: #f8f8ff;
         margin: 0;
         cursor: default;
+        -webkit-user-select:none;
         user-select: none;
 }
 
