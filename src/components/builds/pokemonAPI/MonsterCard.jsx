@@ -5,29 +5,45 @@ import { useState, useEffect } from 'react'
 import { Button, Form, InputGroup } from 'react-bootstrap'
 import { StateContext } from '../../../StateManager';
 import'./cardStyle.css'
+import './poke.css'
 
 export default function MonsterCard(props) {
 
     const value = useContext(StateContext);
+    const [state, setState] = value;
+
+
     const [inputVal, setInputVal] = useState("")
     const [update, setUpdate] = useState(false)
-    const [state, setState] = value;
     const [moreNames, setMoreNames] = useState({})
     const [pokeData, setPokeData] = useState({})
     const [nameManipulate, setNameManipulate] = useState()
 
 
+//get pokemon names
+useEffect(() => {
 
-    let cathPokemon = async () => {
-        try {
-            const response = await fetch('https://pokeapi.co/api/v2/pokemon/'+state.pokemonName.toLowerCase());
-            const results = await response.json();
-            setPokeData(results)
-            console.log('results', results)
-          } catch (error){
-            console.log("error", error);
-          }
-        };
+  let getPokemonNames = async () => {
+    const url = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0";
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        const results = await response.json();
+        setMoreNames(results);
+        setNameManipulate(results.results);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+    fetchData()
+  };
+
+  getPokemonNames()
+  
+
+}, []);
+
     
 
     function enterBtn(event){
@@ -42,26 +58,23 @@ export default function MonsterCard(props) {
            setInputVal(e.target.value)
     }
 
+
     useEffect(() => {
-      
-        const url = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0";
+      //Get all pokemon image
+    const  cathPokemon = async () => {     
+        try {
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon/'+state.pokemonName.toLowerCase());
+        const results = await response.json();
+        setPokeData(results)
+        console.log('results', results)
+      } catch (error){
+        console.log("error", error);
+      }
+    
+    }
 
-        const fetchData = async () => {
-          try {
-            const response = await fetch(url);
-            const results = await response.json();
-            setMoreNames(results)
-            setNameManipulate(results.results)
-            
-          } catch (error) {
-            console.log("error", error);
-          }
-        };
-       
-        cathPokemon()
-        fetchData();
-
-    }, [state.pokemonName])
+    cathPokemon()
+    }, [state])
     
 
     //sort names from A-Z
@@ -69,7 +82,22 @@ export default function MonsterCard(props) {
       nameManipulate.sort((a, b) => {
         let az = a.name.toLowerCase(),
             za = b.name.toLowerCase();
-    
+        if (az < za) {
+            return -1;
+        }
+        if (za > az) {
+            return 1;
+        }
+        return 0;
+    })
+    //rerender components
+    setUpdate(prev => !prev)
+    }
+
+    function sortNamez(){
+      nameManipulate.sort((b, a) => {
+        let az = a.name.toLowerCase(),
+            za = b.name.toLowerCase();
         if (az < za) {
             return -1;
         }
@@ -87,7 +115,7 @@ export default function MonsterCard(props) {
     <div className='pokemonAPI'>
   
         <h4>Search for pokemon</h4>
-        
+        {/* search input */}
       <InputGroup className="mb-1" style={{width:" 50%", margin: "auto"}}>
         <Form.Control
             type="text"
@@ -107,13 +135,10 @@ export default function MonsterCard(props) {
         </Button> */}
       </InputGroup>
 
-      {/* CARD */}
+      {/* CARD image */}
 
        <div className='card-outer'>
        {  pokeData.name ?  
-    
-                
-               
                 <>
                     <div className='pokeCard-container'>
                     <img  className='bounce-in-fwd pokeImage' 
@@ -153,16 +178,18 @@ export default function MonsterCard(props) {
                      { typeof moreNames.results === "object" ?
                         moreNames.results.sort().map((i,index) => (
                          <>
-                            
+                            {/* name list */}
                               <li key={index}
                                   onClick={(e) => {
+                                  console.log( e.target.innerText);
                                   setState(prev => ({...prev, pokemonName: e.target.innerText}))
-                                  cathPokemon()
+                              
+                                  
                                   e.target.style.fontWeight = 900
                               }}
                               style={{cursor: 'pointer'}}
                               >{i.name}
-                              
+                
                               </li>
                          </>
                         ))
@@ -171,13 +198,15 @@ export default function MonsterCard(props) {
               
                     }
                </ul>
-             
+               <div className='poki_btns'>
+                <button type="button" onClick={sortNames} className="btn btn-primary">Sort A-Z</button>
+                <button type="button" onClick={sortNamez} className="btn btn-primary">Sort Z-A</button>
+                </div>
             </div>
 
        </div>
        
-       <h1> Name manipulation</h1>
-        <button type="button" onClick={sortNames} className="btn btn-primary">Sort A-Z</button>
+      
 
     </div>
   )

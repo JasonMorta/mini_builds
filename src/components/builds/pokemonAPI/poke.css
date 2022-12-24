@@ -22,3 +22,18 @@
     align-items: center;
     color: black;
 }
+
+.poki_btns {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 280px;
+    margin: 10px auto;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #8691d0;
+}
+
+.poki_btns button {
+margin-right: 5px;
+}

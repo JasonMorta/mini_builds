@@ -12,6 +12,7 @@ export default function Pokerball() {
 
 
     const [state, setState] = useState(0)
+    console.log(mainState.pokemonName);
   return (
     <motion.div
     initial={mainState.motion.initial}
@@ -20,12 +21,7 @@ export default function Pokerball() {
     transition={mainState.motion.transition}
   >
         <img src={png} alt='logo' />
-        <MonsterCard 
-            updateParent={()=>{
-              
-                setState(prev => prev+1)
-                console.log(state);
-                }}/>
+        <MonsterCard />
     </motion.div>
   )
 }
