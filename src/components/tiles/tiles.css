@@ -21,7 +21,7 @@ h1 {
 }
 
 .tile-container {
-    width: 60%;
+    width: 630px;
     margin: 75px auto;
     display: flex;
     flex-direction: row;

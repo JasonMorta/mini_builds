@@ -15,7 +15,9 @@
   scroll-behavior: smooth;
   /* 'scroll-behavior' is not supported by Safari < 15.4, Safari on iOS < 15.4. */
 }
-
+motion.div {
+  position: relative;
+}
 .content_section {
   position: relative;
   width: 100%;
@@ -25,9 +27,46 @@
   margin-left: initial;
   border-right: 0.2rem solid #ececec;
   background-color: #ffffff;
-  padding: 20px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 p {
   color: #403814;
 }
+
+
+
+
+
+
+
+@-webkit-keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-1000px);
+            transform: translateX(-1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-1000px);
+            transform: translateX(-1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+

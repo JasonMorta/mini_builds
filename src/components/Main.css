@@ -1,16 +1,17 @@
 .main_section {
-  position: relative;
-  height: 100%;
-  overflow: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100vh;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: row;
   padding-left: 10px;
-  font-size:smaller;
-  align-items: center;
+  font-size: smaller;
   text-align: initial;
   z-index: 2;
   justify-content: center;
-  overflow: hidden;
+  align-items: flex-end;
 }
 
 .main_section h1 {
