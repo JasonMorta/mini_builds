@@ -4,7 +4,7 @@ import chuckie from "./pics/chuck.png";
 import React, { useContext } from "react";
 import "./Jokes.css";
 import { useState, useEffect } from "react";
-import BS_Button from "../BS_Button";
+import BsButton from "../BsButton";
 import FetchJoke from "./FetchJoke";
 import { StateContext } from "../../../StateManager";
 import Category from "./Category";
@@ -37,7 +37,7 @@ export default function Jokes() {
         </div>
       </section>
       <div className="chuck_btns">
-        <BS_Button
+        <BsButton
           handleClick={() =>
             setMainState((prev) => ({ ...prev, nextJoke: !mainState.nextJoke }))
           }
