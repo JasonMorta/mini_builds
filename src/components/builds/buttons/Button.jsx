@@ -12,21 +12,19 @@ export default function Button() {
   }
 
   return (
-    <div className='btn-grid'>
-  <Close />
-  <Close />
-    <div>
-      <BsButton  
-      style={{margin: "auto"}}
-      className="my_btn"
-      variant="warning"
-      onClick={handleClick}
-      text="Warning"
+    <div className="btn-grid">
+      <Close />
+      <Close />
+      <div>
+        <BsButton
+          style={{ margin: "auto" }}
+          className="my_btn"
+          variant="warning"
+          onClick={handleClick}
+          text="Over Heat"
         />
+      </div>
+      <Dark />
     </div>
-  <Dark />
- 
-        
-    </div>
-  )
+  );
 }
