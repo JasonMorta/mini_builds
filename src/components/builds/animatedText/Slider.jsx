@@ -7,13 +7,14 @@ function Slider(props) {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        margin: '30px'
+        margin: '1.875rem'
         }}>
         <Form.Label>{props.text}</Form.Label>
         <Form.Range 
           value={props.value}
           onChange={props.onChange}
           className={props.className}
+          min={20}
         />
       </div>
     </>

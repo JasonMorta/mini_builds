@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 
-export default function BS_Button(props) {
+export default function BsButton(props) {
   return (
     <>
     <Button 

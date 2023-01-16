@@ -1,6 +1,6 @@
 .IntersectionOP {
     position: relative;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .contents {

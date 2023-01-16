@@ -8,7 +8,7 @@ export default function FetchJoke(props) {
 
   const value = useContext(StateContext);
 
-  const [state, setState] = value
+  const [state, ] = value
 
   
 useEffect(() => {
@@ -27,7 +27,7 @@ useEffect(() => {
 
   return (
     <div>
-      <h4>{joke }</h4>
+      <h4>{joke}</h4>
     </div>
   )
 }

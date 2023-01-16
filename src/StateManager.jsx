@@ -1,19 +1,9 @@
 import React, { createContext, useState } from 'react'
 import Menu from './components/Menu';
-import Main from './components/Main';
-import { Routes, Route } from 'react-router-dom';
-import Jokes from './components/builds/Jokes/Jokes';
-import AnimatedText from './components/builds/animatedText/AnimatedText';
-import Loaders from './components/builds/Loaders/Loaders';
-import Truthy from './components/builds/Truthy/Truthy';
-import Tile from './components/tiles/Tile';
-import FlipsMain from './components/builds/cardFlip/FlipsMain';
-import Expand from './components/builds/expandingSections/Expand';
-import Pokerball from './components/builds/pokemonAPI/Pokerball';
-import SetUrl from './components/builds/URLMod/SetUrl';
-import GetHTML from './components/builds/URLMod/GetHTML';
-import IntersectionOP from './components/builds/IntersectionOP/IntersectionOP';
-import Button from './components/builds/buttons/Button';
+
+import { BrowserRouter as Router, Route, Routes, useParams } from "react-router-dom";
+
+import AnimatedRoutes from './AnimatedRoutes';
 
 
 
@@ -29,69 +19,68 @@ function StateManager() {
      {
        name: "Home",
        link: "",
-       active: false
+       active: false,
      },
      {
        name: "Chuck Norris Jokes",
        link: "chuckNorris",
-       active: false
+       active: false,
      },
      {
        name: "Animated Text",
        link: "animatedText",
-       active: false
+       active: false,
      },
      {
        name: "Loaders",
        link: "loaders",
-       active: false
+       active: false,
      },
      {
        name: "Truthy",
        link: "truthy",
-       active: false
+       active: false,
      },
      {
        name: "Tile Slides",
        link: "tiles",
-       active: false
+       active: false,
      },
-      {
+     {
        name: "Flip This",
        link: "flip",
-       active: false
-      },
-      {
-        name: "Expanded",
-        link: "expand",
-        active: false
-       },
-       {
-        name: "Pokemon-API",
-        link: "pokemon",
-        active: false
-       },
-       {
-        name: "GetHTML Elem",
-        link: "getHTML",
-        active: false
-       },
-       {
-        name: "S - Dropbox",
-        link: "setUrl",
-        active: false
-       },
-       {
-        name: "RIO API",
-        link: "IOP",
-        active: false
-       }
-       ,
-       {
-        name: "Buttons",
-        link: "btn",
-        active: false
-       }
+       active: false,
+     },
+     {
+       name: "Expanded",
+       link: "expand",
+       active: false,
+     },
+     {
+       name: "Pokemon-API",
+       link: "pokemon",
+       active: false,
+     },
+     {
+       name: "GetHTML Elem",
+       link: "getHTML",
+       active: false,
+     },
+     {
+       name: "S - Dropbox",
+       link: "setUrl",
+       active: false,
+     },
+     {
+       name: "RIO API",
+       link: "IOP",
+       active: false,
+     },
+     {
+       name: "Buttons",
+       link: "btn",
+       active: false,
+     },
    ],
    nextJoke: false,
    catagories: [
@@ -117,35 +106,35 @@ function StateManager() {
    score: 0,
    pokemonName: "mewtwo-mega-y",
    pokeData: {},
+   //Page animations
+   motion: {
+     initial: { opacity: 0, width: "100%" },
+     animate: {
+       "-webkit-animation":
+         "slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
+       animation:
+         "slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
+     },
+     exit: { opacity: 1 },
+     transition: { duration: 0 },
+   },
  });
 
 
   return (
   <>
-     <StateContext.Provider value={[state, setState]} className="App">
   
+     <StateContext.Provider value={[state, setState]} className="App">
+     <Router>
       <Menu />
           <div className='content_section'>
-      <Routes>
-      
-        <Route  index  path="/" element={ <Main />}/>
-        <Route  index  path="/chuckNorris" element={ <Jokes />}/>
-        <Route  index  path="/animatedText" element={ <AnimatedText />}/>
-        <Route  index  path="/loaders" element={ <Loaders />}/>
-        <Route  index  path="/truthy" element={ <Truthy />}/>
-        <Route  index  path="/tiles" element={ <Tile />}/>
-        <Route  index  path="/flip" element={ <FlipsMain />}/>
-        <Route  index  path="/expand" element={ <Expand />}/>
-        <Route  index  path="/pokemon" element={ <Pokerball />}/>
-        <Route  index  path="/setUrl" element={ <SetUrl />}/>
-        <Route  index  path="/getHTML" element={ <GetHTML />}/>
-        <Route  index  path="/IOP" element={ <IntersectionOP />}/>
-        <Route  index  path="/btn" element={ <Button />}/>
-   
-      </Routes>
-   </div>
      
+ <AnimatedRoutes />
+    
+   </div>
+   </Router>
       </StateContext.Provider>
+  
   </>
   )
 }

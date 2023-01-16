@@ -12,7 +12,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         text-align: initial;
-        width: 475px;
+        max-width: 475px;
         box-shadow: 0px 0px 1px 2px #3761a8, 0px 0px 1px 3.5px #000000c7;
         padding: 0px 10px 10px;
         transition: .3s;
@@ -72,9 +72,8 @@
 }
 
 .pokeCard-container>img {
-
         border-radius: 5px;
-        max-width: 475px;
+        max-width: -webkit-fill-available;
         margin: 40px 0px 10px 0px;
         transition: .3s;
 }
@@ -91,8 +90,9 @@
         flex-direction: row;
         margin: 30px 10px;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         transition: .3s;
+        flex-wrap: wrap;
 }
 
 .moreNames {
