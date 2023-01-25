@@ -11,6 +11,7 @@ export default function Main() {
 
   const [heading, setHeading] = useState("Mini.Builds");
 
+  //Mini.build Title
   let header = heading.split("").map((char, idx) => (
     <h1
       key={idx}

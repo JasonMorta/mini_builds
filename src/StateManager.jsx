@@ -62,15 +62,15 @@ function StateManager() {
        active: false,
      },
      {
-       name: "GetHTML Elem",
-       link: "getHTML",
+       name: "Password Gen",
+       link: "passGen",
        active: false,
      },
-     {
-       name: "S - Dropbox",
-       link: "setUrl",
-       active: false,
-     },
+    //  {
+    //    name: "S - Dropbox",
+    //    link: "setUrl",
+    //    active: false,
+    //  },
      {
        name: "RIO API",
        link: "IOP",
@@ -122,20 +122,16 @@ function StateManager() {
 
 
   return (
-  <>
-  
-     <StateContext.Provider value={[state, setState]} className="App">
-     <Router>
-      <Menu />
-          <div className='content_section'>
-     
- <AnimatedRoutes />
-    
-   </div>
-   </Router>
+    <>
+      <StateContext.Provider value={[state, setState]} className="App">
+        <Router>
+          <Menu />
+          <div className="content_section" style={{backgroundColor: state.menuItems[9].active ? "#ff5964": "initial"}}>
+            <AnimatedRoutes />
+          </div>
+        </Router>
       </StateContext.Provider>
-  
-  </>
-  )
+    </>
+  );
 }
 export default StateManager;

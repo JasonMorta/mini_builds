@@ -14,6 +14,7 @@ import Button from './components/builds/buttons/Button';
 import Main from './components/Main';
 import { Route, Routes, useLocation,  } from "react-router-dom";
 import {AnimatePresence} from 'framer-motion'
+import PassGen from './components/builds/passwordGen/PassGen';
 
 export default function AnimatedRoutes() {
 
@@ -31,8 +32,8 @@ export default function AnimatedRoutes() {
         <Route index path="/flip" element={<FlipsMain />} />
         <Route index path="/expand" element={<Expand />} />
         <Route index path="/pokemon" element={<Pokerball />} />
-        <Route index path="/setUrl" element={<SetUrl />} />
-        <Route index path="/getHTML" element={<GetHTML />} />
+        {/* <Route index path="/setUrl" element={<SetUrl />} /> */}
+        <Route index path="/passGen" element={<PassGen />} />
         <Route index path="/IOP" element={<IntersectionOP />} />
         <Route index path="/btn" element={<Button />} />
       </Routes>

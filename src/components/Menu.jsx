@@ -23,7 +23,7 @@ export default function Menu() {
       key={index} 
       onClick={()=> {
         //setState(i => i.map(x => x === x ? {...x, active: !x.active} : x) )
-       // console.log(item.active);
+       console.log(item.active);
       }}
       to={`/${item.link}`}
       className={`menu_items ${item.active ? " active_build": ""}`}

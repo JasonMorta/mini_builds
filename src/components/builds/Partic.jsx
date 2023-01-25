@@ -2,6 +2,9 @@ import { useCallback } from "react";
 import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 
+
+//This is the particle effect that plays when card game is won.
+
 export default function Partic(props){
     const particlesInit = useCallback(async engine => {
         //console.log(engine);

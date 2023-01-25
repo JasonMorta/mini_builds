@@ -1,6 +1,7 @@
 
 .App {
   background-color: #fafafa;
+  background-image: url('./static/images/bg.gif');
   min-height: 100vh;
   display: flex;
   flex-direction: row;
