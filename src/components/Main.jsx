@@ -8,6 +8,8 @@ export default function Main() {
 
   const value = useContext(StateContext);
   let [state, setState] = value;
+  
+  console.log('setState', state.menuItems[0])
 
   const [heading, setHeading] = useState("Mini.Builds");
 

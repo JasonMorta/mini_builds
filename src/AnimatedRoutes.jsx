@@ -35,7 +35,7 @@ export default function AnimatedRoutes() {
         {/* <Route index path="/setUrl" element={<SetUrl />} /> */}
         <Route index path="/passGen" element={<PassGen />} />
         <Route index path="/IOP" element={<IntersectionOP />} />
-        <Route index path="/btn" element={<Button />} />
+        {/* <Route index path="/btn" element={<Button />} /> */}
       </Routes>
 </AnimatePresence>
   );

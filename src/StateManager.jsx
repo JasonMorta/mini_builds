@@ -19,7 +19,7 @@ function StateManager() {
      {
        name: "Home",
        link: "",
-       active: false,
+       active: true,
      },
      {
        name: "Chuck Norris Jokes",
@@ -76,11 +76,11 @@ function StateManager() {
        link: "IOP",
        active: false,
      },
-     {
-       name: "Buttons",
-       link: "btn",
-       active: false,
-     },
+    //  {
+    //    name: "Buttons",
+    //    link: "btn",
+    //    active: false,
+    //  },
    ],
    nextJoke: false,
    catagories: [
@@ -118,6 +118,14 @@ function StateManager() {
      exit: { opacity: 1 },
      transition: { duration: 0 },
    },
+   passGen: {
+    count: 5,
+    upperCase: true,
+    lowerCase: true,
+    symbols: true,
+    numbers: true,
+    pass: ""
+  }
  });
 
 
@@ -126,7 +134,7 @@ function StateManager() {
       <StateContext.Provider value={[state, setState]} className="App">
         <Router>
           <Menu />
-          <div className="content_section" style={{backgroundColor: state.menuItems[9].active ? "#ff5964": "initial"}}>
+          <div className="content_section">
             <AnimatedRoutes />
           </div>
         </Router>
