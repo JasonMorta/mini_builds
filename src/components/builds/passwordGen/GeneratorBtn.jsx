@@ -22,19 +22,34 @@ function makePass(){
     //console.log(count);
     passWord = ""
     for (let i = 0; i < count/2; i++) {
-   
-
-        if (numbers) {
-          passWord += randomGen(0, 9)
+      if (base()) {
+        break
+      }
+        //Base case.
+       
+        //Random number
+        if (numbers && !base()) {
+          passWord += randomGen(0, 9) 
         }
 
-        if (lowerCase) {
+        //Random lowerCase letter
+        if (lowerCase && !base()) {
           passWord +=  String.fromCharCode(randomGen(97, 122))
         }
-        if (count === passWord.length) {
-          break
-         }
+
+        //Random upperCase letter
+        if (upperCase && !base()) {
+          passWord +=  String.fromCharCode(randomGen(65, 90))
+        } 
+
+   
+   
     }
+
+    function base(){
+      return count === passWord.length
+    }
+  
 
     //props.data.pass
     //props.data.symbols
@@ -42,7 +57,7 @@ function makePass(){
     console.log(passWord);
   }
 
-
+//Returns a random number between any two values.
   function randomGen(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min)
  }

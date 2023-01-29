@@ -21,13 +21,13 @@ function handleClick(e){
   let myCards = cards.map((card, i)=> (
 
     <div 
-      className={`div ${props.cardData === card.id ? "" : "div card-back "}`}
-      id="mainDiv1"
-       key={i}
-       data-card-data={card.id}
-       data-get-truth={winningNum === card.id}
-       onClick={props.handleClick}
-       onMouseDown={handleClick}
+        className={`div ${props.cardData === card.id ? "" : "div card-back "}`}
+        id="mainDiv1"
+        key={i}
+        data-card-data={card.id}
+        data-get-truth={winningNum === card.id}
+        onClick={props.handleClick}
+        onMouseDown={handleClick}
        >
       <h2 
         className="h2-heading h2-back"
