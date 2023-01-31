@@ -66,11 +66,11 @@ function StateManager() {
        link: "passGen",
        active: false,
      },
-    //  {
-    //    name: "S - Dropbox",
-    //    link: "setUrl",
-    //    active: false,
-    //  },
+     {
+      name: "I & E",
+      link: "IandE",
+      active: false,
+    },
      {
        name: "RIO API",
        link: "IOP",

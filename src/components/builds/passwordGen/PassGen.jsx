@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import CSS from './passGen.module.css'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -14,21 +14,30 @@ export default function PassGen() {
   
   let [options, setOptions] = value
 
+  
+
+  //Copy the generated pass to clipboard
+  function copyTo() {
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(options.passGen.pass);
+    alert("Password "+options.passGen.pass+" copied")
+  }
 
 
   return (
     <div className={CSS.box}>
-      <h5>Generate a random password</h5>
+      <h3>Generate a random password</h3>
           {/* password output */}
       <label for="pass">Password:</label>
       <InputGroup className="mb-">
         <Form.Control
           id="pass" 
           name="pass"
+          readOnly
           aria-label="Recipient's username"
-          defaultValue={options.passGen.pass}
+          value={options.passGen.pass === ""? "": options.passGen.pass}
         />
-        <Button variant="outline-secondary" id="button-addon2">
+        <Button variant="outline-secondary" id="button-addon2" onClick={copyTo}>
           copy
         </Button>
       </InputGroup>
@@ -37,10 +46,10 @@ export default function PassGen() {
       <div className={CSS.pass_options}>
         <h5>Include characters</h5>
       <div className={CSS.check_container + ` mb-3`}>
-        {/* word count */}
+        {/* letter count */}
       <Form.Label>Charters amount <b>{options.passGen.count}</b></Form.Label>
       <Form.Range 
-       max="10"
+       max="20"
        min="3"
       onChange={(e)=> {setOptions(prev =>({...prev, 
         passGen: {...prev.passGen, count: e.target.value}}))}} />

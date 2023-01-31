@@ -19,6 +19,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+margin-top: 5vh;
 }
 
 .box h5 {
@@ -29,6 +30,9 @@ align-items: center;
   display: block;
 }
 
+h3 {
+  margin-bottom: 3rem;
+}
 .pass_options {
   padding: 5px;
   display: flex;
