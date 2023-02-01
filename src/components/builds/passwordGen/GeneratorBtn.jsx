@@ -3,24 +3,19 @@ import Button from 'react-bootstrap/Button';
 import { StateContext } from '../../../StateManager';
 
 export default function GeneratorBtn(props) {
+  //destructure props
+  let { count, numbers, lowerCase, pass, symbols, upperCase } = props.data;
 
-    //destructure props
-    let {count, numbers, lowerCase, pass, symbols, upperCase} = props.data
-    
-    const value = useContext(StateContext)
-    //destructure main state
-    const [options, setOptions] = value
-    let passWord = ""
+  const value = useContext(StateContext);
+  //destructure main state
+  const [options, setOptions] = value;
+  let passWord = "";
 
-
-
-    //Generate pass btn
-function makePass(){
-
-    passWord = ""
+  //Generate pass btn
+  function makePass() {
+    passWord = "";
 
     for (let i = 0; i < Number(count); i++) {
-
       //WHen passWord var is full, stop adding
 
       //Random upperCase letter
@@ -41,28 +36,32 @@ function makePass(){
       //Random number
       if (numbers && passWord.length !== Number(count)) {
         passWord += randomGen(0, 9);
-      } 
+      }
     }
 
     //save new password to state
-    setOptions(prev =>({...prev, 
-      passGen: {...prev.passGen, pass: passWord}}))
+    setOptions((prev) => ({
+      ...prev,
+      passGen: { ...prev.passGen, pass: passWord },
+    }));
   }
 
-//Returns a random number between any two values.
+  //Returns a random number between any two values.
   function randomGen(min, max) {
-      return Math.floor(Math.random() * (max - min + 1) + min)
- }
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
 
- const symsArray = ":;<=>?@[]\^ _`{|}~"
- //Returns
- function randomSym() {
-       return symsArray[Math.floor(Math.random()*symsArray.length)];
-    }
+  const symsArray = ":;<=>?@[]^ _`{|}~";
+  //Returns
+  function randomSym() {
+    return symsArray[Math.floor(Math.random() * symsArray.length)];
+  }
 
   return (
     <div>
-        <Button variant="dark" onClick={()=> makePass()}>Generate</Button>
+      <Button variant="dark" onClick={() => makePass()}>
+        Generate
+      </Button>
     </div>
-  )
+  );
 }

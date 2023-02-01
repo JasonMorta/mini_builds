@@ -75,12 +75,7 @@ function StateManager() {
        name: "RIO API",
        link: "IOP",
        active: false,
-     },
-    //  {
-    //    name: "Buttons",
-    //    link: "btn",
-    //    active: false,
-    //  },
+     }
    ],
    nextJoke: false,
    catagories: [
