@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Inputs from './Inputs';
 
 export default function NewEntry(props) {
   
@@ -13,7 +14,9 @@ export default function NewEntry(props) {
           <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+          <Modal.Body>
+            <Inputs />
+          </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={props.handleClose}>
               Close

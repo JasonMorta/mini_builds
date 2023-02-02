@@ -8,7 +8,7 @@ export default function GeneratorBtn(props) {
 
   const value = useContext(StateContext);
   //destructure main state
-  const [options, setOptions] = value;
+  const [, setOptions] = value;
   let passWord = "";
 
   //Generate pass btn
@@ -59,7 +59,7 @@ export default function GeneratorBtn(props) {
   }
 
   const symsArray = ":<%=$>?@]^_`!|#~&";
-  
+
   //Returns
   function randomSym() {
     return symsArray[Math.floor(Math.random() * symsArray.length)];

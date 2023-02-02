@@ -15,7 +15,7 @@ import Main from './components/Main';
 import { Route, Routes, useLocation,  } from "react-router-dom";
 import {AnimatePresence} from 'framer-motion'
 import PassGen from './components/builds/passwordGen/PassGen';
-import IandE from './components/builds/incomeExpense/IandE';
+import IEMain from './components/builds/incomeExpense/IEMain';
 
 export default function AnimatedRoutes() {
 
@@ -36,7 +36,7 @@ export default function AnimatedRoutes() {
         {/* <Route index path="/setUrl" element={<SetUrl />} /> */}
         <Route index path="/passGen" element={<PassGen />} />
         <Route index path="/IOP" element={<IntersectionOP />} />
-        <Route index path="/IandE" element={<IandE />} />
+        <Route index path="/IandE" element={<IEMain />} />
         {/* <Route index path="/btn" element={<Button />} /> */}
       </Routes>
 </AnimatePresence>

@@ -67,15 +67,15 @@ function StateManager() {
        active: false,
      },
      {
-      name: "I & E",
-      link: "IandE",
-      active: false,
-    },
+       name: "I & E",
+       link: "IandE",
+       active: false,
+     },
      {
        name: "RIO API",
        link: "IOP",
        active: false,
-     }
+     },
    ],
    nextJoke: false,
    catagories: [
@@ -114,13 +114,23 @@ function StateManager() {
      transition: { duration: 0 },
    },
    passGen: {
-    count: 5,
-    upperCase: true,
-    lowerCase: true,
-    symbols: true,
-    numbers: true,
-    pass: ""
-  }
+     count: 5,
+     upperCase: true,
+     lowerCase: true,
+     symbols: true,
+     numbers: true,
+     pass: "",
+   },
+   incomeAndExpense: {
+     incomeList: [],
+     expenseList: [],
+     inputs: {
+       heading: "",
+       name: "",
+       amount: "",
+       recurring: false,
+     },
+   },
  });
 
 

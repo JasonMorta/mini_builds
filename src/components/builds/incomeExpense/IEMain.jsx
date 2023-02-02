@@ -4,7 +4,7 @@ import React from 'react'
 import Expense from './Expense'
 import Income from './Income'
 
-export default function IandE() {
+export default function Main() {
 
 
 
