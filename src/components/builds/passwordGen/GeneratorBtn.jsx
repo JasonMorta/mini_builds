@@ -36,13 +36,20 @@ export default function GeneratorBtn(props) {
       //Random number
       if (numbers && passWord.length !== Number(count)) {
         passWord += randomGen(0, 9);
+        
       }
     }
+
+    //Shuffle passWord array
+    let shuffledNumbers = passWord.split("").sort(function () {
+      return Math.random() - 0.5;
+    }).join("");
+
 
     //save new password to state
     setOptions((prev) => ({
       ...prev,
-      passGen: { ...prev.passGen, pass: passWord },
+      passGen: { ...prev.passGen, pass: shuffledNumbers },
     }));
   }
 
@@ -51,7 +58,8 @@ export default function GeneratorBtn(props) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
-  const symsArray = ":;<=>?@[]^ _`{|}~";
+  const symsArray = ":<%=$>?@]^_`!|#~&";
+  
   //Returns
   function randomSym() {
     return symsArray[Math.floor(Math.random() * symsArray.length)];
