@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { StateContext } from '../../../StateManager';
 import Inputs from './Inputs';
 
 export default function NewEntry(props) {
-  
+  const value = useContext(StateContext);
+  //destructure main state
+  const [state, setState] = value;
 
   
     return (
@@ -12,7 +15,7 @@ export default function NewEntry(props) {
   
         <Modal show={props.show} onHide={props.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>{state.incomeAndExpense.inputs.heading}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Inputs />
@@ -21,7 +24,7 @@ export default function NewEntry(props) {
             <Button variant="secondary" onClick={props.handleClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={props.handleClose}>
+            <Button variant="primary" onClick={props.handleSave}>
               Save Changes
             </Button>
           </Modal.Footer>

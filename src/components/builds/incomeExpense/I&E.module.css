@@ -18,6 +18,7 @@
     padding: 0.75rem;
     border-radius: 8px;
     background-color: #ddebf8;
+    min-width: 500px;
   } 
 
   td {

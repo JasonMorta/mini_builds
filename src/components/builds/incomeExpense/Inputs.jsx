@@ -24,7 +24,7 @@ export default function Inputs({name, amount, recurring}) {
         setOptions(updatedOptions)
     }
 
-    //Updated state with spread
+    //Updated state with spread...
     function AddAmount(e) {
       setOptions((prev) => ({
         ...prev,
@@ -39,18 +39,12 @@ export default function Inputs({name, amount, recurring}) {
     }
 
     function isRecurring(e) {
-        setOptions((prev) => ({
-          ...prev,
-          incomeAndExpense: {
-            ...prev.incomeAndExpense,
-            inputs: {
-              ...prev.incomeAndExpense.inputs,
-              amount: e.target.value,
-            },
-          },
-        }));
+ 
+      let updatedOptions = options
+      updatedOptions.incomeAndExpense.inputs.recurring = e.target.checked
+      setOptions(updatedOptions)
 
-        console.log(options);
+        console.log(options.incomeAndExpense.inputs);
       }
     
     
@@ -81,7 +75,7 @@ export default function Inputs({name, amount, recurring}) {
             type="checkbox"
             id={`default-checkbox`}
             label={`Recurring`}
-            checked={options.incomeAndExpense.inputs.recurring}
+            defaultChecked={options.incomeAndExpense.inputs.recurring}
             onChange={(e)=> isRecurring(e)}
           />
           </Form>

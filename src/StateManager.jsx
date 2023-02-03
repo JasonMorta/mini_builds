@@ -122,13 +122,19 @@ function StateManager() {
      pass: "",
    },
    incomeAndExpense: {
-     incomeList: [],
+      incomeList: [{
+      name: "Job 1",
+      amount: 98899,
+      recurring: true,
+   
+}],
      expenseList: [],
      inputs: {
        heading: "",
        name: "",
        amount: "",
        recurring: false,
+       index: 0
      },
    },
  });
