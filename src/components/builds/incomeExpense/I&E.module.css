@@ -1,26 +1,77 @@
 .box_container {
-    display: block;
-    min-width: 330px;
-    width: 100%;
-    margin: 5px;
-    max-width: 550px;
-    padding: 3px;
-    margin-top: 2rem;
-    font-size: initial;
-    color: #000000d3;
-    margin-bottom: 2rem;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -1px rgb(0 0 0 / 6%);
-  }
+  padding: 3px;
+  margin-top: 0.95rem;
+  font-size: initial;
+  color: #000000d3;
+  border-radius: 10px;
+  box-shadow: 0 0px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -1px rgb(0 0 0 / 6%);
 
-  .box_container_inner {
-    padding: 0.75rem;
-    border-radius: 8px;
-    background-color: #ddebf8;
-    min-width: 500px;
-  } 
+}
 
-  td {
-    vertical-align: middle;
-  }
+.box_container_inner {
+  padding: 0.75rem;
+  border-radius: 8px;
+  background-color: #ddebf8;
+}
+
+
+
+td {
+  vertical-align: middle;
+}
+
+.modal.show .modal-dialog {
+  transform: none !important;
+  bottom: 0 !important;
+  position: absolute !important;
+  left: 50% !important;
+}
+
+.EAndE_blocks {}
+
+.box_container_DI {
+  padding: 3px;
+  margin-top: 0.95rem;
+
+  color: #000000d3;
+  border-radius: 10px;
+  box-shadow: 0 0px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -1px rgb(0 0 0 / 6%);
+  width: 130px;
+  transform: translate(0px, -14px);
+}
+
+.box_container_inner_DI {
+  padding: 0.35rem;
+  border-radius: 8px;
+  background-color: #ddebf8;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+
+.button {
+  padding: 3px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 3px;
+  transition-duration: 0.1s;
+  font-size: 11px;
+  transform: translate(-7px, 3px);
+}
+
+.button:active {
+  font-style: italic;
+}
+
+.button {
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+}
+
+.button:hover {
+  background-color: #4CAF50;
+  color: white;
+}
