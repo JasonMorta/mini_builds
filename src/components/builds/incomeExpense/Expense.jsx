@@ -7,19 +7,18 @@ import { StateContext } from "../../../StateManager";
 import { useEffect } from "react";
 
 export default function Expense(props) {
+  console.log("Expense");
   const value = useContext(StateContext);
   //destructure main state
   const [options, setOptions] = value;
   let updatedState = options;
   const [show, setShow] = useState(false);
   const [reload, setReload] = useState(true);
-  const [total, setTotal] = useState(0);
   let saveTotal = 0;
   //Edit Selected entry
   function handleEdit(key, i) {
     setShow(true);
     updatedState.incomeAndExpense.inputs.heading = "Edit Entry";
-    console.log("inputs", updatedState.incomeAndExpense.inputs);
     setOptions(updatedState);
 
     //Fille inputs with selected entry values
@@ -51,10 +50,8 @@ export default function Expense(props) {
         amount: updatedState.incomeAndExpense.inputs.amount,
         recurring: updatedState.incomeAndExpense.inputs.recurring,
       };
+
       updatedState.incomeAndExpense.expenseList.push(newEntry);
-      setOptions(updatedState);
-      console.log("Income entry added!");
-      setShow(false); //close modal
     } else if (options.incomeAndExpense.inputs.heading === "Edit Entry") {
       //Updated the selected entry
       //get the current index
@@ -68,41 +65,13 @@ export default function Expense(props) {
       //update object at index with inputs
       updatedState.incomeAndExpense.expenseList[i] = updatedEntry;
       //set he main state for rerender
-      setOptions(updatedState);
-      console.log(options.incomeAndExpense);
-      console.log("Updated!");
-      setShow(false); //close modal
     }
-    incomeTotal();
+    props.getTotal();
+    setShow(false); //close modal
   }
-
-  function incomeTotal() {
-    //console.log(options.incomeAndExpense.expenseList);
-    let num = 0;
-    saveTotal = options;
-    let dispose = Number(
-      saveTotal.incomeAndExpense.incomeTotal -
-        saveTotal.incomeAndExpense.expenseTotal
-    );
-    saveTotal.incomeAndExpense.disposableIncome = dispose;
-    saveTotal.incomeAndExpense.expenseList.forEach((el) => {
-      num += Number(el.amount);
-    });
-    saveTotal.incomeAndExpense.expenseTotal = num;
-    setOptions(saveTotal);
-    setTotal(num);
-  }
-
-  useEffect(() => {
-    incomeTotal();
-  }, []);
 
   function handleClose() {
     setShow(false);
-  }
-
-  function checkFields() {
-    console.log("testing");
   }
 
   //Open modal for new entry
@@ -163,27 +132,26 @@ export default function Expense(props) {
         <Button variant="success" onClick={() => addNewIncome()}>
           Add new entry
         </Button>
-        <h4
-          style={{
-            textAlign: "end",
-            margin: 0,
-          }}
-        >
-          Income Total
-        </h4>
         <h5
           style={{
             textAlign: "end",
             margin: 0,
           }}
         >
-          R{total}
+          <small>Total</small>
+        </h5>
+        <h5
+          style={{
+            textAlign: "end",
+            margin: 0,
+          }}
+        >
+          R{options.incomeAndExpense.expenseTotal}
         </h5>
       </div>
 
       {/* New Entry Modal component */}
       <NewEntry
-        checkFields={checkFields}
         handleShow={() => setShow(true)}
         handleSave={() => handleSave()}
         handleClose={() => handleClose()}

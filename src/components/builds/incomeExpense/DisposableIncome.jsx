@@ -1,12 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { StateContext } from "../../../StateManager";
 import CSS from "./I&E.module.css";
 
-export default function DisposableIncome() {
+export default function DisposableIncome(props) {
   const value = useContext(StateContext);
   //destructure main state
   const [options, setOptions] = value;
   let updatedState = options;
+  const [total, setTotal] = useState();
 
   function handleSavings() {
     console.log("saved");
@@ -34,9 +35,9 @@ export default function DisposableIncome() {
         >
           R{options.incomeAndExpense.disposableIncome}
         </h5>
-        <button className={CSS.button} onClick={() => handleSavings()}>
+        {/* <button className={CSS.button} onClick={() => handleSavings()}>
           Add to savings
-        </button>
+        </button> */}
       </div>
     </div>
   );

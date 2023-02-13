@@ -17,10 +17,20 @@ export default function Inputs({ name, amount, recurring }) {
   //Update state by covering state to variable,
   //updating variable,
   //update state with variable
+  let updatedOptions = options;
   function AddName(e) {
-    let updatedOptions = options;
-    updatedOptions.incomeAndExpense.inputs.name = e.target.value;
-    setOptions(updatedOptions);
+    // updatedOptions.incomeAndExpense.inputs.name = e.target.value;
+    // setOptions(updatedOptions);
+    setOptions((prev) => ({
+      ...prev,
+      incomeAndExpense: {
+        ...prev.incomeAndExpense,
+        inputs: {
+          ...prev.incomeAndExpense.inputs,
+          name: Number(e.target.value),
+        },
+      },
+    }));
   }
 
   //Updated state with spread...
@@ -31,7 +41,7 @@ export default function Inputs({ name, amount, recurring }) {
         ...prev.incomeAndExpense,
         inputs: {
           ...prev.incomeAndExpense.inputs,
-          amount: e.target.value,
+          amount: Number(e.target.value),
         },
       },
     }));
@@ -46,21 +56,20 @@ export default function Inputs({ name, amount, recurring }) {
   return (
     <div className="modal_inputs" style={style}>
       <Form>
-        <InputGroup className="mb-3">
-          <InputGroup.Text id="basic-addon1">Name</InputGroup.Text>
-          <Form.Control
-            placeholder="Name"
-            aria-label="Name"
-            onChange={(e) => AddName(e)}
-            defaultValue={options.incomeAndExpense.inputs.name}
-            aria-describedby="basic-addon1"
-          />
-        </InputGroup>
         {options.incomeAndExpense.inputs.heading === "savings" ? (
           <></>
         ) : (
           <>
-            {" "}
+            <InputGroup className="mb-3">
+              <InputGroup.Text id="basic-addon1">Name</InputGroup.Text>
+              <Form.Control
+                placeholder="Name"
+                aria-label="Name"
+                onChange={(e) => AddName(e)}
+                defaultValue={options.incomeAndExpense.inputs.name}
+                aria-describedby="basic-addon1"
+              />
+            </InputGroup>
             <InputGroup className="mb-3">
               <InputGroup.Text id="basic-addon1">Amount</InputGroup.Text>
               <Form.Control
