@@ -128,53 +128,6 @@ function StateManager() {
       numbers: true,
       pass: "",
     },
-    incomeAndExpense: {
-      incomeList: [
-        {
-          name: "Online sales",
-          amount: 4000,
-          recurring: true,
-        },
-        {
-          name: "Main Job",
-          amount: 7000,
-          recurring: true,
-        },
-        {
-          name: "Hustling",
-          amount: 1500,
-          recurring: true,
-        },
-      ],
-      expenseList: [
-        {
-          name: "Bills",
-          amount: 2500,
-          recurring: true,
-        },
-        {
-          name: "Utilities",
-          amount: 1400,
-          recurring: true,
-        },
-        {
-          name: "Rent",
-          amount: 5500,
-          recurring: true,
-        },
-      ],
-      inputs: {
-        heading: "",
-        name: "",
-        amount: "",
-        recurring: false,
-        index: 0,
-      },
-      incomeTotal: "",
-      expenseTotal: "",
-      disposableIncome: "",
-      savings: "",
-    },
     catImage: [],
   });
 
