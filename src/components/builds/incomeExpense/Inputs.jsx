@@ -1,12 +1,14 @@
+import produce from "immer";
 import React, { useContext } from "react";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { StateContext } from "../../../StateManager";
+import { SharedState } from "./IEMain";
 
 export default function Inputs({ name, amount, recurring }) {
-  const value = useContext(StateContext);
+  const value = useContext(SharedState);
   //destructure main state
-  const [options, setOptions] = value;
+  const [state, setState] = value;
 
   const style = {
     display: "flex",
@@ -18,29 +20,28 @@ export default function Inputs({ name, amount, recurring }) {
   //updating variable,
   //update state with variable
   function AddName(e) {
-    let updatedOptions = options;
-    updatedOptions.incomeAndExpense.inputs.name = e.target.value;
-    setOptions(updatedOptions);
+    setState(
+      produce((state) => {
+        state.inputs.name = e.target.value;
+      })
+    );
   }
 
-  //Updated state with spread...
+  //Updated state with immer...
   function AddAmount(e) {
-    setOptions((prev) => ({
-      ...prev,
-      incomeAndExpense: {
-        ...prev.incomeAndExpense,
-        inputs: {
-          ...prev.incomeAndExpense.inputs,
-          amount: e.target.value,
-        },
-      },
-    }));
+    setState(
+      produce((state) => {
+        state.inputs.amount = e.target.value;
+      })
+    );
   }
 
   function isRecurring(e) {
-    let updatedOptions = options;
-    updatedOptions.incomeAndExpense.inputs.recurring = e.target.checked;
-    setOptions(updatedOptions);
+    setState(
+      produce((state) => {
+        state.inputs.isRecurring = e.target.value;
+      })
+    );
   }
 
   return (
@@ -52,11 +53,11 @@ export default function Inputs({ name, amount, recurring }) {
             placeholder="Name"
             aria-label="Name"
             onChange={(e) => AddName(e)}
-            defaultValue={options.incomeAndExpense.inputs.name}
+            defaultValue={state.inputs.name}
             aria-describedby="basic-addon1"
           />
         </InputGroup>
-        {options.incomeAndExpense.inputs.heading === "savings" ? (
+        {state.inputs.heading === "savings" ? (
           <></>
         ) : (
           <>
@@ -67,7 +68,7 @@ export default function Inputs({ name, amount, recurring }) {
                 placeholder="Amount"
                 aria-label="Amount"
                 type="number"
-                defaultValue={options.incomeAndExpense.inputs.amount}
+                defaultValue={state.inputs.amount}
                 onChange={(e) => AddAmount(e)}
                 aria-describedby="basic-addon1"
               />
@@ -76,7 +77,7 @@ export default function Inputs({ name, amount, recurring }) {
               type="checkbox"
               id={`default-checkbox`}
               label={`Recurring`}
-              defaultChecked={options.incomeAndExpense.inputs.recurring}
+              defaultChecked={state.inputs.recurring}
               onChange={(e) => isRecurring(e)}
             />
           </>

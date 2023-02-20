@@ -5,12 +5,13 @@ import Button from "react-bootstrap/Button";
 import NewEntry from "./NewEntryModal";
 import { StateContext } from "../../../StateManager";
 import { useEffect } from "react";
+import { SharedState } from "./IEMain";
 
 export default function Expense(props) {
-  const value = useContext(StateContext);
+  const value = useContext(SharedState);
   //destructure main state
-  const [options, setOptions] = value;
-  let updatedState = options;
+  const [state, setState] = value;
+
   const [show, setShow] = useState(false);
   const [reload, setReload] = useState(true);
   const [total, setTotal] = useState(0);

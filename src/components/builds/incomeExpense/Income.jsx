@@ -1,134 +1,121 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import CSS from "./I&E.module.css";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import NewEntry from "./NewEntryModal";
-import { StateContext } from "../../../StateManager";
-import { useEffect } from "react";
+import { SharedState } from "./IEMain";
+import produce from "immer";
 
-export default function Income(props) {
-  const value = useContext(StateContext);
+export default function Income() {
+  const value = useContext(SharedState);
   //destructure main state
-  const [options, setOptions] = value;
-  let updatedState = options;
+  const [state, setState] = value;
+
+  let copyState = state;
   const [show, setShow] = useState(false);
-  const [reload, setReload] = useState(true);
+  //const [reload, setReload] = useState(true);
   const [total, setTotal] = useState(0);
-  let saveTotal = 0;
+  // let saveTotal = 0;
+
   //Edit Selected entry
-  console.log(options.incomeAndExpense);
   function handleEdit(key, i) {
     setShow(true);
-    updatedState.incomeAndExpense.inputs.heading = "Edit Entry";
-    console.log("inputs", updatedState.incomeAndExpense.inputs);
-    setOptions(updatedState);
+    copyState.inputs.heading = "Edit Entry";
+    setState(copyState);
 
     //Fille inputs with selected entry values
-    if (options.incomeAndExpense.inputs.heading === "Edit Entry") {
-      updatedState.incomeAndExpense.inputs.name = key.name;
-      updatedState.incomeAndExpense.inputs.amount = key.amount;
-      updatedState.incomeAndExpense.inputs.recurring = key.recurring;
-      updatedState.incomeAndExpense.inputs.index = i;
-      setOptions(updatedState);
+    if (state.inputs.heading === "Edit Entry") {
+      copyState.inputs.name = key.name;
+      copyState.inputs.amount = key.amount;
+      copyState.inputs.recurring = key.recurring;
+      copyState.inputs.index = i;
+      setState(copyState);
     }
   }
 
   //Delete entry
-  function handleDelete(key, id) {
-    updatedState = options;
-    updatedState.incomeAndExpense.inputs.heading = "";
-    updatedState.incomeAndExpense.incomeList.splice(id, 1);
-    setReload((prev) => !prev);
-    return setOptions(updatedState);
+  function handleDelete(key) {
+    setState(
+      produce((state) => {
+        state.inputs.incomeList.filter((item) => item !== key);
+      })
+    );
   }
 
   //Handle both Add new entry & update selected entry
   function handleSave() {
     //Adds new income entry to list
-    if (options.incomeAndExpense.inputs.heading === "Add New Entry") {
+    if (state.inputs.heading === "Add New Entry") {
       //create the new object
       let newEntry = {
-        name: updatedState.incomeAndExpense.inputs.name,
-        amount: updatedState.incomeAndExpense.inputs.amount,
-        recurring: updatedState.incomeAndExpense.inputs.recurring,
+        name: state.inputs.name,
+        amount: Number(state.inputs.amount),
+        recurring: state.inputs.recurring,
       };
-      updatedState.incomeAndExpense.incomeList.push(newEntry);
-      setOptions(updatedState);
-      console.log("Income entry added!");
+
+      //State new entry to state
+      setState(
+        produce((state) => {
+          state.incomeList.push(newEntry);
+        })
+      );
       setShow(false); //close modal
-    } else if (options.incomeAndExpense.inputs.heading === "Edit Entry") {
+    } else if (state.inputs.heading === "Edit Entry") {
       //Updated the selected entry
       //get the current index
-      let i = updatedState.incomeAndExpense.inputs.index;
+      let i = state.inputs.index;
       let updatedEntry = {
-        name: updatedState.incomeAndExpense.inputs.name,
-        amount: updatedState.incomeAndExpense.inputs.amount,
-        recurring: updatedState.incomeAndExpense.inputs.recurring,
+        name: state.inputs.name,
+        amount: state.inputs.amount,
+        recurring: state.inputs.recurring,
       };
 
       //update object at index with inputs
-      updatedState.incomeAndExpense.incomeList[i] = updatedEntry;
-      //set he main state for rerender
-      setOptions(updatedState);
-      console.log(options.incomeAndExpense);
-      console.log("Updated!");
-      setShow(false); //close modal
+      setState(
+        produce((state) => {
+          state.inputs.incomeList[i] = updatedEntry;
+        })
+      );
     }
-    incomeTotal();
+    setShow(false);
   }
 
   //calculate the income total
-  function incomeTotal() {
-    let num = 0;
-
-    saveTotal = options;
-    let dispose = Number(
-      saveTotal.incomeAndExpense.incomeTotal -
-        saveTotal.incomeAndExpense.expenseTotal
-    );
-    saveTotal.incomeAndExpense.disposableIncome = dispose;
-    //loop and add every amount to a new variable
-    saveTotal.incomeAndExpense.incomeList.forEach((el) => {
-      num += Number(el.amount);
-    });
-    //update state with total(num)
-    saveTotal.incomeAndExpense.incomeTotal = num;
-    setOptions(saveTotal);
-    console.log(options.incomeAndExpense);
-    setTotal(num);
-
-    //Set disposable income
-  }
-
   useEffect(() => {
-    incomeTotal();
-  }, []);
+    setTotal(0);
+    state.incomeList.forEach((el) => {
+      setTotal((prev) => (prev += Number(el.amount)));
+    });
+  }, [state]);
 
   function handleClose() {
     setShow(false);
   }
 
-  function checkFields() {
-    console.log("testing");
-  }
-
   //Open modal for new entry
-  //Clear all input values
   function addNewIncome() {
     setShow(true);
-    updatedState.incomeAndExpense.inputs.heading = "Add New Entry";
-    setOptions(updatedState);
 
-    if (options.incomeAndExpense.inputs.heading === "Add New Entry") {
-      updatedState.incomeAndExpense.inputs.name = "";
-      updatedState.incomeAndExpense.inputs.amount = "";
-      updatedState.incomeAndExpense.inputs.recurring = false;
-      setOptions(updatedState);
+    setState(
+      produce((state) => {
+        state.inputs.heading = "Add New Entry";
+      })
+    );
+
+    //Clear input fields
+    if (state.inputs.heading === "Add New Entry") {
+      setState(
+        produce((state) => {
+          state.inputs.name = "";
+          state.inputs.amount = "";
+          state.inputs.recurring = false;
+        })
+      );
     }
   }
 
   //Income table
-  let display = options.incomeAndExpense.incomeList.map((key, i) => (
+  const incomeSection = state.incomeList.map((key, i) => (
     <tr key={i}>
       <td>{i}</td>
       <td>{key.name}</td>
@@ -165,7 +152,7 @@ export default function Income(props) {
               <th></th>
             </tr>
           </thead>
-          <tbody>{display}</tbody>
+          <tbody>{incomeSection}</tbody>
         </Table>
         <Button variant="success" onClick={() => addNewIncome()}>
           Add new entry
@@ -190,7 +177,6 @@ export default function Income(props) {
 
       {/* New Entry Modal component */}
       <NewEntry
-        checkFields={checkFields}
         handleShow={() => setShow(true)}
         handleSave={() => handleSave()}
         handleClose={() => handleClose()}
