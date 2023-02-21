@@ -1,19 +1,19 @@
 import React, { useContext, useState } from "react";
-import { StateContext } from "../../../StateManager";
 import CSS from "./I&E.module.css";
+import { SharedState } from "./IEMain";
 
 export default function DisposableIncome() {
-  const value = useContext(StateContext);
+  const value = useContext(SharedState);
   //destructure main state
-  const [options, setOptions] = value;
-  let updatedState = options;
+  const [state, setState] = value;
+  let updatedState = state;
 
-  function handleSavings() {
-    console.log("saved");
-    updatedState.incomeAndExpense.inputs.heading = "savings";
-    setOptions(updatedState);
-    console.log(options.incomeAndExpense);
-  }
+  // function handleSavings() {
+  //   console.log("saved");
+  //   updatedState.incomeAndExpense.inputs.heading = "savings";
+  //   setState(updatedState);
+  //   console.log(state.incomeAndExpense);
+  // }
 
   return (
     <div className={CSS.box_container_DI}>
@@ -32,11 +32,11 @@ export default function DisposableIncome() {
             textAlign: "end",
           }}
         >
-          R{options.incomeAndExpense.disposableIncome}
+          R{state.incomeTotal - state.expenseTotal}
         </h5>
-        <button className={CSS.button} onClick={() => handleSavings()}>
+        {/* <button className={CSS.button} onClick={() => handleSavings()}>
           Add to savings
-        </button>
+        </button> */}
       </div>
     </div>
   );

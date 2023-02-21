@@ -54,18 +54,19 @@ export default function Main() {
       recurring: false,
       index: 0,
     },
+    expenseTotal: 0,
+    incomeTotal: 0,
   });
 
   return (
     <SharedState.Provider value={[state, setState]} className="App">
       <div className={CSS.EAndE_blocks}>
-        hello
         <Income />
-        {/* 
-      <Expense />
-      <Suspense fallback={<div class="lds-dual-ring"></div>}>
-        <DisposableIncome />
-      </Suspense> */}
+        <Expense />
+
+        <Suspense fallback={<div class="lds-dual-ring"></div>}>
+          <DisposableIncome />
+        </Suspense>
       </div>
     </SharedState.Provider>
   );

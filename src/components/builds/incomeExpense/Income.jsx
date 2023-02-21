@@ -20,24 +20,30 @@ export default function Income() {
   //Edit Selected entry
   function handleEdit(key, i) {
     setShow(true);
-    copyState.inputs.heading = "Edit Entry";
-    setState(copyState);
+    setState(
+      produce((state) => {
+        state.inputs.heading = "Edit Entry";
+      })
+    );
 
     //Fille inputs with selected entry values
     if (state.inputs.heading === "Edit Entry") {
-      copyState.inputs.name = key.name;
-      copyState.inputs.amount = key.amount;
-      copyState.inputs.recurring = key.recurring;
-      copyState.inputs.index = i;
-      setState(copyState);
+      setState(
+        produce((state) => {
+          state.inputs.name = key.name;
+          state.inputs.amount = key.amount;
+          state.inputs.recurring = key.recurring;
+          state.inputs.index = i;
+        })
+      );
     }
   }
 
   //Delete entry
-  function handleDelete(key) {
+  function handleDelete(key, i) {
     setState(
       produce((state) => {
-        state.inputs.incomeList.filter((item) => item !== key);
+        state.incomeList.splice(i, 1);
       })
     );
   }
@@ -73,7 +79,7 @@ export default function Income() {
       //update object at index with inputs
       setState(
         produce((state) => {
-          state.inputs.incomeList[i] = updatedEntry;
+          state.incomeList[i] = updatedEntry;
         })
       );
     }
@@ -86,6 +92,11 @@ export default function Income() {
     state.incomeList.forEach((el) => {
       setTotal((prev) => (prev += Number(el.amount)));
     });
+    setState(
+      produce((state) => {
+        state.incomeTotal = total;
+      })
+    );
   }, [state]);
 
   function handleClose() {
@@ -157,22 +168,24 @@ export default function Income() {
         <Button variant="success" onClick={() => addNewIncome()}>
           Add new entry
         </Button>
-        <h4
-          style={{
-            textAlign: "end",
-            margin: 0,
-          }}
-        >
-          Income Total
-        </h4>
-        <h5
-          style={{
-            textAlign: "end",
-            margin: 0,
-          }}
-        >
-          R{total}
-        </h5>
+        <div className={CSS.income_total}>
+          <p
+            style={{
+              textAlign: "end",
+              margin: 0,
+            }}
+          >
+            Total
+          </p>
+          <p
+            style={{
+              textAlign: "end",
+              margin: 0,
+            }}
+          >
+            <b> R{total}</b>
+          </p>
+        </div>
       </div>
 
       {/* New Entry Modal component */}

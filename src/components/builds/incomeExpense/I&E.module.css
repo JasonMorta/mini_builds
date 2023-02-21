@@ -27,12 +27,19 @@ td {
   left: 50% !important;
 }
 
-.EAndE_blocks {}
+.EAndE_blocks {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+}
 
 .box_container_DI {
   padding: 3px;
   margin-top: 0.95rem;
-
+height: fit-content;
   color: #000000d3;
   border-radius: 10px;
   box-shadow: 0 0px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -1px rgb(0 0 0 / 6%);
@@ -74,4 +81,8 @@ td {
 .button:hover {
   background-color: #4CAF50;
   color: white;
+}
+
+.both_total {
+  font-size: medium;
 }
