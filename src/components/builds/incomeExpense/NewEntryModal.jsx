@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { SharedState } from "./IEMain";
@@ -7,7 +7,7 @@ import Inputs from "./Inputs";
 export default function NewEntry(props) {
   const value = useContext(SharedState);
   //destructure main state
-  const [state, setState] = value;
+  const [state, ] = value;
 
   return (
     <>

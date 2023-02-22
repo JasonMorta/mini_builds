@@ -2,10 +2,9 @@ import produce from "immer";
 import React, { useContext } from "react";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import { StateContext } from "../../../StateManager";
 import { SharedState } from "./IEMain";
 
-export default function Inputs({ name, amount, recurring }) {
+export default function Inputs() {
   const value = useContext(SharedState);
   //destructure main state
   const [state, setState] = value;

@@ -6,8 +6,8 @@ import { SharedState } from "./IEMain";
 export default function DisposableIncome() {
   const value = useContext(SharedState);
   //destructure main state
-  const [state,setState ] = value;
-  const [test, setTest] = useState('Disposable income')
+  const [state, ] = value;
+  const [test, ] = useState('Disposable income')
 
 
   return (

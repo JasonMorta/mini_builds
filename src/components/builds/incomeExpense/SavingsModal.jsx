@@ -1,5 +1,5 @@
 import produce from 'immer';
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
@@ -10,17 +10,12 @@ export default function SavingsModal(props) {
     const value = useContext(SharedState);
     const [state, setState] = value;
 
-
-    function saveInput(e){
-   
-   
-       setState(
-           produce((state) => {
-             state.inputs.savings = Number(e.target.value);
-            
-           })
-         );
-     
+    function saveInput(e) {
+      setState(
+        produce((state) => {
+          state.inputs.savings = Number(e.target.value);
+        })
+      );
     }
 
 

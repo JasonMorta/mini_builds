@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import { StateContext } from "../../../StateManager";
+import React, { useContext, useState } from "react";
 import { SharedState } from "./IEMain";
 import Button from 'react-bootstrap/Button';
 import CSS from "./Savings.module.css";

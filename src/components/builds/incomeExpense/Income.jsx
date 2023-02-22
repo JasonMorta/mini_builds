@@ -11,7 +11,6 @@ export default function Income() {
   //destructure main state
   const [state, setState] = value;
 
-  let copyState = state;
   const [show, setShow] = useState(false);
   //const [reload, setReload] = useState(true);
   const [total, setTotal] = useState(0);

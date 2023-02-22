@@ -6,7 +6,6 @@ import Income from "./Income";
 import CSS from "./I&E.module.css";
 import { Suspense, lazy } from "react";
 import Savings from "./Savings";
-import produce from "immer";
 
 const DisposableIncome = lazy(() => import("./DisposableIncome.jsx"));
 
