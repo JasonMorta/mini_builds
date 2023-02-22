@@ -19,24 +19,18 @@ export default function Income() {
 
   //Edit Selected entry
   function handleEdit(key, i) {
-    setShow(true);
     setState(
       produce((state) => {
         state.inputs.heading = "Edit Entry";
+
+        //Fille inputs with selected entry values
+        state.inputs.name = key.name;
+        state.inputs.amount = key.amount;
+        state.inputs.recurring = key.recurring;
+        state.inputs.index = i;
       })
     );
-
-    //Fille inputs with selected entry values
-    if (state.inputs.heading === "Edit Entry") {
-      setState(
-        produce((state) => {
-          state.inputs.name = key.name;
-          state.inputs.amount = key.amount;
-          state.inputs.recurring = key.recurring;
-          state.inputs.index = i;
-        })
-      );
-    }
+    setShow(true);
   }
 
   //Delete entry
@@ -66,6 +60,7 @@ export default function Income() {
         })
       );
       setShow(false); //close modal
+      clearInputs()
     } else if (state.inputs.heading === "Edit Entry") {
       //Updated the selected entry
       //get the current index
@@ -83,24 +78,28 @@ export default function Income() {
         })
       );
     }
+    clearInputs()
     setShow(false);
   }
 
   //calculate the income total
   useEffect(() => {
     setTotal(0);
+
     state.incomeList.forEach((el) => {
       setTotal((prev) => (prev += Number(el.amount)));
     });
+    
     setState(
       produce((state) => {
         state.incomeTotal = total;
       })
     );
-  }, [state]);
+  }, [state, setState, total,]);
 
   function handleClose() {
     setShow(false);
+    clearInputs()
   }
 
   //Open modal for new entry
@@ -112,17 +111,18 @@ export default function Income() {
         state.inputs.heading = "Add New Entry";
       })
     );
+  }
 
-    //Clear input fields
-    if (state.inputs.heading === "Add New Entry") {
-      setState(
-        produce((state) => {
-          state.inputs.name = "";
-          state.inputs.amount = "";
-          state.inputs.recurring = false;
-        })
-      );
-    }
+  //Clear modal heading and input values
+  function clearInputs() {
+    setState(
+      produce((state) => {
+        state.inputs.heading = "";
+        state.inputs.name = "";
+        state.inputs.amount = "";
+        state.inputs.recurring = false;
+      })
+    );
   }
 
   //Income table

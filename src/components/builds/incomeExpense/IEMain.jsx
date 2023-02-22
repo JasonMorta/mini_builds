@@ -1,10 +1,12 @@
 //Income and Expense calculation
 
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import Expense from "./Expense";
 import Income from "./Income";
 import CSS from "./I&E.module.css";
 import { Suspense, lazy } from "react";
+import Savings from "./Savings";
+import produce from "immer";
 
 const DisposableIncome = lazy(() => import("./DisposableIncome.jsx"));
 
@@ -53,21 +55,30 @@ export default function Main() {
       amount: "",
       recurring: false,
       index: 0,
+      savings: 0
     },
     expenseTotal: 0,
     incomeTotal: 0,
+    savings: 0,
+    disposableIncome: 0
+    
   });
+
+
 
   return (
     <SharedState.Provider value={[state, setState]} className="App">
-      <div className={CSS.EAndE_blocks}>
+      <div className={CSS.IAndE_blocks}>
         <Income />
         <Expense />
-
-        <Suspense fallback={<div class="lds-dual-ring"></div>}>
-          <DisposableIncome />
+       <Suspense fallback={<div className="lds-dual-ring"></div>}>
+        <aside>
+            <DisposableIncome />
+        </aside>
         </Suspense>
+        <Savings />
       </div>
+      
     </SharedState.Provider>
   );
 }

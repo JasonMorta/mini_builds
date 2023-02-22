@@ -27,13 +27,24 @@ td {
   left: 50% !important;
 }
 
-.EAndE_blocks {
+.IAndE_blocks {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: center;
   gap: 10px;
+}
+
+.IAndE_blocks aside{
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+  
+}
+
+.IAndE_blocks h1 {
+  color: #6c757d;
 }
 
 .box_container_DI {

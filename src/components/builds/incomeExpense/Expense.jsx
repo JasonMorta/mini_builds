@@ -18,8 +18,6 @@ export default function Expense() {
 
   //Edit Selected entry
   function handleEdit(key, i) {
-    console.log(key);
-   
     setState(
       produce((state) => {
         state.inputs.heading = "Edit Entry";
