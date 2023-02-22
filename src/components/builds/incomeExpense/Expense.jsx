@@ -18,25 +18,22 @@ export default function Expense() {
 
   //Edit Selected entry
   function handleEdit(key, i) {
-    console.log(state);
-    setShow(true);
+    console.log(key);
+   
     setState(
       produce((state) => {
         state.inputs.heading = "Edit Entry";
-      })
-    );
-
+        
     //Fille inputs with selected entry values
-    if (state.inputs.heading === "Edit Entry") {
-      setState(
-        produce((state) => {
           state.inputs.name = key.name;
           state.inputs.amount = key.amount;
           state.inputs.recurring = key.recurring;
           state.inputs.index = i;
-        })
-      );
-    }
+      })
+    );
+
+ 
+    setShow(true);
   }
 
   //Delete entry
@@ -66,6 +63,7 @@ export default function Expense() {
         })
       );
       setShow(false); //close modal
+      clearInputs()
     } else if (state.inputs.heading === "Edit Entry") {
       //Updated the selected entry
       //get the current index
@@ -84,6 +82,7 @@ export default function Expense() {
       );
     }
     setShow(false);
+    clearInputs()
   }
 
   //calculate the expense total
@@ -97,12 +96,15 @@ export default function Expense() {
     setState(
       produce((state) => {
         state.expenseTotal = total;
+        
       })
     );
-  }, [state]);
+  }, [state, setState, total]);
 
+  //Close modal
   function handleClose() {
     setShow(false);
+    clearInputs()
   }
 
   //Open modal for new entry
@@ -114,18 +116,19 @@ export default function Expense() {
         state.inputs.heading = "Add New Entry";
       })
     );
+  }
 
-    //Clear input fields
-    if (state.inputs.heading === "Add New Entry") {
+    //Clear modal heading and input values
+    function clearInputs() {
       setState(
         produce((state) => {
+          state.inputs.heading = "";
           state.inputs.name = "";
           state.inputs.amount = "";
           state.inputs.recurring = false;
         })
       );
     }
-  }
 
   //expense table
   const expenseSection = state.expenseList.map((key, i) => (
