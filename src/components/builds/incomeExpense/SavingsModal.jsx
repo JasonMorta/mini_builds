@@ -18,6 +18,13 @@ export default function SavingsModal(props) {
       );
     }
 
+    const labelStyle = {
+      width: "100%",
+      display: "flex",
+      justifyContent: "space-between",
+      flexDirection: "row"
+    }
+
 
     return (
         <Modal
@@ -29,7 +36,8 @@ export default function SavingsModal(props) {
         >
           <Modal.Body >
             <h4>Add to savings</h4>
-            <Form.Label>Amount to save from R{state.incomeTotal - state.expenseTotal}</Form.Label>
+            <Form.Label style={labelStyle}>Amount to save from: R{(state.incomeTotal - state.expenseTotal) - state.savings}
+             <b>Current Savings: R{state.savings}</b></Form.Label>
               <Form.Control
                 type="number"
                 placeholder="R"

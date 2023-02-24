@@ -26,7 +26,7 @@ motion.div {
   overflow: auto;
   max-width: 1105px;
   margin-left: initial;
-  border-right: 0.2rem solid #ececec;
+  border-radius: 0px;
   background-color: #ffffff;
   padding: 10px;
   display: flex;
@@ -34,10 +34,73 @@ motion.div {
   justify-content: flex-start;
   flex-direction: column;
   flex-wrap: wrap;
+  box-shadow: 2px 2px 9px #000000bf;
+  z-index: 5;
 }
 
 p {
   color: #403814;
+}
+
+.layers {
+  width: 100%;
+}
+
+.layer-1 {
+  background-color: #D26AA5;
+  max-width: 1120px;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: 4;
+  left: 225px;
+  bottom: -20px;
+  box-shadow: 2px 2px 9px #000000bf;
+}
+.layer-2 {
+  background-color: #C92F77;
+  max-width:1135px ;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: 3;
+  left: 225px;
+  bottom: -40px;
+  box-shadow: 2px 2px 9px #000000bf;
+}
+.layer-3 {
+  background-color: #5F2D74;
+  max-width: 1150px;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: 2;
+  left: 225px;
+  bottom: -60px;
+  box-shadow: 2px 2px 9px #000000bf;
+
+}
+.layer-4 {
+  background-color:#3D228D ;
+  max-width: 1165px;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: 2;
+  left: 225px;
+  bottom: -80px;
+  box-shadow: 2px 2px 9px #000000bf;
+}
+.layer-5 {
+  background-color: #1A044D;
+  max-width: 1180px;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  left: 225px;
+  bottom: -100px;
+  box-shadow: 2px 2px 9px #000000bf;
 }
 
 
