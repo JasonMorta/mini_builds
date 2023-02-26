@@ -106,8 +106,6 @@ function StateManager() {
     ],
     activeCat: "none",
     score: 0,
-    pokemonName: "mewtwo-mega-y",
-    pokeData: {},
     //Page animations
     motion: {
       initial: { opacity: 0, width: "100%" },
@@ -144,12 +142,6 @@ function StateManager() {
               <div className="layers layer-3"></div>
                 <div className="layers layer-2">   </div>
                   <div className="layers layer-1" ></div> 
-                  
-                  
-             
-              
-            
-         
         </Router>
       </StateContext.Provider>
     </>
