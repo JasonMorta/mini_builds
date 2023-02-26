@@ -4,21 +4,44 @@ import React, { useContext } from 'react'
 import { useState, useEffect } from 'react'
 import { Button, Form, InputGroup } from 'react-bootstrap'
 import { StateContext } from '../../../StateManager';
-import Skeleton from '@mui/material/Skeleton';
 import'./cardStyle.css'
 import './poke.css'
+import CardSkeleton from './CardSkeleton';
+import styled from "styled-components";
 
 export default function MonsterCard(props) {
 
     const value = useContext(StateContext);
     const [state, setState] = value;
-
-
     const [inputVal, setInputVal] = useState("")
     const [update, setUpdate] = useState(false)
     const [moreNames, setMoreNames] = useState({})
     const [pokeData, setPokeData] = useState({})
     const [nameManipulate, setNameManipulate] = useState()
+
+    const PI = styled.div`
+
+    border: 1px solid black;
+
+    &::before {
+      content: "Type: ${pokeData.name ? pokeData.types[0].type.name : "" }";
+      position: absolute;
+      font-weight: 600;
+      right: 65px;
+      top: -10px;
+      background-color: #ebebeb;
+    }
+    &::after {
+      content: "Full name: ${pokeData.name ? pokeData.name : "Hello "}";
+      position: absolute;
+      font-weight: 600;
+      left: 0px;
+      border-radius: 3px;
+      top: -10px;
+      background-color: #ebebeb;
+    }
+ 
+    `
 
 
 //get pokemon names
@@ -66,8 +89,10 @@ useEffect(() => {
         try {
         const response = await fetch('https://pokeapi.co/api/v2/pokemon/'+state.pokemonName.toLowerCase());
         const results = await response.json();
-        setPokeData(results)
+        setTimeout(() => {
+          setPokeData(results)
         console.log('results', results)
+        }, 1000);
       } catch (error){
         console.log("error", error);
       }
@@ -112,7 +137,7 @@ useEffect(() => {
     setUpdate(prev => !prev)
     }
 
-
+ 
   return (
     <div className="pokemonAPI">
       <h4>Search for pokemon</h4>
@@ -142,14 +167,14 @@ useEffect(() => {
         {pokeData.name ? (
           <>
             <div className="pokeCard-container">
-            <p className="poki-name">{pokeData.name.toUpperCase()}{pokeData.types[0].type.name}</p>
+            <p className="poki-name">{pokeData.species.name.toUpperCase()}</p>
               <img
-                className="bounce-in-fwd pokeImage"
+                className="fade-in-top pokeImage"
                 src={pokeData.sprites.other["official-artwork"].front_default}
                 alt={pokeData.name + " image"}
               />
 
-              <div className="pokemon-info">
+              <PI className="pokemon-info">
                 <p style={{ width: "100%" }}>#{pokeData.id}</p>
                
                 <div className="abilities">
@@ -161,29 +186,16 @@ useEffect(() => {
                 </div>
 
                 <div className="pokemon-info2">
-                  <p>HP: {pokeData.stats[0].base_stat}</p>
-                  <p>Height: {(pokeData.height * 0.1).toFixed(1)}m</p>
-                  <p>Wight: {(pokeData.weight * 0.1).toFixed(1)}kg</p>
+                  <p>HP: <b>{pokeData.stats[0].base_stat}</b></p>
+                  <p>Height: <b>{(pokeData.height * 0.1).toFixed(1)}m</b></p>
+                  <p>Wight: <b>{(pokeData.weight * 0.1).toFixed(1)}kg</b></p>
                 </div>
-              </div>
+            
+            </PI>
             </div>
           </>
         ) : (
-          <div className="pokeCard-container">
-            <Skeleton
-              variant="h3"
-              width="100%"
-              height="50px"
-              style={{ margin: "10px 0px 10px" }}
-            />
-            <Skeleton
-              variant="rectangular"
-              width="100%"
-              height="300px"
-              style={{ margin: "10px 0px 10px" }}
-            ></Skeleton>
-            <div className="pokemon-info"></div>
-          </div>
+          <CardSkeleton />
         )}
         <div className="moreNames">
           <h3>Select a Pokemon</h3>
@@ -200,6 +212,7 @@ useEffect(() => {
                   <li
                     key={index}
                     onClick={(e) => {
+                      pokeData.name = undefined
                       console.log(e.target.innerText);
                       setState((prev) => ({
                         ...prev,

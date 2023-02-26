@@ -36,13 +36,7 @@
         position: relative;
 }
 
-.pokemon-info::before {
-        content: "Type";
-        position: absolute;
-        right: 100px;
-        top: -10px;
-        background-color: #ebebeb;
-}
+
 
 .pokemon-info p:not(.poki-name) {
         width: max-content;
@@ -68,9 +62,9 @@
         font-size: smaller;
         width: 100%;
         position: relative;
-        border: 1px solid black;
-    padding: 10px;
-    border-radius: 3px;
+        border-top: 1px solid #6c757d;
+        border-bottom: 1px solid #6c757d;
+        padding: 10px;
 }
 
 .abilities::before {
@@ -95,7 +89,8 @@ background-color: #ebebeb;
 .pokeCard-container>img {
         border-radius: 5px;
         filter: drop-shadow(2px 4px 6px black);
-    z-index: 2;
+        z-index: 2;
+        height: 475px;
         margin: 40px 0px 10px 0px;
         transition: .3s;
 }
@@ -177,127 +172,33 @@ image entrance animation
 ========================
 */
 
-.bounce-in-fwd {
-        -webkit-animation: bounce-in-fwd 1.1s both;
-        animation: bounce-in-fwd 1.1s both;
+.fade-in-top {
+      -webkit-animation: fade-in-top 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in-top 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
-@-webkit-keyframes bounce-in-fwd {
+@-webkit-keyframes fade-in-top {
         0% {
-                -webkit-transform: scale(0);
-                transform: scale(0);
-                -webkit-animation-timing-function: ease-in;
-                animation-timing-function: ease-in;
-                opacity: 0;
+          -webkit-transform: translateY(-50px);
+                  transform: translateY(-50px);
+          opacity: 0;
         }
-
-        38% {
-                -webkit-transform: scale(1);
-                transform: scale(1);
-                -webkit-animation-timing-function: ease-out;
-                animation-timing-function: ease-out;
-                opacity: 1;
-        }
-
-        55% {
-                -webkit-transform: scale(0.7);
-                transform: scale(0.7);
-                -webkit-animation-timing-function: ease-in;
-                animation-timing-function: ease-in;
-        }
-
-        72% {
-                -webkit-transform: scale(1);
-                transform: scale(1);
-                -webkit-animation-timing-function: ease-out;
-                animation-timing-function: ease-out;
-        }
-
-        81% {
-                -webkit-transform: scale(0.84);
-                transform: scale(0.84);
-                -webkit-animation-timing-function: ease-in;
-                animation-timing-function: ease-in;
-        }
-
-        89% {
-                -webkit-transform: scale(1);
-                transform: scale(1);
-                -webkit-animation-timing-function: ease-out;
-                animation-timing-function: ease-out;
-        }
-
-        95% {
-                -webkit-transform: scale(0.95);
-                transform: scale(0.95);
-                -webkit-animation-timing-function: ease-in;
-                animation-timing-function: ease-in;
-        }
-
         100% {
-                -webkit-transform: scale(1);
-                transform: scale(1);
-                -webkit-animation-timing-function: ease-out;
-                animation-timing-function: ease-out;
+          -webkit-transform: translateY(0);
+                  transform: translateY(0);
+          opacity: 1;
         }
-}
-
-@keyframes bounce-in-fwd {
+      }
+      @keyframes fade-in-top {
         0% {
-                -webkit-transform: scale(0);
-                transform: scale(0);
-                -webkit-animation-timing-function: ease-in;
-                animation-timing-function: ease-in;
-                opacity: 0;
+          -webkit-transform: translateY(-50px);
+                  transform: translateY(-50px);
+          opacity: 0;
         }
-
-        38% {
-                -webkit-transform: scale(1);
-                transform: scale(1);
-                -webkit-animation-timing-function: ease-out;
-                animation-timing-function: ease-out;
-                opacity: 1;
-        }
-
-        55% {
-                -webkit-transform: scale(0.7);
-                transform: scale(0.7);
-                -webkit-animation-timing-function: ease-in;
-                animation-timing-function: ease-in;
-        }
-
-        72% {
-                -webkit-transform: scale(1);
-                transform: scale(1);
-                -webkit-animation-timing-function: ease-out;
-                animation-timing-function: ease-out;
-        }
-
-        81% {
-                -webkit-transform: scale(0.84);
-                transform: scale(0.84);
-                -webkit-animation-timing-function: ease-in;
-                animation-timing-function: ease-in;
-        }
-
-        89% {
-                -webkit-transform: scale(1);
-                transform: scale(1);
-                -webkit-animation-timing-function: ease-out;
-                animation-timing-function: ease-out;
-        }
-
-        95% {
-                -webkit-transform: scale(0.95);
-                transform: scale(0.95);
-                -webkit-animation-timing-function: ease-in;
-                animation-timing-function: ease-in;
-        }
-
         100% {
-                -webkit-transform: scale(1);
-                transform: scale(1);
-                -webkit-animation-timing-function: ease-out;
-                animation-timing-function: ease-out;
+          -webkit-transform: translateY(0);
+                  transform: translateY(0);
+          opacity: 1;
         }
-}
+      }
+      
