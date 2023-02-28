@@ -8,6 +8,7 @@ import'./cardStyle.css'
 import './poke.css'
 import CardSkeleton from './CardSkeleton';
 import styled from "styled-components";
+import Filter from './Filter';
 
 export default function MonsterCard(props) {
 
@@ -91,8 +92,8 @@ useEffect(() => {
         const results = await response.json();
         setTimeout(() => {
           setPokeData(results)
-        console.log('results', results)
-        }, 1000);
+          console.log('results', results)
+        }, 1500);
       } catch (error){
         console.log("error", error);
       }
@@ -246,6 +247,7 @@ useEffect(() => {
             >
               Sort Z-A
             </button>
+            <Filter />
           </div>
         </div>
       </div>

@@ -17,6 +17,7 @@ import { AnimatePresence } from "framer-motion";
 import PassGen from "./components/builds/passwordGen/PassGen";
 import IEMain from "./components/builds/incomeExpense/IEMain";
 import CatAPI from "./components/builds/catAPI/CatAPI";
+import PokeState from "./components/builds/pokemonAPI/PokeState";
 
 export default function AnimatedRoutes() {
   const location = useLocation();
@@ -32,7 +33,7 @@ export default function AnimatedRoutes() {
         <Route index path="/tiles" element={<Tile />} />
         <Route index path="/flip" element={<FlipsMain />} />
         <Route index path="/expand" element={<Expand />} />
-        <Route index path="/pokemon" element={<Pokerball />} />
+        <Route index path="/pokemon" element={<PokeState />} />
         {/* <Route index path="/setUrl" element={<SetUrl />} /> */}
         <Route index path="/passGen" element={<PassGen />} />
         <Route index path="/IOP" element={<IntersectionOP />} />
