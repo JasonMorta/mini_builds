@@ -6,39 +6,14 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import produce from 'immer';
 import CSS from './NameList.module.css'
+import AllNames from './NameList/PokeNameList.jsx'
 
 export default function NamesList() {
 
     const value = useContext(PokeStateContext);
     const [state, setState] = value;
 
-    //Get all pokemon names as add to state
-    useEffect(() => {
-        fetch('https://pokeapi.co/api/v2/pokemon?limit=10000&offset=0')
-          .then(response => response.json())
-          .then(data =>   {
 
-              setState(
-                  produce((state) => {
-                    state.namesList = data.results;
-                  })
-                );
-      
-            // const allNames = produce(state, draftSate => {
-              
-            //     data.results.forEach(({ name }) => {
-            //         draftSate.namesList.push(name);
-            //     });
-            //   });
-
-            console.log(state);
-   
-        }
-              );
-             
-
-
-    }, [])
 
 
     
@@ -56,7 +31,7 @@ export default function NamesList() {
             
             }
            
-                
+     
           
     </div>
   )
