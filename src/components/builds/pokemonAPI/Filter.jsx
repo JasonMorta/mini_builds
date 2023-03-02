@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 export default function Filter(props) {
 
-  const [types, setTypes] = useState(second)
+  const [types, setTypes] = useState()
 
 const pokemonType = "fire";
 

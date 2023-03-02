@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react'
+import Main from './Main';
 import Pokerball from './Pokerball';
 
 
@@ -9,7 +10,18 @@ export default function PokeState() {
 
     const [pokeState, setPokeState] = useState({
         pokemonName: "mewtwo-mega-y",
-        pokeData: {},
+        pokemonImage: "",
+        searchInput: "pikachu-alola-cap",
+        namesList:[],
+        filters:["!A-Z", "!Weight", "!Height", "!Health"],
+        type:["Normal","fighting","flying","poison","ground","rock","bug","ghost","steel","fire","water","grass","electric","psychic","ice","dragon","dark","fairy","unknown","shadow"],
+        stats: {
+          name:"",
+          abilities: [],
+          hp: "",
+          height: "",
+          weight: ""
+        },
     })
 
 
@@ -17,6 +29,7 @@ export default function PokeState() {
   return (
     <PokeStateContext.Provider value={[pokeState, setPokeState]} >
         <Pokerball />
+        <Main />
     </PokeStateContext.Provider>
   )
 }

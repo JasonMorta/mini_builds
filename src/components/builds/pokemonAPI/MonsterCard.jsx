@@ -14,6 +14,8 @@ export default function MonsterCard(props) {
 
     const value = useContext(StateContext);
     const [state, setState] = value;
+
+    
     const [inputVal, setInputVal] = useState("")
     const [update, setUpdate] = useState(false)
     const [moreNames, setMoreNames] = useState({})

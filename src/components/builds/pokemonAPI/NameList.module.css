@@ -1,0 +1,21 @@
+.names_list {
+    width: 441px;
+    height: 170px;
+    box-shadow: grey 3px 3px 3px;
+    overflow: auto;
+}
+
+.names_list p{
+    margin: 0px;
+    margin: 0px;
+    text-align: justify;
+    padding-left: 10px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.names_list p:hover{
+background-color: white;
+}
