@@ -13,6 +13,7 @@ export default function PokeState() {
         pokemonImage: "",
         searchInput: "pikachu-alola-cap",
         namesList:[],
+        selectedName: "",
         filters:["!A-Z", "!Weight", "!Height", "!Health"],
         type:["Normal","fighting","flying","poison","ground","rock","bug","ghost","steel","fire","water","grass","electric","psychic","ice","dragon","dark","fairy","unknown","shadow"],
         stats: {

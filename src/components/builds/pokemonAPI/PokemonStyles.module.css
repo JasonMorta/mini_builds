@@ -1,7 +1,28 @@
 /* Main body styles */
 
 .main {
+    display: flex;
     width: 1000px;
     height: 100vh;
-    background-color: silver;
+    border: 1px solid darkblue;
+    gap: 5px;
+    background-color: antiquewhite;
+}
+
+.section1 {
+    background-color: #cddc39;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.section2 {
+    background-color: #ffc107;   
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
