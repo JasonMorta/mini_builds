@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-import NamesList from './NamesList'
+import NamesList from './components/NamesList'
 import CSS from "./PokemonStyles.module.css"
 import { PokeStateContext } from './PokeState';
 import SearchField from './SearchField';

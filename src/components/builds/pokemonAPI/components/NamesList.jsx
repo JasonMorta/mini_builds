@@ -1,12 +1,9 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import { StateContext } from '../../../StateManager';
-import { PokeStateContext } from './PokeState';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import produce from 'immer';
+import { StateContext } from '../../../../StateManager';
+import { PokeStateContext } from '../PokeState';
+
 import CSS from './NameList.module.css'
-import GetNamesList from './GetNamesList';
+import GetNamesList from '../GetNamesList';
 import TextField from '@mui/material/TextField';
 
 export default function NamesList() {
