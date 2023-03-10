@@ -9,11 +9,11 @@ export const PokeStateContext = createContext();
 export default function PokeState() {
 
     const [pokeState, setPokeState] = useState({
-        pokemonName: "mewtwo-mega-y",
+        pokemonName: "pikachu",
         pokemonObject: null,
-        searchInput: "pikachu-alola-cap",
+        searchInput: null,
         namesList:[],
-        selectedName: null,
+        selectedName: "pikachu",
         filters:["!A-Z", "!Weight", "!Height", "!Health"],
         type:["Normal","fighting","flying","poison","ground","rock","bug","ghost","steel","fire","water","grass","electric","psychic","ice","dragon","dark","fairy","unknown","shadow"],
         stats: {
@@ -29,7 +29,6 @@ export default function PokeState() {
     
   return (
     <PokeStateContext.Provider value={[pokeState, setPokeState]} >
-        {/* <Pokerball /> */}
         <Main />
     </PokeStateContext.Provider>
   )

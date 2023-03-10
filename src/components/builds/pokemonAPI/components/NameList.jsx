@@ -34,7 +34,6 @@ export default function NameList() {
       
       function handleKey(e) {
         //setSelectedName()
-       
         if (e.key ==="Enter") {
         //Get the pokemon data
         setState(
@@ -42,17 +41,43 @@ export default function NameList() {
             state.selectedName = e.target.value;
           })
         );
+        //console.log(`%c ${e.target.value}`, 'color: #2196f3')
         }
-        console.log(`%c${e.target.value}`, 'color: blue');
       }
 
- console.count('NameList component')
+
+//Custom console.log CSS
+ let logCss = `
+ background-color: white; 
+ font-size: 13px; 
+ color: black;
+ `
 
 
- //prevent unnesasry rerederning of the names list
- const memoizedNamesList = React.useMemo(() => state.namesList, [state.namesList]);
+ //prevent unnecessary rerendering of the names list
+ const memorizedNamesList = React.useMemo(()=> {
+
+  return state.namesList.map((name, i) => (
+    <>
+      <ListItem key={i}
+        sx={{ padding: "0px" }}
+        onClick={()=> handleName(name.name)}>
+        <ListItemButton>
+          <ListItemIcon>
+            <h4>⭐</h4>
+          </ListItemIcon>
+          <ListItemText primary={name.name} />
+        </ListItemButton>
+      </ListItem>
+    </>
+  ))
+
+ }, [state.namesList])
 
 
+
+ //logs for this component
+ console.log(`%c Got all names: `, logCss)
   return (
     <>
            <section className={CSS.searchBar_section} style={{margin: "10px"}} >
@@ -68,9 +93,9 @@ export default function NameList() {
             size="medium"
         /><ManageSearchRoundedIcon className={CSS.searchSVG}/>
     </section>
-    <h2 style={{ width: "100%", textAlign: "initial", marginLeft: "10%" }}>
-          Choose name
-        </h2>
+      <h2 className={CSS.pokemonName}>
+            {state.selectedName.charAt(0).toUpperCase() + state.selectedName.slice(1)}
+      </h2>
     <div className={CSS.names_list}>
       {state.namesList.length === 0 ? (
         <GetNamesList />
@@ -84,21 +109,7 @@ export default function NameList() {
           }}
           aria-label="contacts"
         >
-          {memoizedNamesList.map((name, i) => (
-            <>
-            {console.count('allNames')}
-              <ListItem 
-                sx={{ padding: "0px" }}
-                onClick={()=> handleName(name.name)}>
-                <ListItemButton>
-                  <ListItemIcon>
-                    <h4>⭐</h4>
-                  </ListItemIcon>
-                  <ListItemText primary={name.name} />
-                </ListItemButton>
-              </ListItem>
-            </>
-          ))}
+          {memorizedNamesList}
         </List>
       )}
       </div>

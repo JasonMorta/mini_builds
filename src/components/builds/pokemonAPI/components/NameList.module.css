@@ -1,5 +1,11 @@
+
+@font-face {
+    font-family: pokeFont;
+    src: url(../fonts/Ketchum.otf);
+  }
+
 .names_list {
-    width: 441px;
+    width: 335px;
     height: 170px;
     box-shadow: #0000002e 1px 1px 3px;
     overflow: auto;
@@ -52,4 +58,15 @@
 
 .searchSVG:active {
     transform: translate(0px, -50%) scale(1.1);  
+}
+
+
+.pokemonName {
+    width: 100%;
+    text-align: initial;
+    margin-left: 10%;
+    color: #fac832;
+    -webkit-text-stroke: 3px #2062ac;
+    font-family: pokeFont;
+    font-size: 7vw;
 }

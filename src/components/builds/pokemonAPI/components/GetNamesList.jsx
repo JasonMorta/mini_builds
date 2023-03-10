@@ -12,19 +12,29 @@ export default function GetNamesList() {
     useEffect(() => {
       async function fetchData() {
         console.time("myFunction");
-        await fetch("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0")
+        await fetch("https://pokeapi.co/api/v2/pokemon?limit=10000&offset=0")
           .then((response) => response.json())
           .then((data) => {
             //use data here
             setState(
               produce((state) => {
-                state.namesList = data.results;
+                state.namesList = data.results
+                              
               })
             );
             console.log("state: ", state);
           })
           .catch((error) => console.error(error));
       }
+
+      //setT the default pokemon name
+        setState(
+            produce((state) => {
+              state.pokemonName = state.selectedName
+            })
+          );
+
+
       fetchData();
       console.log(`%cGot all the name`, `color: pink`)
       console.timeEnd("myFunction");

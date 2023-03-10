@@ -1,37 +1,76 @@
 import produce from 'immer';
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { PokeStateContext } from '../PokeState';
+import CSS from './ImageLayout.module.css'
+import noImage from './images/placeholder65.png'
 
 export default function PokemonImage() {
 
     const value = useContext(PokeStateContext);
-    const [state, setState] = value;
+    const [pokeState, setPokeState] = value;
+
+    const [loadImages, setLoadImages] = useState()
 
 
     useEffect(() => {
         //Get all pokemon image
+        console.log(`%c ${pokeState.selectedName}`, 'color: orange')
       async function fetchData() {
-        await fetch("https://pokeapi.co/api/v2/pokemon/"+state.selectedName)
+        await fetch("https://pokeapi.co/api/v2/pokemon/"+pokeState.selectedName)
           .then((response) => response.json())
-          .then((data) => {
+          .then(async(  data) => {
             //use data here
-              setState(
-                  produce((state) => {
-                    state.pokemonObject = data;
+            await setPokeState(
+                  produce((pokeState) => {
+                    pokeState.pokemonObject = data;
+                    pokeState.inputName = pokeState.pokemonObject.species.name
                   })
                 );
-                console.log('%cFetched Pokemon Object', 'color: green')
           })
-          .catch((error) => console.error(error));
+          .catch((error) => {
+            console.error(error)
+            console.log('%c ⚠ Pokemon not found ⚠ ', 'background-color: #dc3545')
+            setPokeState(
+              produce((pokeState) => {
+                pokeState.pokemonObject = 'Pokemon not found';
+              })
+            );
+
+            console.log('state: ',pokeState.pokemonObject)
+          });
       }
       fetchData()
+      }, [pokeState.selectedName])
 
-      }, [state.selectedName])
+
+
+      console.log('state.pokemonObject: ',pokeState.pokemonObject)
+
+
+
+
+
 
   return (
-    <div>
+    <div className={CSS.images}>
+        {pokeState.pokemonObject !== null ? 
+        <>
+        <img className={CSS.mainImage} src={pokeState.pokemonObject.sprites.other["official-artwork"].front_default} alt={pokeState.selectedName} />
+        <div className={CSS.sprites}>
+          <img src={pokeState.pokemonObject.sprites.front_default} alt={pokeState.selectedName} />
+          <img src={pokeState.pokemonObject.sprites.front_shiny} alt={pokeState.selectedName} />
+          <img src={pokeState.pokemonObject.sprites.back_default} alt={pokeState.selectedName} />
+          <img src={pokeState.pokemonObject.sprites.front_female} alt={pokeState.selectedName} />
+          <img src={pokeState.pokemonObject.sprites.back_female} alt={pokeState.selectedName} />
+          <img src={pokeState.pokemonObject.sprites.back_shiny} alt={pokeState.selectedName} />
+        </div>
         
-
+        </> 
+        : 
+        <img src={noImage} alt="poke" />}
+                       
+                 
+              
     </div>
   )
 }

@@ -9,7 +9,7 @@ import PokemonImage from './components/PokemonImage';
 export default function Main() {
 
   const value = useContext(PokeStateContext);
-    const [state, setState] = value;
+  const [state, setState] = value;
 
 
 
