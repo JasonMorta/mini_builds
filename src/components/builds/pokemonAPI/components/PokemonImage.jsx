@@ -2,7 +2,7 @@ import produce from 'immer';
 import React, { useContext, useEffect, useState } from 'react'
 import { PokeStateContext } from '../PokeState';
 import CSS from './ImageLayout.module.css'
-import noImage from './images/placeholder65.png'
+import Skeleton from '@mui/material/Skeleton';
 
 export default function PokemonImage() {
 
@@ -67,7 +67,16 @@ export default function PokemonImage() {
         
         </> 
         : 
-        <img src={noImage} alt="poke" />}
+        <div >
+          <Skeleton
+          variant="rectangular"
+          width="470px"
+          height="475px"
+          style={{ margin: "10px 0px 10px" }}
+        ></Skeleton>
+        </div>
+      
+      }
                        
                  
               

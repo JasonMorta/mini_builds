@@ -21,7 +21,9 @@ export default function NameList() {
 
 
 
-    function handleName(name) {
+    function handleName(e, name) {
+      e.target.style.fontWeight = "700"
+      
         setSelectedName(name)
           setState(
               produce((state) => {
@@ -61,8 +63,8 @@ export default function NameList() {
     <>
       <ListItem key={i}
         sx={{ padding: "0px" }}
-        onClick={()=> handleName(name.name)}>
-        <ListItemButton>
+        onClick={(e)=> handleName(e, name.name)}>
+        <ListItemButton sx={{padding: "0px 5px"}}>
           <ListItemIcon>
             <h4>⭐</h4>
           </ListItemIcon>
