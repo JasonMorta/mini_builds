@@ -63,7 +63,7 @@ useEffect(() => {
         console.log("error", error);
       }
     };
-    fetchData()
+    //fetchData()
   };
 
   getPokemonNames()

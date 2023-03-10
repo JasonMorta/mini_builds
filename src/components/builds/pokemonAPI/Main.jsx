@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-
-import NamesList from './components/NamesList'
+import NameList from './components/NameList';
 import CSS from "./PokemonStyles.module.css"
 import { PokeStateContext } from './PokeState';
-import SearchField from './SearchField';
+import PokemonCard from './PokemonCard';
+import PokemonImage from './components/PokemonImage';
 
 
 export default function Main() {
@@ -18,13 +18,13 @@ export default function Main() {
   return (
     <div className={CSS.main}>
       <div className={CSS.section1}>
-    
-       
-        <NamesList />
+        <NameList />
       </div>
 
 
-      <div className={CSS.section2}>Main</div>
+      <div className={CSS.section2}>
+      <PokemonImage />
+      </div>
     </div>
   );
 }

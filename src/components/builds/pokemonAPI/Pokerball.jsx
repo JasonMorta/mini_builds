@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import MonsterCard from './MonsterCard'
+import MonsterCard from './PokemonCard'
 import png from './img/pokeapi_256.png'
 import { useState } from 'react'
 import { motion } from "framer-motion";  

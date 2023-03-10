@@ -5,6 +5,7 @@
     overflow: auto;
     margin: 10px 0px 0px;
     border-radius: 3px;
+
   
 }
 
@@ -25,4 +26,30 @@
     box-shadow: 0px 2px 5px #00000094;
     /* border-radius: 16px; */
     transition: .2s;
+}
+
+.searchBar_section {
+    position: relative;
+}
+
+.searchBar input{
+    padding-bottom: 0px;
+    padding-right: 35px;
+}
+
+.searchBar label{
+    top: -2px;
+}
+
+.searchSVG {
+    position: absolute;
+    right: 5px;
+    z-index: 3;
+    top: 50%;
+    transform: translate(0px, -50%) scale(1.2);
+    cursor: pointer;
+}
+
+.searchSVG:active {
+    transform: translate(0px, -50%) scale(1.1);  
 }

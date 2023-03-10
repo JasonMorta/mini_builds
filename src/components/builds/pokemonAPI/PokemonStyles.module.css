@@ -2,7 +2,10 @@
 
 .main {
     display: flex;
-    width: 1000px;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
     height: 100vh;
     border: 1px solid darkblue;
     gap: 5px;
@@ -11,7 +14,8 @@
 
 .section1 {
     background-color: #cddc39;
-    width: 100%;
+    width: 50%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,7 +24,8 @@
 
 .section2 {
     background-color: #ffc107;   
-    width: 100%;
+    width: 50%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
