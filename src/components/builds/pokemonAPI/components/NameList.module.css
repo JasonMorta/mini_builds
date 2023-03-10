@@ -68,5 +68,6 @@
     color: #fac832;
     -webkit-text-stroke: 3px #2062ac;
     font-family: pokeFont;
-    font-size: 7vw;
+    font-size: 6vw;
+    z-index: 1;
 }
