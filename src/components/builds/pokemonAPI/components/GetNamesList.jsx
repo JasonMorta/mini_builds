@@ -16,15 +16,19 @@ export default function GetNamesList() {
           .then((response) => response.json())
           .then((data) => {
             //use data here
+            console.log(`%c Got all names`, 'color: green')
             setState(
               produce((state) => {
                 state.namesList = data.results
                               
               })
             );
-            console.log("state: ", state);
+            
           })
-          .catch((error) => console.error(error));
+          .catch((error) => {
+            console.log(`%c Got no names`, 'color: Red')
+            console.error(error)
+          });
       }
 
       //setT the default pokemon name

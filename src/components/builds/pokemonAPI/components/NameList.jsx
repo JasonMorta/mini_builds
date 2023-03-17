@@ -18,8 +18,27 @@ export default function NameList() {
     const [selectedName, setSelectedName] = React.useState("")
     const [state, setState] = value;
     const inputRef = React.useRef()
+    console.log('state.namesList', state.namesList)
 
+    function filterNames(e) {
+      console.log("state.namesList", state.namesList);
 
+      if (state.namesList !== null ) {
+        //return a new array with all the names that includes the letters from the input
+        let filtered = state.namesList.filter((poke) =>
+          poke.name.includes(e.target.value.toLowerCase())
+        );
+        console.log("filtered", filtered);
+
+        setState(
+          produce((state) => {
+            state.namesList = filtered.length > 0 ? filtered : null;
+          })
+        );
+      } else {
+      }
+    }
+    
 
     function handleName(e, name) {
       e.target.style.fontWeight = "700"
@@ -48,38 +67,45 @@ export default function NameList() {
       }
 
 
-//Custom console.log CSS
- let logCss = `
- background-color: white; 
- font-size: 13px; 
- color: black;
- `
-
 
  //prevent unnecessary rerendering of the names list
  const memorizedNamesList = React.useMemo(()=> {
+  //console.log('state.namesList !== null || state.namesList.length > 0', state.namesList !== null || state.namesList.length > 0)
 
-  return state.namesList.map((name, i) => (
-    <>
-      <ListItem key={i}
-        sx={{ padding: "0px" }}
-        onClick={(e)=> handleName(e, name.name)}>
-        <ListItemButton sx={{padding: "0px 5px"}}>
+  if (state.namesList !== null) {
+    return state.namesList.map((name, i) => (
+      <>
+        <ListItem
+          key={i}
+          sx={{ padding: "0px" }}
+          onClick={(e) => handleName(e, name.name)}
+        >
+          <ListItemButton sx={{ padding: "0px 5px" }}>
+            <ListItemIcon>
+              <h4>⭐</h4>
+            </ListItemIcon>
+            <ListItemText primary={name.name} />
+          </ListItemButton>
+        </ListItem>
+      </>
+    ));
+  } else {
+    return (
+      <ListItem key={0} sx={{ padding: "0px" }}>
+        <ListItemButton sx={{ padding: "0px 5px" }}>
           <ListItemIcon>
             <h4>⭐</h4>
           </ListItemIcon>
-          <ListItemText primary={name.name} />
+          <ListItemText primary={"Not Found"} />
         </ListItemButton>
       </ListItem>
-    </>
-  ))
+    );
+  }
+  console.log('state.namesList', state.namesList)
 
  }, [state.namesList])
 
 
-
- //logs for this component
- console.log(`%c Got all names: `, logCss)
   return (
     <>
            <section className={CSS.searchBar_section} style={{margin: "10px"}} >
@@ -88,6 +114,7 @@ export default function NameList() {
             hiddenLabel
             ref={inputRef}
             label={selectedName}
+            onChange={(e)=> filterNames(e)}
             onKeyDown={(e)=>handleKey(e)}
             defaultValue={selectedName}
             id="filled-hidden-label-small"
@@ -99,7 +126,7 @@ export default function NameList() {
             {state.selectedName.charAt(0).toUpperCase() + state.selectedName.slice(1)}
       </h2>
     <div className={CSS.names_list}>
-      {state.namesList.length === 0 ? (
+      {state.namesList === null || state.namesList.length === 0 ? (
         <GetNamesList />
       ) : (
         <List

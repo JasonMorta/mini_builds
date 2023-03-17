@@ -55,7 +55,7 @@ export default function PokemonImage() {
     <div className={CSS.images}>
         {pokeState.pokemonObject !== null ? 
         <>
-        <img className={CSS.mainImage} src={pokeState.pokemonObject.sprites.other["official-artwork"].front_default} alt={pokeState.selectedName} />
+        <div className={CSS.main_image_container}><img className={CSS.mainImage} src={pokeState.pokemonObject.sprites.other["official-artwork"].front_default} alt={pokeState.selectedName} /></div>
         <div className={CSS.sprites}>
           <img src={pokeState.pokemonObject.sprites.front_default} alt={pokeState.selectedName} />
           <img src={pokeState.pokemonObject.sprites.front_shiny} alt={pokeState.selectedName} />
