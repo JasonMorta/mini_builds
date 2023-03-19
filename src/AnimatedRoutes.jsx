@@ -28,7 +28,7 @@ export default function AnimatedRoutes() {
         <Route index path="/" element={<Main />} />
         <Route index path="/chuckNorris" element={<Jokes />} />
         <Route index path="/animatedText" element={<AnimatedText />} />
-        <Route index path="/loaders" element={<Loaders />} />
+        <Route index path="/loaders" element={<Loaders />}/>
         <Route index path="/truthy" element={<Truthy />} />
         <Route index path="/tiles" element={<Tile />} />
         <Route index path="/flip" element={<FlipsMain />} />
