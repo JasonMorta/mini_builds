@@ -5,8 +5,8 @@
 /.pnp
 .pnp.js
 .history
-C:\Users\Jason
-./C:\Users\Jason\
+pnpm-lock.yaml
+/pnpm-lock.yaml
 
 # testing
 /coverage
