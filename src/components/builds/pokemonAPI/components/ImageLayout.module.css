@@ -33,21 +33,16 @@ z-index: 2;
 }
 
 .main_image_container {
-    background-color: red;
+
     border-radius: 50%;
-    transform: rotate3d(2, 1.19, 2, 278deg);
     position: relative;
-    box-shadow: -6px 3px 1px 1px white, -6px 3px 1px 1px #141414;
-    width: 475px;
-    height: 475px;
+
 }
 
 .mainImage {
     transition: .2s ease-in;
     filter: drop-shadow(2px 8px 3px #0000006e);
-    position: absolute;
-    top: 40%;
-    left: 79%;
-    transform: translate(-50%, -50%) rotate(15deg) rotate(44deg) scaleY(1.5);
+
+
 }
 

@@ -4,6 +4,9 @@ import CSS from "./PokemonStyles.module.css"
 import { PokeStateContext } from './PokeState';
 import PokemonCard from './PokemonCard';
 import PokemonImage from './components/PokemonImage';
+import TabsMenu from './components/TabsMenu';
+
+
 
 
 export default function Main() {
@@ -18,7 +21,9 @@ export default function Main() {
   return (
     <div className={CSS.main}>
       <div className={CSS.section1}>
+      
         <NameList />
+        <TabsMenu />
       </div>
 
 
