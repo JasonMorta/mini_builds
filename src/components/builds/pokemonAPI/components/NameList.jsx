@@ -11,6 +11,7 @@ import TextField from '@mui/material/TextField';
 import CSS from './NameList.module.css'
 import ManageSearchRoundedIcon from '@mui/icons-material/ManageSearchRounded';
 import produce from 'immer';
+import SpriteImages from './SpriteImages';
 export default function NameList() {
 
 
@@ -54,7 +55,7 @@ export default function NameList() {
       }
       
       function handleKey(e) {
-        //setSelectedName()
+        console.log('e.target.value: ',e.target.value)
         if (e.key ==="Enter") {
           //console.log('neter: ',e.target.value)
           //console.log('e.target.value !== " "', e.target.value !== "")
@@ -147,6 +148,8 @@ export default function NameList() {
         </List>
       )}
       </div>
+      <SpriteImages />
     </>
+  
   );
 }
