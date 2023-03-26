@@ -5,7 +5,9 @@
     align-items: center;
     justify-content: center;
     width: min-content;
-    padding-top: 100px;
+    margin-top: 100px;
+    position: relative;
+    z-index: 0;
 }
 
 .placeHolder {
@@ -46,3 +48,28 @@ z-index: 2;
 
 }
 
+
+.poke_BG_color {
+    width: 100%;
+    height: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+}
+
+
+.all_sprites {
+    position: absolute;
+    bottom: -130px;
+    left: 0;
+    width: 100%;
+}
+
+.all_sprites .sprites {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}

@@ -18,17 +18,17 @@ export default function NameList() {
     const [selectedName, setSelectedName] = React.useState("")
     const [state, setState] = value;
     const inputRef = React.useRef()
-    console.log('state.namesList', state.namesList)
+    //console.log('state.namesList', state.namesList)
 
     function filterNames(e) {
-      console.log("state.namesList", state.namesList);
+      //console.log("state.namesList", state.namesList);
 
       if (state.namesList !== null ) {
         //return a new array with all the names that includes the letters from the input
         let filtered = state.namesList.filter((poke) =>
           poke.name.includes(e.target.value.toLowerCase())
         );
-        console.log("filtered", filtered);
+        //console.log("filtered", filtered);
 
         setState(
           produce((state) => {
@@ -56,12 +56,17 @@ export default function NameList() {
       function handleKey(e) {
         //setSelectedName()
         if (e.key ==="Enter") {
+          //console.log('neter: ',e.target.value)
+          //console.log('e.target.value !== " "', e.target.value !== "")
+
         //Get the pokemon data
-        setState(
-          produce((state) => {
-            state.selectedName = e.target.value;
-          })
-        );
+        if (e.target.value !== "") {
+          setState(
+            produce((state) => {
+              state.selectedName = e.target.value;
+            })
+          );
+        }
         //console.log(`%c ${e.target.value}`, 'color: #2196f3')
         }
       }
@@ -101,7 +106,7 @@ export default function NameList() {
       </ListItem>
     );
   }
-  console.log('state.namesList', state.namesList)
+  //console.log('state.namesList', state.namesList)
 
  }, [state.namesList])
 
