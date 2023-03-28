@@ -148,7 +148,7 @@ export default function NameList() {
         </List>
       )}
       </div>
-      <SpriteImages />
+  
     </>
   
   );

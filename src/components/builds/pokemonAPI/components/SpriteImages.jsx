@@ -1,21 +1,38 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+import imageNames from "./imageNames.js"
+import VisibilitySensor from 'react-visibility-sensor'
+import {Img} from 'react-image'
+import CSS from './ImageLayout.module.css'
 
 
 
 export default function SpriteImages() {
-    const images = require.context('./sprites', false, /\.(png|jpe?g|svg)$/);
-    console.log('images: ',images)
+
+  console.log(`./sprites/${imageNames.length}`);
+  useEffect(() => {
+   
+     
+ 
+  }, []);
   
+
   return (
-    <div> 
-        {images.keys().map((imageName, index) => (
-       <>
-                
-            <img src={`./sprites/`+ imageName.slice(2)} alt={imageName.slice(2)} key={index} />
-    
+    <div className={CSS.spritGrid}>
+      {imageNames.map((pokeName, i) => (
+        <>
+          <VisibilitySensor>
+            <Img
+              loading="lazy"
+              className={CSS.pokeSprite}
+              src={process.env.PUBLIC_URL + `/sprites/${pokeName}`}
+              alt="poke"
+              key={i}
+            />
           
-       </>))}
+          </VisibilitySensor>
+         
+        </>
+      ))}
     </div>
-  )
+  );
 }

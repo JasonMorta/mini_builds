@@ -5,6 +5,7 @@ import { PokeStateContext } from './PokeState';
 import PokemonCard from './PokemonCard';
 import PokemonImage from './components/PokemonImage';
 import TabsMenu from './components/TabsMenu';
+import SpriteImages from './components/SpriteImages';
 
 
 
@@ -22,13 +23,14 @@ export default function Main() {
     <div className={CSS.main}>
       <div className={CSS.section1}>
       
-        <NameList />
-        <TabsMenu />
+        {/* <NameList /> */}
+       <SpriteImages />
       </div>
 
 
       <div className={CSS.section2}>
-      <PokemonImage />
+      {/* <PokemonImage /> */}
+      {/* <TabsMenu /> */}
       </div>
     </div>
   );
