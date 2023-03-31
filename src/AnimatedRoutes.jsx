@@ -18,28 +18,39 @@ import PassGen from "./components/builds/passwordGen/PassGen";
 import IEMain from "./components/builds/incomeExpense/IEMain";
 import CatAPI from "./components/builds/catAPI/CatAPI";
 import PokeState from "./components/builds/pokemonAPI/PokeState";
+import SpriteImages from "./components/builds/pokemonAPI/components/SpriteImages";
+import PokemonImage from "./components/builds/pokemonAPI/components/PokemonImage.jsx";
 
 export default function AnimatedRoutes() {
   const location = useLocation();
 
   return (
     <AnimatePresence>
+     
       <Routes location={location} key={location.pathname}>
-        <Route index path="/" element={<Main />} />
-        <Route index path="/chuckNorris" element={<Jokes />} />
-        <Route index path="/animatedText" element={<AnimatedText />} />
-        <Route index path="/loaders" element={<Loaders />}/>
-        <Route index path="/truthy" element={<Truthy />} />
-        <Route index path="/tiles" element={<Tile />} />
-        <Route index path="/flip" element={<FlipsMain />} />
-        <Route index path="/expand" element={<Expand />} />
-        <Route index path="/pokemon" element={<PokeState />} />
-        {/* <Route index path="/setUrl" element={<SetUrl />} /> */}
-        <Route index path="/passGen" element={<PassGen />} />
-        <Route index path="/IOP" element={<IntersectionOP />} />
-        <Route index path="/IandE" element={<IEMain />} />
-        <Route index path="/cat" element={<CatAPI />} />
-        {/* <Route index path="/btn" element={<Button />} /> */}
+        {/* Define all routes here. Routes are hidden until navigated to. */}
+        <Route  path="/" element={<Main />} />
+        <Route  path="/chuckNorris" element={<Jokes />} />
+        <Route  path="/animatedText" element={<AnimatedText />} />
+        <Route  path="/loaders" element={<Loaders />}/>
+        <Route  path="/truthy" element={<Truthy />} />
+        <Route  path="/tiles" element={<Tile />} />
+        <Route  path="/flip" element={<FlipsMain />} />
+        <Route  path="/expand" element={<Expand />} />
+        <Route  path="/pokemon" element={<PokeState />}>
+          <Route  path="details" element={<PokemonImage />} />
+        </Route>
+        {/* <Route  path="/setUrl" element={<SetUrl />} /> */}
+        <Route  path="/passGen" element={<PassGen />} />
+        <Route  path="/IOP" element={<IntersectionOP />} />
+        <Route  path="/IandE" element={<IEMain />} />
+        <Route  path="/cat" element={<CatAPI />} />
+        {/* <Route  path="/btn" element={<Button />} /> */}
+
+
+
+    
+     
       </Routes>
     </AnimatePresence>
   );

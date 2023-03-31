@@ -84,7 +84,7 @@ pokeState.pokemonObject?.types[0]?.type?.name === "fairy" ? bgColor.fairy : "bla
 
 console.log('col: ',pokeState.pokemonObject?.types[0]?.type?.name)
   return (
-    <div className={CSS.images}>
+    <div className={CSS.pokemon_images}>
       {pokeState.pokemonObject !== undefined ? (
         <>
           <div className={CSS.poke_BG_color} style={{backgroundImage: col}}></div>
@@ -97,7 +97,7 @@ console.log('col: ',pokeState.pokemonObject?.types[0]?.type?.name)
               alt={pokeState.selectedName}
             />}
           </div>
-          <Sprites />
+          {/* <Sprites /> */}
         </>
       ) : (
         <div>

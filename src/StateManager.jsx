@@ -135,13 +135,13 @@ function StateManager() {
         <Router>
           <Menu />
           <div className="content_section">
-                      <AnimatedRoutes />
-                    </div>
+            <AnimatedRoutes />
+          </div>
           <div className="layers layer-5"> </div>
-            <div className="layers layer-4"></div>
-              <div className="layers layer-3"></div>
-                <div className="layers layer-2">   </div>
-                  <div className="layers layer-1" ></div> 
+          <div className="layers layer-4"></div>
+          <div className="layers layer-3"></div>
+          <div className="layers layer-2"> </div>
+          <div className="layers layer-1"></div>
         </Router>
       </StateContext.Provider>
     </>

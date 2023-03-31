@@ -1,5 +1,6 @@
 import React, { createContext, useState } from 'react'
-import Main from './Main';
+import SpriteImages from './components/SpriteImages';
+
 import Pokerball from './Pokerball';
 
 
@@ -29,7 +30,19 @@ export default function PokeState() {
     
   return (
     <PokeStateContext.Provider value={[pokeState, setPokeState]} >
-        <Main />
+         <div className={CSS.main}>
+      <div className={CSS.section1}>
+      
+        {/* <NameList /> */}
+       <SpriteImages />
+      </div>
+
+
+      <div className={CSS.section2}>
+      {/* <PokemonImage /> */}
+      {/* <TabsMenu /> */}
+      </div>
+    </div>
     </PokeStateContext.Provider>
   )
 }
