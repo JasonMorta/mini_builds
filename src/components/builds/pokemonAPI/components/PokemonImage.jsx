@@ -4,11 +4,16 @@ import { PokeStateContext } from '../PokeState';
 import CSS from './ImageLayout.module.css'
 import Skeleton from '@mui/material/Skeleton';
 import Sprites from './Sprites';
+import { useLocation } from 'react-router-dom';
 
 export default function PokemonImage() {
 
     const value = useContext(PokeStateContext);
     const [pokeState, setPokeState] = value;
+    console.log('setPokeState', pokeState)
+
+    let location = useLocation()
+    console.log('Image location', location)
 
     useEffect(() => {
         //Get all pokemon image
@@ -17,12 +22,12 @@ export default function PokemonImage() {
         await fetch("https://pokeapi.co/api/v2/pokemon/"+pokeState.selectedName)
           .then((response) => response.json())
           .then(async(  data) => {
+            console.log('data', data)
             //use data here
             await setPokeState(
                   produce((pokeState) => {
-                    console.log('pokeState', pokeState)
                     pokeState.pokemonObject = data;
-                    pokeState.inputName = pokeState.pokemonObject.species.name
+                    //pokeState.inputName = pokeState.pokemonObject.species.name
                   })
                 );
                 console.log('pokeState.pokemonObject', pokeState.pokemonObject)
@@ -40,7 +45,7 @@ export default function PokemonImage() {
           });
       }
       fetchData()
-      }, [pokeState.selectedName])
+      }, [])
 
     const [bgColor, setBgColor] = useState({
       normal:   "linear-gradient(to bottom, #a8a878, #d6b59b, #ecc9c8, #f2e4ec, #ffffff)",

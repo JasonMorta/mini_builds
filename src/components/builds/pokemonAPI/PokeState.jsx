@@ -14,7 +14,7 @@ export default function PokeState() {
         pokemonObject: null,
         searchInput: null,
         namesList:[],
-        selectedName: "pikachu",
+        selectedName: "",
         filters:["!A-Z", "!Weight", "!Height", "!Health"],
         type:["Normal","fighting","flying","poison","ground","rock","bug","ghost","steel","fire","water","grass","electric","psychic","ice","dragon","dark","fairy","unknown","shadow"],
         stats: {
@@ -24,6 +24,7 @@ export default function PokeState() {
           height: null,
           weight: null
         },
+        selectedId: null
     })
 
 
