@@ -37,9 +37,9 @@ export default function AnimatedRoutes() {
         <Route  path="/tiles" element={<Tile />} />
         <Route  path="/flip" element={<FlipsMain />} />
         <Route  path="/expand" element={<Expand />} />
-        <Route  path="/pokemon" element={<PokeState />}>
-          <Route  path=":id" element={<PokemonImage />} />
-        </Route>
+        <Route  path="/pokemon" element={<PokeState />}/>
+        <Route  path=":id" element={<PokemonImage />} />
+         
         {/* <Route  path="/setUrl" element={<SetUrl />} /> */}
         <Route  path="/passGen" element={<PassGen />} />
         <Route  path="/IOP" element={<IntersectionOP />} />
