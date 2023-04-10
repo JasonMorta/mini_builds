@@ -29,7 +29,7 @@ export default function AnimatedRoutes() {
      
       <Routes location={location} key={location.pathname}>
         {/* Define all routes here. Routes are hidden until navigated to. */}
-        <Route  path="/" element={<Main />} />
+        <Route index path="/" element={<Main />} />
         <Route  path="/chuckNorris" element={<Jokes />} />
         <Route  path="/animatedText" element={<AnimatedText />} />
         <Route  path="/loaders" element={<Loaders />}/>
@@ -37,8 +37,10 @@ export default function AnimatedRoutes() {
         <Route  path="/tiles" element={<Tile />} />
         <Route  path="/flip" element={<FlipsMain />} />
         <Route  path="/expand" element={<Expand />} />
-        <Route  path="/pokemon" element={<PokeState />}/>
-        <Route  path=":id" element={<PokemonImage />} />
+        <Route  path="/pokemon" element={<PokeState />}>
+          <Route  path=":id" element={<PokemonImage />} />
+        </Route>
+        
          
         {/* <Route  path="/setUrl" element={<SetUrl />} /> */}
         <Route  path="/passGen" element={<PassGen />} />
