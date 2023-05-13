@@ -5,16 +5,14 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { PokeStateContext } from '../PokeState';
-import { FixedSizeList } from 'react-window';
 import GetNamesList from './GetNamesList';
 import TextField from '@mui/material/TextField';
 import CSS from './NameList.module.css'
 import ManageSearchRoundedIcon from '@mui/icons-material/ManageSearchRounded';
 import produce from 'immer';
-import SpriteImages from './SpriteImages';
+
+
 export default function NameList() {
-
-
     const value = React.useContext(PokeStateContext);
     const [selectedName, setSelectedName] = React.useState("")
     const [state, setState] = value;
