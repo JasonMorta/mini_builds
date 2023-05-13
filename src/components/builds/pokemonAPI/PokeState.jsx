@@ -1,7 +1,7 @@
 import React, { createContext, useState } from 'react'
 import SpriteImages from './components/SpriteImages';
 
-import Pokerball from './Pokerball';
+
 
 
 
@@ -22,7 +22,9 @@ export default function PokeState() {
           abilities: [],
           hp: null,
           height: null,
-          weight: null
+          weight: null,
+          base: [],
+
         },
         selectedId: null
     })

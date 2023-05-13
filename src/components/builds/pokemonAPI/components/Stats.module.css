@@ -1,0 +1,18 @@
+.progress_bar {
+    width: 200px;
+    background-color: #9E9E9E;
+    height: 8px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.progress_bar_fill {
+       width: 15%;
+    background-color: rgb(235, 72, 72);
+    height: 8px;
+}
+
+.stats_container {
+    width: 200px;
+    font-size: small;
+}

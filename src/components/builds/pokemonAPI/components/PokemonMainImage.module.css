@@ -1,0 +1,7 @@
+.main_image {
+    width: max-content;
+    height: 475px;
+    display: block;
+    overflow: hidden;
+    filter: drop-shadow(2px 4px 3px black);
+}

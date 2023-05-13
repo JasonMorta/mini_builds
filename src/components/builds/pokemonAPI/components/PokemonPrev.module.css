@@ -1,0 +1,19 @@
+.pokemonPrev_modal  {
+    height: 75vh;
+}
+
+.close_modal {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to bottom, #ff0000, #ff0000, #ffffff, #ffffff);
+    border: 0px;
+    box-shadow: 0px 2px 2px gray;
+    color: #000000;
+}
