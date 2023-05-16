@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 
 import CSS from './PokemonPrev.module.css'
 import Button from 'react-bootstrap/Button';
@@ -9,6 +9,8 @@ import PokemonMainImage from './PokemonMainImage';
 import Stats from './Stats';
 
 function PokemonPrev(props) {
+
+
 
   const value = useContext(PokeStateContext);
   const [state, setState] = value;
