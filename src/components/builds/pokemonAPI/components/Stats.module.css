@@ -23,5 +23,10 @@
     top: 0;
     left: 0;
     height: 100%;
-    background: hotpink;
+    background: rgb(105, 175, 255);
+    transition: .5s;
+  }
+
+  .content {
+    transition: .5s;
   }

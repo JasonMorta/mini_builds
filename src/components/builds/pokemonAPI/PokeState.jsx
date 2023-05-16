@@ -24,6 +24,7 @@ export default function PokeState() {
           height: null,
           weight: null,
           base: [],
+          current_stat: 0,
 
         },
         selectedId: null
