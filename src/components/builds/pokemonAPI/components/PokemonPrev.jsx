@@ -14,8 +14,6 @@ function PokemonPrev(props) {
 
   const value = useContext(PokeStateContext);
   const [state, setState] = value;
-
-  console.log(`%c modal ran`, 'color: #2196f3')
   return (
     <Modal
       {...props}

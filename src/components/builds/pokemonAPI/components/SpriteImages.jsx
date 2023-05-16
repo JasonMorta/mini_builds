@@ -7,7 +7,6 @@ import { PokeStateContext } from '../PokeState.jsx';
 import PokemonPrev from './PokemonPrev.jsx';
 
 export default function SpriteImages() {
-  console.log(`%c SpriteImages`, 'color: #2196f3');
 
   const [modalShow, setModalShow] = React.useState(false);//Modal state
 
@@ -42,7 +41,7 @@ export default function SpriteImages() {
                     })
                   );
                   setModalShow(true)
-                  console.log(state)
+               
                 
               }}
             />
