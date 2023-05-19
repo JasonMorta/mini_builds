@@ -1,59 +1,70 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useLayoutEffect } from "react";
 import { PokeStateContext } from "../PokeState";
-import useMeasure from "react-use-measure";
-import { useSpring, animated } from "@react-spring/web";
+import { gsap } from "gsap";
 import CSS from "./Stats.module.css";
 
 export default function Stats() {
   const value = useContext(PokeStateContext);
   const [state, setState] = value;
-
-  //Spring animation
-  const [open, toggle] = useState(false);
-  const [ref, { width }] = useMeasure(); //mesuer width of container
-  const props = useSpring({ width: open ? width : 0 });
+  console.log('state', state.stats?.base)
 
   //Scale baseStats to 100% as max value is 225
-  function scaleBaseStat(baseStat) {
-    return Math.round((baseStat / 255) * 100);
-  }
+  // function scaleBaseStat(baseStat) {
+  //   return Math.round((baseStat / 255) * 100);
+  // }
 
-  useEffect(() => {
-    function loader() {
-      setTimeout(() => {
-        toggle(!open);
-      }, 500);
-    }
-    loader();
-  }, []);
+  useLayoutEffect(() => {
+    state.stats?.base?.map((value, index) => {
+
+      const percentage = document.querySelectorAll(`.${CSS.stat_bar_progress}`)[
+        index
+      ];
+      const statDisplay = document.querySelectorAll(`.${CSS.stat_percentage}`)[
+        index
+      ];
+
+      const statValue = `${Math.round(value.base_stat)}`;
+
+      //set the progress bar to 0
+      gsap.to(percentage, {
+        width: statValue + "px",
+        ease: "ease",
+        duration: 2,
+      });
+
+      //Set the progress bar to the stat value
+      gsap.to(statDisplay, {
+        width: statValue,
+        onUpdate: () => {
+          //Set the stat value to the stat display
+          if (value.stat.name === "hp") {
+            //hp is the only stat that is not out of 255
+            statDisplay.textContent = `${Math.round(
+              parseInt(percentage.style.width)
+            )}`;
+          } else {
+            //Multiply the stat value by 5 to get the actual value
+            statDisplay.textContent = `${parseInt(percentage.style.width)}`;
+          }
+        },
+        ease: "ease",
+        duration: 2,
+      });
+    });
+  }, [state]);
 
   return (
     <div className={CSS.stats_container}>
-      {state.stats.base.map((stat) => (
-        <div key={stat.stat.name} ref={ref}>
-          <animated.div
-            className={CSS.content}
-        
-          >{props.width.to(x => (
-            stat.stat.name.toUpperCase() === "HP"
-              ? 'HP: '+(scaleBaseStat(stat.base_stat) * 15)
-              : stat.stat.name.toUpperCase()+ ' ' +(scaleBaseStat(stat.base_stat) * 2)
-          ))}
-          
-       
-          </animated.div>
-
-          <div className={CSS.progress_bar}>
-            <animated.div
-              className={CSS.fill}
-              style={{
-                width: props.width.to(
-                  (value) => `${scaleBaseStat(stat.base_stat)}%`
-                ),
-              }}
-            />
-
-            <div />
+      {state.stats?.base?.map((value, index) => (
+        <div className={CSS.stat_bar_outer} key={index}>
+          <span className={CSS.stat_name}>
+            {value.stat.name.charAt(0).toUpperCase() +
+              value.stat.name.slice(1) +
+              ": "}
+          </span>
+          <span className={CSS.stat_percentage}></span>
+          <div className={CSS.stat_bar_container}>
+            <div className={CSS.stat_bar_progress}></div>
           </div>
         </div>
       ))}

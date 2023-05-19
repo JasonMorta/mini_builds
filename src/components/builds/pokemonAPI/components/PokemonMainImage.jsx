@@ -26,6 +26,7 @@ export default function PokemonMainImage() {
       fetch("https://pokeapi.co/api/v2/pokemon/" + state.pokemonName)
         .then((response) => response.json())
         .then((data) => {
+          console.log('data', data)
              
             setState(
                  produce((state) => {
