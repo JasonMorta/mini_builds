@@ -37,10 +37,10 @@ export default function Stats() {
         width: statValue,
         onUpdate: () => {
           //Set the stat value to the stat display
-          if (value.stat.name === "hp") {
+          if (value.stat.name === "hp" || value.stat.name === "defense") {
             //hp is the only stat that is not out of 255
             statDisplay.textContent = `${Math.round(
-              parseInt(percentage.style.width)
+              parseInt(percentage.style.width)*5
             )}`;
           } else {
             //Multiply the stat value by 5 to get the actual value

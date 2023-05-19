@@ -25,6 +25,7 @@
     background-color: rgb(69 171 114);
     height: 8px;
     width: 0%;
+    border-right: 1px solid rgb(228, 70, 70);
 }
 
 .stat_percentage, .stat_name  {
