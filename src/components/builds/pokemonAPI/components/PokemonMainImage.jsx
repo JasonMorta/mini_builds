@@ -26,14 +26,14 @@ export default function PokemonMainImage() {
       fetch("https://pokeapi.co/api/v2/pokemon/" + state.pokemonName)
         .then((response) => response.json())
         .then((data) => {
-          console.log('data', data)
-             
             setState(
                  produce((state) => {
+                  state.pokemonObject = data;
                     state.stats.abilities = data.abilities;
                     state.stats.height = data.height;
                     state.stats.weight = data.weight;
                     state.stats.base = data.stats;
+                   
                  })
                );
 

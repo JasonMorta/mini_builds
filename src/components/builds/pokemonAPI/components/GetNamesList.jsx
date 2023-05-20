@@ -11,7 +11,6 @@ export default function GetNamesList() {
 
     useEffect(() => {
       async function fetchData() {
-        console.time("myFunction");
         await fetch("https://pokeapi.co/api/v2/pokemon?limit=10000&offset=0")
           .then((response) => response.json())
           .then((data) => {
@@ -40,8 +39,7 @@ export default function GetNamesList() {
 
 
       fetchData();
-      console.log(`%cGot all the name`, `color: pink`)
-      console.timeEnd("myFunction");
+  
        
     }, []);
  

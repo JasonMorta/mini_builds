@@ -6,8 +6,6 @@ import CSS from "./Stats.module.css";
 export default function Stats() {
   const value = useContext(PokeStateContext);
   const [state, setState] = value;
-  console.log('state', state.stats?.base)
-
   //Scale baseStats to 100% as max value is 225
   // function scaleBaseStat(baseStat) {
   //   return Math.round((baseStat / 255) * 100);

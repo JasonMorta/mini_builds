@@ -16,7 +16,7 @@ export default function PokeState() {
         namesList:[],
         selectedName: "",
         filters:["!A-Z", "!Weight", "!Height", "!Health"],
-        type:["Normal","fighting","flying","poison","ground","rock","bug","ghost","steel","fire","water","grass","electric","psychic","ice","dragon","dark","fairy","unknown","shadow"],
+        type:["normal","fighting","flying","poison","ground","rock","bug","ghost","steel","fire","water","grass","electric","psychic","ice","dragon","dark","fairy","unknown","shadow"],
         stats: {
           name:null,
           abilities: [],
