@@ -9,6 +9,7 @@ import PokemonMainImage from "./PokemonMainImage";
 import Stats from "./Stats";
 import NatureStat from "./NatureStat";
 import backgroundColors from "./PokemonPrevBGcols.js";
+import natureColors from "./PokemonPrevBGC.js";
 
 function PokemonPrev(props) {
   const value = useContext(PokeStateContext);
@@ -23,16 +24,11 @@ function PokemonPrev(props) {
   let completeName = capitalizedNames.join(" "); // Join the capitalized words with spaces
 
   useEffect(() => {
-    for (let i = 0; i < backgroundColors.length; i++) {
-      if (state.pokemonObject?.types[i].name === backgroundColors[i].name) {
-        console.log(backgroundColors[i].name);
-        console.log(backgroundColors[i].type);
-      }
-    }
+console.log('state.selectedNature: ',state.selectedNature)
   }, []);
 
   let bgCols = {
-    backgroundImage: `linear-gradient(to right top, #a890f0,#cd408d, #a8b820)`,
+   backgroundImage: natureColors(state.pokemonObject?.types),
   };
 
   return (

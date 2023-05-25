@@ -18,11 +18,12 @@
     overflow: hidden;
     z-index: 1;
     box-shadow: 2px 2px 2px #0000007d;
+    text-shadow: 0px 0px 2px white, 0px 0px 2px white, 0px 0px 2px white, 0px 0px 2px white;
  
   }
 
 .stat_bar_progress{
-    background-color: rgb(69 171 114);
+    background-color: rgb(255 255 255);
     height: 8px;
     width: 0%;
     border-right: 1px solid rgb(228, 70, 70);
