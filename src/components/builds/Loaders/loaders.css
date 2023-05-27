@@ -1,3 +1,8 @@
+.loading-bar {
+  margin: 50px 0px 100px 0px;
+  width: 100%;
+}
+
 .h3Style {
   background: #f2f2f200;
   width: 25%;
@@ -24,6 +29,33 @@
  
 }
 
+.loader_container {
+  width: 50%;
+  height: 50px;
+  background-color: #6b69504d;
+
+  margin: auto;
+  position: relative;
+ 
+}
+
+.loader_1 {
+  background-color: hotpink;
+  width: 0%;
+  height: 100%;
+  position: inherit;
+
+}
+
+.loader_container h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
 
 
 .slide{
@@ -48,9 +80,7 @@
   align-items: flex-start;
 }
 
-.loading-bar {
-  margin: 50px 0px 100px 0px;
-}
+
 
 .slide:hover{
   background-color: #F2E416;

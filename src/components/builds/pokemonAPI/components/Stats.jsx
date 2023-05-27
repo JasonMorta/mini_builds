@@ -12,6 +12,7 @@ export default function Stats() {
   // }
 
   useLayoutEffect(() => {
+     console.count('useLayoutEffect')
     state.stats?.base?.map((value, index) => {
 
       const percentage = document.querySelectorAll(`.${CSS.stat_bar_progress}`)[
