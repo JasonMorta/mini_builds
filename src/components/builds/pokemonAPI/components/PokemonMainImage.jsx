@@ -13,7 +13,7 @@ export default function PokemonMainImage() {
 
 
     const imageStyle = {
-        opacity: isLoaded ? "1" : "0", height: "475px"
+        opacity: isLoaded ? "1" : "0", height: "100%"
     }
 
   const handleImageLoad = () => {
