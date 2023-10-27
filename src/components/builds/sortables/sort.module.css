@@ -1,0 +1,45 @@
+.main_sortable {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    gap: 3px;
+}
+
+
+
+.main_sortable h1 {
+    width: 100%;
+}
+
+.main_sortable .sortable {
+    width: 250px;
+    padding: 10px;
+    border: 1px solid #8080801f;
+    min-height: 150px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    user-select: none;
+    gap: 3px;
+}
+
+.item{
+    width: 100px;
+    height: 100px;
+}
+
+/* .main_sortable .list-group {
+    width: 45%;
+} */
+
+
+.ghost {
+    background-color: seagreen;
+}

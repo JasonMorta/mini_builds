@@ -83,6 +83,11 @@ function StateManager() {
         link: "cat",
         active: false,
       },
+      {
+        name: "Sortables",
+        link: "sort",
+        active: false,
+      },
     ],
     nextJoke: false,
     catagories: [

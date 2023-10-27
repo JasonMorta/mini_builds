@@ -3,7 +3,7 @@ import Jokes from "./components/builds/Jokes/Jokes";
 import AnimatedText from "./components/builds/animatedText/AnimatedText";
 import Loaders from "./components/builds/Loaders/Loaders";
 import Truthy from "./components/builds/Truthy/Truthy";
-import Tile from "./components/tiles/Tile";
+import TileMain from "./components/tiles/TileMain";
 import FlipsMain from "./components/builds/cardFlip/FlipsMain";
 import Expand from "./components/builds/expandingSections/Expand";
 import SetUrl from "./components/builds/URLMod/SetUrl";
@@ -18,6 +18,7 @@ import CatAPI from "./components/builds/catAPI/CatAPI";
 import PokeState from "./components/builds/pokemonAPI/PokeState";
 import SpriteImages from "./components/builds/pokemonAPI/components/SpriteImages";
 import PokemonImage from "./components/builds/pokemonAPI/components/PokemonPrev.jsx";
+import Sortable from "./components/builds/sortables/Sortable";
 
 export default function AnimatedRoutes() {
   const location = useLocation();
@@ -32,12 +33,13 @@ export default function AnimatedRoutes() {
         <Route  path="/animatedText" element={<AnimatedText />} />
         <Route  path="/loaders" element={<Loaders />}/>
         <Route  path="/truthy" element={<Truthy />} />
-        <Route  path="/tiles" element={<Tile />} />
+        <Route  path="/tiles" element={<TileMain />} />
         <Route  path="/flip" element={<FlipsMain />} />
         <Route  path="/expand" element={<Expand />} />
         <Route  path="/pokemon" element={<PokeState />}>
           <Route  path=":id" element={<PokemonImage />} />
         </Route>
+        <Route path="/sort" element={<Sortable />} />
         
          
         {/* <Route  path="/setUrl" element={<SetUrl />} /> */}
