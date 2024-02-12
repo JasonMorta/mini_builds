@@ -27,8 +27,9 @@ const queryClient = new QueryClient();
 export default function AnimatedRoutes() {
   const location = useLocation();
   console.log(`%c AnimatedRoutes`, "color: red");
+  
   return (
-    // <AnimatePresence>
+    <AnimatePresence>
     <QueryClientProvider client={queryClient}>
       <Routes location={location} key={location.pathname}>
         {/* Define all routes here. Routes are hidden until navigated to. */}
@@ -53,6 +54,6 @@ export default function AnimatedRoutes() {
       </Routes>
       <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
     </QueryClientProvider>
-    // </AnimatePresence>
+    </AnimatePresence>
   );
 }
