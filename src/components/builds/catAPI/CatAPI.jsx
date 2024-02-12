@@ -1,37 +1,58 @@
 import React, { useEffect, useState } from "react";
-import { useContext } from "react";
-import { StateContext } from "../../../StateManager";
+// import { useContext } from "react";
+// import { StateContext } from "../../../StateManager";
 import "../../../loadingCSS.css";
 import "./cat.css";
+import { useQuery, QueryClient } from 'react-query';
+import StyledButton from "../../StyledButton";
+
+
+
+const fetchCat = async () => {
+  const response = await fetch(`https://api.thecatapi.com/v1/images/search`);
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return response.json();
+};
+
 
 export default function CatAPI() {
-  const value = useContext(StateContext);
-  let [mainState, setMainState] = value;
+  console.log(`%c Cat component`, 'color: #2196f3')
+  const { isLoading, data, isError, refetch, isFetching } = useQuery('catImage', fetchCat,
+  {
+    cacheTime: 5000,
+  });
+  console.log('isFetching', isFetching)
+  console.count('data')
+  if (isLoading) return <div>Loading...</div>;
+  if (isFetching) return <div>Loading...</div>;
+  if (isError) return <div>{isError.message}</div>;
 
-  const [cat, setCat] = useState();
-  const [catImg, setCatImg] = useState();
-  let loadCats = [];
+  function handleClick(){
+    refetch()
+  }
 
-  useEffect(() => {
-    fetch("https://api.thecatapi.com/v1/images/search")
-      .then((response) => response.json())
-      .then((data) => {
-        loadCats.push({ image: data[0].url, id: data[0].id });
-        setCat(loadCats);
-        //setMainState(loadCats);
-        console.log(cat);
-      });
+  function handleImageLoaded(){
+    console.log(`%c LOADED DONE`, 'color: #2196f3')
+  }
 
-    //console.log(mainState.catImage[0].image === undefined);
-  }, []);
 
   return (
+   
     <div className="cat_image_container">
-      {cat === undefined ? (
-        <div class="lds-dual-ring"></div>
-      ) : (
-        <img src={cat[0].image} alt={cat[0].id} />
-      )}
+    <h2>Kitty</h2>
+    <img 
+    src={data[0].url} 
+    alt={data[0].id}
+    onLoad={handleImageLoaded}
+     />
+    < StyledButton 
+    type='secondary'
+    text='Next'
+    onclick={handleClick}
+     />
     </div>
+ 
   );
 }

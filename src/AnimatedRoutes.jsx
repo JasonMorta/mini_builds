@@ -19,41 +19,40 @@ import PokeState from "./components/builds/pokemonAPI/PokeState";
 import SpriteImages from "./components/builds/pokemonAPI/components/SpriteImages";
 import PokemonImage from "./components/builds/pokemonAPI/components/PokemonPrev.jsx";
 import Sortable from "./components/builds/sortables/Sortable";
+import { QueryClientProvider, QueryClient } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+
+const queryClient = new QueryClient();
 
 export default function AnimatedRoutes() {
   const location = useLocation();
-
+  console.log(`%c AnimatedRoutes`, "color: red");
   return (
-    <AnimatePresence>
-     
+    // <AnimatePresence>
+    <QueryClientProvider client={queryClient}>
       <Routes location={location} key={location.pathname}>
         {/* Define all routes here. Routes are hidden until navigated to. */}
         <Route index path="/" element={<Main />} />
-        <Route  path="/chuckNorris" element={<Jokes />} />
-        <Route  path="/animatedText" element={<AnimatedText />} />
-        <Route  path="/loaders" element={<Loaders />}/>
-        <Route  path="/truthy" element={<Truthy />} />
-        <Route  path="/tiles" element={<TileMain />} />
-        <Route  path="/flip" element={<FlipsMain />} />
-        <Route  path="/expand" element={<Expand />} />
-        <Route  path="/pokemon" element={<PokeState />}>
-          <Route  path=":id" element={<PokemonImage />} />
+        <Route path="/chuckNorris" element={<Jokes />} />
+        <Route path="/animatedText" element={<AnimatedText />} />
+        <Route path="/loaders" element={<Loaders />} />
+        <Route path="/truthy" element={<Truthy />} />
+        <Route path="/tiles" element={<TileMain />} />
+        <Route path="/flip" element={<FlipsMain />} />
+        <Route path="/expand" element={<Expand />} />
+        <Route path="/pokemon" element={<PokeState />}>
+          <Route path=":id" element={<PokemonImage />} />
         </Route>
         <Route path="/sort" element={<Sortable />} />
-        
-         
+
         {/* <Route  path="/setUrl" element={<SetUrl />} /> */}
-        <Route  path="/passGen" element={<PassGen />} />
-        <Route  path="/IOP" element={<IntersectionOP />} />
-        <Route  path="/IandE" element={<IEMain />} />
-        <Route  path="/cat" element={<CatAPI />} />
-     
-
-
-
-    
-     
+        <Route path="/passGen" element={<PassGen />} />
+        <Route path="/IOP" element={<IntersectionOP />} />
+        <Route path="/IandE" element={<IEMain />} />
+        <Route path="/cat" element={<CatAPI />} />
       </Routes>
-    </AnimatePresence>
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+    </QueryClientProvider>
+    // </AnimatePresence>
   );
 }

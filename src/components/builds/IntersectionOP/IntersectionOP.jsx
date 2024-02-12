@@ -5,7 +5,7 @@ import "./IOP.css"
 //import TextSample from './TextSample';
 
 export default function IntersectionOP() {
-
+console.log(`%c Observer`, 'color: #2196f3')
     const [isVis, setIsVis] = useState()
     const {ref: section3, inView: isVis3} = useInView({threshold: 0.4,});
     const {ref: section1, inView: isVis1,} = useInView({threshold: 0.4,});

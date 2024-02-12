@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 export default function Menu() {
 
-
+console.log(`%c Main state`, 'color: #2196f3')
  const value = useContext(StateContext)
 
  let [state, setState] = value

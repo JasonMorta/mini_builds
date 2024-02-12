@@ -1,13 +1,6 @@
 import React, { createContext, useState } from "react";
 import Menu from "./components/Menu";
-
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useParams,
-} from "react-router-dom";
-
+import { BrowserRouter as Router } from "react-router-dom";
 import AnimatedRoutes from "./AnimatedRoutes";
 
 //create context hook
@@ -16,6 +9,7 @@ export const StateContext = createContext();
 
 //All children will run through the state manger.
 function StateManager() {
+  console.log(`%c State manager`, 'color: limegreen')
   const [state, setState] = useState({
     menuItems: [
       {
@@ -133,6 +127,8 @@ function StateManager() {
     },
     catImage: [],
   });
+
+
 
   return (
     <>
