@@ -70,7 +70,7 @@ export default function Filters() {
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
       />
-      {users ? <DownloadTableButton data={users} filename="data.csv" /> : <p>Loading...</p>}
+      {filteredUsers ? <DownloadTableButton data={filteredUsers} filename="data.csv" /> : <p>Loading...</p>}
       {/*  Table */}
       <DataTable
         columns={columns}
