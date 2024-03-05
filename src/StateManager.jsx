@@ -82,6 +82,11 @@ function StateManager() {
         link: "sort",
         active: false,
       },
+      {
+        name: "Filters",
+        link: "filters",
+        active: false,
+      }
     ],
     nextJoke: false,
     catagories: [
@@ -126,6 +131,7 @@ function StateManager() {
       pass: "",
     },
     catImage: [],
+
   });
 
 

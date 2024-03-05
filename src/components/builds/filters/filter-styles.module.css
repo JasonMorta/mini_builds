@@ -1,0 +1,46 @@
+.user_list {
+    /* display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px; */
+    width: inherit;
+}
+
+.users {
+    /* display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    box-shadow: 0px 0px 3px gray;
+    padding: 10px;
+    border-radius: 5px; */
+}
+
+.search {
+    width: 100%;
+    margin: auto;
+}
+
+.user_list table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    max-height: 50vh;
+    min-width: 900px;
+  }
+
+  .user_list tbody {
+    height: 500px;
+    overflow: auto;
+  }
+  
+ .user_list td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+ .user_list tr:nth-child(even) {
+    background-color: #dddddd;
+  }

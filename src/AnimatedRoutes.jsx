@@ -21,6 +21,7 @@ import PokemonImage from "./components/builds/pokemonAPI/components/PokemonPrev.
 import Sortable from "./components/builds/sortables/Sortable";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import Filters from "./components/builds/filters/Filters.jsx";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,7 @@ export default function AnimatedRoutes() {
         <Route path="/IOP" element={<IntersectionOP />} />
         <Route path="/IandE" element={<IEMain />} />
         <Route path="/cat" element={<CatAPI />} />
+        <Route path="/filters" element={<Filters />} />
       </Routes>
       <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
     </QueryClientProvider>
