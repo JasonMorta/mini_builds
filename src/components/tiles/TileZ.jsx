@@ -1,82 +1,86 @@
-import React, { useContext, useRef, useState } from "react";
+/* eslint-disable no-loop-func */
+import React from "react";
+import { useContext } from "react";
+import { useState, useEffect, useRef } from "react";
 import { StateContext } from "../../StateManager";
+import Counter from "./Counter";
+import "./tiles.css";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
-export default function Tile() {
+const randomX = () => gsap.utils.random(-400, 400, 1);
 
-  const value = useContext(StateContext);
+export default function TileMain() {
+  // Create a sticky note (ref) to hold the score
+  // const scoreRef = useRef(0);
 
-  let [state, setState] = value;
+  const container = useRef();
 
-  const [tiles, setTiles] = useState("Card");
-  const [bgc, setBgc] = useState("#fff");
+  useGSAP(
+    () => {
+      // gsap code here...
+      gsap.to(".circle", {
+        delay: 0.5,
+        rotation: "360",
+        stagger: {
+          each: 0.5,
+        },
+        repeat: 5,
+      }); // <-- automatically reverted
+    },
+    { scope: container }
+  ); // <-- scope is for selector text (optional)
 
+  // Function to increase the score
+  // const increaseScore = () => {
+  //   scoreRef.current += 10;
+  //   console.log("scoreRef", scoreRef.current);
+  //   // Even though we changed the score, the component won't re-render
+  // };
 
-  let speed = 3;
-  const selectedCount = useRef(0);
+  
 
-  let divs = []; // holds all teh cards
-  let divs2 = [];
-  let divs3 = [];
-  let cardCounter = 0;
-  let count = 11;
-  let inc = 0; //used to set the distance between each card
-  let scor = 0;
-  // useEffect(() => {
-  //   selectedCount.current =  selectedCount.current +1
+  const boxRef = useRef();
 
-  // }, [])
+  const [endX, setEndX] = useState(0);
 
-  //create each card with loop
-  for (let i = 0; i < 6; i++) {
-    //gives each card a random start time(0-1sec)
-    divs.push();
-    inc += 105;
+  useGSAP(()=>
+  {
+    gsap.to('.random_box', {
+      x: endX,
+      duration: 1,
+      ease: "power2.inOut",
+    });
+  }, {dependencies: [endX], scope: container, revertOnUpdate: false});
 
-    //Animation start Event
-    function animationStart() {
-      //console.log(bgc);
-      // setBgc("");
-      // setBgc("#fff");
-    }
-
-    //Animation End event
-    function animationEnd() {
-      //console.log("ended")
-      //setTotalCards(selectedCount.current)
-    }
-
-    //Animation each iteration event
-    //reset the bgc of the selected card on each loop
-    // eslint-disable-next-line no-loop-func
-    function animationIteration(e) {
-      if ((e.target.style.backgroundColor = "rgb(33, 150, 243)")) {
-        //
-      }
-      e.target.style.backgroundColor = "#fff";
-
-      console.log("scor", scor);
-    }
+  function handlePos() {
+    setEndX(randomX());
+    console.log('randomX()', randomX())
   }
 
+  const { contextSafe } = useGSAP({scope: container})
+
+  const handleBoxClicked = contextSafe(() => {
+    console.log('clicked')
+    gsap.to('.clickedBox', {
+      rotate: randomX(),
+    });
+  });
+
   return (
-    <div
-      // onAnimationStart={animationStart}
-      // onAnimationEnd={animationEnd}
-      // onAnimationIteration={animationIteration}
-      className="tile"
-      onMouseDown={(e) => {
-        e.target.style.backgroundColor = "rgb(33, 150, 243)";
-        setState((prev) => ({ ...prev, score: state.score + 1 }));
-        selectedCount.current++;
-        console.log(state.score);
-      }}
-      style={{
-        left: `${0 + inc}px`,
-        animationDelay: `0.${Math.floor(Math.random() * 4)}s`,
-        backgroundColor: bgc,
-        animationIterationCount: count,
-        animationDuration: `${speed}s`,
-      }}
-    ></div>
+    <div ref={container}>
+      {/* <p>Score: {scoreRef.current}</p>
+      <button onClick={increaseScore}>Increase Score</button> */}
+
+      <button className="circle">1</button>
+      <button className="circle">2</button>
+      <button className="circle">3</button>
+      <button className="circle">4</button>
+      <button className="circle">5</button>
+      <button onClick={handlePos}>Random position</button>
+      <div className="random_box" ref={boxRef}>{endX}</div>
+      <br />
+      <button className="clickedBox" onMouseOver={handleBoxClicked}></button>
+    </div>
   );
 }
