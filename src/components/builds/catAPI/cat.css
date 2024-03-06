@@ -7,6 +7,7 @@
     border: 1px solid #80808042;
     max-height: 600px;
     min-height: 600px;
+    min-width: 500px;
     overflow: auto;
     padding: 10px;
     border-radius: 5px;
@@ -15,4 +16,9 @@
 .cat_image_container img {
     max-width: 380px;
     max-height: 400px;
+}
+
+.testRev {
+    transition: .2s ease-in-out;
+    
 }

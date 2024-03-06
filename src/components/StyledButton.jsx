@@ -6,6 +6,8 @@ export default function StyledButton(props) {
 
   return <AwesomeButton 
   type={props.type}
-  onPress={props.onclick}
+  disabled={props.disabled}
+  onPress={props.onPress}
+  onclick={props.onClick}
   >{props.text}</AwesomeButton>;
 }

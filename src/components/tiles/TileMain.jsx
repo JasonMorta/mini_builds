@@ -21,19 +21,31 @@ export default function TileMain() {
   const buttonPosition = gsap.utils.selector(container);
 
 
+  //Generates a random number when called
+  //Can be used where ever you want to generate a random number.
+  function getRandomNum(){
+      let randomNum = ((Math.random() * 1) + 0).toFixed(1);
+      return parseFloat(randomNum)
+  }
+
+  useEffect(() => {
+  }
+  ,[])
+
+
 
   useGSAP(
     () => {
-      gsap.from(".button_box", {
-        y: -200,
+      gsap.from(".box", {
+        y: -300,
       });
       // gsap code here...
-      gsap.to(".button_box", {
-        y: 800,
+      gsap.to(".box", {
+        y: 750,
         duration: 3,
         ease: "linear",
         stagger: {
-          each: 0.5,
+          each: getRandomNum(),
         },
         repeat: -1,
       }); // <-- automatically reverted
@@ -70,13 +82,34 @@ export default function TileMain() {
   
   }
 
-  return (
-    <div className="tile_main" ref={container}>
-      {/* <p>Score: {scoreRef.current}</p>
-      <button onClick={increaseScore}>Increase Score</button> */}
+  const columnOne =  [1].map((number, index) => {
+    return (
+        <button onClick={handleTileClicked} className="button_box1 box">{number}</button>
+    )
+  })
+  
+  const columnTwo =  [2].map((number, index) => {
+    return (
+        <button onClick={handleTileClicked} className="button_box2 box">{number}</button>
+    )
+  })
 
-      <button onClick={handleTileClicked} className="button_box">1</button>
-   
-    </div>
+  return (
+    <section className="tiles_section">
+      <p>The section utilized gsap to simplify element animations</p>
+      <div className="tile_main" ref={container}>
+        {/* <p>Score: {scoreRef.current}</p>
+        <button onClick={increaseScore}>Increase Score</button> */}
+  
+        <div className="column_one">
+         {columnOne}
+        </div>
+        <div className="column_two">
+  
+         {columnTwo}
+        </div>
+     
+      </div>
+    </section>
   );
 }

@@ -1,9 +1,21 @@
+.tiles_section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .tile_main {
     position: relative;
     width: 80%;
     height: 80%;
     overflow: hidden;
     border: 1px solid black;
+    display: flex;
+    flex-direction: row;
   }
   
   .tile {
@@ -12,6 +24,7 @@
     height: 100px;
     cursor: pointer;
   }
+  
   
   .tile-counter {
     position: fixed;
@@ -33,17 +46,29 @@
   }
   
 
-  .random_box  {
-  background-color: blueviolet;
-  color: white;
-  height: 50px;
-  border-radius: 100%;
-  width: 50px;
-  font-size: x-small;
-  }
 
   .button_box {
     width: 100px;
     height: 100px;
     background-color: hotpink;
+  }
+
+  .column_one {
+    height: 100%;
+    width: max-content;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  .column_two {
+    height: 100%;
+    width: max-content;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
   }
