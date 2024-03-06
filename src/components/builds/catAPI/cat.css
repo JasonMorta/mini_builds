@@ -1,7 +1,7 @@
 .cat_image_container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     gap: 20px;
     border: 1px solid #80808042;
@@ -11,6 +11,7 @@
     overflow: auto;
     padding: 10px;
     border-radius: 5px;
+    position: relative;
 }
 
 .cat_image_container img {
@@ -18,7 +19,10 @@
     max-height: 400px;
 }
 
-.testRev {
+.cat_button {
     transition: .2s ease-in-out;
-    
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
 }

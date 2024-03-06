@@ -1,55 +1,72 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import { useContext } from "react";
 // import { StateContext } from "../../../StateManager";
 import "../../../loadingCSS.css";
 import "./cat.css";
-import { useQuery } from "react-query";
 import StyledButton from "../../StyledButton";
 import placeHolder from "./placeholder.png";
-
-const fetchCat = async () => {
-  const response = await fetch(`https://api.thecatapi.com/v1/images/search`);
-  if (!response.ok) {
-    throw new Error("Network response was not ok");
-  }
-  return response.json();
-};
+import Skeleton from '@mui/material/Skeleton';
+import { getCatImg } from "./APIcalls";
 
 export default function CatAPI() {
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imgURL, setImgURL] = useState([]);
+  const [isFetching, setIsFetching] = useState(false);
+  const [imgLoaded, setImgLoaded] = useState(false);
+  const [btnText, setBtnText] = useState("Load");
 
-  console.log(`%c Cat component`, "color: #2196f3");
-  const { isLoading, data, isError, refetch, isFetching } = useQuery(
-    "catImage",
-    fetchCat,
-    {
-      //cacheTime: 5000, //
-      //staleTime: 60000, //determines how long data is considered fresh before a refetch is triggered in the background
+  async function handleClick() {
+    setImgURL([]);
+    setIsFetching(true);
+    setImgLoaded(true);
+    console.log("Fetching");
+  }
+
+  useEffect(() => {
+    async function handleImageLoaded() {
+      if (isFetching) {
+        try {
+          const data = await getCatImg();
+          console.log("data", data);
+          setImgURL(data[0]);
+        } catch (error) {
+          console.error(error);
+        }
+      }
     }
-  );
-  console.log("isLoading", isLoading);
+    handleImageLoaded();
+  }, [isFetching]);
 
-  //if (isLoading ) return
-
-  if (isError) return <div>{isError.message}</div>;
-
-  function handleClick() {
-    refetch();
+  function handleImageComplete(e) {
+    
+    console.log('e', e)
+    if (imgURL.url) {
+      setIsFetching(false)
+      setBtnText("Load Next");
+      setImgLoaded(false);
+    }
+ 
   }
-
-  async function handleImageLoaded() {
-    //setImageLoaded(true);
-  }
-
   return (
     <div className="cat_image_container">
       <h2>Random Cat API</h2>
-      <img
-        src={!isFetching ? data[0]?.url : placeHolder}
-        alt={!isFetching ? data[0]?.id : 'none'}
-        onLoad={handleImageLoaded}
+      {imgURL.url ? <img
+        src={!imgLoaded ? imgURL.url : placeHolder}
+        alt="CatImage"
+        onLoad={handleImageComplete}
       />
-      <StyledButton type="secondary" text="Next" onclick={handleClick} />
+      :
+      <Skeleton
+      animation="wave"
+      height={500}
+      width="80%"
+      style={{position: "relative"}}
+    />}
+      <StyledButton 
+        type="instagram" 
+        text={btnText}
+        className="cat_button"
+        disabled={isFetching}
+        onPress={handleClick} />
     </div>
   );
 }

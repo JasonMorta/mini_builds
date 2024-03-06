@@ -11,7 +11,6 @@ export default function StyledButton(props) {
   //Render a button type (facebook, instagram, twitter, github, Youtube, linkedin, pinterest, reddit, messenger, whatsapp)
   disabled={props.disabled}
   onPress={props.onPress}
-  onclick={props.onClick}
   //size="medium" // default:medium = Render a specific button size, styled by the .scss size list
   //visible={true} // default:true = Render the button visible or not
   //ripple={true} // default:true = Render the button with ripple effect or not
@@ -21,7 +20,7 @@ export default function StyledButton(props) {
   //onMouseDown={function} // default:undefined = Callback function to be called when the button mouse is pressed
   //href={string} // default:undefined = Render the button as a link
   //target={string} // default:undefined = Render the button with a target
-  //className={string} // default:undefined = Render the button with a custom class
+  className={props.className} // default:undefined = Render the button with a custom class
   //cssModule={object} // default:undefined = Render the button with a custom css module
   //style={object} // default:undefined = Render the button with a custom style
   //before={node} // default:undefined = Render a custom node before the button; useful for setting icons

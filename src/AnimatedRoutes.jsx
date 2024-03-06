@@ -6,8 +6,6 @@ import Truthy from "./components/builds/Truthy/Truthy";
 import TileMain from "./components/tiles/TileMain";
 import FlipsMain from "./components/builds/cardFlip/FlipsMain";
 import Expand from "./components/builds/expandingSections/Expand";
-import SetUrl from "./components/builds/URLMod/SetUrl";
-import GetHTML from "./components/builds/URLMod/GetHTML";
 import IntersectionOP from "./components/builds/IntersectionOP/IntersectionOP";
 import Main from "./components/Main";
 import { Route, Routes, useLocation } from "react-router-dom";
@@ -16,22 +14,16 @@ import PassGen from "./components/builds/passwordGen/PassGen";
 import IEMain from "./components/builds/incomeExpense/IEMain";
 import CatAPI from "./components/builds/catAPI/CatAPI";
 import PokeState from "./components/builds/pokemonAPI/PokeState";
-import SpriteImages from "./components/builds/pokemonAPI/components/SpriteImages";
 import PokemonImage from "./components/builds/pokemonAPI/components/PokemonPrev.jsx";
 import Sortable from "./components/builds/sortables/Sortable";
-import { QueryClientProvider, QueryClient } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
 import Filters from "./components/builds/filters/Filters.jsx";
-
-const queryClient = new QueryClient();
 
 export default function AnimatedRoutes() {
   const location = useLocation();
   console.log(`%c AnimatedRoutes`, "color: red");
-  
+
   return (
     <AnimatePresence>
-    <QueryClientProvider client={queryClient}>
       <Routes location={location} key={location.pathname}>
         {/* Define all routes here. Routes are hidden until navigated to. */}
         <Route index path="/" element={<Main />} />
@@ -54,8 +46,6 @@ export default function AnimatedRoutes() {
         <Route path="/cat" element={<CatAPI />} />
         <Route path="/filters" element={<Filters />} />
       </Routes>
-      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
-    </QueryClientProvider>
     </AnimatePresence>
   );
 }
