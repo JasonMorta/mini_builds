@@ -65,7 +65,7 @@ export default function CatAPI() {
         type="instagram" 
         text={btnText}
         className="cat_button"
-        disabled={isFetching}
+        disabled={imgLoaded}
         onPress={handleClick} />
     </div>
   );
