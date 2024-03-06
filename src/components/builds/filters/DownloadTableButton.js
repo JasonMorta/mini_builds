@@ -1,3 +1,5 @@
+import StyledButton from "../../StyledButton";
+
 // A button that downloads the table data as a CSV file.
 function arrayToCSV(data) {
     if (!data || !Array.isArray(data) || data.length === 0) {
@@ -45,7 +47,12 @@ function downloadCSV(blob, filename) {
         };
 
         return (
-            <button onClick={handleDownload}>Download Table</button>
+            <StyledButton 
+            text="Download Table"
+            type="messenger"
+            
+            
+            onClick={handleDownload}/>
         );
     }
 }
