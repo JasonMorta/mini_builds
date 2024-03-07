@@ -134,3 +134,30 @@ p {
   }
 }
 
+/* CUSTOM SCROLL BAR WITH COMPATIBILITY */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #018e802b; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #018e81c7; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #016f64c7; 
+}
+
+/* X-AXIS width */
+::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+

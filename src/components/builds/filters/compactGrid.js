@@ -1,3 +1,4 @@
+import { TableRows } from "@mui/icons-material";
 import DataTable, { defaultThemes } from "react-data-table-component";
 
 
@@ -32,10 +33,16 @@ export const customStyles = {
 			},
 		},
 	},
-    rdt_TableBody: {
-        style: {
-            backgroundColor: 'red',
-        }
-    }
+	table: {
+		style: {
+			maxHeight: '60vh', // Adjust as needed
+			fontFamily: 'system-ui',
+		}
+	},
+	rows: {
+		style: {
+			fontSize: '12px', // Set font size
+			}
+	}
 };
 

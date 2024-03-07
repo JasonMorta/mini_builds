@@ -25,9 +25,9 @@ export const columns = [
       width: "210px",
     },
     {
-      name: "Emoji",
-      selector: (row) => row.emoji,
-      width: "80px",
+      name: "Date",
+      selector: (row) => row.date,
+      width: "115px",
       sortable: true,
     },
     {

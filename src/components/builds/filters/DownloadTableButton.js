@@ -1,6 +1,8 @@
+import React from "react";
 import StyledButton from "../../StyledButton";
+import './buttonCss.css';
 
-// A button that downloads the table data as a CSV file.
+// Build the CSV table headers and rows from the data
 function arrayToCSV(data) {
     if (!data || !Array.isArray(data) || data.length === 0) {
         return null;
@@ -23,6 +25,7 @@ function arrayToCSV(data) {
     return new Blob([csv], { type: 'text/csv' });
 }
 
+// Create a CSV file and download it
 function downloadCSV(blob, filename) {
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -34,25 +37,32 @@ function downloadCSV(blob, filename) {
     document.body.removeChild(a);
 }
 
- function DownloadTableButton({ data, filename }) {
-    console.log('data', data)
-    if (!data || !Array.isArray(data) || data.length === 0) {
+// Button requires a arrays of objects and ?filename
+ function DownloadTableButton(props) {
+
+    const [buttonDisabled, setButtonDisabled] = React.useState(false);
+
+    if (!props.data || !Array.isArray(props.data) || props.data.length === 0) {
         return <></>
     } else {
         const handleDownload = () => {
-            const csvBlob = arrayToCSV(data);
+            setButtonDisabled(true);
+            const csvBlob = arrayToCSV(props.data);
             if (csvBlob) {
-                downloadCSV(csvBlob, filename || 'data.csv');
+                downloadCSV(csvBlob, props.filename || 'table.csv');// if no filename is provided, default to 'table.csv'
+                setTimeout(() => setButtonDisabled(false), 1000);
             }
         };
 
         return (
             <StyledButton 
-            text="Download Table"
-            type="messenger"
-            
-            
-            onClick={handleDownload}/>
+            text={props.text}
+            data={props.data}
+            filename={props.filename}
+            type={props.type}
+            disabled={buttonDisabled}
+            className="download_table_button"
+            onPress={handleDownload}/>
         );
     }
 }
