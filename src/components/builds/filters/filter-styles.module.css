@@ -12,6 +12,11 @@
   font-weight: 200;
 }
 
+.user_list pre {
+  font-size: 10px;
+  text-align: left;
+}
+
 .search_input {
     width: 100%;
     margin: auto;
@@ -53,4 +58,29 @@
   
  .user_list tr:nth-child(even) {
     background-color: #dddddd;
+  }
+
+  .date_section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .date_section button {
+    margin-left: 10px;
+    font-size: 12px;
+  }
+
+  .date_section button span {
+    padding: 0px !important;
+    font-family: sans-serif;
+  }
+
+  .filter_dates_header_inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    align-items: center;
   }

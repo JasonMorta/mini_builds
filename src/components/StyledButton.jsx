@@ -11,7 +11,7 @@ export default function StyledButton(props) {
   //Render a button type (facebook, instagram, twitter, github, Youtube, linkedin, pinterest, reddit, messenger, whatsapp)
   disabled={props.disabled}
   onPress={props.onPress}
-  //size="medium" // default:medium = Render a specific button size, styled by the .scss size list
+  size={props.size} // default:medium = Render a specific button size, styled by the .scss size list
   //visible={true} // default:true = Render the button visible or not
   //ripple={true} // default:true = Render the button with ripple effect or not
   //onPressed={function} // default:undefined = Callback function to be called when the button is pressed

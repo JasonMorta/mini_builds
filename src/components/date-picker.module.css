@@ -1,0 +1,25 @@
+
+.date_picker_outer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.date_container {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    flex-wrap: wrap;
+}
+
+.date_container label {
+    display: inline-block;
+    text-align: left;
+    font-size: small;
+}
+
+.date_container input {
+    color: #cc68a1;
+    font-family: system-ui;
+}
+

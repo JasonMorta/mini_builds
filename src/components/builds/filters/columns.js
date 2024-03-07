@@ -1,3 +1,12 @@
+
+
+// Sort function for date column
+const dateSortFunction = (rowA, rowB) => {
+  const dateA = new Date(rowA.date);
+  const dateB = new Date(rowB.date);
+  return dateA - dateB;
+};
+
 export const columns = [
     {
       name: "Avatar",
@@ -29,6 +38,7 @@ export const columns = [
       selector: (row) => row.date,
       width: "115px",
       sortable: true,
+      sortFunction: dateSortFunction,
     },
     {
       name: "Color",
