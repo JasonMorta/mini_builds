@@ -5,68 +5,77 @@ import "../../../loadingCSS.css";
 import "./cat.css";
 import StyledButton from "../../StyledButton";
 import placeHolder from "./placeholder.png";
-import Skeleton from '@mui/material/Skeleton';
 import { getCatImg } from "./APIcalls";
+import {
+  useQuery,
+  useQueryClient,
+} from 'react-query'
 
 export default function CatAPI() {
-  const [imgURL, setImgURL] = useState([]);
-  const [isFetching, setIsFetching] = useState(false);
-  const [imgLoaded, setImgLoaded] = useState(false);
+  // Access the client
+  const queryClient = useQueryClient()
+  const [imgLoaded, setImgLoaded] = useState(true);
   const [btnText, setBtnText] = useState("Load");
+  const [disableBtn, setDisableBtn] = useState(true);
+  const prop = useQuery('randomCat', getCatImg)
+
 
   async function handleClick() {
-    setImgURL([]);
-    setIsFetching(true);
+    setBtnText("Loading...");
     setImgLoaded(true);
-    console.log("Fetching");
+    setDisableBtn(true);
+    queryClient.invalidateQueries('randomCat')
+    prop.refetch()
+    console.log('Start Img load', prop)
   }
 
-  useEffect(() => {
-    async function handleImageLoaded() {
-      if (isFetching) {
-        try {
-          const data = await getCatImg();
-          console.log("data", data);
-          setImgURL(data[0]);
-        } catch (error) {
-          console.error(error);
-        }
-      }
-    }
-    handleImageLoaded();
-  }, [isFetching]);
 
   function handleImageComplete(e) {
-    
-    console.log('e', e)
-    if (imgURL.url) {
-      setIsFetching(false)
-      setBtnText("Load Next");
-      setImgLoaded(false);
+
+    console.log('e.target.src', e.target.src)
+  
+
+    if (!e.target.src.includes('base64')) {
+      setDisableBtn(false);
     }
- 
+    
+    setBtnText("Load Next");
+    setImgLoaded(false);
+    console.log('Complete Img load', prop)
+    
   }
+  
   return (
     <div className="cat_image_container">
       <h2>Random Cat API</h2>
-      {imgURL.url ? <img
-        src={!imgLoaded ? imgURL.url : placeHolder}
-        alt="CatImage"
-        onLoad={handleImageComplete}
-      />
-      :
-      <Skeleton
-      animation="wave"
-      height={500}
-      width="80%"
-      style={{position: "relative"}}
-    />}
-      <StyledButton 
-        type="instagram" 
-        text={btnText}
-        className="cat_button"
-        disabled={imgLoaded}
-        onPress={handleClick} />
+      {  <>
+            {prop.data?.map((img, i) => (
+              
+              // imgLoaded ? 
+              // <CircularProgress />
+              // : 
+                <>
+                {prop.isFetching ?
+                  <span>Fetching</span>
+                  : prop.isError ?
+                    <span>Error: {prop.error.message}</span>
+                    :
+                    <img
+                      src={imgLoaded ? placeHolder : img.url}
+                      alt="CatImage"
+                      onLoad={handleImageComplete}
+                    />}
+                  <StyledButton
+                    type="instagram"
+                    text={btnText}
+                    className="cat_button"
+                    disabled={disableBtn}
+                    onPress={handleClick} />
+                </>
+            ))}
+        </>
+      }
     </div>
   );
+
 }

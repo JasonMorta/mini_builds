@@ -12,11 +12,11 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import PassGen from "./components/builds/passwordGen/PassGen";
 import IEMain from "./components/builds/incomeExpense/IEMain";
-import CatAPI from "./components/builds/catAPI/CatAPI";
 import PokeState from "./components/builds/pokemonAPI/PokeState";
 import PokemonImage from "./components/builds/pokemonAPI/components/PokemonPrev.jsx";
 import Sortable from "./components/builds/sortables/Sortable";
 import Filters from "./components/builds/filters/Filters.jsx";
+import CatMain from "./components/builds/catAPI/CatMain.jsx";
 
 export default function AnimatedRoutes() {
   const location = useLocation();
@@ -43,7 +43,7 @@ export default function AnimatedRoutes() {
         <Route path="/passGen" element={<PassGen />} />
         <Route path="/IOP" element={<IntersectionOP />} />
         <Route path="/IandE" element={<IEMain />} />
-        <Route path="/cat" element={<CatAPI />} />
+        <Route path="/cat" element={<CatMain /> } />
         <Route path="/filters" element={<Filters />} />
       </Routes>
     </AnimatePresence>
