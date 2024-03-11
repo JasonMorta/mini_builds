@@ -49,7 +49,7 @@ function downloadCSV(blob, filename) {
             setButtonDisabled(true);
             const csvBlob = arrayToCSV(props.data);
             if (csvBlob) {
-                downloadCSV(csvBlob, props.filename || 'table.csv');// if no filename is provided, default to 'table.csv'
+                downloadCSV(csvBlob, `table-rows-${props.data.length}`);// if no filename is provided, default to 'table.csv'
                 setTimeout(() => setButtonDisabled(false), 1000);
             }
         };
@@ -58,7 +58,7 @@ function downloadCSV(blob, filename) {
             <StyledButton 
             text={props.text}
             data={props.data}
-            filename={props.filename}
+            //filename={props.filename}
             type={props.type}
             disabled={buttonDisabled}
             className="download_table_button"

@@ -62,12 +62,13 @@ export default function Filters() {
 
   // Display this button when a row is selected/checked
   const contextActions = React.useMemo(() => {
+
     return (
       <DownloadTableButton
         data={selectedRows}
         type="reddit"
         text="Download Selected Rows"
-        filename="table-rows.csv"
+        //filename="table-rows.csv"
       />
     );
   }, [selectedRows]);
