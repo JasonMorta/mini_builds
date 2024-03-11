@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import "./loaders.css";
 import StyledButton from "../../StyledButton";
-import axios from 'axios';
 import DataLoader from './DataLoader';
 
 export default function Loaders() {

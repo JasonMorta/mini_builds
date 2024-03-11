@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
 import StyledButton from "../../StyledButton";
 import "./dataLoader.css";
 import Box from "@mui/material/Box";
