@@ -10,7 +10,7 @@
     border-right: 2px solid rgb(187, 187, 187);
     align-items: flex-start;
     text-align: initial;
-    
+    z-index: 10;
 }
 
 
