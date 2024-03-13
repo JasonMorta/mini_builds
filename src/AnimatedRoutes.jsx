@@ -17,6 +17,7 @@ import PokemonImage from "./components/builds/pokemonAPI/components/PokemonPrev.
 import Sortable from "./components/builds/sortables/Sortable";
 import Filters from "./components/builds/filters/Filters.jsx";
 import CatMain from "./components/builds/catAPI/CatMain.jsx";
+import DatePickerMain from "./components/builds/datePickers/DatePickerMain.jsx";
 
 export default function AnimatedRoutes() {
   const location = useLocation();
@@ -45,6 +46,7 @@ export default function AnimatedRoutes() {
         <Route path="/IandE" element={<IEMain />} />
         <Route path="/cat" element={<CatMain /> } />
         <Route path="/filters" element={<Filters />} />
+        <Route path="/datepickers" element={<DatePickerMain /> } />
       </Routes>
     </AnimatePresence>
   );

@@ -86,6 +86,11 @@ function StateManager() {
         name: "Filters",
         link: "filters",
         active: false,
+      },
+      {
+        name:"Date Pickers",
+        link:"datepickers",
+        active:false
       }
     ],
     nextJoke: false,
