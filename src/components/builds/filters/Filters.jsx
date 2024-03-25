@@ -58,7 +58,7 @@ export default function Filters() {
         user.address.toLowerCase().includes(filter.toLowerCase()) ||
         user.userId.toLowerCase().includes(filter.toLowerCase())
     );
-  }, [filter, users]);
+  },[filter, users]);
 
   // Display this button when a row is selected/checked
   const contextActions = React.useMemo(() => {
@@ -119,7 +119,6 @@ function resetFilters() {
   //filterLogic
   filterLogic.reset()
 }
-
 
   return (
     <div className={css.user_list}>

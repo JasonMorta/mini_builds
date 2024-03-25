@@ -7,7 +7,8 @@ import addDays from 'date-fns/addDays';
 import startOfMonth from 'date-fns/startOfMonth';
 import endOfMonth from 'date-fns/endOfMonth';
 import addMonths from 'date-fns/addMonths';
-import css from '@mui/icons-material';
+import { compareAsc, format } from "date-fns";
+import css from './datePicker-styles.module.css';
 
 export default function PredefinedDateRanges() {
 
@@ -88,14 +89,17 @@ export default function PredefinedDateRanges() {
         }
       ];
   return (
-  <div className={css.second_picker}>
+  <div className={'css.second_picker'}>
+    <h3>Predefined date ranges</h3>
       <DateRangePicker
         ranges={predefinedRanges}
+        format="dd/MM/yyyy"
+        label="Date Range"
         placeholder="Placement left"
         style={{ width: 300 }}
-        onShortcutClick={(shortcut, event) => {
-          console.log(shortcut);
-        }}
+        onOpen={() => console.log('open')}
+        onOk={value => console.log(value)}// When click ok button
+        onSelect={value => format(new Date(value), 'dd/mm/yyyy') }// When select a date
         /> 
   </div>
   )

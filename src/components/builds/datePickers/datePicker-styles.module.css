@@ -9,7 +9,7 @@
     /* background-color: cadetblue; */
 }
 
-.first_picker {
+.first_picker, .second_picker {
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+/.history
 .history
 pnpm-lock.yaml
 /pnpm-lock.yaml
