@@ -8,7 +8,6 @@ import startOfMonth from 'date-fns/startOfMonth';
 import endOfMonth from 'date-fns/endOfMonth';
 import addMonths from 'date-fns/addMonths';
 import { compareAsc, format } from "date-fns";
-import css from './datePicker-styles.module.css';
 
 export default function PredefinedDateRanges() {
 
@@ -97,6 +96,7 @@ export default function PredefinedDateRanges() {
         label="Date Range"
         placeholder="Placement left"
         style={{ width: 300 }}
+        onClean={() => console.log("cleared")}
         onOpen={() => console.log('open')}
         onOk={value => console.log(value)}// When click ok button
         onSelect={value => format(new Date(value), 'dd/mm/yyyy') }// When select a date
