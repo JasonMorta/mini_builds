@@ -5,11 +5,11 @@ import PredefinedDateRanges from './PredefinedDateRanges'
 import BasicDatePicker from './BasicDatePicker'
 
 export default function DatePickerMain() {
+  
   return (
     <div className={css.main_datePicker}>
         <ReactDateRangePicker />
         <PredefinedDateRanges />
-        <BasicDatePicker />
     </div>
   )
 }
