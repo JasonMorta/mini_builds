@@ -125,8 +125,8 @@ export default function PredefinedDateRanges() {
         ranges={predefinedRanges}
         format="dd/MM/yyyy"
         label="Date Range"
-        placeholder="Placement left"
-        style={{ width: 300 }}
+        placeholder="No date selected"
+        //style={{ width: 300 }}
         onClean={() => onClean()}
         onOpen={() => console.log('open')}
         onOk={value => onOk(value)}// When click ok button
