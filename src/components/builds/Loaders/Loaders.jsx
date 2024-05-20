@@ -13,10 +13,8 @@ export default function Loaders() {
   console.count('Loaded');
 
   useEffect(() => {
-    console.count('Loaded On load');
     progressRef.current.value = 0;
     h2Ref.current.innerText = 'Progress: 0%';
-    
   }, []);
 
   function increaseProgress(){
@@ -49,7 +47,7 @@ export default function Loaders() {
     <div className='loaders_container'>
      <section className='loading_progress'>
         <p>Here the useRef hook is used to <b>avoid re-rendering</b> the component on progress updates.</p>
-        <h2 ref={h2Ref} >Progress: 0%</h2>
+        <h2 ref={h2Ref} ></h2>
         <progress className='testRev' ref={progressRef} value={ progressRef.current?.value} max="100" />
         <br />
         <StyledButton 

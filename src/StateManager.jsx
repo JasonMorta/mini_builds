@@ -9,7 +9,7 @@ export const StateContext = createContext();
 
 //All children will run through the state manger.
 function StateManager() {
-  console.log(`%c State manager`, 'color: limegreen')
+  console.log(`%c State manager`, "color: limegreen");
   const [state, setState] = useState({
     menuItems: [
       {
@@ -88,10 +88,15 @@ function StateManager() {
         active: false,
       },
       {
-        name:"Date Pickers",
-        link:"datepickers",
-        active:false
-      }
+        name: "Date Pickers",
+        link: "datepickers",
+        active: false,
+      },
+      {
+        name: "Virutalized List",
+        link: "virtualized",
+        active: false,
+      },
     ],
     nextJoke: false,
     catagories: [
@@ -136,10 +141,7 @@ function StateManager() {
       pass: "",
     },
     catImage: [],
-
   });
-
-
 
   return (
     <>

@@ -28,7 +28,7 @@ export default function DataLoader() {
 
 
 
-  const handleButtonClick = () => {
+  const handleButtonClick = async () => {
     setButtonText("Loading...");
 
     if (data.length > 0) {
@@ -39,7 +39,7 @@ export default function DataLoader() {
       setSuccess(false);
       setLoading(true);
 
-      fetch("https://jsonplaceholder.typicode.com/posts")
+     await fetch("https://jsonplaceholder.typicode.com/posts")
         .then((response) => response.json())
         .then((data) => {
           setTimeout(() => {

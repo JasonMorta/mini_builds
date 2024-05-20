@@ -2,6 +2,7 @@
 import './App.css';
 import StateManager from './StateManager';
 import './fonts.css'
+import 'rsuite/dist/rsuite.min.css';
 
 function App() {
   return (
