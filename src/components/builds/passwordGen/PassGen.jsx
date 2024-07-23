@@ -28,7 +28,7 @@ export default function PassGen() {
     <div className={CSS.box}>
       <h3>Generate a random password</h3>
           {/* password output */}
-      <label for="pass">Password:</label>
+      <label htmlFor="pass">Password:</label>
       <InputGroup className="mb-">
         <Form.Control
           id="pass" 

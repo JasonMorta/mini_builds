@@ -34,7 +34,6 @@ export default function Main() {
       exit={state.motion.exit}
       transition={state.motion.transition}
     >
-
     <div className="main_section">
       {header}
     

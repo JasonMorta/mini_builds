@@ -4,7 +4,7 @@
     flex-direction: column;
     flex-wrap: nowrap;
     gap: 10px;
-    background-color: #494949;
+    border-radius: 9px;
 }
 
 .pokemonPrev_modal h4 {

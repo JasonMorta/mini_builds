@@ -12,42 +12,39 @@ export default function Stats() {
   // }
 
   useLayoutEffect(() => {
-     console.count('useLayoutEffect')
     state.stats?.base?.map((value, index) => {
+      const percentage = document.querySelectorAll(`.${CSS.stat_bar_progress}`)[index];
+      percentage.style.width = "0px";
 
-      const percentage = document.querySelectorAll(`.${CSS.stat_bar_progress}`)[
-        index
-      ];
-      const statDisplay = document.querySelectorAll(`.${CSS.stat_percentage}`)[
-        index
-      ];
+      const statBar = document.querySelectorAll(`.${CSS.stat_percentage}`)[index];
+      statBar.textContent = "0";
 
-      const statValue = `${Math.round(value.base_stat)}`;
-
+      let statValue = `${Math.round(value.base_stat)}`;
+    
       //set the progress bar to 0
       gsap.to(percentage, {
         width: statValue + "px",
-        ease: "ease",
-        duration: 2,
+        ease: "linear",
+        duration:1 ,
       });
 
       //Set the progress bar to the stat value
-      gsap.to(statDisplay, {
+      gsap.to(statBar, {
         width: statValue,
         onUpdate: () => {
           //Set the stat value to the stat display
           if (value.stat.name === "hp" || value.stat.name === "defense") {
             //hp is the only stat that is not out of 255
-            statDisplay.textContent = `${Math.round(
-              parseInt(percentage.style.width)*5
+            statBar.textContent = `${Math.round(
+              parseInt(percentage.style.width)
             )}`;
           } else {
             //Multiply the stat value by 5 to get the actual value
-            statDisplay.textContent = `${parseInt(percentage.style.width)}`;
+            statBar.textContent = `${parseInt(percentage.style.width)}`;
           }
         },
-        ease: "ease",
-        duration: 2,
+        ease: "linear",
+        duration: 1,
       });
     });
   }, [state]);

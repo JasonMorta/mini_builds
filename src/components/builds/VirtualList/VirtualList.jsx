@@ -98,7 +98,7 @@ function VirtualList() {
         </p>
       </section>
       {loading ? (
-        <Loader center content="Loading..." />
+        <Loader size="md" center content="Loading..." />
       ) : (
         <Table virtualized style={styles} height={600} data={memoData}>
           <Column width={50} align="center">
