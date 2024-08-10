@@ -20,7 +20,6 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/sortablejs": "^1.15.4",
     "bootstrap": "^5.2.2",
     "date-fns": "^3.4.0",
     "fireworks": "^2.2.7",
@@ -29,6 +28,8 @@
     "immer": "^9.0.19",
     "install": "^0.13.0",
     "keyframe-animation": "^1.0.1",
+    "lodash": "^4.17.21",
+    "lodash.shuffle": "^4.2.0",
     "mock": "^0.1.1",
     "prop-types": "^15.8.1",
     "react": ">=18.2.0",
@@ -46,12 +47,13 @@
     "react-router-dom": "^6.22.2",
     "react-scripts": "5.0.1",
     "react-sortablejs": "^6.1.4",
+    "react-spring": "^9.7.4",
     "react-use-measure": "^2.1.1",
     "react-virtualized-auto-sizer": "^1.0.7",
     "react-visibility-sensor": "^5.1.1",
     "react-window": "^1.8.8",
     "rsuite": "^5.61.0",
-    "sortablejs": "^1.15.0",
+    "sortablejs": "^1.15.2",
     "styled-components": "^5.3.11",
     "swr": "^2.1.0",
     "tsparticles": "^2.5.1",
@@ -80,5 +82,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/sortablejs": "^1.15.8"
   }
 }

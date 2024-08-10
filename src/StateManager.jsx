@@ -97,6 +97,11 @@ function StateManager() {
         link: "virtualized",
         active: false,
       },
+      {
+        name: "Leaderboard",
+        link: "leaderboard",
+        active: false,
+      }
     ],
     nextJoke: false,
     catagories: [

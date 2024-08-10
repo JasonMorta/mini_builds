@@ -18,6 +18,7 @@ import Filters from "./components/builds/filters/Filters.jsx";
 import CatMain from "./components/builds/catAPI/CatMain.jsx";
 import DatePickerMain from "./components/builds/datePickers/DatePickerMain.jsx";
 import VirtualList from "./components/builds/VirtualList/VirtualList.jsx";
+import LeaderBoardScores from "./components/builds/LeaderBoard/LeaderBoardScores.jsx";
 
 export default function AnimatedRoutes() {
   const location = useLocation();
@@ -45,6 +46,7 @@ export default function AnimatedRoutes() {
         <Route path="/filters" element={<Filters />} />
         <Route path="/datepickers" element={<DatePickerMain /> } />
         <Route path="/virtualized" element={<VirtualList />} />
+        <Route path="/leaderboard" element={<LeaderBoardScores />} />
       </Routes>
     </AnimatePresence>
   );
