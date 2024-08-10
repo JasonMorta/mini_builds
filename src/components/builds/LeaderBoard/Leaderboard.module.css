@@ -72,3 +72,14 @@
   width: calc(100% / 4);
   font-size: 25px;
 }
+
+.ranking {
+  display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.ranking span {
+  width: calc(100% / 3);
+  font-size: 20px;
+}

@@ -42,7 +42,15 @@ export default function LeaderBoardScores() {
             <div className={styles.cell}> {/* Cell wrapper for content */}
               <div className={styles.details} style={{ backgroundImage: item.css }}>
                 <div className={styles.inner_item}>
-                  <span style={{ textAlign: "left" }}>{index + 1} {" "} {index === 0 ? "👑": index === 1 ? "🥈" : ""}</span> {/* Display rank based on index */}
+                  <span className={styles.ranking}>
+                    <span style={{ textAlign: "left" }}>{index + 1} {" "} </span>
+                  
+                    <span>{ `-1`}</span>
+                    <span>{index === 0 ? "👑": index === 1 ? "🥈" : ""}</span>
+                  </span>
+
+
+
                   <span style={{ textAlign: "left" }}>{item.name}</span>
                   <span style={{ textAlign: "right" }}>{item.score_now}</span>
                   <span style={{ textAlign: "right" }}>{item.totalScore}</span>

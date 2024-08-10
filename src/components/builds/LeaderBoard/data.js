@@ -10,6 +10,7 @@ const data = [
         height,
         totalScore: 78,
         score_now: 5,
+        
     },
     {
         name: 'Saint Petersburg',
@@ -18,6 +19,7 @@ const data = [
         height,
         totalScore: 76,
         score_now: 7,
+        
     },
     {
         name: 'Deep Blue',
@@ -26,6 +28,7 @@ const data = [
         height,
         totalScore: 100,
         score_now: 2,
+        
     },
     {
         name: 'Ripe Malinka',
@@ -34,6 +37,7 @@ const data = [
         height,
         totalScore: 86,
         score_now: 9,
+        
     },
     {
       name: 'Near Moon',
@@ -42,6 +46,7 @@ const data = [
       height,
         totalScore: 90,
         score_now: 4,
+        
     },
     {
       name: 'Wild Apple',
@@ -50,6 +55,7 @@ const data = [
       height,
         totalScore: 100,
         score_now: 3,
+        
     },
     {
       name: 'Ladoga Bottom',
@@ -58,6 +64,7 @@ const data = [
       height,
         totalScore: 80,
         score_now: 6,
+        
     },
     {
       name: 'Sunny Morning',
@@ -66,13 +73,16 @@ const data = [
       height,
         totalScore: 70,
         score_now: 8,
+        
     },
-    // {
-    //   name: 'Lemon Gate',
-    //   description: '#96fbc4 → #f9f586',
-    //   css: 'linear-gradient(to top, #96fbc4 0%, #f9f586 100%)',
-    //   height: 200,
-    // },
+    {
+      name: 'Lemon Gate',
+      description: '#96fbc4 → #f9f586',
+      css: 'linear-gradient(to top, #96fbc4 0%, #f9f586 100%)',
+      height,
+        totalScore: 90,
+        score_now: 10,
+    },
 ]
 
 // update score_now and totalScore every 2 seconds
