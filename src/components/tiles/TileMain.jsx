@@ -1,16 +1,11 @@
 /* eslint-disable no-loop-func */
-import React from "react";
-import { useContext } from "react";
-import { useState, useEffect, useRef } from "react";
-import { StateContext } from "../../StateManager";
-import Counter from "./Counter";
+import {useEffect, useRef} from "react";
 import "./tiles.css";
 import gsap from "gsap";
-import { useGSAP  } from "@gsap/react";
-
-const randomX = () => gsap.utils.random(-400, 400, 1);
-
-// Then register it with GSAP
+import { useGSAP } from "@gsap/react";
+// Importing Prism.js
+import Prism from 'prismjs';
+import { useSprings, animated } from '@react-spring/web'
 
 
 export default function TileMain() {
@@ -20,19 +15,23 @@ export default function TileMain() {
   const container = useRef();
   const buttonPosition = gsap.utils.selector(container);
 
+  const springs = useSprings(2, {
+    from: { opacity: 0 },
+    to: { opacity: .2 },
+  })
 
   //Generates a random number when called
   //Can be used where ever you want to generate a random number.
-  function getRandomNum(){
-      let randomNum = ((Math.random() * 1) + 0).toFixed(1);
-      return parseFloat(randomNum)
+  function getRandomNum(param) {
+    console.log('param', param)
+    let randomNum = (Math.random() * 1 + 0).toFixed(1);
+;
+    return parseFloat(randomNum);
   }
 
   useEffect(() => {
-  }
-  ,[])
-
-
+    Prism.highlightAll();
+  }, []);
 
   useGSAP(
     () => {
@@ -53,46 +52,31 @@ export default function TileMain() {
     { scope: container }
   ); // <-- scope is for selector text (optional)
 
-  // Function to increase the score
-  // const increaseScore = () => {
-  //   scoreRef.current += 10;
-  //   console.log("scoreRef", scoreRef.current);
-  //   // Even though we changed the score, the component won't re-render
-  // };
-
-// useGSAP(()=>{
-//   let button = buttonPosition(".button_box");
-//   if (button[0]._gsap.y > "600px" ){
-
-//     console.log("button", button[0]._gsap.y);
-//   } 
-
-// }, {scope: container, revertOnUpdate: false});
 
 
-
-  const { contextSafe } = useGSAP({scope: container})
+  const { contextSafe } = useGSAP({ scope: container });
 
   const handleTileClicked = (event) => {
     // const button = event.currentTarget[0]._gsap.y;
-   
-
-   // console.log('button[0]._gsap.y', button[0]._gsap.y)
+    // console.log('button[0]._gsap.y', button[0]._gsap.y)
     // const position = buttonPosition(button);
-  
-  }
+  };
 
-  const columnOne =  [1].map((number, index) => {
+  const columnOne = [1].map((number, index) => {
     return (
-        <button onClick={handleTileClicked} className="button_box1 box">{number}</button>
-    )
-  })
-  
-  const columnTwo =  [2].map((number, index) => {
+      <button onClick={handleTileClicked} className="button_box1 box">
+        {number}
+      </button>
+    );
+  });
+
+  const columnTwo = [2].map((number, index) => {
     return (
-        <button onClick={handleTileClicked} className="button_box2 box">{number}</button>
-    )
-  })
+      <button onClick={handleTileClicked} className="button_box2 box">
+        {number}
+      </button>
+    );
+  });
 
   return (
     <section className="tiles_section">
@@ -100,16 +84,21 @@ export default function TileMain() {
       <div className="tile_main" ref={container}>
         {/* <p>Score: {scoreRef.current}</p>
         <button onClick={increaseScore}>Increase Score</button> */}
-  
-        <div className="column_one">
-         {columnOne}
-        </div>
-        <div className="column_two">
-  
-         {columnTwo}
-        </div>
-     
+
+        <div className="column_one">{columnOne}</div>
+        <div className="column_two">{columnTwo}</div>
+        <pre>
+          <code className="language-js">
+            {`const greet = () => console.log('Hello, world!');`}
+          </code>
+        </pre>
+       
       </div>
+      <div>
+      {springs.map(props => (
+        <animated.div style={props}>Hello World</animated.div>
+      ))}
+    </div>
     </section>
   );
 }
