@@ -12,7 +12,7 @@ const TileMain = () => {
     <div className="guide-container">
       <h1>Comprehensive Step-by-Step Guide: Hosting CloudDBeaver on AWS</h1>
 
- <div className="details-container">
+      <div className="details-container">
         <details>
           <summary>Step 1: Set Up Your AWS Account and EC2 Instance</summary>
           <div className="guide-content">
@@ -23,22 +23,27 @@ const TileMain = () => {
             </p>
             <p>
               <strong>Why it’s needed:</strong> You’ll need access to the AWS
-              Management Console to create and manage your EC2 instance and other
-              resources.
+              Management Console to create and manage your EC2 instance and
+              other resources.
             </p>
             <p>
               <strong>How to do it:</strong> Visit{" "}
-              <a href="https://aws.amazon.com/console/" target="_blank" rel="noreferrer">
+              <a
+                href="https://aws.amazon.com/console/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 AWS Management Console
               </a>{" "}
-              and log in with your credentials. If you don’t have an account, you
-              can create one and follow the on-screen instructions to set it up.
+              and log in with your credentials. If you don’t have an account,
+              you can create one and follow the on-screen instructions to set it
+              up.
             </p>
-  
+
             <h3>2. Select a Region</h3>
             <p>
-              <strong>What it is:</strong> AWS regions are geographically isolated
-              locations where AWS data centers are hosted.
+              <strong>What it is:</strong> AWS regions are geographically
+              isolated locations where AWS data centers are hosted.
             </p>
             <p>
               <strong>Why it’s needed:</strong> Choosing a region close to your
@@ -46,41 +51,54 @@ const TileMain = () => {
             </p>
             <p>
               <strong>How to do it:</strong> After logging in, look at the
-              top-right corner of the AWS Console, next to your account name, and
-              click the dropdown to select the region closest to you.
+              top-right corner of the AWS Console, next to your account name,
+              and click the dropdown to select the region closest to you.
             </p>
             <details>
               <summary>Potential Issues</summary>
-              <p>Selecting a distant region could result in slower access times to your services.</p>
+              <p>
+                Selecting a distant region could result in slower access times
+                to your services.
+              </p>
             </details>
-  
+
             <h3>3. Launch an EC2 Instance</h3>
             <p>
-              <strong>What it is:</strong> An EC2 instance is a virtual server in
-              the AWS cloud where you’ll run CloudDBeaver.
+              <strong>What it is:</strong> An EC2 instance is a virtual server
+              in the AWS cloud where you’ll run CloudDBeaver.
             </p>
             <p>
               <strong>Why it’s needed:</strong> The EC2 instance will host the
-              CloudDBeaver application, allowing you to manage your databases via
-              a web interface.
+              CloudDBeaver application, allowing you to manage your databases
+              via a web interface.
             </p>
             <p>
-              <strong>How to do it:</strong> Follow these steps to launch your EC2
-              instance:
+              <strong>How to do it:</strong> Follow these steps to launch your
+              EC2 instance:
             </p>
             <ol>
-              <li>Navigate to EC2 under the "Compute" section in the AWS Console.</li>
-              <li>Click "Launch Instance" and assign a name to your instance.</li>
-              <li>Select "Ubuntu Server 22.04 LTS" as the Amazon Machine Image (AMI).</li>
+              <li>
+                Navigate to EC2 under the "Compute" section in the AWS Console.
+              </li>
+              <li>
+                Click "Launch Instance" and assign a name to your instance.
+              </li>
+              <li>
+                Select "Ubuntu Server 22.04 LTS" as the Amazon Machine Image
+                (AMI).
+              </li>
               <li>Select `t3.micro` as the instance type.</li>
               <li>Create and download a key pair for SSH access.</li>
               <li>Configure your security group with the necessary rules.</li>
             </ol>
             <details>
               <summary>Potential Issues</summary>
-              <p>Ensure that you select the correct AMI and properly configure the security group to avoid connectivity issues.</p>
+              <p>
+                Ensure that you select the correct AMI and properly configure
+                the security group to avoid connectivity issues.
+              </p>
             </details>
-  
+
             <h3>4. Configure Key Pair</h3>
             <p>
               <strong>What it is:</strong> A key pair is used for SSH (secure
@@ -95,9 +113,18 @@ const TileMain = () => {
               <strong>How to do it:</strong>
             </p>
             <ol>
-              <li>In the "Key pair (login)" section, create a new key pair by clicking "Create a new key pair".</li>
-              <li>Choose the key pair type as RSA, and select .pem for the file format.</li>
-              <li>Download the .pem file to your computer and store it in a safe location. You’ll use this file to SSH into your instance.</li>
+              <li>
+                In the "Key pair (login)" section, create a new key pair by
+                clicking "Create a new key pair".
+              </li>
+              <li>
+                Choose the key pair type as RSA, and select .pem for the file
+                format.
+              </li>
+              <li>
+                Download the .pem file to your computer and store it in a safe
+                location. You’ll use this file to SSH into your instance.
+              </li>
             </ol>
             <p>
               <strong>Where to Find the Public IP:</strong> You can find the
@@ -106,19 +133,19 @@ const TileMain = () => {
             </p>
           </div>
         </details>
-  
+
         <details>
           <summary>Step 2: Update the System and Install Docker</summary>
           <div className="guide-content">
             <h3>1. Update the Package List</h3>
             <p>
-              <strong>What it is:</strong> Updating the package list ensures that
-              your system’s package manager knows about the latest versions of
-              software available.
+              <strong>What it is:</strong> Updating the package list ensures
+              that your system’s package manager knows about the latest versions
+              of software available.
             </p>
             <p>
-              <strong>Why it’s needed:</strong> Running updates ensures that your
-              system is secure and has the latest software improvements and
+              <strong>Why it’s needed:</strong> Running updates ensures that
+              your system is secure and has the latest software improvements and
               patches.
             </p>
             <p>
@@ -135,18 +162,20 @@ const TileMain = () => {
                 requires updating the Linux kernel, which necessitates a reboot.
               </p>
               <p>
-                <strong>How to resolve:</strong> If a kernel upgrade is required,
-                you'll need to reboot your EC2 instance (not your local computer)
-                using:
+                <strong>How to resolve:</strong> If a kernel upgrade is
+                required, you'll need to reboot your EC2 instance (not your
+                local computer) using:
               </p>
               <pre>
                 <code className="language-bash">{`sudo reboot`}</code>
               </pre>
               <p>
-                <strong>Note:</strong> This step reboots your EC2 instance, not your local machine. After rebooting, you will need to reconnect via SSH.
+                <strong>Note:</strong> This step reboots your EC2 instance, not
+                your local machine. After rebooting, you will need to reconnect
+                via SSH.
               </p>
             </details>
-  
+
             <h3>2. Install Docker</h3>
             <p>
               <strong>What it is:</strong> Docker is a platform that uses
@@ -180,16 +209,16 @@ const TileMain = () => {
                 output indicating that Docker is installed and running.
               </p>
             </details>
-  
+
             <h3>3. Install Docker Compose</h3>
             <p>
               <strong>What it is:</strong> Docker Compose is a tool for defining
               and running multi-container Docker applications.
             </p>
             <p>
-              <strong>Why it’s needed:</strong> Docker Compose simplifies managing
-              multi-container applications, like CloudDBeaver, by using a YAML
-              file for configuration.
+              <strong>Why it’s needed:</strong> Docker Compose simplifies
+              managing multi-container applications, like CloudDBeaver, by using
+              a YAML file for configuration.
             </p>
             <p>
               <strong>How to do it:</strong> Install Docker Compose on your EC2
@@ -217,7 +246,7 @@ const TileMain = () => {
             </details>
           </div>
         </details>
-  
+
         <details>
           <summary>Step 3: Set Up CloudDBeaver Using Docker Compose</summary>
           <div className="guide-content">
@@ -228,26 +257,26 @@ const TileMain = () => {
             </p>
             <p>
               <strong>Why it’s needed:</strong> Organizing files and
-              configurations in a dedicated directory ensures your setup is clean
-              and manageable.
+              configurations in a dedicated directory ensures your setup is
+              clean and manageable.
             </p>
             <p>
-              <strong>How to do it:</strong> Create a directory and navigate into
-              it:
+              <strong>How to do it:</strong> Create a directory and navigate
+              into it:
             </p>
             <pre>
               <code className="language-bash">{`mkdir ~/clouddbeaver\ncd ~/clouddbeaver`}</code>
             </pre>
-  
+
             <h3>2. Create a Docker Compose File</h3>
             <p>
               <strong>What it is:</strong> The Docker Compose file defines the
-              configuration for running CloudDBeaver, including the Docker image,
-              ports, and environment variables.
+              configuration for running CloudDBeaver, including the Docker
+              image, ports, and environment variables.
             </p>
             <p>
-              <strong>Why it’s needed:</strong> This file allows Docker Compose to
-              manage the CloudDBeaver service easily.
+              <strong>Why it’s needed:</strong> This file allows Docker Compose
+              to manage the CloudDBeaver service easily.
             </p>
             <p>
               <strong>How to do it:</strong> Edit the `docker-compose.yml` file:
@@ -262,14 +291,14 @@ const TileMain = () => {
             <p>
               <strong>Explanation:</strong> This file defines the CloudDBeaver
               service, including the image, ports, environment variables, and
-              volumes. The `restart: unless-stopped` option ensures the container
-              restarts if it crashes.
+              volumes. The `restart: unless-stopped` option ensures the
+              container restarts if it crashes.
             </p>
-  
+
             <h3>3. Start CloudDBeaver</h3>
             <p>
-              <strong>What it is:</strong> Starting the CloudDBeaver service will
-              launch the application in a Docker container.
+              <strong>What it is:</strong> Starting the CloudDBeaver service
+              will launch the application in a Docker container.
             </p>
             <p>
               <strong>Why it’s needed:</strong> This step will make CloudDBeaver
@@ -304,14 +333,14 @@ const TileMain = () => {
             </details>
           </div>
         </details>
-  
+
         <details>
           <summary>Step 4: Access CloudDBeaver</summary>
           <div className="guide-content">
             <h3>Open CloudDBeaver in a Web Browser</h3>
             <p>
-              <strong>What it is:</strong> The CloudDBeaver web interface is where
-              you’ll manage your databases.
+              <strong>What it is:</strong> The CloudDBeaver web interface is
+              where you’ll manage your databases.
             </p>
             <p>
               <strong>Why it’s needed:</strong> This step allows you to interact
@@ -319,8 +348,8 @@ const TileMain = () => {
               through a web browser.
             </p>
             <p>
-              <strong>How to do it:</strong> Navigate to the following URL in your
-              browser:
+              <strong>How to do it:</strong> Navigate to the following URL in
+              your browser:
             </p>
             <pre>
               <code className="language-none">{`http://your-ec2-public-ip:8978`}</code>
@@ -338,9 +367,9 @@ const TileMain = () => {
               <h4>Double-Check Security Group Settings:</h4>
               <p>
                 Access the security group associated with your EC2 instance via
-                the AWS Console. In the "Inbound rules" tab, ensure there’s a rule
-                for `Custom TCP` with `Port Range` set to `8978` and `Source` set
-                to `0.0.0.0/0`.
+                the AWS Console. In the "Inbound rules" tab, ensure there’s a
+                rule for `Custom TCP` with `Port Range` set to `8978` and
+                `Source` set to `0.0.0.0/0`.
               </p>
               <h4>Ensure the CloudDBeaver Container is Running:</h4>
               <p>
@@ -353,21 +382,22 @@ const TileMain = () => {
             <details>
               <summary>Network Connectivity Issues</summary>
               <p>
-                If you can’t reach the EC2 instance, ensure your network settings
-                allow outgoing traffic to port `8978`. You can also use tools like
-                `ping` and `telnet` to troubleshoot connectivity.
+                If you can’t reach the EC2 instance, ensure your network
+                settings allow outgoing traffic to port `8978`. You can also use
+                tools like `ping` and `telnet` to troubleshoot connectivity.
               </p>
             </details>
           </div>
         </details>
-  
+
         <details>
           <summary>Step 5: Finalize CloudDBeaver Setup</summary>
           <div className="guide-content">
             <h3>Complete the Setup Wizard</h3>
             <p>
-              <strong>What it is:</strong> The setup wizard will guide you through
-              the final configuration steps to get CloudDBeaver ready for use.
+              <strong>What it is:</strong> The setup wizard will guide you
+              through the final configuration steps to get CloudDBeaver ready
+              for use.
             </p>
             <p>
               <strong>Why it’s needed:</strong> Completing the setup wizard is
@@ -375,17 +405,17 @@ const TileMain = () => {
               databases.
             </p>
             <p>
-              <strong>How to do it:</strong> Follow the on-screen instructions in
-              the CloudDBeaver web interface to complete the setup.
+              <strong>How to do it:</strong> Follow the on-screen instructions
+              in the CloudDBeaver web interface to complete the setup.
             </p>
             <p>
-              <strong>What to Expect:</strong> Once the setup is complete, you'll
-              be taken to the CloudDBeaver dashboard where you can start managing
-              your databases.
+              <strong>What to Expect:</strong> Once the setup is complete,
+              you'll be taken to the CloudDBeaver dashboard where you can start
+              managing your databases.
             </p>
           </div>
         </details>
- </div>
+      </div>
     </div>
   );
 };
