@@ -1,0 +1,109 @@
+.guide-container {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .guide-container h1 {
+    font-family: system-ui;
+    text-align: left;
+    font-size: xxx-large;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  details {
+    margin-top: 20px;
+  }
+  
+  summary {
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #0056b3;
+  }
+  
+  summary:hover {
+    color: #003d80;
+  }
+  
+  .guide-content {
+    margin-top: 10px;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .guide-content h3 {
+    color: #444;
+  }
+  
+  .guide-content p {
+    margin-bottom: 10px;
+    color: #555;
+  }
+  
+  .guide-content ol {
+    margin-left: 20px;
+    color: #555;
+  }
+  
+  .guide-content pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+  }
+  
+  .guide-content code {
+    color: #c7254e;
+  }
+  
+  .guide-content a {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  
+  .guide-content a:hover {
+    text-decoration: underline;
+  }
+
+  .details-container {
+    text-align: left;
+  }
+
+  details {
+    transition: .3s ease-in-out;
+  }
+  
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  details[open] summary {
+    color: #2f6eb1;
+    
+  }
+
+  
+  details[open] .guide-content {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
