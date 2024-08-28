@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Adds some space between slots */
+  }
+  
+  .slot {
+    
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+  }
+  
+  .item {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ccc;
+    cursor: move; /* Indicates that the item is draggable */
+    user-select: none; /* Prevents text selection while dragging */
+  }
+  
+  .handle {
+    cursor: grab; /* Makes the handle look like it's draggable */
+  }
+  

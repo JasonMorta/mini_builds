@@ -101,7 +101,12 @@ function StateManager() {
         name: "Leaderboard",
         link: "leaderboard",
         active: false,
-      }
+      },
+      // {
+      //   name: "Swappy",
+      //   link: "swappy",
+      //   active: false,
+      // }
     ],
     nextJoke: false,
     catagories: [
@@ -138,7 +143,7 @@ function StateManager() {
       transition: { duration: 0 },
     },
     passGen: {
-      count: 5,
+      count: 7,
       upperCase: true,
       lowerCase: true,
       symbols: true,

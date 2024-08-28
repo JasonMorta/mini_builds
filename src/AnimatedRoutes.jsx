@@ -19,6 +19,7 @@ import CatMain from "./components/builds/catAPI/CatMain.jsx";
 import DatePickerMain from "./components/builds/datePickers/DatePickerMain.jsx";
 import VirtualList from "./components/builds/VirtualList/VirtualList.jsx";
 import LeaderBoardScores from "./components/builds/LeaderBoard/LeaderBoardScores.jsx";
+import Swappy from "./components/builds/Swappy/Swappy.jsx";
 
 export default function AnimatedRoutes() {
   const location = useLocation();
@@ -47,6 +48,7 @@ export default function AnimatedRoutes() {
         <Route path="/datepickers" element={<DatePickerMain /> } />
         <Route path="/virtualized" element={<VirtualList />} />
         <Route path="/leaderboard" element={<LeaderBoardScores />} />
+        {/* <Route path="/swappy" element={<Swappy />} /> */}
       </Routes>
     </AnimatePresence>
   );
