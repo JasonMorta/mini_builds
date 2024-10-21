@@ -3,12 +3,15 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-evenly;
+    -webkit-user-select: none;
     user-select: none;
-    gap: 3px;
+    gap: 20px;
+    background-color: rgb(145 145 145 / 13%);
+    align-items: flex-start;
+    padding-bottom: 20px;
+    border-radius: 5px;
 }
-
 
 
 .main_sortable h1 {
@@ -16,23 +19,40 @@
 }
 
 .main_sortable .sortable {
-    width: 250px;
+    width: 200px;
     padding: 0px;
     border: 1px solid #8080801f;
-    min-height: 150px;
+    background-color: rgba(128, 128, 128, 0.267);
+    min-height: 50px;
+    min-width: 150px;
     margin: auto;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     user-select: none;
-    gap: 3px;
+    max-height: 400px;
+    overflow: auto;
 }
 
-.item{
-    width: 100px;
-    height: 100px;
+.item {
+    width: 100%;
+    min-width: 100px;
+    font-size: 12px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.item:hover {
+    background-color: #83838317;
+
+}
+
+
+.item:active {
+    background-color: #cc5151;
+
 }
 
 /* .main_sortable .list-group {
@@ -41,9 +61,18 @@
 
 
 .ghost {
-    background-color: seagreen;
+    background-color: #cc5151;
 }
 
 .main_sortableGrid {
     
+}
+
+.sortContainer {
+    display: flex;
+    gap: 20px;
+    background-color: beige;
+    padding: 20px;
+    width: 100%;
+    justify-content: space-evenly;
 }
