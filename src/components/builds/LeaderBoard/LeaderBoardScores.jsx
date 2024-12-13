@@ -14,22 +14,20 @@ export default function LeaderBoardScores() {
 
       // Update scores and calculate new totalScore
       const updatedData = data.map((item, index) => {
-        const newScoreNow = Math.floor(Math.random() * 10);
+        const newScoreNow = Math.floor(Math.random() * 300);
         return {
           ...item,
           score_now: newScoreNow,
-          totalScore: item.totalScore + newScoreNow,
+          kycInstances: item.kycInstances + newScoreNow,
         };
       });
 
       // Sort rows by new totalScore
       const sortedRows = updatedData.sort(
-        (a, b) => b.totalScore - a.totalScore
+        (a, b) => b.kycInstances - a.kycInstances
       );
 
-
       // Get the previous rank from the current state
-
       setRows(sortedRows); // Update state with sorted data and previous ranks
     };
 
@@ -47,7 +45,7 @@ export default function LeaderBoardScores() {
 
   // Set up transitions to animate the list items
   const transitions = useTransition(
-    rows.map((data) => ({ ...data, y: (height += 60) - 60 })), // Map the data to include the Y position for each item
+    rows.map((data) => ({ ...data, y: (height += 27) - 27 })), // Map the data to include the Y position for each item
     {
       key: (item) => item.name, // Use the item’s name as a unique key
       from: { height: 0, opacity: 0 }, // Initial state: hidden and collapsed
@@ -62,13 +60,13 @@ export default function LeaderBoardScores() {
       <div className={styles.header}>
         <span className={styles.newAndPrevRank}>
           <span style={{ textAlign: "left", width: "40%" }}>Rank</span>
-          <span style={{ textAlign: "left", width: "50%" }}>
-            <small>Prev Rank</small>
-          </span>
         </span>
-        <span style={{ textAlign: "left" }}>Name</span>
-        <span style={{ textAlign: "right" }}>Today</span>
-        <span style={{ textAlign: "right" }}>Monthly Total</span>
+        <span style={{ textAlign: "left" }}>AGENT</span>
+        <span style={{ textAlign: "right" }}>KYC INSTANCES</span>
+        <span style={{ textAlign: "right" }}>APPROVALS</span>
+        <span style={{ textAlign: "right" }}>CHATS</span>
+        <span style={{ textAlign: "right" }}>EMAILS</span>
+        <span style={{ textAlign: "right" }}>CALLS</span>
       </div>
       <div className={styles.list} style={{ height }}>
         {transitions((style, item, t, index) => (
@@ -84,12 +82,13 @@ export default function LeaderBoardScores() {
                 <div className={styles.inner_item}>
                   <span className={styles.ranking}>
                     <span style={{ textAlign: "left" }}>{index + 1} </span>
-                    <span>{item.prevRank}</span>
-                    <span>{index === 0 ? "👑" : index === 1 ? "🥈" : ""}</span>
                   </span>
                   <span style={{ textAlign: "left" }}>{item.name}</span>
-                  <span style={{ textAlign: "right" }}>{item.score_now}</span>
-                  <span style={{ textAlign: "right" }}>{item.totalScore}</span>
+                  <span style={{ textAlign: "right" }}>{item.kycInstances}</span>
+                  <span style={{ textAlign: "right" }}>{item.approvals}</span>
+                  <span style={{ textAlign: "right" }}>{item.chats}</span>
+                  <span style={{ textAlign: "right" }}>{item.emails}</span>
+                  <span style={{ textAlign: "right" }}>{item.calls}</span>
                 </div>
               </div>
             </div>

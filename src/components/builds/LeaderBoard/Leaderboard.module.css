@@ -30,9 +30,9 @@
   height: 100%;
   overflow: hidden;
   text-transform: uppercase;
-  font-size: 10px;
-  line-height: 10px;
-  padding: 5px;
+  font-size: 12px; /* Increased font size for better readability */
+  line-height: 1px; /* Adjusted line height for better spacing */
+  padding: 0px; /* Reduced padding for compactness */
 }
 
 .details {
@@ -41,22 +41,21 @@
   left: 0px;
   width: 100%;
   height: 100%;
-  padding: 0 5px;
-  border-radius: 5px;
-  box-shadow: 0px 10px 25px -10px rgba(0, 0, 0, 0.2);
+  padding: 0 3px; /* Reduced padding for compactness */
+  border-radius: 3px; /* Slightly reduced border radius */
+  box-shadow: 0px 5px 15px -5px rgba(0, 0, 0, 0.2); /* Adjusted box shadow for compactness */
 }
-
 
 .header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 0 10px;
+  padding: 0 5px; /* Reduced padding for compactness */
 }
 
 .header span {
-  width: calc(100% / 4);
-  font-size: 20px;
+  width: calc(100% / 6); /* Adjusted width to fit 6 columns */
+  font-size: 14px; /* Reduced font size for compactness */
 }
 
 .inner_item {
@@ -64,30 +63,29 @@
   flex-direction: row;
   justify-content: space-between;
   height: 100%;
-    align-items: center;
-    padding: 0 10px;
+  align-items: center;
+  padding: 0 5px; /* Reduced padding for compactness */
 }
 
 .inner_item span {
-  width: calc(100% / 4);
-  font-size: 25px;
+  width: calc(100% / 6); /* Adjusted width to fit 6 columns */
+  font-size: 14px; /* Reduced font size for compactness */
 }
 
 .ranking {
   display: flex;
-    justify-content: flex-start;
-    width: 100%;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .ranking span {
   width: calc(100% / 3);
-  font-size: 20px;
+  font-size: 14px; /* Reduced font size for compactness */
 }
 
 .newAndPrevRank {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  padding: 0 10px;
-
+  padding: 0 5px; /* Reduced padding for compactness */
 }
