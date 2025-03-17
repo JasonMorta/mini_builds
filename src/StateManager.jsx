@@ -37,11 +37,11 @@ function StateManager() {
         link: "truthy",
         active: false,
       },
-      {
-        name: "Tile Slides",
-        link: "tiles",
-        active: false,
-      },
+      // {
+      //   name: "Tile Slides",
+      //   link: "tiles",
+      //   active: false,
+      // },
       {
         name: "Flip This",
         link: "flip",
@@ -102,11 +102,11 @@ function StateManager() {
         link: "leaderboard",
         active: false,
       },
-      // {
-      //   name: "Swappy",
-      //   link: "swappy",
-      //   active: false,
-      // }
+      {
+        name: "CardSwap",
+        link: "cardswap",
+        active: false,
+      }
     ],
     nextJoke: false,
     catagories: [

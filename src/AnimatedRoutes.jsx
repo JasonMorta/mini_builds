@@ -3,7 +3,7 @@ import Jokes from "./components/builds/Jokes/Jokes";
 import AnimatedText from "./components/builds/animatedText/AnimatedText";
 import Loaders from "./components/builds/Loaders/Loaders";
 import Truthy from "./components/builds/Truthy/Truthy";
-import TileMain from "./components/tiles/TileMain";
+
 import FlipsMain from "./components/builds/cardFlip/FlipsMain";
 import Expand from "./components/builds/expandingSections/Expand";
 import IntersectionOP from "./components/builds/IntersectionOP/IntersectionOP";
@@ -19,7 +19,8 @@ import CatMain from "./components/builds/catAPI/CatMain.jsx";
 import DatePickerMain from "./components/builds/datePickers/DatePickerMain.jsx";
 import VirtualList from "./components/builds/VirtualList/VirtualList.jsx";
 import LeaderBoardScores from "./components/builds/LeaderBoard/LeaderBoardScores.jsx";
-import Swappy from "./components/builds/Swappy/Swappy.jsx";
+import DragNDrop from "./components/builds/dragAndDrop/DragNDrop.jsx";
+
 
 export default function AnimatedRoutes() {
   const location = useLocation();
@@ -35,7 +36,6 @@ export default function AnimatedRoutes() {
         <Route path="/animatedText" element={<AnimatedText />} />
         <Route path="/loaders" element={<Loaders />} />
         <Route path="/truthy" element={<Truthy />} />
-        <Route path="/tiles" element={<TileMain />} />
         <Route path="/flip" element={<FlipsMain />} />
         <Route path="/expand" element={<Expand />} />
         <Route path="/pokemon" element={<PokeState />}/>
@@ -43,6 +43,7 @@ export default function AnimatedRoutes() {
         <Route path="/passGen" element={<PassGen />} />
         <Route path="/IOP" element={<IntersectionOP />} />
         <Route path="/IandE" element={<IEMain />} />
+        <Route path="/cardswap" element={<DragNDrop />} />
         <Route path="/cat" element={<CatMain /> } />
         <Route path="/filters" element={<Filters />} />
         <Route path="/datepickers" element={<DatePickerMain /> } />

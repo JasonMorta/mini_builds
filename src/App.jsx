@@ -5,12 +5,6 @@ import './fonts.css'
 import 'rsuite/dist/rsuite.min.css';
 
 
-// Importing a language
-import 'prismjs/components/prism-javascript';
-
-// Importing a theme
-import 'prismjs/themes/prism-tomorrow.css';
-
 function App() {
   return (
     <div className="App">

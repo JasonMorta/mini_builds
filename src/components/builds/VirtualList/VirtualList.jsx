@@ -133,13 +133,13 @@ function VirtualList() {
           </Column>
         </Table>
       )}
-      <a
+      {/* <a
         href="https://rsuitejs.com/components/table/#virtualized"
         target="_blank"
         rel="noreferrer"
       >
         By rsuite
-      </a>
+      </a> */}
     </div>
   );
 }
