@@ -20,6 +20,7 @@ import DatePickerMain from "./components/builds/datePickers/DatePickerMain.jsx";
 import VirtualList from "./components/builds/VirtualList/VirtualList.jsx";
 import LeaderBoardScores from "./components/builds/LeaderBoard/LeaderBoardScores.jsx";
 import DragNDrop from "./components/builds/dragAndDrop/DragNDrop.jsx";
+import EditSection from "./components/builds/editSection/EditSection.jsx";
 
 
 export default function AnimatedRoutes() {
@@ -44,6 +45,7 @@ export default function AnimatedRoutes() {
         <Route path="/IOP" element={<IntersectionOP />} />
         <Route path="/IandE" element={<IEMain />} />
         <Route path="/cardswap" element={<DragNDrop />} />
+        <Route path="/editsection" element={<EditSection />} />
         <Route path="/cat" element={<CatMain /> } />
         <Route path="/filters" element={<Filters />} />
         <Route path="/datepickers" element={<DatePickerMain /> } />

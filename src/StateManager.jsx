@@ -3,6 +3,7 @@ import Menu from "./components/Menu";
 import { BrowserRouter as Router } from "react-router-dom";
 import AnimatedRoutes from "./AnimatedRoutes";
 
+
 //create context hook
 //This hook allow any nested children to share and alter data with the use of props.
 export const StateContext = createContext();
@@ -105,6 +106,10 @@ function StateManager() {
       {
         name: "CardSwap",
         link: "cardswap",
+        active: false,
+      },{
+        name: "Edit Section",
+        link: "editsection",
         active: false,
       }
     ],
