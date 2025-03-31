@@ -107,9 +107,15 @@ function StateManager() {
         name: "CardSwap",
         link: "cardswap",
         active: false,
-      },{
+      },
+      {
         name: "Edit Section",
         link: "editsection",
+        active: false,
+      },
+      {
+        name: "DND  Grid",
+        link: "dndgrid",
         active: false,
       }
     ],
