@@ -12,7 +12,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import PassGen from "./components/builds/passwordGen/PassGen";
 import IEMain from "./components/builds/incomeExpense/IEMain";
-import PokeState from "./components/builds/pokemonAPI/PokeState";
+import PokeState from "./components/builds/pokemonAPI/PokemonViewer.jsx";
 import Sortable from "./components/builds/sortables/Sortable";
 import Filters from "./components/builds/filters/Filters.jsx";
 import CatMain from "./components/builds/catAPI/CatMain.jsx";

@@ -1,4 +1,4 @@
- const natureColors = [
+ const typeColors = [
     { name: "normal", color: "#A8A878" },
     { name: "fighting", color: "#C03028" },
     { name: "flying", color: "#A890F0" },
@@ -21,4 +21,4 @@
     { name: "shadow", color: "#5A5266" }
   ];
 
-  export default natureColors;
+  export default typeColors;
