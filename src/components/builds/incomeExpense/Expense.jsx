@@ -21,16 +21,15 @@ export default function Expense() {
     setState(
       produce((state) => {
         state.inputs.heading = "Edit Entry";
-        
-    //Fille inputs with selected entry values
-          state.inputs.name = key.name;
-          state.inputs.amount = key.amount;
-          state.inputs.recurring = key.recurring;
-          state.inputs.index = i;
+
+        //Fille inputs with selected entry values
+        state.inputs.name = key.name;
+        state.inputs.amount = key.amount;
+        state.inputs.recurring = key.recurring;
+        state.inputs.index = i;
       })
     );
 
- 
     setShow(true);
   }
 
@@ -61,7 +60,7 @@ export default function Expense() {
         })
       );
       setShow(false); //close modal
-      clearInputs()
+      clearInputs();
     } else if (state.inputs.heading === "Edit Entry") {
       //Updated the selected entry
       //get the current index
@@ -80,29 +79,29 @@ export default function Expense() {
       );
     }
     setShow(false);
-    clearInputs()
+    clearInputs();
   }
 
-  //calculate the expense total
+  // [BLOCK: CALCULATE_EXPENSE_TOTAL]
   useEffect(() => {
-    setTotal(0);
-    state.expenseList.forEach((el) => {
-      setTotal((prev) => (prev += Number(el.amount)));
-    });
+    const sum = state.expenseList.reduce(
+      (accumulator, item) => accumulator + Number(item.amount),
+      0
+    );
 
-    //save expense total to main state
+    setTotal(sum);
+
     setState(
-      produce((state) => {
-        state.expenseTotal = total;
-        
+      produce((draft) => {
+        draft.expenseTotal = sum;
       })
     );
-  }, [state, setState, total]);
+  }, [state.expenseList]);
 
   //Close modal
   function handleClose() {
     setShow(false);
-    clearInputs()
+    clearInputs();
   }
 
   //Open modal for new entry
@@ -116,17 +115,17 @@ export default function Expense() {
     );
   }
 
-    //Clear modal heading and input values
-    function clearInputs() {
-      setState(
-        produce((state) => {
-          state.inputs.heading = "";
-          state.inputs.name = "";
-          state.inputs.amount = "";
-          state.inputs.recurring = false;
-        })
-      );
-    }
+  //Clear modal heading and input values
+  function clearInputs() {
+    setState(
+      produce((state) => {
+        state.inputs.heading = "";
+        state.inputs.name = "";
+        state.inputs.amount = "";
+        state.inputs.recurring = false;
+      })
+    );
+  }
 
   //expense table
   const expenseSection = state.expenseList.map((key, i) => (

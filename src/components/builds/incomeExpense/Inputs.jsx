@@ -35,10 +35,11 @@ export default function Inputs() {
     );
   }
 
+  // [BLOCK: RECURRING_CHECKBOX]
   function isRecurring(e) {
     setState(
       produce((state) => {
-        state.inputs.isRecurring = e.target.value;
+        state.inputs.recurring = e.target.checked;
       })
     );
   }
@@ -67,17 +68,16 @@ export default function Inputs() {
                 placeholder="Amount"
                 aria-label="Amount"
                 type="number"
-                defaultValue={state.inputs.amount}
-                onChange={(e) => AddAmount(e)}
+                value={state.inputs.amount}
+                onChange={AddAmount}
                 aria-describedby="basic-addon1"
               />
             </InputGroup>
             <Form.Check
               type="checkbox"
-              id={`default-checkbox`}
-              label={`Recurring`}
-              defaultChecked={state.inputs.recurring}
-              onChange={(e) => isRecurring(e)}
+              label="Recurring"
+              checked={state.inputs.recurring}
+              onChange={isRecurring}
             />
           </>
         )}

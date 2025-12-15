@@ -81,20 +81,22 @@ export default function Income() {
     setShow(false);
   }
 
-  //calculate the income total
-  useEffect(() => {
-    setTotal(0);
+// [BLOCK: CALCULATE_INCOME_TOTAL]
+useEffect(() => {
+  const sum = state.incomeList.reduce(
+    (accumulator, item) => accumulator + Number(item.amount),
+    0
+  );
 
-    state.incomeList.forEach((el) => {
-      setTotal((prev) => (prev += Number(el.amount)));
-    });
-    
-    setState(
-      produce((state) => {
-        state.incomeTotal = total;
-      })
-    );
-  }, [state, setState, total,]);
+  setTotal(sum);
+
+  setState(
+    produce((draft) => {
+      draft.incomeTotal = sum;
+    })
+  );
+}, [state.incomeList]);
+
 
   function handleClose() {
     setShow(false);

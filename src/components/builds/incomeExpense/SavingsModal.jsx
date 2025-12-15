@@ -42,8 +42,8 @@ export default function SavingsModal(props) {
                 type="number"
                 placeholder="R"
                 autoFocus={true}
-                defaultValue={state.savings}
-                onChange={(e)=> saveInput(e)}
+                value={state.inputs.savings}
+                onChange={saveInput}
               />
             
           </Modal.Body>

@@ -6,30 +6,34 @@ import { SharedState } from "./IEMain";
 export default function DisposableIncome() {
   const value = useContext(SharedState);
   //destructure main state
-  const [state, ] = value;
-  const [test, ] = useState('Disposable income')
-
+  const [state] = value;
+  const [test] = useState("Disposable income");
 
   return (
     <div className={CSS.box_container_DI}>
       <div className={CSS.box_container_inner_DI}>
         <h6
           style={{
-            textAlign: "end",
-            margin: 0,
-            fontSize: 'small'
+            color:
+              state.incomeTotal - state.expenseTotal - state.savings < 0
+                ? "#dc3545"
+                : "#198754",
+            fontWeight: 600,
           }}
         >
-            {test}
+          {test}
         </h6>
 
         <h5
           style={{
             textAlign: "end",
-            color: (state.incomeTotal - state.expenseTotal) - state.savings < 0 ? '#dc3545': 'initial'
+            color:
+              state.incomeTotal - state.expenseTotal - state.savings < 0
+                ? "#dc3545"
+                : "initial",
           }}
         >
-          R{(state.incomeTotal - state.expenseTotal) - state.savings}
+          R{state.incomeTotal - state.expenseTotal - state.savings}
         </h5>
         {/* <button className={CSS.button} onClick={() => handleSavings()}>
           Add to savings
