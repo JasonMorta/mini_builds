@@ -38,11 +38,11 @@ function StateManager() {
         link: "truthy",
         active: false,
       },
-      // {
-      //   name: "Tile Slides",
-      //   link: "tiles",
-      //   active: false,
-      // },
+      {
+        name: "Flow Diagrams",
+        link: "reactflow",
+        active: false,
+      },
       {
         name: "Flip This",
         link: "flip",

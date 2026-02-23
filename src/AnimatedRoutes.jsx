@@ -22,6 +22,7 @@ import LeaderBoardScores from "./components/builds/LeaderBoard/LeaderBoardScores
 import DragNDrop from "./components/builds/dragAndDrop/DragNDrop.jsx";
 import EditSection from "./components/builds/editSection/EditSection.jsx";
 import MasonryGrid from "./components/builds/MasonryGrid/MasonryGrid.jsx";
+import ReactFlowDiagrams from "./components/builds/ReactFlow/ReactFlowDiagrams.jsx";
 
 
 export default function AnimatedRoutes() {
@@ -53,7 +54,8 @@ export default function AnimatedRoutes() {
         <Route path="/datepickers" element={<DatePickerMain /> } />
         <Route path="/virtualized" element={<VirtualList />} />
         <Route path="/leaderboard" element={<LeaderBoardScores />} />
-        {/* <Route path="/swappy" element={<Swappy />} /> */}
+        <Route path="/reactflow" element={<ReactFlowDiagrams />} />
+
       </Routes>
     </AnimatePresence>
   );

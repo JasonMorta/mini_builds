@@ -2,6 +2,7 @@ import produce from "immer";
 import React, { useContext, useEffect, useState } from "react";
 import CSS from "./I&E.module.css";
 import { SharedState } from "./IEMain";
+import { formatCurrency } from "./Helpers";
 
 export default function DisposableIncome() {
   const value = useContext(SharedState);
@@ -14,11 +15,9 @@ export default function DisposableIncome() {
       <div className={CSS.box_container_inner_DI}>
         <h6
           style={{
-            color:
-              state.incomeTotal - state.expenseTotal - state.savings < 0
-                ? "#dc3545"
-                : "#198754",
-            fontWeight: 600,
+            textAlign: "end",
+            margin: 0,
+            fontSize: "small",
           }}
         >
           {test}
@@ -26,14 +25,16 @@ export default function DisposableIncome() {
 
         <h5
           style={{
-            textAlign: "end",
             color:
               state.incomeTotal - state.expenseTotal - state.savings < 0
                 ? "#dc3545"
-                : "initial",
+                : "#198754",
+            fontWeight: 600,
           }}
         >
-          R{state.incomeTotal - state.expenseTotal - state.savings}
+          {formatCurrency(
+            state.incomeTotal - state.expenseTotal - state.savings
+          )}
         </h5>
         {/* <button className={CSS.button} onClick={() => handleSavings()}>
           Add to savings

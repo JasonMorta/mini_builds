@@ -1,0 +1,13 @@
+.react-flow-main {
+  min-width: 800px;
+  min-height: 500px;
+  border: 1px solid #ddd;
+  margin-bottom: 50px
+}
+
+.custom-text-updater-node {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}

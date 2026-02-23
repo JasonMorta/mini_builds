@@ -11,57 +11,54 @@ const DisposableIncome = lazy(() => import("./DisposableIncome.jsx"));
 
 export const SharedState = createContext();
 
+
 export default function Main() {
-  //Income and Expense state shared with all children
-  const [state, setState] = useState({
-    incomeList: [
-      {
-        name: "Online sales",
-        amount: 4000,
-        recurring: true,
-      },
-      {
-        name: "Main Job",
-        amount: 7000,
-        recurring: true,
-      },
-      {
-        name: "Hustling",
-        amount: 1500,
-        recurring: true,
-      },
-    ],
-    expenseList: [
-      {
-        name: "Home Utilities",
-        amount: 1500,
-        recurring: true,
-      },
-      {
-        name: "Payed",
-        amount: 1400,
-        recurring: true,
-      },
-      {
-        name: "Rent",
-        amount: 5500,
-        recurring: true,
-      },
-    ],
-    inputs: {
-      heading: "",
-      name: "",
-      amount: "",
-      recurring: false,
-      index: 0,
-      savings: 0
-    },
-    expenseTotal: 0,
-    incomeTotal: 0,
+// [BLOCK: INITIAL_STATE]
+const defaultState = {
+  incomeList: [
+    { name: "Online sales", amount: 4000, recurring: true },
+    { name: "Main Job", amount: 7000, recurring: true },
+    { name: "Hustling", amount: 1500, recurring: true },
+  ],
+  expenseList: [
+    { name: "Home Utilities", amount: 1500, recurring: true },
+    { name: "Payed", amount: 1400, recurring: true },
+    { name: "Rent", amount: 5500, recurring: true },
+  ],
+  inputs: {
+    heading: "",
+    name: "",
+    amount: "",
+    recurring: false,
+    index: 0,
     savings: 0,
-    disposableIncome: 0
-    
-  });
+  },
+  incomeTotal: 0,
+  expenseTotal: 0,
+  savings: 0,
+  disposableIncome: 0,
+};
+
+// [BLOCK: STATE_INIT_WITH_LOCALSTORAGE]
+const [state, setState] = useState(() => {
+  try {
+    const stored = localStorage.getItem('STORAGE_KEY');
+    return stored ? JSON.parse(stored) : defaultState;
+  } catch (error) {
+    console.error("Failed to load state from localStorage", error);
+    return defaultState;
+  }
+});
+
+
+// [BLOCK: SYNC_STATE_TO_LOCALSTORAGE]
+useEffect(() => {
+  try {
+    localStorage.setItem('STORAGE_KEY', JSON.stringify(state));
+  } catch (error) {
+    console.error("Failed to save state to localStorage", error);
+  }
+}, [state]);
 
 
 
