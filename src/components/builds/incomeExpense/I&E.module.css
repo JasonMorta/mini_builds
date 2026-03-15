@@ -1,29 +1,471 @@
-
-.box_container,
-.box_container_DI {
-  padding: 3px;
-  margin-top: 0.95rem;
-  color: rgba(246, 247, 251, 0.9);
-  border-radius: 3px;
-  box-shadow: 0 0px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -1px rgb(0 0 0 / 6%);
+.appShell {
+  display: grid;
+  gap: 1rem;
+  max-width: 1180px;
+  margin: 0 auto;
+  color: rgba(245, 239, 232, 0.96);
 }
 
-.box_container_inner,
-.box_container_inner_DI {
-  padding: 0.9rem;
-  border-radius: 3px;
-  background-color: rgba(17, 20, 24, 0.96);
-  border: 1px solid rgba(255,255,255,0.08);
+.heroCard,
+.metricCard,
+.tableCard,
+.activityCard,
+.modalCard,
+.modalCardSmall {
+  background:
+    linear-gradient(145deg, rgba(34, 22, 14, 0.94), rgba(14, 15, 18, 0.98)),
+    rgba(16, 17, 20, 0.98);
+  border: 1px solid rgba(201, 150, 88, 0.22);
+  border-radius: 6px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
 }
 
-td { vertical-align: middle; }
-.modal.show .modal-dialog { transform:none !important; }
-.IAndE_blocks { display:grid; grid-template-columns: repeat(2, minmax(280px, 1fr)); gap: 1rem; align-items:start; max-width: 980px; margin: 0 auto; }
-.IAndE_blocks aside { position: static; }
-.IAndE_blocks h1 { color: rgba(246,239,230,0.92); font-size: clamp(1.8rem, 3vw, 2.8rem); margin-bottom: .75rem; }
-.box_container_DI { width: 100%; transform: none; }
-.box_container_inner_DI { justify-content:flex-start; }
-.button { padding: 6px 10px; text-align:center; display:inline-block; border-radius:3px; transition-duration:.1s; font-size:12px; background-color: rgba(26, 19, 14, 0.96); color: rgba(246, 247, 251, 0.88); border: 1px solid rgba(212, 164, 94, 0.42); }
-.button:hover { background-color: #8b5e34; color: #f6f7fb; }
-.both_total { font-size: medium; }
-@media (max-width: 900px) { .IAndE_blocks { grid-template-columns: 1fr; } }
+.heroCard {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(260px, 0.8fr);
+  gap: 1rem;
+  padding: 1.25rem;
+}
+
+.heroCard h2 {
+  margin: 0;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  line-height: 1.05;
+}
+
+.heroText {
+  margin: 0.65rem 0 0;
+  max-width: 72ch;
+  color: rgba(228, 221, 213, 0.82);
+  line-height: 1.65;
+}
+
+.heroActions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.eyebrow,
+.metricLabel {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(213, 163, 93, 0.82);
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.metricCard {
+  padding: 1rem;
+}
+
+.metricCard h3 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+}
+
+.metricHint {
+  display: block;
+  margin-top: 0.4rem;
+  color: rgba(230, 223, 213, 0.72);
+  font-size: 0.92rem;
+}
+
+.metricPositive {
+  border-color: rgba(119, 176, 129, 0.35);
+}
+
+.metricWarning {
+  border-color: rgba(210, 165, 91, 0.35);
+}
+
+.metricNegative {
+  border-color: rgba(205, 98, 98, 0.35);
+}
+
+.tablesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.tableCard,
+.activityCard {
+  padding: 1rem;
+}
+
+.tableCardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.tableCardHeader h3,
+.activityCard h3 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.tableWrap {
+  overflow: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(214, 167, 100, 0.12);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 560px;
+}
+
+.table thead {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.table th,
+.table td {
+  padding: 0.9rem 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: left;
+  vertical-align: top;
+}
+
+.table th {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(213, 203, 191, 0.7);
+}
+
+.cellPrimary {
+  font-weight: 600;
+}
+
+.cellSecondary {
+  margin-top: 0.2rem;
+  font-size: 0.86rem;
+  color: rgba(232, 224, 215, 0.64);
+}
+
+.emptyCell,
+.emptyState {
+  color: rgba(228, 220, 208, 0.72);
+  text-align: center;
+  padding: 1rem;
+}
+
+.primaryButton,
+.secondaryButton,
+.ghostButton,
+.iconButton,
+.iconButtonDanger,
+.filterPill,
+.filterPillActive,
+.closeButton {
+  appearance: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 160ms ease;
+  font: inherit;
+}
+
+.primaryButton,
+.secondaryButton,
+.ghostButton,
+.iconButton,
+.iconButtonDanger {
+  padding: 0.72rem 1rem;
+  border: 1px solid rgba(212, 164, 94, 0.26);
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, rgba(179, 120, 56, 0.95), rgba(120, 76, 37, 0.95));
+  color: #fff9f1;
+}
+
+.secondaryButton,
+.iconButton {
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(245, 239, 232, 0.94);
+}
+
+.secondaryButton:disabled,
+.primaryButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ghostButton,
+.closeButton,
+.iconButtonDanger {
+  background: rgba(255, 255, 255, 0.02);
+  color: rgba(245, 239, 232, 0.78);
+}
+
+.iconButtonDanger {
+  border-color: rgba(205, 98, 98, 0.25);
+}
+
+.primaryButton:hover,
+.secondaryButton:hover,
+.ghostButton:hover,
+.iconButton:hover,
+.iconButtonDanger:hover,
+.filterPill:hover,
+.filterPillActive:hover,
+.closeButton:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+}
+
+.actionRow {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filterPills {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filterPill,
+.filterPillActive {
+  padding: 0.62rem 0.85rem;
+  border: 1px solid rgba(212, 164, 94, 0.18);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(242, 236, 230, 0.78);
+}
+
+.filterPillActive {
+  background: rgba(176, 121, 63, 0.18);
+  color: rgba(255, 246, 236, 0.98);
+}
+
+.searchRow {
+  margin-bottom: 0.85rem;
+}
+
+.searchInput,
+.input,
+.textarea {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid rgba(212, 164, 94, 0.16);
+  background: rgba(10, 11, 14, 0.72);
+  color: rgba(245, 239, 232, 0.96);
+}
+
+.searchInput,
+.input {
+  min-height: 46px;
+  padding: 0.85rem 0.95rem;
+}
+
+.textarea {
+  min-height: 100px;
+  padding: 0.85rem 0.95rem;
+  resize: vertical;
+}
+
+.searchInput::placeholder,
+.input::placeholder,
+.textarea::placeholder {
+  color: rgba(231, 224, 216, 0.42);
+}
+
+.transactionList {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.transactionCard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.95rem 1rem;
+  border-radius: 6px;
+  border: 1px solid rgba(212, 164, 94, 0.12);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.transactionTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.transactionTitleRow h4 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.transactionMeta,
+.transactionNote,
+.savingsHelper {
+  margin: 0.35rem 0 0;
+  color: rgba(232, 224, 215, 0.72);
+  line-height: 1.55;
+}
+
+.transactionRight {
+  display: grid;
+  justify-items: end;
+  gap: 0.55rem;
+}
+
+.badgeIncome,
+.badgeExpense {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.22rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  text-transform: capitalize;
+}
+
+.badgeIncome {
+  background: rgba(102, 177, 130, 0.18);
+  color: rgba(192, 241, 203, 0.95);
+}
+
+.badgeExpense {
+  background: rgba(183, 102, 102, 0.15);
+  color: rgba(255, 208, 208, 0.95);
+}
+
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: rgba(4, 6, 10, 0.66);
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+}
+
+.modalCard,
+.modalCardSmall {
+  width: min(720px, 100%);
+  padding: 1rem;
+}
+
+.modalCardSmall {
+  width: min(520px, 100%);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.modalHeader h3 {
+  margin: 0;
+}
+
+.closeButton {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  display: inline-grid;
+  place-items: center;
+  font-size: 1.4rem;
+  line-height: 1;
+  border: 1px solid rgba(212, 164, 94, 0.18);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.42rem;
+}
+
+.field span {
+  color: rgba(242, 233, 224, 0.82);
+  font-size: 0.92rem;
+}
+
+.fieldFull {
+  grid-column: 1 / -1;
+}
+
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: rgba(242, 233, 224, 0.82);
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 1080px) {
+  .metricsGrid,
+  .tablesGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .heroCard,
+  .metricsGrid,
+  .tablesGrid,
+  .transactionCard,
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroActions,
+  .transactionRight {
+    justify-items: stretch;
+  }
+
+  .tableCardHeader {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .appShell {
+    gap: 0.85rem;
+  }
+
+  .heroCard,
+  .metricCard,
+  .tableCard,
+  .activityCard,
+  .modalCard,
+  .modalCardSmall {
+    padding: 0.85rem;
+  }
+
+  .modalActions,
+  .actionRow,
+  .filterPills {
+    flex-direction: column;
+  }
+}

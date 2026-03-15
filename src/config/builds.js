@@ -20,6 +20,7 @@ import {
   Hand,
   PencilRuler,
   LayoutGrid,
+  Link2,
 } from 'lucide-react';
 
 // Central route metadata keeps the sidebar and route shell in sync.
@@ -39,7 +40,7 @@ export const buildRegistry = [
     path: '/chuckNorris',
     icon: Laugh,
     accent: 'var(--accent-secondary)',
-    description: 'Pulls random Chuck Norris jokes with category filtering.',
+    description: 'Browse Chuck Norris jokes, switch categories, and refresh punchlines quickly.',
   },
   {
     name: 'Animated Text',
@@ -47,7 +48,7 @@ export const buildRegistry = [
     path: '/animatedText',
     icon: Type,
     accent: 'var(--accent-primary)',
-    description: 'Applies animation presets to custom text input.',
+    description: 'Preview animated text styles, tune sizing, and test motion treatments on custom copy.',
   },
   {
     name: 'Loaders',
@@ -55,7 +56,7 @@ export const buildRegistry = [
     path: '/loaders',
     icon: LoaderCircle,
     accent: 'var(--accent-secondary)',
-    description: 'Loader demos with progress and async data states.',
+    description: 'Compare loading patterns, progress states, and delayed data-fetch feedback in one place.',
   },
   {
     name: 'Truthy',
@@ -63,7 +64,7 @@ export const buildRegistry = [
     path: '/truthy',
     icon: ToggleLeft,
     accent: 'var(--accent-primary)',
-    description: 'Simple state demos showing truthy and toggle behaviour.',
+    description: 'Explore truthy state handling, toggle feedback, and conditional UI reactions.',
   },
   {
     name: 'Flow Diagrams',
@@ -71,7 +72,7 @@ export const buildRegistry = [
     path: '/reactflow',
     icon: Workflow,
     accent: 'var(--accent-secondary)',
-    description: 'Interactive flow diagrams built with React Flow.',
+    description: 'Build and inspect interactive node diagrams with editable React Flow connections.',
   },
   {
     name: 'Flip This',
@@ -79,7 +80,7 @@ export const buildRegistry = [
     path: '/flip',
     icon: RotateCcwSquare,
     accent: 'var(--accent-primary)',
-    description: 'Card-flip interaction mini game.',
+    description: 'Test a lightweight card-flip game flow with reveal, reset, and interaction feedback.',
   },
   {
     name: 'Expanded',
@@ -87,7 +88,7 @@ export const buildRegistry = [
     path: '/expand',
     icon: Rows3,
     accent: 'var(--accent-secondary)',
-    description: 'Expandable content section playground.',
+    description: 'Open and collapse layered content panels to test expandable section behaviour.',
   },
   {
     name: 'Pokemon API',
@@ -95,7 +96,7 @@ export const buildRegistry = [
     path: '/pokemon',
     icon: Sparkles,
     accent: 'var(--accent-primary)',
-    description: 'Pokemon lookup with API-powered card views.',
+    description: 'Search Pokémon, preview card details, and open a richer modal for stats, cries, and media.',
   },
   {
     name: 'Password Gen',
@@ -103,7 +104,7 @@ export const buildRegistry = [
     path: '/passGen',
     icon: KeyRound,
     accent: 'var(--accent-secondary)',
-    description: 'Customisable password generation utility.',
+    description: 'Generate passwords with adjustable character rules and quick copy actions.',
   },
   {
     name: 'I & E',
@@ -111,7 +112,7 @@ export const buildRegistry = [
     path: '/IandE',
     icon: Wallet,
     accent: 'var(--accent-primary)',
-    description: 'Income and expense manager mini app.',
+    description: 'Track income, expenses, savings, and monthly cash flow with local-storage persistence.',
   },
   {
     name: 'RIO API',
@@ -119,7 +120,7 @@ export const buildRegistry = [
     path: '/IOP',
     icon: ScanSearch,
     accent: 'var(--accent-secondary)',
-    description: 'Intersection observer behaviour examples.',
+    description: 'See how intersection observer triggers content changes as sections enter the viewport.',
   },
   {
     name: 'Kitty API',
@@ -127,7 +128,7 @@ export const buildRegistry = [
     path: '/cat',
     icon: Cat,
     accent: 'var(--accent-primary)',
-    description: 'Cat API image feed experiments.',
+    description: 'Load random cat media, preview fetched results, and test lightweight API gallery behaviour.',
   },
   {
     name: 'Sortables',
@@ -135,7 +136,7 @@ export const buildRegistry = [
     path: '/sort',
     icon: ArrowUpDown,
     accent: 'var(--accent-secondary)',
-    description: 'Drag, reorder and sortable list examples.',
+    description: 'Move people between queues and test sortable list behaviour with live ordering updates.',
   },
   {
     name: 'Filters',
@@ -143,7 +144,7 @@ export const buildRegistry = [
     path: '/filters',
     icon: Filter,
     accent: 'var(--accent-primary)',
-    description: 'Table filtering and export playground.',
+    description: 'Filter a larger table dataset, narrow the results, and export selected rows.',
   },
   {
     name: 'Date Pickers',
@@ -151,7 +152,7 @@ export const buildRegistry = [
     path: '/datepickers',
     icon: CalendarDays,
     accent: 'var(--accent-secondary)',
-    description: 'Date picker variants and shortcuts.',
+    description: 'Compare date input components, range selection, and shortcut-driven picker flows.',
   },
   {
     name: 'Virtualized List',
@@ -159,7 +160,7 @@ export const buildRegistry = [
     path: '/virtualized',
     icon: List,
     accent: 'var(--accent-primary)',
-    description: 'Virtualized rendering for large lists.',
+    description: 'Render long datasets efficiently with virtualization and worker-assisted data generation.',
   },
   {
     name: 'Leaderboard',
@@ -167,7 +168,7 @@ export const buildRegistry = [
     path: '/leaderboard',
     icon: Trophy,
     accent: 'var(--accent-secondary)',
-    description: 'Ranking and leaderboard score display.',
+    description: 'View a reshuffling leaderboard with ranked performance metrics and table-style comparison.',
   },
   {
     name: 'CardSwap',
@@ -175,7 +176,7 @@ export const buildRegistry = [
     path: '/cardswap',
     icon: Hand,
     accent: 'var(--accent-primary)',
-    description: 'Drag and drop card swap interaction.',
+    description: 'Reorder image cards in a freeform drag layout and persist the arrangement locally.',
   },
   {
     name: 'Edit Section',
@@ -183,7 +184,16 @@ export const buildRegistry = [
     path: '/editsection',
     icon: PencilRuler,
     accent: 'var(--accent-secondary)',
-    description: 'Editable content block and layout editor.',
+    description: 'Reorder editable content blocks and experiment with a simple visual section editor.',
+  },
+
+  {
+    name: 'Drive Links',
+    link: 'drivelinks',
+    path: '/drivelinks',
+    icon: Link2,
+    accent: 'var(--accent-secondary)',
+    description: 'Convert Drive share links, preview supported media, and batch-copy grouped output URLs.',
   },
   {
     name: 'DND Grid',
@@ -191,6 +201,6 @@ export const buildRegistry = [
     path: '/dndgrid',
     icon: LayoutGrid,
     accent: 'var(--accent-primary)',
-    description: 'Sortable masonry-style profile grid.',
+    description: 'Drag profile cards around a masonry-style grid and keep the saved order locally.',
   },
 ];

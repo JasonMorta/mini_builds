@@ -22,6 +22,7 @@ import DragNDrop from './components/builds/dragAndDrop/DragNDrop';
 import EditSection from './components/builds/editSection/EditSection';
 import MasonryGrid from './components/builds/MasonryGrid/MasonryGrid';
 import ReactFlowDiagrams from './components/builds/ReactFlow/ReactFlowDiagrams';
+import DriveLinks from './components/builds/driveLinks/DriveLinks';
 import BuildShell from './components/layout/BuildShell';
 import { buildRegistry } from './config/builds';
 
@@ -73,6 +74,7 @@ export default function AnimatedRoutes() {
         <Route path="/virtualized" element={withShell('/virtualized', <VirtualList />)} />
         <Route path="/leaderboard" element={withShell('/leaderboard', <LeaderBoardScores />)} />
         <Route path="/reactflow" element={withShell('/reactflow', <ReactFlowDiagrams />)} />
+        <Route path="/drivelinks" element={withShell('/drivelinks', <DriveLinks />)} />
       </Routes>
     </AnimatePresence>
   );

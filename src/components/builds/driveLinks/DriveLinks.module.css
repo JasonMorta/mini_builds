@@ -1,0 +1,526 @@
+.driveLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  color: var(--text-primary);
+}
+
+.heroPanel,
+.singleSection,
+.batchCard,
+.batchSection,
+.singleCard,
+.heroMetaCard,
+.previewSurface,
+.mediaCard,
+.listItem,
+.codeBlock,
+.outputBox {
+  border-radius: 6px;
+}
+
+.heroPanel,
+.singleSection,
+.batchCard,
+.batchSection {
+  padding: clamp(1rem, 2vw, 1.3rem);
+  border: 1px solid rgba(184, 130, 66, 0.16);
+  background:
+    radial-gradient(circle at top left, rgba(109, 72, 32, 0.16), transparent 45%),
+    linear-gradient(180deg, rgba(19, 14, 11, 0.96), rgba(10, 8, 7, 0.99));
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+}
+
+.heroPanel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.9fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.eyebrow,
+.sectionKicker {
+  margin: 0 0 0.4rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(230, 205, 181, 0.66);
+}
+
+.heroPanel h2,
+.sectionLead h3,
+.sectionTitle {
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.heroPanel h2,
+.sectionLead h3 {
+  font-size: clamp(1.8rem, 3vw, 2.55rem);
+}
+
+.heroCopy,
+.sectionNote,
+.batchMeta,
+.footerNote,
+.hint,
+.sectionCount,
+.listMeta span,
+.mediaMeta span {
+  color: rgba(234, 226, 216, 0.76);
+  line-height: 1.65;
+}
+
+.heroMeta {
+  display: grid;
+  gap: 0.95rem;
+}
+
+.heroMetaCard {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: start;
+  padding: 1rem;
+  border: 1px solid rgba(190, 142, 75, 0.16);
+  background: linear-gradient(180deg, rgba(28, 21, 18, 0.92), rgba(14, 12, 10, 0.98));
+}
+
+.heroMetaCard strong,
+.cardLabel,
+.batchLabel,
+.listMeta strong,
+.mediaMeta strong,
+.tileName {
+  color: rgba(250, 245, 238, 0.98);
+}
+
+.heroMetaCard span {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.92rem;
+  color: rgba(234, 226, 216, 0.72);
+}
+
+.sectionLead {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.singleGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1rem;
+}
+
+.singleCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1rem;
+  border: 1px solid rgba(182, 130, 65, 0.14);
+  background:
+    linear-gradient(180deg, rgba(30, 21, 18, 0.96), rgba(12, 10, 9, 0.99));
+}
+
+.cardRow {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.cardLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.cardPill {
+  white-space: nowrap;
+  padding: 0.34rem 0.62rem;
+  border-radius: 999px;
+  background: rgba(133, 88, 39, 0.18);
+  border: 1px solid rgba(184, 133, 70, 0.24);
+  color: rgba(243, 221, 196, 0.9);
+  font-size: 0.72rem;
+}
+
+.input,
+.textarea,
+.selectWrap select {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid rgba(190, 144, 79, 0.18);
+  background: rgba(8, 8, 9, 0.88);
+  color: rgba(251, 247, 242, 0.96);
+  padding: 0.82rem 0.92rem;
+  outline: none;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: rgba(207, 189, 169, 0.48);
+}
+
+.input:focus,
+.textarea:focus,
+.selectWrap select:focus {
+  border-color: rgba(202, 154, 84, 0.42);
+  box-shadow: 0 0 0 3px rgba(177, 122, 53, 0.14);
+}
+
+.outputBox,
+.codeBlock,
+.mediaCard,
+.listItem,
+.previewSurface {
+  border: 1px solid rgba(188, 138, 72, 0.12);
+  background: linear-gradient(180deg, rgba(11, 9, 8, 0.98), rgba(5, 5, 5, 0.98));
+}
+
+.outputBox {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding: 0.84rem;
+}
+
+.outputText {
+  flex: 1;
+  font-size: 0.83rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  color: rgba(240, 233, 224, 0.94);
+  word-break: break-all;
+}
+
+.outputActions {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.iconButton,
+.primaryButton,
+.secondaryButton,
+.tileButton,
+.previewToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.iconButton,
+.secondaryButton,
+.tileButton,
+.previewToggle {
+  border: 1px solid rgba(189, 140, 73, 0.18);
+  background: linear-gradient(180deg, rgba(57, 38, 23, 0.88), rgba(30, 20, 12, 0.96));
+  color: rgba(248, 243, 236, 0.94);
+}
+
+.iconButton {
+  width: 36px;
+  height: 36px;
+}
+
+.primaryButton {
+  border: 1px solid rgba(188, 141, 77, 0.24);
+  background: linear-gradient(180deg, rgba(118, 77, 36, 0.96), rgba(78, 50, 23, 1));
+  color: rgba(252, 248, 242, 0.98);
+  padding: 0.8rem 1rem;
+}
+
+.secondaryButton,
+.tileButton,
+.previewToggle {
+  padding: 0.74rem 0.95rem;
+}
+
+.previewToggle {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.iconButton:hover,
+.primaryButton:hover,
+.secondaryButton:hover,
+.tileButton:hover,
+.previewToggle:hover {
+  border-color: rgba(217, 167, 96, 0.38);
+}
+
+.iconButton:active,
+.primaryButton:active,
+.secondaryButton:active,
+.tileButton:active,
+.previewToggle:active {
+  transform: translateY(1px);
+}
+
+.iconButton:disabled,
+.primaryButton:disabled,
+.secondaryButton:disabled,
+.tileButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.docModeToggle,
+.buttonRow,
+.controlGroup,
+.batchControls,
+.listActions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.docModeToggle label,
+.checkboxWrap,
+.selectWrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.84rem;
+  color: rgba(236, 226, 214, 0.76);
+}
+
+.success {
+  margin: 0;
+  color: #b7efc2;
+  font-size: 0.82rem;
+}
+
+.error {
+  margin: 0;
+  color: #ffc6c6;
+  font-size: 0.82rem;
+}
+
+.exampleCard {
+  justify-content: space-between;
+}
+
+.codeBlock {
+  padding: 0.9rem;
+  font-size: 0.8rem;
+  white-space: pre-wrap;
+  color: rgba(242, 234, 224, 0.96);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  overflow: auto;
+}
+
+.batchShell {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.batchSections {
+  display: grid;
+  gap: 1rem;
+}
+
+.batchLabel {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 170px;
+}
+
+.batchControls {
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.95rem;
+}
+
+.selectWrap {
+  flex-direction: column;
+  align-items: start;
+}
+
+.batchMeta {
+  margin: 0.85rem 0 0;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.sectionTitleWrap {
+  display: flex;
+  align-items: start;
+  gap: 0.7rem;
+}
+
+.sectionIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background: rgba(127, 88, 45, 0.18);
+  border: 1px solid rgba(188, 139, 73, 0.16);
+}
+
+.previewSurface {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.85rem;
+}
+
+.previewHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(226, 208, 188, 0.62);
+}
+
+.previewImage,
+.video {
+  width: 100%;
+  min-height: 220px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: rgba(9, 8, 7, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.previewAudio {
+  width: 100%;
+  min-height: 46px;
+  filter: sepia(0.18) saturate(0.9) brightness(0.92);
+}
+
+.jsonPreviewWrap,
+.docPreviewArea {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.mediaGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.9rem;
+}
+
+.mediaCard,
+.listItem {
+  padding: 0.9rem;
+}
+
+.mediaCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.mediaMeta,
+.listMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.listStack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.toast {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 20;
+  max-width: 320px;
+  padding: 0.82rem 0.98rem;
+  border-radius: 6px;
+  border: 1px solid rgba(188, 140, 73, 0.18);
+  background: rgba(18, 14, 11, 0.98);
+  color: rgba(250, 245, 237, 0.96);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+}
+
+@media (max-width: 860px) {
+  .heroPanel {
+    grid-template-columns: 1fr;
+  }
+
+  .batchControls {
+    align-items: stretch;
+  }
+
+  .buttonRow,
+  .controlGroup,
+  .listActions {
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .cardRow,
+  .sectionHeader,
+  .listItem {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .outputBox {
+    flex-direction: column;
+  }
+
+  .outputActions {
+    justify-content: flex-start;
+  }
+
+  .previewImage,
+  .video {
+    min-height: 180px;
+  }
+
+  .previewAudio {
+    width: 100%;
+  }
+}

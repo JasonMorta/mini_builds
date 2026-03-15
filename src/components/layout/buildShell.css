@@ -106,3 +106,5 @@
     min-height: 72px;
   }
 }
+
+.build-shell--drivelinks { --build-accent: #6e99ff; }
