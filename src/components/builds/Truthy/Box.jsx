@@ -1,13 +1,10 @@
 import React from 'react';
-import "./boxes.css";
+import styles from './Truthy.module.css';
 
 export default function Box(props) {
   return (
-    <div
-        style={{ color: props.textColor }}
-        className="box"
-        onClick={props.handleClick} >
-        {props.context}
+    <div style={{ color: props.textColor }} className={styles.box} onClick={props.handleClick}>
+      {props.context}
     </div>
   );
 }

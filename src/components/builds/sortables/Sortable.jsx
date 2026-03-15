@@ -1423,6 +1423,7 @@ useEffect(() => {
   return (
     <>
       <div className={CSS.main_sortable}>
+        <p style={{ width: "100%", margin: "0 0 0.5rem", opacity: 0.75 }}>Drag list items to change the order of each queue.</p>
         <h1>Sortables</h1>
         <div className={CSS.day_shift}>
         <h3>Agents</h3>

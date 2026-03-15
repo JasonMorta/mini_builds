@@ -1,34 +1,22 @@
-import React from 'react';
-import { useState } from 'react';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+import React from "react";
 
-export default function FontDrop_down(props) {
+const animationOptions = [
+  "text-pop-up-top",
+  "tracking-in-contract-bck-top",
+  "text-focus-in",
+  "focus-in-expand",
+  "roll-in-blurred-left",
+];
 
-  const [animationClass, setAnimationClass] = useState(
-    [
-      "text-pop-up-top",
-      "tracking-in-contract-bck-top",
-      "text-focus-in",
-      "focus-in-expand",
-      "roll-in-blurred-left"
-    ])
-
-  const animista = animationClass.map((anami, index)=>(
-    <Dropdown.Item 
-      key={index}
-      onClick={props.handleClick}
-      >{anami}
-    </Dropdown.Item>
-  ))
-
+export default function FontDropDown({ handleClick, value }) {
   return (
-      <>
-         <DropdownButton 
-          id="dropdown-basic-button" 
-          title={props.title}>
-          {animista}
-        </DropdownButton>
-      </>
-  )
+    <label style={{ display: 'grid', gap: '0.4rem', width: '100%' }}>
+      <span style={{ color: 'rgba(246, 239, 230, 0.82)', fontSize: '0.85rem' }}>Choose animation</span>
+      <select value={value} onChange={(event) => handleClick(event)} style={{ minHeight: '44px', padding: '0.75rem 0.9rem' }}>
+        {animationOptions.map((item) => (
+          <option key={item} value={item}>{item}</option>
+        ))}
+      </select>
+    </label>
+  );
 }

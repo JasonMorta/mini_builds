@@ -14,7 +14,7 @@
     border-top: 2px dashed black;
     border-bottom: 2px dashed black;
     background-color: azure;
-    color: black;
+    color: rgba(246, 247, 251, 0.88);
     overflow: hidden;
     position: relative;
     padding: 5%;
@@ -312,3 +312,15 @@
     }
   }
   
+
+@media (max-width: 768px) {
+  .IntersectionOP,
+  .text_section,
+  .contents {
+    max-width: 100%;
+  }
+
+  .contents {
+    padding-inline: 1rem;
+  }
+}

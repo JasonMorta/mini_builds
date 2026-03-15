@@ -1,13 +1,40 @@
+
 .react-flow-main {
-  min-width: 800px;
-  min-height: 500px;
-  border: 1px solid #ddd;
-  margin-bottom: 50px
+  width: min(100%, 980px);
+  height: 560px;
+  border: 1px solid color-mix(in srgb, var(--build-accent) 18%, transparent);
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 0 auto;
+  background: linear-gradient(180deg, rgba(12, 18, 24, 0.98), rgba(8, 12, 16, 0.98));
+}
+
+.react-flow-main :global(.react-flow__controls) {
+  box-shadow: none;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.react-flow-main :global(.react-flow__controls-button) {
+  background: rgba(20, 25, 31, 0.96);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  color: rgba(246, 239, 230, 0.92);
+}
+
+.react-flow-main :global(.react-flow__minimap) {
+  background: rgba(10, 13, 16, 0.92);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 3px;
 }
 
 .custom-text-updater-node {
   padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: #f9f9f9;
+  border: 1px solid color-mix(in srgb, var(--build-accent) 18%, transparent);
+  border-radius: 3px;
+  background-color: rgba(17, 22, 25, 0.98);
+  color: rgba(245, 239, 232, 0.92);
+}
+
+@media (max-width: 640px) {
+  .react-flow-main { height: 430px; }
 }

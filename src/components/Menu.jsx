@@ -1,45 +1,86 @@
-/* eslint-disable no-self-compare */
-/* eslint-disable no-cond-assign */
-import React, { useContext } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { ChevronLeft, Search } from 'lucide-react';
 import { StateContext } from '../StateManager';
 import './menu.css';
-import { Link } from "react-router-dom";
 
 export default function Menu() {
+  const [state] = useContext(StateContext);
+  const location = useLocation();
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [query, setQuery] = useState('');
 
-console.log(`%c Main state`, 'color: #2196f3')
- const value = useContext(StateContext)
+  const filteredItems = useMemo(() => {
+    const normalizedQuery = query.trim().toLowerCase();
 
- let [state, setState] = value
+    if (!normalizedQuery) {
+      return state.menuItems;
+    }
 
-function active(i) {
-  let data = state; // save state to variable
-
-  //Change all object active values to: false => every time => first
-  data.menuItems.forEach((item) => (item.active = false));
-
-  //Only set selected, active value to true
-  data.menuItems[i].active = true;
-
-  //spread in modified variable into state.
-  setState((prev) => ({ ...prev, data }));
-}
+    return state.menuItems.filter((item) => item.name.toLowerCase().includes(normalizedQuery));
+  }, [query, state.menuItems]);
 
   return (
-    <div className="menu_section">
-      {state.menuItems.map((item, i) => (
-        <Link
-          data-mini={item.name}
-          key={i}
-          onClick={() => {
-            active(i);
-          }}
-          to={`/${item.link}`}
-          className={`menu_items ${item.active ? " active_build" : ""}`}
+    <aside className={`menu_section${isCollapsed ? ' menu_section--collapsed' : ''}`}>
+      <div className="menu_branding">
+        <div>
+          <p className="menu_branding__eyebrow">Mini builds</p>
+          <h1>Mini Builds</h1>
+        </div>
+        <button
+          type="button"
+          className="menu_collapse_button"
+          onClick={() => setIsCollapsed((current) => !current)}
+          aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
         >
-          {item.name}
-        </Link>
-      ))}
-    </div>
-  ); 
+          <ChevronLeft size={18} className={isCollapsed ? 'rotated' : ''} />
+        </button>
+      </div>
+
+      <div className="menu_workspace">
+        <span className="menu_workspace__badge">M</span>
+        <div>
+          <p className="menu_workspace__label">Workspace</p>
+          <strong>MortaDev</strong>
+        </div>
+      </div>
+
+      <label className="menu_search">
+        <Search size={16} />
+        <input
+          type="search"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder="Find a build"
+        />
+      </label>
+
+      <nav className="menu_links" aria-label="Mini-build navigation">
+        {filteredItems.map((item) => {
+          const Icon = item.icon;
+          const isActive = location.pathname === item.path;
+
+          return (
+            <Link
+              data-mini={item.name}
+              key={item.path}
+              to={item.path}
+              className={`menu_items${isActive ? ' active_build' : ''}`}
+              title={isCollapsed ? item.name : undefined}
+            >
+              <span className="menu_items__icon">
+                <Icon size={18} />
+              </span>
+              {!isCollapsed && (
+                <span className="menu_items__content">
+                  <span className="menu_items__name">{item.name}</span>
+                </span>
+              )}
+              <span className="menu_items__accent" style={{ background: item.accent }} />
+            </Link>
+          );
+        })}
+      </nav>
+    </aside>
+  );
 }

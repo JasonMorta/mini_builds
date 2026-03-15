@@ -1,78 +1,19 @@
+
 .main_sortable {
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    -webkit-user-select: none;
-    user-select: none;
-    gap: 20px;
-    background-color: rgb(145 145 145 / 13%);
-    align-items: flex-start;
-    padding-bottom: 20px;
-    border-radius: 5px;
+  margin: auto;
+  display: grid;
+  gap: 1rem;
+  user-select: none;
+  background: linear-gradient(180deg, rgba(18, 17, 16, 0.98), rgba(10, 10, 10, 0.98));
+  align-items: start;
+  padding: 1.25rem;
+  border-radius: 3px;
+  border: 1px solid color-mix(in srgb, var(--build-accent) 18%, transparent);
 }
-
-
-.main_sortable h1 {
-    width: 100%;
-}
-
-.main_sortable .sortable {
-    width: 200px;
-    padding: 0px;
-    border: 1px solid #8080801f;
-    background-color: rgba(128, 128, 128, 0.267);
-    min-height: 50px;
-    min-width: 150px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    user-select: none;
-    max-height: 400px;
-    overflow: auto;
-}
-
-.item {
-    width: 100%;
-    min-width: 100px;
-    font-size: 12px;
-    padding: 5px;
-    cursor: pointer;
-}
-
-.item:hover {
-    background-color: #83838317;
-
-}
-
-
-.item:active {
-    background-color: #cc5151;
-
-}
-
-/* .main_sortable .list-group {
-    width: 45%;
-} */
-
-
-.ghost {
-    background-color: #cc5151;
-}
-
-.main_sortableGrid {
-    
-}
-
-.sortContainer {
-    display: flex;
-    gap: 20px;
-    background-color: beige;
-    padding: 20px;
-    width: 100%;
-    justify-content: space-evenly;
-}
+.main_sortable h1 { width: 100%; margin: 0; }
+.main_sortable .sortable { width: 100%; max-width: 260px; padding: 0; border: 1px solid color-mix(in srgb, var(--build-accent) 18%, transparent); background-color: rgba(255, 255, 255, 0.04); min-height: 220px; margin: 0; display: flex; align-items: stretch; justify-content: flex-start; flex-direction: column; user-select: none; max-height: 360px; overflow: auto; border-radius: 3px; }
+.item { width: 100%; min-width: 100px; font-size: 13px; padding: 10px 12px; cursor: pointer; color: rgba(245, 239, 232, 0.92); }
+.item:hover { background-color: color-mix(in srgb, var(--build-accent) 14%, transparent); }
+.item:active, .ghost { background-color: color-mix(in srgb, var(--build-accent) 24%, transparent); }
+.sortContainer { display: grid; grid-template-columns: repeat(3, minmax(220px, 1fr)); gap: 1.25rem; background-color: transparent; padding: 0; width: 100%; justify-content: stretch; }
+@media (max-width: 900px){ .sortContainer{ grid-template-columns: 1fr; } .main_sortable .sortable{ max-width:none; } }

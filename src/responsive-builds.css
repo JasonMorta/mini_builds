@@ -1,0 +1,52 @@
+/* Shared responsive fixes for mini-builds that previously depended on fixed widths/heights. */
+
+.build-shell__content > * {
+  max-width: 100%;
+}
+
+.react-flow {
+  width: 100%;
+}
+
+@media (max-width: 960px) {
+  .Intersection_Observer_Main,
+  .cat_image_container,
+  .sortMain,
+  .container,
+  .pokemon-viewer,
+  .pokeContainer {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .rdt_Table,
+  .rdt_TableHead,
+  .rdt_TableBody {
+    min-width: 720px;
+  }
+
+  .react-flow__minimap {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .build-shell__content {
+    overflow-x: hidden;
+  }
+
+  .swapy-container,
+  .grid,
+  .packery-grid,
+  .cat_image_container,
+  .box {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .react-flow__controls {
+    transform: scale(0.9);
+    transform-origin: bottom left;
+  }
+}

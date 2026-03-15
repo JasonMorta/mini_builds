@@ -1,14 +1,13 @@
-import React, { useContext, useState } from "react";
-import Box from "./Box";
-import BoxAware from "./BoxAware";
-import SwitchExample from "./Switch";
-import { motion } from "framer-motion";
-import { StateContext } from "../../../StateManager";
+import React, { useContext, useMemo, useState } from 'react';
+import { motion } from 'framer-motion';
+import Box from './Box';
+import BoxAware from './BoxAware';
+import SwitchExample from './Switch';
+import { StateContext } from '../../../StateManager';
+import styles from './Truthy.module.css';
 
-export default function ImageHover() {
-  const value = useContext(StateContext);
-  let [mainState, setMainState] = value;
-
+export default function Truthy() {
+  const [mainState] = useContext(StateContext);
   const [array, setArray] = useState([
     { id: 1, on: true },
     { id: 2, on: false },
@@ -16,71 +15,43 @@ export default function ImageHover() {
   ]);
   const [flip, setFlip] = useState(false);
 
-  //toggle unaware boxes
   function toggle(id) {
-    setArray((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, on: !item.on } : item))
-    );
+    setArray((prev) => prev.map((item) => (item.id === id ? { ...item, on: !item.on } : item)));
   }
 
-  //toggle aware boxes
-  function boxAware(id, on) {
-    if (on) {
-      setArray((prev) => prev.map((x) => ({ ...x, on: true }))); //first set all on: false
-      setArray((prev) =>
-        prev.map((x) => (x.id === id ? { ...x, on: !x.on } : x))
-      ); //only flip selected on
-    } else {
-      setArray((prev) => prev.map((x) => ({ ...x, on: false })));
-      setArray((prev) =>
-        prev.map((x) => (x.id === id ? { ...x, on: !x.on } : x))
-      );
-    }
+  function boxAware(id) {
+    setArray((prev) => prev.map((item) => ({ ...item, on: item.id === id ? !item.on : false })));
   }
 
-  //These two boxes flip's the values on click
-  let unaware = array.map((bx, i) => (
-    <Box
-      key={i}
-      textColor={bx.on ? "#03a9f4" : "#ff5722"}
-      handleClick={() => toggle(bx.id, bx.on)}
-      context={bx.on.toString()}
-    />
-  ));
+  const unaware = useMemo(() => array.map((bx) => (
+    <Box key={bx.id} textColor={bx.on ? '#f2c078' : '#d28b72'} handleClick={() => toggle(bx.id)} context={bx.on.toString()} />
+  )), [array]);
 
-  let aware = array.map((val, idx) => (
-    <BoxAware
-      key={idx}
-      textColor={val.on ? "green" : "red"}
-      handleClick={() => boxAware(val.id, val.on)}
-      context={val.on.toString()}
-    />
-  ));
+  const aware = useMemo(() => array.map((val) => (
+    <BoxAware key={val.id} textColor={val.on ? '#f2c078' : '#d28b72'} handleClick={() => boxAware(val.id)} context={val.on.toString()} />
+  )), [array]);
 
-  function flipSwitched(e) {}
-
-  function flipSwitch(e) {
-    setFlip((prev) => !prev);
-    e.target.checked = !flip;
+  function flipSwitch(event) {
+    setFlip(event.target.checked);
   }
 
   return (
-    <motion.div
-      initial={mainState.motion.initial}
-      animate={mainState.motion.animate}
-      exit={mainState.motion.exit}
-      transition={mainState.motion.transition}
-    >
-      <div className="truth-container">
-        <h1>Unaware boxes</h1>
-        <div className="boxes">{unaware}</div>
-        <p>Flip the selected truthy only</p>
-        <h1>Aware boxes</h1>
-        <div className="boxes">{aware}</div>
-        <p>Flip the selected truthy and flip the two remaining to opposite</p>
-
-        <SwitchExample checked={flip} handleSwitch={flipSwitched} />
-        <SwitchExample handleSwitch={flipSwitch} />
+    <motion.div initial={mainState.motion.initial} animate={mainState.motion.animate} exit={mainState.motion.exit} transition={mainState.motion.transition}>
+      <div className={styles.container}>
+        <section className={`${styles.section} build-card`}>
+          <h2>Unaware boxes</h2>
+          <p className="muted-copy">Flip the selected truthy value only.</p>
+          <div className={styles.boxes}>{unaware}</div>
+        </section>
+        <section className={`${styles.section} build-card`}>
+          <h2>Aware boxes</h2>
+          <p className="muted-copy">Keep only the clicked aware value active.</p>
+          <div className={styles.boxes}>{aware}</div>
+        </section>
+        <section className={`${styles.section} build-card`}>
+          <p className="muted-copy">Basic switch state demo.</p>
+          <SwitchExample handleSwitch={flipSwitch} checked={flip} />
+        </section>
       </div>
     </motion.div>
   );

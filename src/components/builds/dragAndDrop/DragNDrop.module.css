@@ -1,0 +1,7 @@
+
+.dragGridBuild { width: min(100%, 960px); margin: 0 auto; display: grid; gap: 1rem; }
+.dragGrid { position: relative; max-width: 100%; min-height: 760px; margin: 0 auto; }
+.gridItem { position: relative; border-radius: 3px; overflow: hidden; box-shadow: 0 0 0 1px rgba(212,164,94,.22), 0 16px 30px rgba(0,0,0,.28); }
+.gridItem::after { content: ""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 20%,rgba(18,13,10,.72) 100%); }
+.gridValue { position:absolute; right:.75rem; bottom:.5rem; z-index:1; margin:0; padding:.35rem .55rem; background:rgba(24,17,12,.92); color:#f6efe6; border:1px solid rgba(212,164,94,.22); border-radius:3px; font-weight:700 }
+@media (max-width: 900px){ .dragGrid{ min-height: 620px; } }

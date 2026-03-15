@@ -1,81 +1,64 @@
-import React, { useState, useEffect } from "react";
-// import { useContext } from "react";
-// import { StateContext } from "../../../StateManager";
-import "../../../loadingCSS.css";
-import "./cat.css";
+import React, { useState } from "react";
+import styles from "./CatAPI.module.css";
 import StyledButton from "../../StyledButton";
 import placeHolder from "./placeholder.png";
 import { getCatImg } from "./APIcalls";
-import {
-  useQuery,
-  useQueryClient,
-} from 'react-query'
+import { useQuery, useQueryClient } from 'react-query';
 
 export default function CatAPI() {
-  // Access the client
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
   const [imgLoaded, setImgLoaded] = useState(true);
   const [btnText, setBtnText] = useState("Load");
   const [disableBtn, setDisableBtn] = useState(true);
-  const prop = useQuery('randomCat', getCatImg)
-
+  const catQuery = useQuery('randomCat', getCatImg);
 
   async function handleClick() {
     setBtnText("Loading...");
     setImgLoaded(true);
     setDisableBtn(true);
-    queryClient.invalidateQueries('randomCat')
-    prop.refetch()
-    console.log('Start Img load', prop)
+    queryClient.invalidateQueries('randomCat');
+    catQuery.refetch();
   }
 
-
-  function handleImageComplete(e) {
-
-    console.log('e.target.src', e.target.src)
-  
-
-    if (!e.target.src.includes('base64')) {
+  function handleImageComplete(event) {
+    if (!event.target.src.includes('base64')) {
       setDisableBtn(false);
     }
-    
-    setBtnText("Load Next");
+
+    setBtnText("Load next");
     setImgLoaded(false);
-    console.log('Complete Img load', prop)
-    
   }
-  
+
   return (
-    <div className="cat_image_container">
-      <h2>Random Cat API</h2>
-      {  <>
-            {prop.data?.map((img, i) => (
-              
-              // imgLoaded ? 
-              // <CircularProgress />
-              // : 
-                <>
-                {prop.isFetching ?
-                  <span>Fetching</span>
-                  : prop.isError ?
-                    <span>Error: {prop.error.message}</span>
-                    :
-                    <img
-                      src={imgLoaded ? placeHolder : img.url}
-                      alt="CatImage"
-                      onLoad={handleImageComplete}
-                    />}
-                  <StyledButton
-                    type="instagram"
-                    text={btnText}
-                    className="cat_button"
-                    disabled={disableBtn}
-                    onPress={handleClick} />
-                </>
-            ))}
-        </>
-      }
+    <div className={styles.catImageContainer}>
+      <div className={styles.catHeading}>
+        <p>Gallery</p>
+        <h2>Random Cat API</h2>
+      </div>
+
+      {catQuery.data?.map((img) => (
+        <React.Fragment key={img.id || img.url}>
+          {catQuery.isFetching ? (
+            <span>Fetching</span>
+          ) : catQuery.isError ? (
+            <span>Error: {catQuery.error.message}</span>
+          ) : (
+            <img
+              src={imgLoaded ? placeHolder : img.url}
+              alt="Cat"
+              onLoad={handleImageComplete}
+            />
+          )}
+        </React.Fragment>
+      ))}
+
+      <StyledButton
+        type="instagram"
+        text={btnText}
+        className={styles.catButton}
+        disabled={disableBtn}
+        onPress={handleClick}
+      />
     </div>
   );
-
 }

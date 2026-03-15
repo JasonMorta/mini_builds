@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Partic from '../Partic'
 import Card from './Card'
+import styles from './FlipsMain.module.css'
 
 export default class FlipsMain extends Component {
   constructor(props) {
@@ -35,17 +36,20 @@ export default class FlipsMain extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.root}>
+        <section className={styles.info}>
+          <p style={{ margin: 0, color: "rgba(245, 239, 232, 0.78)" }}>Pick a card, reveal the outcome, then restart for another round.</p>
+        </section>
         { this.state.didWin === "true" ? <Partic /> :  <></>}
         <Card 
           gameOver={this.state.gameOver}
           cardData={this.state.cardData}
           handleClick={this.flipCard.bind(this)}
           />
-          {this.state.gameOver ? <div className="btn-cont">
+          {this.state.gameOver ? <div className={styles.actions}>
              <button 
              onClick={this.restart.bind(this)}
-              className={`${this.state.gameOver ? "night shake-horizontal": " night"}`}>Restart</button>
+              className={styles.restartButton}>Restart</button>
           </div>
           :
           <></>}

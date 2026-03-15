@@ -1,23 +1,23 @@
-import * as React from "react";
-import { Slider } from "radix-ui";
-import styles from "./FontSlider.module.css";
+import React from 'react';
+import styles from './FontSlider.module.css';
 
-const FontSlider = ({element, updateElementCSS}) => (
-	<form>
-		<Slider.Root 
-    className={styles.Root} 
-    defaultValue={[element.CSS?.fontSize || 15]} 
-    max={100} 
-    min={5} 
-    step={1}
-    onValueChange={(value) => updateElementCSS(element.id, 'fontSize', `${value}px`)}
-    >
-			<Slider.Track className={styles.Track}>
-				<Slider.Range className={styles.Range} />
-			</Slider.Track>
-			<Slider.Thumb className={styles.Thumb} aria-label="Volume" />
-		</Slider.Root>
-	</form>
-);
+const FontSlider = ({ element, updateElementCSS }) => {
+  const currentFontSize = parseInt((element.CSS?.fontSize || '16px').replace('px', ''), 10);
+
+  return (
+    <label className={styles.Label}>
+      <span>Font size: {currentFontSize}px</span>
+      <input
+        className={styles.Input}
+        type="range"
+        value={currentFontSize}
+        min={5}
+        max={100}
+        step={1}
+        onChange={(event) => updateElementCSS(element.id, 'fontSize', `${event.target.value}px`)}
+      />
+    </label>
+  );
+};
 
 export default FontSlider;

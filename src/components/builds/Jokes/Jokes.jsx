@@ -1,18 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-pascal-case */
-import chuckie from "./pics/chuck.png";
-import React, { useContext } from "react";
-import "./Jokes.css";
-import { useState, useEffect } from "react";
-import BsButton from "../BsButton";
-import FetchJoke from "./FetchJoke";
-import { StateContext } from "../../../StateManager";
-import Category from "./Category";
-import { motion } from "framer-motion";
+import chuckie from './pics/chuck.png';
+import React, { useContext } from 'react';
+import styles from './Jokes.module.css';
+import BsButton from '../BsButton';
+import FetchJoke from './FetchJoke';
+import { StateContext } from '../../../StateManager';
+import Category from './Category';
+import { motion } from 'framer-motion';
 
 export default function Jokes() {
   const value = useContext(StateContext);
-  let [mainState, setMainState] = value;
+  const [mainState, setMainState] = value;
 
   return (
     <motion.div
@@ -20,34 +19,26 @@ export default function Jokes() {
       animate={mainState.motion.animate}
       exit={mainState.motion.exit}
       transition={mainState.motion.transition}
+      className={styles.root}
     >
-      <section style={{ width: "80%", margin: "auto" }}>
-        <img
-          src={chuckie}
-          width={300}
-          className="chuck"
-          alt="chuck"
+      <div className={styles.controls}>
+        <BsButton
+          handleClick={() => setMainState((prev) => ({ ...prev, nextJoke: !prev.nextJoke }))}
+          className={styles.newJokeBtn}
+          text={'Next Joke'}
+          variant={'danger'}
         />
-        <div className="chuck-jokes">
+        <Category />
+      </div>
+
+      <section className={styles.hero}>
+        <div className={styles.logoWrap}><img src={chuckie} className={styles.logo} alt="Chuck Norris illustration" /></div>
+        <div className={styles.stack}>
           <FetchJoke />
-          <div className="chuck_divider"></div>
           <FetchJoke />
-          <div className="chuck_divider"></div>
           <FetchJoke />
         </div>
       </section>
-      <div className="chuck_btns">
-        <BsButton
-          handleClick={() =>
-            setMainState((prev) => ({ ...prev, nextJoke: !mainState.nextJoke }))
-          }
-          className={"new-joke-btn"}
-          text={"Next Joke"}
-          variant={"danger"}
-        />
-
-        <Category />
-      </div>
     </motion.div>
   );
 }

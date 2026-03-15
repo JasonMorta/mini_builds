@@ -1,0 +1,67 @@
+.root {
+  display: grid;
+  gap: 1rem;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: linear-gradient(180deg, rgba(49, 32, 18, 0.96), rgba(24, 16, 10, 0.96));
+  border: 1px solid color-mix(in srgb, var(--build-accent) 26%, transparent);
+  border-radius: 3px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(180px, 220px) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+  padding: 1rem;
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--build-accent) 16%, transparent), transparent 30%),
+    linear-gradient(180deg, rgba(34, 24, 18, 0.97), rgba(18, 12, 9, 0.97));
+  border: 1px solid color-mix(in srgb, var(--build-accent) 24%, transparent);
+  border-radius: 3px;
+}
+
+.logoWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.logo {
+  width: min(100%, 200px);
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.35));
+}
+
+.stack {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.jokeCard {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid color-mix(in srgb, var(--build-accent) 72%, transparent);
+  border-radius: 3px;
+  color: rgba(245, 239, 232, 0.92);
+  line-height: 1.65;
+}
+
+.category {
+  min-width: 150px;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,520 @@
+/* Shared UX uplift across mini-builds.
+   The goal is to make older demos feel consistent inside the new shell
+   without touching the navigation layout. */
+
+.build-shell__content {
+  overflow: visible;
+}
+
+.build-shell__content > * {
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+}
+
+.build-panel,
+.build-card,
+.build-subpanel {
+  border: 1px solid color-mix(in srgb, var(--build-accent, var(--accent-primary)) 18%, rgba(255,255,255,0.08));
+  background: linear-gradient(180deg, rgba(37, 27, 19, 0.94), rgba(18, 13, 9, 0.94));
+  border-radius: 3px;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.2);
+}
+
+.build-panel {
+  padding: clamp(1rem, 2vw, 1.4rem);
+}
+
+.build-shell__content h1,
+.build-shell__content h2,
+.build-shell__content h3,
+.build-shell__content h4,
+.build-shell__content p,
+.build-shell__content label,
+.build-shell__content li,
+.build-shell__content small,
+.build-shell__content span,
+.build-shell__content td,
+.build-shell__content th {
+  color: var(--text-primary);
+}
+
+.build-shell__content p,
+.build-shell__content li,
+.build-shell__content small,
+.build-shell__content .muted-copy {
+  color: var(--text-secondary);
+}
+
+.build-shell__content input,
+.build-shell__content select,
+.build-shell__content textarea {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.build-shell__content input::placeholder,
+.build-shell__content textarea::placeholder {
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.build-shell__content a {
+  color: var(--build-accent, var(--accent-primary));
+}
+
+/* Jokes */
+.jokes-build {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.jokes-build__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.jokes-build__hero {
+  display: grid;
+  grid-template-columns: minmax(180px, 260px) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.jokes-build__logo {
+  width: min(100%, 240px);
+  margin: 0 auto;
+  display: block;
+}
+
+.jokes-build__stack {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.jokes-build__item {
+  padding: 1rem 1.1rem;
+}
+
+.jokes-build__item h4 {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.jokes-build__divider {
+  display: none;
+}
+
+/* Animated text */
+.animated-build {
+  display: grid;
+  gap: 1rem;
+}
+
+.animated-build__controls {
+  display: grid;
+  gap: 1rem;
+  align-items: start;
+}
+
+.animated-build__controlsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.animated_text {
+  min-height: 220px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 1rem;
+  border-radius: 3px;
+  background: radial-gradient(circle at top, color-mix(in srgb, var(--build-accent, var(--accent-primary)) 20%, transparent), transparent 60%), color-mix(in srgb, var(--build-panel, rgba(27,20,15,0.96)) 96%, black);
+  border: 1px solid color-mix(in srgb, var(--build-accent, var(--accent-primary)) 18%, rgba(255,255,255,0.08));
+}
+
+.index-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Loaders */
+.loaders_container {
+  display: grid;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.loading_progress,
+.data_load_section {
+  width: min(100%, 760px);
+  margin: 0 auto;
+  padding: 1.2rem;
+  border-radius: 3px;
+  border: 1px solid color-mix(in srgb, var(--build-accent, var(--accent-primary)) 18%, rgba(255,255,255,0.08));
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+}
+
+.loading_progress progress {
+  width: min(100%, 340px);
+}
+
+/* Truthy */
+.truth-container {
+  display: grid;
+  gap: 1rem;
+}
+
+.truth-section {
+  padding: 1rem 1.1rem;
+}
+
+.truth-section h2 {
+  margin: 0 0 0.35rem;
+}
+
+.boxes {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: flex-start;
+  margin: 0;
+  box-shadow: none;
+}
+
+.box {
+  width: 110px;
+  height: 110px;
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: color-mix(in srgb, var(--build-panel-alt, rgba(18,13,9,0.96)) 98%, black);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+  font-weight: 700;
+}
+
+.truth-switch {
+  padding: 1rem 1.1rem;
+}
+
+/* React Flow */
+.reactflow-build {
+  display: grid;
+  gap: 1rem;
+}
+
+.reactflow-build__intro {
+  padding: 1rem 1.1rem;
+}
+
+/* Expanding sections */
+.container {
+  min-height: 480px;
+  gap: 0.85rem;
+}
+
+.content {
+  border-radius: 3px;
+  min-height: 220px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Date pickers */
+.datepickers-build,
+.main_datePicker {
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+}
+
+.first_picker,
+.second_picker {
+  width: 100%;
+  padding: 1.2rem;
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: color-mix(in srgb, var(--build-panel, rgba(27,20,15,0.96)) 96%, black);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.first_picker .rs-picker,
+.second_picker .rs-picker {
+  width: min(100%, 380px);
+}
+
+/* Virtual list */
+.virtual-list-build {
+  display: grid;
+  gap: 1rem;
+}
+
+.virtual-list-build__intro,
+.virtual-list-build__table {
+  padding: 1rem 1.1rem;
+}
+
+.virtual-list-build__table {
+  overflow: auto;
+}
+
+.virtual-list-build .rs-table {
+  min-width: 720px;
+}
+
+/* Leaderboard */
+.leaderboard-build {
+  display: grid;
+  gap: 1rem;
+}
+
+.leaderboard-build__intro {
+  padding: 1rem 1.1rem;
+}
+
+.leaderBoard_main {
+  padding: 1rem;
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: color-mix(in srgb, var(--build-panel, rgba(27,20,15,0.96)) 96%, black);
+  overflow: auto;
+}
+
+.header,
+.inner_item {
+  gap: 0.65rem;
+}
+
+.header span,
+.inner_item span {
+  min-width: 88px;
+}
+
+/* Sortable */
+.main_sortable {
+  width: 100%;
+  padding: 1.2rem;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--build-panel, rgba(27,20,15,0.96)) 96%, black);
+  border: 1px solid rgba(255,255,255,0.08);
+  justify-content: flex-start;
+}
+
+.main_sortable .sortable {
+  width: min(100%, 280px);
+  max-height: 480px;
+  border-radius: 3px;
+}
+
+.day_shift {
+  width: 100%;
+}
+
+/* Drag and drop */
+.drag-grid-build {
+  display: grid;
+  gap: 1rem;
+}
+
+.drag-grid-build__intro,
+.drag-grid-build__surface {
+  padding: 1rem 1.1rem;
+}
+
+.drag-grid-build__surface {
+  overflow: auto;
+}
+
+.drag-grid {
+  min-width: 720px;
+  position: relative;
+}
+
+.drag-grid .grid-item {
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.2);
+}
+
+.drag-grid .grid-item p {
+  margin: 0;
+  padding: 0.4rem 0.6rem;
+  background: rgba(18, 13, 9, 0.86);
+}
+
+/* Edit section */
+.edit-section-build {
+  display: grid;
+  gap: 1rem;
+}
+
+/* Cat */
+.cat_image_container {
+  width: 100%;
+  max-width: 760px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .jokes-build__hero {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .content.active,
+  .content {
+    flex: 1 1 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .build-shell__content {
+    padding: 0.85rem;
+  }
+
+  .build-panel,
+  .first_picker,
+  .second_picker,
+  .loading_progress,
+  .data_load_section,
+  .leaderBoard_main,
+  .main_sortable {
+    padding: 0.9rem;
+    border-radius: 3px;
+  }
+
+  .box {
+    width: calc(50% - 0.5rem);
+    min-width: 120px;
+    height: 96px;
+  }
+
+  .animated_text {
+    min-height: 170px;
+  }
+}
+
+
+/* Shared control theming inside the build shell */
+.build-shell__content button,
+.build-shell__content .btn,
+.build-shell__content select {
+  border-radius: 3px;
+}
+
+.build-shell__content .btn,
+.build-shell__content button:not(.react-flow__controls-button):not(.react-datepicker__navigation-icon):not(.react-datepicker__close-icon) {
+  background: linear-gradient(180deg, rgba(62, 42, 24, 0.96), rgba(31, 21, 13, 0.96));
+  color: rgba(246, 239, 230, 0.94);
+  border: 1px solid color-mix(in srgb, var(--build-accent) 26%, rgba(255,255,255,0.08));
+  box-shadow: none;
+}
+
+.build-shell__content .btn:hover,
+.build-shell__content button:not(.react-flow__controls-button):not(.react-datepicker__navigation-icon):not(.react-datepicker__close-icon):hover {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--build-accent) 36%, rgba(62,42,24,0.96)), rgba(40, 27, 17, 0.98));
+}
+
+.build-shell__content .aws-btn {
+  --button-default-height: 44px;
+  --button-default-font-size: 14px;
+  --button-default-border-radius: 3px;
+  --button-horizontal-padding: 18px;
+  --button-primary-color: #6d4a2a;
+  --button-primary-color-dark: #503519;
+  --button-primary-color-light: #8e6740;
+  --button-primary-color-hover: #7b5734;
+  --button-primary-color-active: #5a3b1f;
+  --button-primary-border: 1px solid color-mix(in srgb, var(--build-accent) 28%, rgba(255,255,255,0.08));
+  --button-secondary-color: #6d4a2a;
+  --button-secondary-color-dark: #503519;
+  --button-secondary-color-light: #8e6740;
+  --button-secondary-color-hover: #7b5734;
+  --button-secondary-color-active: #5a3b1f;
+  --button-secondary-border: 1px solid color-mix(in srgb, var(--build-accent) 28%, rgba(255,255,255,0.08));
+  --button-reddit-color: #6d4a2a;
+  --button-reddit-color-dark: #503519;
+  --button-reddit-color-light: #8e6740;
+  --button-reddit-color-hover: #7b5734;
+  --button-reddit-color-active: #5a3b1f;
+  --button-reddit-border: 1px solid color-mix(in srgb, var(--build-accent) 28%, rgba(255,255,255,0.08));
+}
+
+.build-shell__content .rs-picker-toggle,
+.build-shell__content .rs-input,
+.build-shell__content .rs-input-group,
+.build-shell__content .rs-input-group input,
+.build-shell__content .rs-input-group .rs-input-group-addon,
+.build-shell__content .rs-picker-default .rs-picker-toggle {
+  background: rgba(22, 25, 31, 0.96) !important;
+  color: rgba(246, 239, 230, 0.94) !important;
+  border-color: color-mix(in srgb, var(--build-accent) 20%, rgba(255,255,255,0.08)) !important;
+}
+
+.build-shell__content .rs-picker-toggle-placeholder,
+.build-shell__content .rs-picker-toggle-value,
+.build-shell__content .rs-picker-toggle-clean,
+.build-shell__content .rs-picker-toggle-caret,
+.build-shell__content .rs-calendar-table-cell-content,
+.build-shell__content .rs-calendar-header-title,
+.build-shell__content .rs-calendar-table-cell-day {
+  color: rgba(246, 239, 230, 0.94) !important;
+}
+
+.build-shell__content .rs-picker-popup,
+.build-shell__content .rs-calendar,
+.build-shell__content .rs-calendar-table-cell-content:hover {
+  background: rgba(17, 20, 24, 0.98) !important;
+}
+
+.build-shell__content .rs-table,
+.build-shell__content .rs-table-cell,
+.build-shell__content .rs-table-row,
+.build-shell__content .rs-table-cell-content,
+.build-shell__content .rs-table-cell-header {
+  background: rgba(16, 19, 23, 0.96) !important;
+  color: rgba(246, 239, 230, 0.94) !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
+
+.build-shell__content .rs-loader-content {
+  color: rgba(246, 239, 230, 0.94);
+}
+
+.build-shell__content .react-data-table-component,
+.build-shell__content .rdt_Table,
+.build-shell__content .rdt_TableBody,
+.build-shell__content .rdt_TableHeadRow,
+.build-shell__content .rdt_TableRow,
+.build-shell__content .rdt_ExpanderRow {
+  background: rgba(17, 20, 24, 0.98) !important;
+  color: rgba(246, 239, 230, 0.94) !important;
+}
+
+.build-shell__content .react-data-table-component svg,
+.build-shell__content .react-data-table-component path {
+  fill: rgba(246, 239, 230, 0.78) !important;
+}
+
+.build-shell__content .react-data-table-component [role="checkbox"] {
+  background: transparent !important;
+}
+
+.build-shell--virtualized .build-shell__content,
+.build-shell--reactflow .build-shell__content,
+.build-shell--filters .build-shell__content,
+.build-shell--pokemon .build-shell__content {
+  padding-bottom: 1rem;
+}

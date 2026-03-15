@@ -1,61 +1,78 @@
-import React from "react";
-import Jokes from "./components/builds/Jokes/Jokes";
-import AnimatedText from "./components/builds/animatedText/AnimatedText";
-import Loaders from "./components/builds/Loaders/Loaders";
-import Truthy from "./components/builds/Truthy/Truthy";
+import React from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import Main from './components/Main';
+import Jokes from './components/builds/Jokes/Jokes';
+import AnimatedText from './components/builds/animatedText/AnimatedText';
+import Loaders from './components/builds/Loaders/Loaders';
+import Truthy from './components/builds/Truthy/Truthy';
+import FlipsMain from './components/builds/cardFlip/FlipsMain';
+import Expand from './components/builds/expandingSections/Expand';
+import IntersectionOP from './components/builds/IntersectionOP/IntersectionOP';
+import PassGen from './components/builds/passwordGen/PassGen';
+import IEMain from './components/builds/incomeExpense/IEMain';
+import PokeState from './components/builds/pokemonAPI/PokemonViewer';
+import Sortable from './components/builds/sortables/Sortable';
+import Filters from './components/builds/filters/Filters';
+import CatMain from './components/builds/catAPI/CatMain';
+import DatePickerMain from './components/builds/datePickers/DatePickerMain';
+import VirtualList from './components/builds/VirtualList/VirtualList';
+import LeaderBoardScores from './components/builds/LeaderBoard/LeaderBoardScores';
+import DragNDrop from './components/builds/dragAndDrop/DragNDrop';
+import EditSection from './components/builds/editSection/EditSection';
+import MasonryGrid from './components/builds/MasonryGrid/MasonryGrid';
+import ReactFlowDiagrams from './components/builds/ReactFlow/ReactFlowDiagrams';
+import BuildShell from './components/layout/BuildShell';
+import { buildRegistry } from './config/builds';
 
-import FlipsMain from "./components/builds/cardFlip/FlipsMain";
-import Expand from "./components/builds/expandingSections/Expand";
-import IntersectionOP from "./components/builds/IntersectionOP/IntersectionOP";
-import Main from "./components/Main";
-import { Route, Routes, useLocation } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
-import PassGen from "./components/builds/passwordGen/PassGen";
-import IEMain from "./components/builds/incomeExpense/IEMain";
-import PokeState from "./components/builds/pokemonAPI/PokemonViewer.jsx";
-import Sortable from "./components/builds/sortables/Sortable";
-import Filters from "./components/builds/filters/Filters.jsx";
-import CatMain from "./components/builds/catAPI/CatMain.jsx";
-import DatePickerMain from "./components/builds/datePickers/DatePickerMain.jsx";
-import VirtualList from "./components/builds/VirtualList/VirtualList.jsx";
-import LeaderBoardScores from "./components/builds/LeaderBoard/LeaderBoardScores.jsx";
-import DragNDrop from "./components/builds/dragAndDrop/DragNDrop.jsx";
-import EditSection from "./components/builds/editSection/EditSection.jsx";
-import MasonryGrid from "./components/builds/MasonryGrid/MasonryGrid.jsx";
-import ReactFlowDiagrams from "./components/builds/ReactFlow/ReactFlowDiagrams.jsx";
+const routeDescriptions = Object.fromEntries(buildRegistry.map((item) => [item.path, item]));
 
+function withShell(path, element) {
+  const routeMeta = routeDescriptions[path];
+
+  if (!routeMeta || path === '/') {
+    return element;
+  }
+
+  return (
+    <BuildShell
+      title={routeMeta.name}
+      description={routeMeta.description}
+      accent={routeMeta.accent}
+      themeKey={routeMeta.link || "default"}
+    >
+      {element}
+    </BuildShell>
+  );
+}
 
 export default function AnimatedRoutes() {
   const location = useLocation();
-  console.log('location', location)
-  console.log(`%c AnimatedRoutes`, "color: red");
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        {/* Define all routes here. Routes are hidden until navigated to. */}
         <Route index path="/" element={<Main />} />
-        <Route path="/chuckNorris" element={<Jokes />} />
-        <Route path="/animatedText" element={<AnimatedText />} />
-        <Route path="/loaders" element={<Loaders />} />
-        <Route path="/truthy" element={<Truthy />} />
-        <Route path="/flip" element={<FlipsMain />} />
-        <Route path="/expand" element={<Expand />} />
-        <Route path="/pokemon" element={<PokeState />}/>
-        <Route path="/sort" element={<Sortable />} />
-        <Route path="/passGen" element={<PassGen />} />
-        <Route path="/IOP" element={<IntersectionOP />} />
-        <Route path="/IandE" element={<IEMain />} />
-        <Route path="/cardswap" element={<DragNDrop />} />
-        <Route path="/editsection" element={<EditSection />} />
-        <Route path="/dndgrid" element={<MasonryGrid />} />
-        <Route path="/cat" element={<CatMain /> } />
-        <Route path="/filters" element={<Filters />} />
-        <Route path="/datepickers" element={<DatePickerMain /> } />
-        <Route path="/virtualized" element={<VirtualList />} />
-        <Route path="/leaderboard" element={<LeaderBoardScores />} />
-        <Route path="/reactflow" element={<ReactFlowDiagrams />} />
-
+        <Route path="/chuckNorris" element={withShell('/chuckNorris', <Jokes />)} />
+        <Route path="/animatedText" element={withShell('/animatedText', <AnimatedText />)} />
+        <Route path="/loaders" element={withShell('/loaders', <Loaders />)} />
+        <Route path="/truthy" element={withShell('/truthy', <Truthy />)} />
+        <Route path="/flip" element={withShell('/flip', <FlipsMain />)} />
+        <Route path="/expand" element={withShell('/expand', <Expand />)} />
+        <Route path="/pokemon" element={withShell('/pokemon', <PokeState />)} />
+        <Route path="/sort" element={withShell('/sort', <Sortable />)} />
+        <Route path="/passGen" element={withShell('/passGen', <PassGen />)} />
+        <Route path="/IOP" element={withShell('/IOP', <IntersectionOP />)} />
+        <Route path="/IandE" element={withShell('/IandE', <IEMain />)} />
+        <Route path="/cardswap" element={withShell('/cardswap', <DragNDrop />)} />
+        <Route path="/editsection" element={withShell('/editsection', <EditSection />)} />
+        <Route path="/dndgrid" element={withShell('/dndgrid', <MasonryGrid />)} />
+        <Route path="/cat" element={withShell('/cat', <CatMain />)} />
+        <Route path="/filters" element={withShell('/filters', <Filters />)} />
+        <Route path="/datepickers" element={withShell('/datepickers', <DatePickerMain />)} />
+        <Route path="/virtualized" element={withShell('/virtualized', <VirtualList />)} />
+        <Route path="/leaderboard" element={withShell('/leaderboard', <LeaderBoardScores />)} />
+        <Route path="/reactflow" element={withShell('/reactflow', <ReactFlowDiagrams />)} />
       </Routes>
     </AnimatePresence>
   );

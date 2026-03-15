@@ -1,64 +1,63 @@
-import React, { useState, useEffect, useRef } from 'react';
-import "./loaders.css";
-import StyledButton from "../../StyledButton";
+import React, { useEffect, useRef, useState } from 'react';
+import styles from './Loaders.module.css';
+import StyledButton from '../../StyledButton';
 import DataLoader from './DataLoader';
 
 export default function Loaders() {
-  //const [progress, setProgress] = useState(0);
   const progressRef = useRef(null);
   const h2Ref = useRef(null);
-
-  
-
-  console.count('Loaded');
+  const intervalRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    progressRef.current.value = 0;
-    h2Ref.current.innerText = 'Progress: 0%';
+    if (progressRef.current) {
+      progressRef.current.value = 0;
+    }
+    if (h2Ref.current) {
+      h2Ref.current.innerText = 'Progress: 0%';
+    }
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
   }, []);
 
-  function increaseProgress(){
-    console.log('increaseProgress');
+  function increaseProgress() {
+    if (!progressRef.current || !h2Ref.current || isLoading) {
+      return;
+    }
+
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+
+    setIsLoading(true);
     progressRef.current.value = 0;
+    let progress = 0;
 
-    let progress = progressRef.current.value;
- 
-    // if (progress === 100) return; // If progress is already at 100%, do nothing
+    // useRef stores the progress element so this loop can update it without re-rendering on every tick.
+    intervalRef.current = setInterval(() => {
+      progress += 1;
+      progressRef.current.value = progress;
+      h2Ref.current.innerText = `Progress: ${progress}%`;
 
-    const interval = setInterval(() => {
-      // Increase progress by 1% every 100 milliseconds
-
-        progress += 1
-        if (progress >= 100) {
-          clearInterval(interval);
-        }
-         progressRef.current.value = progress;
-     
-         h2Ref.current.innerText = `Progress: ${progress}%`;
-        //  console.log('progress', progress)
+      if (progress >= 100) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+        setIsLoading(false);
+      }
     }, 10);
-  };
-
-
-
-
+  }
 
   return (
-    <div className='loaders_container'>
-     <section className='loading_progress'>
-        <p>Here the useRef hook is used to <b>avoid re-rendering</b> the component on progress updates.</p>
-        <h2 ref={h2Ref} ></h2>
-        <progress className='testRev' ref={progressRef} value={ progressRef.current?.value} max="100" />
-        <br />
-        <StyledButton 
-        type="secondary" 
-        disabled={false}
-        text={"Load"}
-        //onClick={increaseProgress}
-        onPress={increaseProgress}
-        />
-     </section>
-      <br />
+    <div className={styles.loadersContainer}>
+      <section className={styles.loadingProgress}>
+        <p>Here the <b>useRef</b> hook is used to avoid re-rendering the component on progress updates.</p>
+        <h2 ref={h2Ref} />
+        <progress className={styles.progressBar} ref={progressRef} value={progressRef.current?.value} max="100" />
+        <StyledButton type="secondary" disabled={isLoading} text={isLoading ? 'Loading…' : 'Load'} onPress={increaseProgress} />
+      </section>
       <DataLoader />
     </div>
   );

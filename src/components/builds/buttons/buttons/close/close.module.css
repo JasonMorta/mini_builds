@@ -1,0 +1,21 @@
+.wrapper {
+  display: inline-flex;
+}
+
+.button {
+  position: relative;
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border-radius: 3px;
+  border: 1px solid rgba(212, 164, 94, 0.3);
+  background: linear-gradient(180deg, rgba(34, 22, 18, 0.96), rgba(16, 10, 8, 0.96));
+  color: rgba(245, 239, 232, 0.92);
+  font-weight: 700;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+}
+
+.button:hover,
+.button:focus {
+  background: rgba(51, 33, 24, 0.98);
+  color: rgba(245, 239, 232, 0.98);
+}

@@ -46,15 +46,16 @@
         font-size: 1.25rem;
         font-family: monospace;
         border-radius: 0.3125rem;
-        border-color: #262626;
-        color: deeppink;
+        border-color: rgba(212, 164, 94, 0.28);
+        color: #d4a45e;
         border: 0rem solid gray;
         box-shadow: inset 0 0.0625rem 0.25rem #00000029;
         width: -webkit-fill-available;
 }
 
 input:focus-visible {
-        outline: auto;
+        outline: 1px solid rgba(212, 164, 94, 0.6);
+        outline-offset: 1px;
 }
 
 #inputField {
@@ -64,10 +65,10 @@ input:focus-visible {
         border-bottom: 0rem;
         display: flex;
         flex-direction: column;
-        background-color: #fff;
+        background-color: rgba(26, 19, 14, 0.96);
         margin: 0.625rem auto;
         margin-bottom: 3.125rem;
-        box-shadow: 0 0.0625rem 0.25rem #00000029;
+        box-shadow: 0 0.0625rem 0.25rem rgba(0, 0, 0, 0.28);
         border-radius: 0.25rem;
 
         text-align: center;

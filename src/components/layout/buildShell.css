@@ -1,0 +1,108 @@
+.build-shell {
+  --build-accent: var(--accent-primary);
+  --build-accent-soft: rgba(212, 164, 94, 0.16);
+  --build-accent-strong: rgba(212, 164, 94, 0.3);
+  --build-panel: rgba(15, 18, 22, 0.98);
+  --build-panel-alt: rgba(10, 12, 15, 0.98);
+  --build-copy: rgba(245, 239, 232, 0.92);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  min-height: 100%;
+}
+
+.build-shell__header {
+  display: grid;
+  grid-template-columns: 12px minmax(0, 1fr);
+  align-items: start;
+  gap: 1rem;
+  padding: clamp(1rem, 2.2vw, 1.4rem);
+  border-radius: 3px;
+  border: 1px solid var(--build-accent-soft);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--build-panel) 92%, black), color-mix(in srgb, var(--build-panel-alt) 96%, black)),
+    radial-gradient(circle at top right, color-mix(in srgb, var(--build-accent) 16%, transparent), transparent 34%);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+}
+
+.build-shell__accent {
+  width: 12px;
+  min-width: 12px;
+  min-height: 92px;
+  border-radius: 3px;
+  box-shadow: 0 0 28px color-mix(in srgb, var(--build-accent) 42%, transparent);
+}
+
+.build-shell__eyebrow {
+  margin: 0 0 0.35rem;
+  color: color-mix(in srgb, var(--build-copy) 72%, transparent);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+}
+
+.build-shell__header h1 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: clamp(1.45rem, 2.6vw, 2.3rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+}
+
+.build-shell__description {
+  margin: 0.55rem 0 0;
+  max-width: 72ch;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.build-shell__content {
+  flex: 1;
+  width: 100%;
+  border-radius: 3px;
+  padding: clamp(1rem, 2.6vw, 1.4rem);
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--build-accent) 10%, transparent), transparent 24%),
+    linear-gradient(180deg, color-mix(in srgb, var(--build-panel) 96%, black), color-mix(in srgb, var(--build-panel-alt) 98%, black));
+  border: 1px solid color-mix(in srgb, var(--build-accent) 18%, rgba(255,255,255,0.08));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 20px 60px rgba(0, 0, 0, 0.28);
+  overflow: auto;
+}
+
+.build-shell--compact .build-shell__content {
+  padding: 1rem;
+}
+
+/* Context-aware route palettes */
+.build-shell--chuckNorris { --build-accent: #d38d47; }
+.build-shell--animatedText { --build-accent: #c47ba3; }
+.build-shell--loaders { --build-accent: #b69c72; }
+.build-shell--truthy { --build-accent: #95b08c; }
+.build-shell--reactflow { --build-accent: #8eb1bf; }
+.build-shell--flip { --build-accent: #c89d55; }
+.build-shell--expand { --build-accent: #9c8d6b; }
+.build-shell--pokemon { --build-accent: #d7a243; }
+.build-shell--passGen { --build-accent: #8aa06a; }
+.build-shell--IandE { --build-accent: #8cb28a; }
+.build-shell--IOP { --build-accent: #7eb7c2; }
+.build-shell--cat { --build-accent: #c58c77; }
+.build-shell--sort { --build-accent: #b89064; }
+.build-shell--filters { --build-accent: #87a5b0; }
+.build-shell--datepickers { --build-accent: #b48f73; }
+.build-shell--virtualized { --build-accent: #8ca4a9; }
+.build-shell--leaderboard { --build-accent: #d6a14d; }
+.build-shell--cardswap { --build-accent: #c28977; }
+.build-shell--editsection { --build-accent: #b79d7c; }
+.build-shell--dndgrid { --build-accent: #c49a67; }
+
+@media (max-width: 640px) {
+  .build-shell__header {
+    grid-template-columns: 8px minmax(0, 1fr);
+    gap: 0.8rem;
+  }
+
+  .build-shell__accent {
+    min-height: 72px;
+  }
+}

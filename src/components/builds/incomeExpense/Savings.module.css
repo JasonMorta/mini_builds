@@ -2,8 +2,8 @@
     padding: 3px;
     margin-top: 0.95rem;
     font-size: initial;
-    color: #000000d3;
-    border-radius: 10px;
+    color: rgba(246, 247, 251, 0.88);
+    border-radius: 3px;
     box-shadow: 0 0px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -1px rgb(0 0 0 / 6%);
     
     width: fit-content;
@@ -13,7 +13,7 @@
   
   .box_container_inner {
     padding: 0.75rem;
-    border-radius: 8px;
+    border-radius: 3px;
     background-color: #ddebf8;
   }
 

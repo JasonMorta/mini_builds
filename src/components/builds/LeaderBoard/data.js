@@ -4,7 +4,7 @@ const data = [
   {
     name: 'CAMERIN',
     description: '#a8edea → #fed6e3',
-    css: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+    css: 'linear-gradient(135deg, rgba(139, 94, 52, 0.92) 0%, rgba(212, 164, 94, 0.78) 100%)',
     height,
     kycInstances: 3613,
     approvals: 199,
@@ -15,7 +15,7 @@ const data = [
   {
     name: 'TAURIQ',
     description: '#f5f7fa → #c3cfe2',
-    css: 'linear-gradient(135deg, #c3cfe2 0%, #c3cfe2 100%)',
+    css: 'linear-gradient(135deg, rgba(84, 58, 36, 0.92) 0%, rgba(166, 124, 82, 0.78) 100%)',
     height,
     kycInstances: 3309,
     approvals: 97,
@@ -26,7 +26,7 @@ const data = [
   {
     name: 'SIMANYE',
     description: '#e0c3fc → #8ec5fc',
-    css: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)',
+    css: 'linear-gradient(135deg, rgba(74, 49, 31, 0.92) 0%, rgba(202, 157, 104, 0.78) 100%)',
     height,
     kycInstances: 3890,
     approvals: 195,
@@ -37,7 +37,7 @@ const data = [
   {
     name: 'THABISO',
     description: '#f093fb → #f5576c',
-    css: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+    css: 'linear-gradient(135deg, rgba(99, 64, 39, 0.92) 0%, rgba(212, 164, 94, 0.72) 100%)',
     height,
     kycInstances: 3047,
     approvals: 222,
@@ -48,7 +48,7 @@ const data = [
   {
     name: 'NASEEFAH',
     description: '#5ee7df → #b490ca',
-    css: 'linear-gradient(135deg, #5ee7df 0%, #b490ca 100%)',
+    css: 'linear-gradient(135deg, rgba(121, 83, 54, 0.92) 0%, rgba(184, 137, 84, 0.72) 100%)',
     height,
     kycInstances: 3710,
     approvals: 226,
@@ -59,7 +59,7 @@ const data = [
   {
     name: 'TATUM M',
     description: '#d299c2 → #fef9d7',
-    css: 'linear-gradient(135deg, #d299c2 0%, #fef9d7 100%)',
+    css: 'linear-gradient(135deg, rgba(92, 63, 43, 0.92) 0%, rgba(224, 192, 146, 0.62) 100%)',
     height,
     kycInstances: 4287,
     approvals: 161,
@@ -70,7 +70,7 @@ const data = [
   {
     name: 'BLAINE',
     description: '#ebc0fd → #d9ded8',
-    css: 'linear-gradient(135deg, #ebc0fd 0%, #d9ded8 100%)',
+    css: 'linear-gradient(135deg, rgba(112, 78, 50, 0.92) 0%, rgba(170, 132, 87, 0.72) 100%)',
     height,
     kycInstances: 3800,
     approvals: 116,
@@ -81,7 +81,7 @@ const data = [
   {
     name: 'TINASHE',
     description: '#f6d365 → #fda085',
-    css: 'linear-gradient(120deg, #f6d365 0%, #fda085 100%)',
+    css: 'linear-gradient(135deg, rgba(90, 58, 36, 0.92) 0%, rgba(212, 164, 94, 0.82) 100%)',
     height,
     kycInstances: 2236,
     approvals: 78,
@@ -92,7 +92,7 @@ const data = [
   {
     name: 'NIKITA',
     description: '#96fbc4 → #f9f586',
-    css: 'linear-gradient(to top, #96fbc4 0%, #f9f586 100%)',
+    css: 'linear-gradient(135deg, rgba(70, 46, 29, 0.92) 0%, rgba(157, 120, 80, 0.72) 100%)',
     height,
     kycInstances: 3472,
     approvals: 140,

@@ -1,0 +1,7 @@
+
+.cardContainer { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1.25rem; min-height: 240px; }
+.cardFace { display: flex; justify-content: center; flex-direction: column; background: linear-gradient(180deg, rgba(30, 20, 16, 0.98), rgba(16, 10, 9, 0.98)); margin: 0.25rem; box-shadow: 0 0 0 1px color-mix(in srgb, var(--build-accent) 20%, transparent), 0 12px 30px rgba(0,0,0,.28); border-radius: 3px; text-align: center; align-items: center; width: 170px; height: 190px; position: relative; transition: 0.3s; user-select: none; cursor: pointer; transform: rotateY(0deg); }
+.cardFace:hover { box-shadow: 0 0 0 1px color-mix(in srgb, var(--build-accent) 36%, transparent), 0 16px 36px rgba(0,0,0,.34); transform: translateY(-4px); }
+.cardBack { transform: rotateY(180deg); }
+.heading { margin-bottom: 0; color: color-mix(in srgb, var(--build-accent) 72%, white 22%); transition: 0.3s; backface-visibility: hidden; font-size: 2.2rem; }
+@media (max-width: 640px){ .cardFace { width: 140px; height: 160px; } .heading{ font-size: 1.8rem; } }

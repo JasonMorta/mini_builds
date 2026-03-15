@@ -1,54 +1,38 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import cardsObj from './CardsObj';
-import './style.css'
+import styles from './Expand.module.css';
 
 export default function Expand() {
+  const [images] = useState(cardsObj);
+  const [activeId, setActiveId] = useState(cardsObj[0]?.id ?? null);
 
-    const [images, setImages] = useState(cardsObj)
-    const [active, setActive] = useState(false)
-    let main = document.getElementsByClassName('container')
-
-
-    //timeout is needed, as nodeList 1st need to load in.
-    //preview one image on load
-    setTimeout(() => {
-      main[0].childNodes[1].classList.add('active')//image
-      main[0].childNodes[1].children[0].classList.add('activeText')
-
-    }, 200);
+  useEffect(() => {
+    if (!activeId && images[0]) {
+      setActiveId(images[0].id);
+    }
+  }, [activeId, images]);
 
   return (
-    <div className='container'>
-        {images.map((ig, i)=>(
-            <div 
-                className='content'
-                style={{"backgroundImage": `url(${ig.image})`}}
-                key={ig.id}
-                onClick={function toggleClass(e){
-               console.log(main);
-
-               //active text
-               main[0].childNodes.forEach(x =>
-                x.children[0].classList.remove('activeText')
-                )
-             
-
-               //on click remove the active className from every sibling div
-                    main[0].childNodes.forEach(r => 
-                        r.classList.remove('active'))
-
-                    e.target.className === "content" ? e.target.className = "content active": 
-                    e.target.className === "content active" ? e.target.className = "content" : console.log();
-
-                    e.target.children[0].className === 'text' ? e.target.children[0].className = 'text activeText': 
-                    e.target.children[0].className === 'text activeText' ? e.target.children[0].className = 'text': console.log();
-                }
-              }
-                >
-                  <h1 className='text'>{ig.txt}</h1>
-            </div>
-        ))}
+    <div className={styles.root}>
+      <section className={styles.headerCard}>
+        <p style={{ margin: 0, color: "rgba(245, 239, 232, 0.78)" }}>Open one panel at a time to compare how the gallery expands focus around the active story card.</p>
+      </section>
+      <div className={styles.container}>
+      {images.map((item) => {
+        const isActive = item.id === activeId;
+        return (
+          <button
+            type="button"
+            className={`${styles.content} ${isActive ? styles.active : ''}`}
+            style={{ backgroundImage: `url(${item.image})` }}
+            key={item.id}
+            onClick={() => setActiveId(item.id)}
+          >
+            <span className={`${styles.text} ${isActive ? styles.activeText : ''}`}>{item.txt}</span>
+          </button>
+        );
+      })}
+      </div>
     </div>
-  )
+  );
 }

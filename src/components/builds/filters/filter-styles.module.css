@@ -1,86 +1,125 @@
 .user_list {
-    /* display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 10px; */
-    width: inherit;
-    font-family: 'Black Ops One', system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.filtersHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filtersHeader h3 {
+  margin: 0 0 0.35rem;
+}
+
+.filtersHeader p {
+  margin: 0;
+  color: rgba(245, 239, 232, 0.68);
+  max-width: 56ch;
+  line-height: 1.6;
 }
 
 .user_list button {
-  font-weight: 200;
+  font-weight: 300;
 }
 
 .user_list pre {
-  font-size: 10px;
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.55;
   text-align: left;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: rgba(18, 14, 11, 0.96);
 }
 
 .search_input {
-    width: 100%;
-    margin: auto;
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .search {
-  
-  border-color: #2e8ae3;
-  border-radius: 4px;
-  color: #c32c75;
-  padding: 5px;
-  margin-bottom: 10px;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16), 0 8px 8px rgba(0,0,0,0.20);
+  flex: 1 1 320px;
+  min-height: 44px;
+  border: 1px solid color-mix(in srgb, var(--build-accent) 24%, transparent);
+  border-radius: 3px;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.75rem 1rem;
+  box-shadow: none;
 }
 
-.searchinput:focus-visible {
-  outline: initial;
-  border-color: #c6659d;
+.search:focus-visible {
+  outline: 1px solid color-mix(in srgb, var(--build-accent) 34%, transparent);
 }
 
-.user_list table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    max-height: 50vh;
-    min-width: 900px;
-  }
+.tableWrap {
+  width: 100%;
+  overflow: auto;
+  border-radius: 3px;
+  border: 1px solid color-mix(in srgb, var(--build-accent) 14%, transparent);
+  background: rgba(21, 18, 16, 0.92);
+}
 
-  .user_list tbody {
-    height: 500px;
-    overflow: auto;
-  }
-  
- .user_list td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-  }
-  
- .user_list tr:nth-child(even) {
-    background-color: #dddddd;
+.date_section {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.date_section button span {
+  padding: 0 !important;
+  font-family: sans-serif;
+}
+
+.filter_dates_header_inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.filter_dates_header_inner p {
+  margin: 0 0 0.4rem;
+}
+
+.selectedActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.85rem 1rem;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid color-mix(in srgb, var(--build-accent) 18%, transparent);
+}
+
+@media (max-width: 640px) {
+  .search {
+    flex-basis: 100%;
   }
 
   .date_section {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: center;
+    width: 100%;
+    justify-content: flex-start;
   }
+}
 
-  .date_section button {
-    margin-left: 10px;
-    font-size: 12px;
-  }
 
-  .date_section button span {
-    padding: 0px !important;
-    font-family: sans-serif;
-  }
-
-  .filter_dates_header_inner {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    align-items: center;
-  }
+.user_list :global(.rdt_TableCol),
+.user_list :global(.rdt_TableCell),
+.user_list :global(.rdt_Pagination) { color: rgba(246,239,230,0.92) !important; }
+.user_list :global(.rdt_Pagination button) { color: rgba(246,239,230,0.82) !important; }

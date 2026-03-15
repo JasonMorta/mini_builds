@@ -1,157 +1,50 @@
-import React, { createContext, useState } from "react";
-import Menu from "./components/Menu";
-import { BrowserRouter as Router } from "react-router-dom";
-import AnimatedRoutes from "./AnimatedRoutes";
+import React, { createContext, useMemo, useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Menu from './components/Menu';
+import AnimatedRoutes from './AnimatedRoutes';
+import { buildRegistry } from './config/builds';
 
-
-//create context hook
-//This hook allow any nested children to share and alter data with the use of props.
 export const StateContext = createContext();
 
-//All children will run through the state manger.
-function StateManager() {
-  console.log(`%c State manager`, "color: limegreen");
-  const [state, setState] = useState({
-    menuItems: [
-      {
-        name: "Home",
-        link: "",
-        active: true,
-      },
-      {
-        name: "Chuck Norris Jokes",
-        link: "chuckNorris",
-        active: false,
-      },
-      {
-        name: "Animated Text",
-        link: "animatedText",
-        active: false,
-      },
-      {
-        name: "Loaders",
-        link: "loaders",
-        active: false,
-      },
-      {
-        name: "Truthy",
-        link: "truthy",
-        active: false,
-      },
-      {
-        name: "Flow Diagrams",
-        link: "reactflow",
-        active: false,
-      },
-      {
-        name: "Flip This",
-        link: "flip",
-        active: false,
-      },
-      {
-        name: "Expanded",
-        link: "expand",
-        active: false,
-      },
-      {
-        name: "Pokemon-API",
-        link: "pokemon",
-        active: false,
-      },
-      {
-        name: "Password Gen",
-        link: "passGen",
-        active: false,
-      },
-      {
-        name: "I & E",
-        link: "IandE",
-        active: false,
-      },
-      {
-        name: "RIO API",
-        link: "IOP",
-        active: false,
-      },
-      {
-        name: "Kitty API",
-        link: "cat",
-        active: false,
-      },
-      {
-        name: "Sortables",
-        link: "sort",
-        active: false,
-      },
-      {
-        name: "Filters",
-        link: "filters",
-        active: false,
-      },
-      {
-        name: "Date Pickers",
-        link: "datepickers",
-        active: false,
-      },
-      {
-        name: "Virutalized List",
-        link: "virtualized",
-        active: false,
-      },
-      {
-        name: "Leaderboard",
-        link: "leaderboard",
-        active: false,
-      },
-      {
-        name: "CardSwap",
-        link: "cardswap",
-        active: false,
-      },
-      {
-        name: "Edit Section",
-        link: "editsection",
-        active: false,
-      },
-      {
-        name: "DND  Grid",
-        link: "dndgrid",
-        active: false,
-      }
-    ],
+function createInitialState() {
+  return {
+    // Shared navigation model used across the shell.
+    menuItems: buildRegistry.map((item) => ({
+      name: item.name,
+      link: item.link,
+      active: item.active ?? false,
+      path: item.path,
+      description: item.description,
+      accent: item.accent,
+      icon: item.icon,
+    })),
     nextJoke: false,
     catagories: [
-      "none",
-      "animal",
-      "career",
-      "celebrity",
-      "dev",
-      "explicit",
-      "fashion",
-      "food",
-      "history",
-      "money",
-      "movie",
-      "music",
-      "political",
-      "religion",
-      "science",
-      "sport",
-      "travel",
+      'none',
+      'animal',
+      'career',
+      'celebrity',
+      'dev',
+      'explicit',
+      'fashion',
+      'food',
+      'history',
+      'money',
+      'movie',
+      'music',
+      'political',
+      'religion',
+      'science',
+      'sport',
+      'travel',
     ],
-    activeCat: "none",
+    activeCat: 'none',
     score: 0,
-    //Page animations
     motion: {
-      initial: { opacity: 0, width: "100%" },
-      animate: {
-        "-webkit-animation":
-          "slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
-        animation:
-          "slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
-      },
-      exit: { opacity: 1 },
-      transition: { duration: 0 },
+      initial: { opacity: 0, y: 18 },
+      animate: { opacity: 1, y: 0 },
+      exit: { opacity: 0, y: -12 },
+      transition: { duration: 0.24, ease: 'easeOut' },
     },
     passGen: {
       count: 7,
@@ -159,27 +52,28 @@ function StateManager() {
       lowerCase: true,
       symbols: true,
       numbers: true,
-      pass: "",
+      pass: '',
     },
     catImage: [],
-  });
+  };
+}
+
+function StateManager() {
+  const [state, setState] = useState(createInitialState);
+  const contextValue = useMemo(() => [state, setState], [state]);
 
   return (
-    <>
-      <StateContext.Provider value={[state, setState]} className="App">
-        <Router>
+    <StateContext.Provider value={contextValue}>
+      <Router>
+        <div className="app-shell">
           <Menu />
-          <div className="content_section">
+          <main className="content_section">
             <AnimatedRoutes />
-          </div>
-          <div className="layers layer-5"> </div>
-          <div className="layers layer-4"></div>
-          <div className="layers layer-3"></div>
-          <div className="layers layer-2"> </div>
-          <div className="layers layer-1"></div>
-        </Router>
-      </StateContext.Provider>
-    </>
+          </main>
+        </div>
+      </Router>
+    </StateContext.Provider>
   );
 }
+
 export default StateManager;

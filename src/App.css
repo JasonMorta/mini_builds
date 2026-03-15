@@ -1,206 +1,47 @@
 @import "../node_modules/@syncfusion/ej2-react-calendars/styles/material.css";
 
 .App {
-  background-color: #607D8B;
-  background-image: url('./static/images/bg.gif');
   min-height: 100vh;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  font-size: calc(10px + 2vmin);
+  background: linear-gradient(180deg, #090c14 0%, #05070d 100%);
+}
 
-  text-align: center;
-  font-size: large;
-  overflow: hidden;
-  position: relative;
-  scroll-behavior: smooth;
-  /* 'scroll-behavior' is not supported by Safari < 15.4, Safari on iOS < 15.4. */
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(300px, 360px) minmax(0, 1fr);
+  align-items: stretch;
+  gap: 0;
+  background:
+    radial-gradient(circle at top left, rgba(212, 164, 94, 0.08), transparent 22%),
+    linear-gradient(180deg, #0b0e16 0%, #06080f 100%);
 }
-motion.div {
-  position: relative;
-}
+
 .content_section {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: auto;
-  max-width: 1105px;
-  margin-left: initial;
-  border-radius: 0px;
-  background-color: #ffffff;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
-  flex-wrap: wrap;
-  box-shadow: 2px 2px 9px #000000bf;
-  z-index: 5;
+  min-height: 100vh;
+  padding: 1.4rem 1.4rem 1.4rem 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: transparent;
 }
 
-p {
-  color: #403814;
-}
-
-.layers {
+.content_section > * {
   width: 100%;
 }
 
-.layer-1 {
-  background-color: #D26AA5;
-  max-width: 1120px;
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  z-index: 4;
-  left: 225px;
-  bottom: -20px;
-  box-shadow: 2px 2px 9px #000000bf;
-}
-.layer-2 {
-  background-color: #C92F77;
-  max-width:1135px ;
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  z-index: 3;
-  left: 225px;
-  bottom: -40px;
-  box-shadow: 2px 2px 9px #000000bf;
-}
-.layer-3 {
-  background-color: #5F2D74;
-  max-width: 1150px;
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  z-index: 2;
-  left: 225px;
-  bottom: -60px;
-  box-shadow: 2px 2px 9px #000000bf;
-
-}
-.layer-4 {
-  background-color:#3D228D ;
-  max-width: 1165px;
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  z-index: 2;
-  left: 225px;
-  bottom: -80px;
-  box-shadow: 2px 2px 9px #000000bf;
-}
-.layer-5 {
-  background-color: #1A044D;
-  max-width: 1180px;
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  z-index: 1;
-  left: 225px;
-  bottom: -100px;
-  box-shadow: 2px 2px 9px #000000bf;
+button,
+input,
+select,
+textarea {
+  accent-color: var(--accent-primary);
 }
 
-
-.layer-1 {
-	-webkit-animation: slide-in-left 0.5s  cubic-bezier(0.680, -0.550, 0.265, 1.550) both;
-	        animation: slide-in-left 0.5s  cubic-bezier(0.680, -0.550, 0.265, 1.550) both;
-}
-.layer-2 {
-	-webkit-animation: slide-in-left 0.6s  cubic-bezier(0.680, -0.550, 0.265, 1.550) both;
-	        animation: slide-in-left 0.6s  cubic-bezier(0.680, -0.550, 0.265, 1.550) both;
-}
-.layer-3 {
-	-webkit-animation: slide-in-left 0.7s  cubic-bezier(0.680, -0.550, 0.265, 1.550) both;
-	        animation: slide-in-left 0.7s  cubic-bezier(0.680, -0.550, 0.265, 1.550) both;
-}
-.layer-4 {
-	-webkit-animation: slide-in-left 0.8s  cubic-bezier(0.680, -0.550, 0.265, 1.550) both;
-	        animation: slide-in-left 0.8s  cubic-bezier(0.680, -0.550, 0.265, 1.550) both;
-}
-.layer-5{
-	-webkit-animation: slide-in-left 0.9s  cubic-bezier(0.680, -0.550, 0.265, 1.550) both;
-	        animation: slide-in-left 0.9s  cubic-bezier(0.680, -0.550, 0.265, 1.550) both;
-}
-
-
-@-webkit-keyframes slide-in-left {
-  0% {
-    -webkit-transform: translateX(-1000px);
-            transform: translateX(-1000px);
-    opacity: 0;
+@media (max-width: 960px) {
+  .app-shell {
+    grid-template-columns: 1fr;
   }
-  100% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-    opacity: 1;
+
+  .content_section {
+    min-height: auto;
+    padding: 0 1rem 1rem;
   }
 }
-@keyframes slide-in-left {
-  0% {
-    -webkit-transform: translateX(-1000px);
-            transform: translateX(-1000px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes slide-in-left {
-  0% {
-    -webkit-transform: translateX(-1000px);
-            transform: translateX(-1000px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-    opacity: 1;
-  }
-}
-@keyframes slide-in-left {
-  0% {
-    -webkit-transform: translateX(-1000px);
-            transform: translateX(-1000px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* CUSTOM SCROLL BAR WITH COMPATIBILITY */
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #018e802b; 
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #018e81c7; 
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #016f64c7; 
-}
-
-/* X-AXIS width */
-::-webkit-scrollbar:horizontal {
-  height: 10px;
-}
-
-

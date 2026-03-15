@@ -1,0 +1,18 @@
+
+.wrapper { position:relative; overflow:auto; color:#f6efe6; width: min(100%, 960px); margin: 0 auto; }
+.title { margin:0 0 1rem; font-size: clamp(2rem, 4vw, 3.5rem); }
+.lead { color:rgba(246,239,230,.82); max-width:70ch; line-height: 1.6; }
+.textSection { position:relative; overflow:hidden; display:grid; gap: 1rem; margin-top: 1rem; }
+.contents { min-height: 420px; display:flex; flex-direction:column; align-items:center; justify-content:center; border:1px solid rgba(212,164,94,.18); background:linear-gradient(180deg,rgba(25,20,18,.96),rgba(14,11,10,.96)); color:#f6efe6; overflow:hidden; position:relative; padding:5%; transition:.2s; text-align:center; border-radius: 3px; }
+.contents h3 { border-top:1px solid rgba(212,164,94,.32); padding-top:.75rem; margin: 0; }
+.contents p { border-bottom:1px solid rgba(212,164,94,.22); padding-bottom:1rem; max-width:70ch; color:rgba(246,239,230,.84); margin: .75rem 0 0; }
+.invert,.invert p { color:#f2c078; opacity:1!important; transition:1s }
+.section3,.section3 p { opacity:0; transition:1s }
+.trackingInExpand{-webkit-animation:tracking-in-expand 2s cubic-bezier(.215,.610,.355,1.000) both;animation:tracking-in-expand 2s cubic-bezier(.215,.610,.355,1.000) both}
+.slideInTop{overflow:hidden;-webkit-animation:slide-in-top .5s cubic-bezier(.250,.460,.450,.940) both;animation:slide-in-top .5s cubic-bezier(.250,.460,.450,.940) both}
+.section4{-webkit-animation:slide-in-elliptic-left-bck .7s cubic-bezier(.250,.460,.450,.940) both;animation:slide-in-elliptic-left-bck .7s cubic-bezier(.250,.460,.450,.940) both}
+.slideInEllipticBottomFwd{-webkit-animation:slide-in-elliptic-bottom-fwd .7s cubic-bezier(.250,.460,.450,.940) both;animation:slide-in-elliptic-bottom-fwd .7s cubic-bezier(.250,.460,.450,.940) both}
+@keyframes tracking-in-expand{0%{letter-spacing:-.5em;opacity:0}40%{opacity:.6}100%{opacity:1}}
+@keyframes slide-in-top{0%{transform:translateY(-1000px);opacity:0}100%{transform:translateY(0);opacity:1}}
+@keyframes slide-in-elliptic-bottom-fwd{0%{transform:translateY(600px) rotateX(30deg) scale(0);transform-origin:50% 100%;opacity:0}100%{transform:translateY(0) rotateX(0) scale(1);transform-origin:50% -1400px;opacity:1}}
+@keyframes slide-in-elliptic-left-bck{0%{transform:translateX(-800px) rotateY(-30deg) scale(6.5);transform-origin:100% 50%;opacity:0}100%{transform:translateX(0) rotateY(0) scale(1);transform-origin:600px 50%;opacity:1}}

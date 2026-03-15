@@ -1,33 +1,44 @@
-import React, { useState } from 'react'
-import { useContext } from 'react';
-import { useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { StateContext } from '../../../StateManager';
 
-export default function FetchJoke(props) {
-  const [joke, setJoke] = useState(false)
+export default function FetchJoke() {
+  const [joke, setJoke] = useState('Loading a Chuck Norris joke…');
+  const [state] = useContext(StateContext);
 
-  const value = useContext(StateContext);
+  useEffect(() => {
+    let ignore = false;
 
-  const [state, ] = value
+    async function loadJoke() {
+      try {
+        const endpoint =
+          state.activeCat === 'none'
+            ? 'https://api.chucknorris.io/jokes/random'
+            : `https://api.chucknorris.io/jokes/random?category=${state.activeCat}`;
 
-  
-useEffect(() => {
-//fetch random jokes if category is === "none"
-  state.activeCat === "none" ?
-  fetch("https://api.chucknorris.io/jokes/random")
-  .then(response => response.json())
-  .then(data => setJoke(data.value)) 
-  :
-  fetch(`https://api.chucknorris.io/jokes/random?category=${state.activeCat}`)
-    .then(response => response.json())
-    .then(data => setJoke(data.value));
+        const response = await fetch(endpoint);
+        const data = await response.json();
 
-}, [state])
+        if (!ignore) {
+          setJoke(data.value);
+        }
+      } catch (error) {
+        if (!ignore) {
+          setJoke('Could not load a joke right now.');
+        }
+      }
+    }
 
+    loadJoke();
+
+    return () => {
+      ignore = true;
+    };
+    // Only refetch when the category changes or the user requests the next batch.
+  }, [state.activeCat, state.nextJoke]);
 
   return (
-    <div>
+    <div className="jokes-build__item build-card">
       <h4>{joke}</h4>
     </div>
-  )
+  );
 }

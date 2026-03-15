@@ -9,13 +9,13 @@ export default function CSSEditor({ element, updateElementCSS }){
       top: '0',
       right: '-250px',
       width: '230px',
-      backgroundColor: '#f5f5f5',
+      backgroundColor: 'rgba(27, 21, 17, 0.98)',
       padding: '10px',
-      borderRadius: '4px',
-      boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
+      borderRadius: '3px',
+      boxShadow: '0 12px 30px rgba(0,0,0,0.26)',
       zIndex: 10
     }}>
-      <h4 style={{ marginTop: '0', marginBottom: '10px' }}>Edit Styles</h4>
+      <h4 style={{ marginTop: '0', marginBottom: '10px', color: 'rgba(245, 239, 232, 0.92)' }}>Edit Styles</h4>
       
       {/* FONT SIZE SLIDER */}
       {/* <div style={{ marginBottom: '15px' }}>
@@ -44,7 +44,7 @@ export default function CSSEditor({ element, updateElementCSS }){
             value={element.CSS?.color || '#000000'} 
             onChange={(e) => updateElementCSS(element.id, 'color', e.target.value)}
           />
-          <span>{element.CSS?.color || '#000000'}</span>
+          <span style={{ color: 'rgba(245, 239, 232, 0.72)' }}>{element.CSS?.color || '#000000'}</span>
         </div>
       </div>
       

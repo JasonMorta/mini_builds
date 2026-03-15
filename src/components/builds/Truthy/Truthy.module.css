@@ -1,0 +1,6 @@
+
+.box{width:80px;height:80px;margin:4px;background:linear-gradient(180deg,#241913 0%,#16100c 100%);color:#f2c078;display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none;border:1px solid rgba(212,164,94,.22);border-radius:3px;font-weight:700}
+.boxes{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem;width:100%;margin:auto auto 1rem}
+.container{display:grid;gap:1rem}
+.section{text-align:center}
+.formCheck{display:flex;min-height:1.5rem;margin-bottom:.125rem;justify-content:center;color:#f6efe6}
