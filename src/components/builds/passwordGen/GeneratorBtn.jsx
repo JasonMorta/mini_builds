@@ -1,75 +1,83 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import { StateContext } from '../../../StateManager';
+import CSS from './passGen.module.css';
+
+const UPPERS = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+const LOWERS = 'abcdefghijkmnopqrstuvwxyz';
+const NUMBERS = '23456789';
+const SYMBOLS = ':<%=$>?@]^_`!|#~&*-+!';
+const AMBIGUOUS = new Set(['O', '0', 'I', 'l', '1', '|']);
+
+function shuffle(chars) {
+  const arr = [...chars];
+  for (let i = arr.length - 1; i > 0; i -= 1) {
+    const swapIndex = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[swapIndex]] = [arr[swapIndex], arr[i]];
+  }
+  return arr.join('');
+}
+
+function pickChar(pool, used, avoidRepeats) {
+  const available = avoidRepeats ? [...pool].filter((char) => !used.has(char)) : [...pool];
+  const source = available.length ? available : [...pool];
+  const next = source[Math.floor(Math.random() * source.length)];
+  used.add(next);
+  return next;
+}
 
 export default function GeneratorBtn(props) {
-  //destructure props
-  let { count, numbers, lowerCase, pass, symbols, upperCase } = props.data;
-
+  const { count, numbers, lowerCase, symbols, upperCase, excludeAmbiguous, noRepeatChars, mustIncludeEachSelected } = props.data;
+  const extraClass = props.className ? ` ${props.className}` : "";
   const value = useContext(StateContext);
-  //destructure main state
   const [, setOptions] = value;
-  let passWord = "";
 
-  //Generate pass btn
   function makePass() {
-    passWord = "";
+    const groups = [];
+    const clean = (pool) => (excludeAmbiguous ? [...pool].filter((char) => !AMBIGUOUS.has(char)).join('') : pool);
 
-    for (let i = 0; i < Number(count); i++) {
-      //WHen passWord var is full, stop adding
+    if (upperCase) groups.push(clean(UPPERS));
+    if (lowerCase) groups.push(clean(LOWERS));
+    if (numbers) groups.push(clean(NUMBERS));
+    if (symbols) groups.push(clean(SYMBOLS));
 
-      //Random upperCase letter
-      if (upperCase && passWord.length !== Number(count)) {
-        passWord += String.fromCharCode(randomGen(65, 90));
-      }
-
-      //Random lowerCase letter
-      if (lowerCase && passWord.length !== Number(count)) {
-        passWord += String.fromCharCode(randomGen(97, 122));
-      }
-
-      //Random symbols
-      if (symbols && passWord.length !== Number(count)) {
-        passWord += randomSym();
-      }
-
-      //Random number
-      if (numbers && passWord.length !== Number(count)) {
-        passWord += randomGen(0, 9);
-        
-      }
+    if (!groups.length) {
+      setOptions((prev) => ({
+        ...prev,
+        passGen: { ...prev.passGen, pass: '' },
+      }));
+      return;
     }
 
-    //Shuffle passWord array
-    let shuffledNumbers = passWord.split("").sort(function () {
-      return Math.random() - 0.5;
-    }).join("");
+    const targetLength = Number(count);
+    const used = new Set();
+    const chars = [];
 
+    // Force one character from each selected group when the stricter rule is enabled.
+    if (mustIncludeEachSelected) {
+      groups.forEach((group) => {
+        if (chars.length < targetLength) {
+          chars.push(pickChar(group, used, noRepeatChars));
+        }
+      });
+    }
 
-    //save new password to state
+    const combinedPool = groups.join('');
+    while (chars.length < targetLength) {
+      chars.push(pickChar(combinedPool, used, noRepeatChars));
+    }
+
+    const password = shuffle(chars.join('')).slice(0, targetLength);
+
     setOptions((prev) => ({
       ...prev,
-      passGen: { ...prev.passGen, pass: shuffledNumbers },
+      passGen: { ...prev.passGen, pass: password },
     }));
   }
 
-  //Returns a random number between any two values.
-  function randomGen(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-
-  const symsArray = ":<%=$>?@]^_`!|#~&";
-
-  //Returns
-  function randomSym() {
-    return symsArray[Math.floor(Math.random() * symsArray.length)];
-  }
-
   return (
-    <div>
-      <Button variant="dark" onClick={() => makePass()}>
-        Generate
-      </Button>
-    </div>
+    <Button variant="dark" className={`${CSS.primaryAction}${extraClass}`} onClick={makePass}>
+      Generate password
+    </Button>
   );
 }

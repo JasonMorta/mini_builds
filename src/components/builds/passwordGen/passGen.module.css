@@ -1,25 +1,342 @@
-
-.box {
-  width: min(100%, 720px);
-  min-height: 0;
-  padding: 1.5rem;
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 1.25rem;
+.shell {
+  width: min(100%, 1180px);
   margin: 0 auto;
-  border-radius: 3px;
-  background: linear-gradient(180deg, rgba(17, 20, 18, 0.98), rgba(10, 12, 11, 0.98));
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
-  border: 1px solid color-mix(in srgb, var(--build-accent) 18%, transparent);
+  display: grid;
+  gap: 1rem;
 }
-.header { display: grid; gap: .6rem; align-content: start; }
-.header h3 { margin: 0; font-size: clamp(1.8rem, 3vw, 2.5rem); }
-.eyebrow { margin: 0; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: color-mix(in srgb, var(--build-accent) 72%, white 18%); }
-.copy { margin: 0; color: rgba(245, 239, 232, 0.72); line-height: 1.6; }
-.outputGroup { width: 100%; }
-.box label { display: block; color: rgba(246,239,230,.9); }
-.pass_options { padding: 0.25rem 0 0; display: flex; flex-direction: column; align-items: stretch; gap: 0.8rem; }
-.pass_options h5 { margin: 0; font-size: 1rem; }
-.upperC, [type=checkbox] { margin-right: 10px; }
-.check_container { display: flex; flex-direction: column; align-items: flex-start; width: 100%; gap: .45rem; }
-@media (max-width: 700px) { .box { grid-template-columns: 1fr; padding: 1rem; } }
+
+.hero,
+.panel,
+.outputCard {
+  border-radius: 6px;
+  border: 1px solid color-mix(in srgb, var(--build-accent) 20%, rgba(255, 255, 255, 0.08));
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--build-accent) 12%, transparent), transparent 42%),
+    linear-gradient(180deg, rgba(13, 12, 11, 0.98), rgba(8, 8, 8, 0.98));
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.hero {
+  padding: 1.25rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.95fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.heroCopy {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+}
+
+.eyebrow,
+.sectionLabel {
+  margin: 0;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: color-mix(in srgb, var(--build-accent) 78%, white 12%);
+}
+
+.heroCopy h2,
+.outputHeaderRow h3,
+.panelHeader h4 {
+  margin: 0;
+  color: rgba(250, 246, 241, 0.98);
+}
+
+.heroCopy h2 {
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.02;
+}
+
+.copy,
+.mutedCopy {
+  margin: 0;
+  color: rgba(244, 237, 228, 0.76);
+  line-height: 1.6;
+}
+
+.copy {
+  max-width: 60ch;
+}
+
+.heroStats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.statCard {
+  min-height: 138px;
+  border-radius: 6px;
+  padding: 0.95rem;
+  background: rgba(255, 255, 255, 0.022);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: grid;
+  align-content: start;
+  gap: 0.35rem;
+}
+
+.statCard span,
+.statCard small,
+.tipList,
+.presetCard span,
+.optionCard small,
+.optionRow small,
+.optionHint {
+  color: rgba(244, 237, 228, 0.72);
+}
+
+.statCard strong {
+  font-size: clamp(1.1rem, 2.6vw, 1.65rem);
+  color: rgba(250, 246, 241, 0.98);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.06fr) minmax(340px, 0.94fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.primaryPanel,
+.controlsPanel {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+.outputCard,
+.panel {
+  padding: 1rem;
+}
+
+.outputCard {
+  display: grid;
+  gap: 1rem;
+}
+
+.outputHeaderRow,
+.panelHeader,
+.sliderHeader,
+.strengthRow,
+.outputActions {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.85rem;
+}
+
+.outputHeaderRow {
+  flex-wrap: wrap;
+}
+
+.badge {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 0.55rem 0.9rem;
+  background: color-mix(in srgb, var(--build-accent) 28%, rgba(255,255,255,0.05));
+  border: 1px solid color-mix(in srgb, var(--build-accent) 36%, transparent);
+  color: rgba(250, 246, 241, 0.95);
+  font-size: 0.88rem;
+}
+
+.outputGroup {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.outputGroup :global(.form-control),
+.passwordInput {
+  min-height: 58px;
+  border-radius: 6px !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  background: rgba(6, 6, 6, 0.78) !important;
+  color: rgba(248, 243, 235, 0.98) !important;
+  font-size: clamp(1rem, 2.2vw, 1.15rem) !important;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: none !important;
+}
+
+.outputGroup :global(.form-control::placeholder) {
+  color: rgba(244, 237, 228, 0.38);
+}
+
+.primaryAction,
+.secondaryAction,
+.presetCard {
+  border-radius: 6px !important;
+}
+
+.primaryAction {
+  min-height: 48px;
+  padding-inline: 1rem !important;
+  border: 1px solid color-mix(in srgb, var(--build-accent) 42%, transparent) !important;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--build-accent) 28%, #20140d), #120d09) !important;
+}
+
+.secondaryAction {
+  min-height: 48px;
+  min-width: 120px;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  background: rgba(255,255,255,0.03) !important;
+  color: rgba(248, 243, 235, 0.92) !important;
+}
+
+.strengthRow {
+  align-items: center;
+}
+
+.strengthTrack {
+  position: relative;
+  flex: 1;
+  min-height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.07);
+}
+
+.strengthFill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--build-accent) 90%, white 10%), #e4c17d);
+}
+
+.outputActions {
+  gap: 0.75rem;
+}
+
+.outputActions > * {
+  flex: 1 1 0;
+}
+
+.presetGrid,
+.optionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.presetCard {
+  appearance: none;
+  text-align: left;
+  padding: 1rem;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.022);
+  color: rgba(248, 243, 235, 0.95);
+  display: grid;
+  gap: 0.4rem;
+}
+
+.presetCard strong {
+  font-size: 1.1rem;
+}
+
+.sliderBlock,
+.optionStack {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.optionCard,
+.optionRow {
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  padding: 0.9rem 0.95rem;
+  display: grid;
+  gap: 0.35rem;
+  align-content: start;
+}
+
+.optionCard {
+  min-height: 118px;
+}
+
+.optionCard :global(.form-check),
+.optionRow :global(.form-check) {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 0.55rem;
+}
+
+.optionCard :global(.form-check-input),
+.optionRow :global(.form-check-input) {
+  margin-top: 0.25rem;
+  background-color: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.12);
+}
+
+.optionCard :global(.form-check-input:checked),
+.optionRow :global(.form-check-input:checked) {
+  background-color: color-mix(in srgb, var(--build-accent) 85%, white 15%);
+  border-color: color-mix(in srgb, var(--build-accent) 85%, white 15%);
+}
+
+.optionCard :global(.form-check-label),
+.optionRow :global(.form-check-label),
+.sliderHeader span,
+.panelHeader h4,
+.outputHeaderRow h3,
+.strengthRow span {
+  color: rgba(250, 246, 241, 0.98);
+}
+
+.optionHint {
+  margin: 0;
+}
+
+.sliderBlock :global(.form-range) {
+  accent-color: color-mix(in srgb, var(--build-accent) 88%, white 12%);
+}
+
+.tipList {
+  margin: 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+@media (max-width: 1080px) {
+  .hero,
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .heroStats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  .heroStats,
+  .presetGrid,
+  .optionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .outputGroup {
+    grid-template-columns: 1fr;
+  }
+
+  .outputActions,
+  .outputHeaderRow,
+  .panelHeader,
+  .sliderHeader,
+  .strengthRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .secondaryAction {
+    min-width: 0;
+  }
+}

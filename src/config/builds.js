@@ -104,7 +104,7 @@ export const buildRegistry = [
     path: '/passGen',
     icon: KeyRound,
     accent: 'var(--accent-secondary)',
-    description: 'Generate passwords with adjustable character rules and quick copy actions.',
+    description: 'Generate stronger passwords with presets, advanced rules, strength feedback, and quick copy actions.',
   },
   {
     name: 'I & E',

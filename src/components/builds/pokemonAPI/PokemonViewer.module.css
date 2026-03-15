@@ -6,7 +6,7 @@
     radial-gradient(circle at top, rgba(212, 164, 94, 0.14), transparent 32%),
     linear-gradient(180deg, rgba(17, 12, 9, 0.98), rgba(10, 7, 5, 0.98));
   border: 1px solid rgba(212, 164, 94, 0.14);
-  border-radius: 3px;
+  border-radius: 6px;
 }
 
 .header {
@@ -44,7 +44,7 @@
   padding: 1rem;
   background: linear-gradient(180deg, rgba(29, 21, 16, 0.94), rgba(19, 13, 10, 0.94));
   border: 1px solid rgba(212, 164, 94, 0.14);
-  border-radius: 3px;
+  border-radius: 6px;
 }
 
 .searchLabel {
@@ -67,7 +67,7 @@
   padding: 0 0.95rem;
   background: rgba(11, 8, 6, 0.92);
   border: 1px solid rgba(212, 164, 94, 0.22);
-  border-radius: 3px;
+  border-radius: 6px;
   color: #f6f0e7;
   font-size: 0.95rem;
   outline: none;
@@ -86,7 +86,7 @@
   height: 44px;
   padding: 0 0.95rem;
   border: 1px solid rgba(212, 164, 94, 0.22);
-  border-radius: 3px;
+  border-radius: 6px;
   background: rgba(35, 24, 18, 0.96);
   color: #f6f0e7;
   cursor: pointer;
@@ -107,7 +107,7 @@
   min-height: 220px;
   padding: 1.25rem;
   border: 1px solid rgba(212, 164, 94, 0.14);
-  border-radius: 3px;
+  border-radius: 6px;
   background: rgba(20, 14, 10, 0.94);
   text-align: center;
 }
@@ -145,7 +145,7 @@
   padding: 0;
   background: linear-gradient(180deg, rgba(29, 20, 14, 0.98), rgba(17, 12, 9, 0.98));
   border: 1px solid rgba(212, 164, 94, 0.2);
-  border-radius: 3px;
+  border-radius: 6px;
   cursor: pointer;
   text-align: left;
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
@@ -219,56 +219,45 @@
   display: grid;
   place-items: center;
   padding: 1rem;
-  background: rgba(4, 3, 3, 0.74);
+  background: rgba(4, 3, 3, 0.78);
   backdrop-filter: blur(6px);
 }
 
 .modalContent {
-  width: min(100%, 960px);
-  max-height: min(92vh, 920px);
+  width: min(100%, 1000px);
+  height: min(92vh, 940px);
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   background:
     radial-gradient(circle at top right, rgba(212, 164, 94, 0.16), transparent 28%),
     linear-gradient(180deg, rgba(21, 15, 11, 0.99), rgba(9, 7, 6, 0.99));
   border: 1px solid rgba(212, 164, 94, 0.18);
-  border-radius: 3px;
+  border-radius: 6px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
 }
 
-.closeButton {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 42px;
-  height: 42px;
-  border: 1px solid rgba(212, 164, 94, 0.22);
-  border-radius: 3px;
-  background: rgba(28, 20, 15, 0.98);
-  color: #f6f0e7;
-  font-size: 1.6rem;
-  line-height: 1;
-  cursor: pointer;
+.modalHeader {
+  position: sticky;
+  top: 0;
   z-index: 2;
-}
-
-.modalHero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
   gap: 1rem;
-  padding: 1.5rem 1.5rem 1rem;
+  padding: 1.35rem 1.35rem 1rem;
+  background: linear-gradient(180deg, rgba(18, 13, 10, 0.98), rgba(18, 13, 10, 0.9));
   border-bottom: 1px solid rgba(212, 164, 94, 0.12);
 }
 
-.modalTitleBlock {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.modalHeaderCopy {
+  min-width: 0;
 }
 
 .modalTitle {
   margin: 0;
   color: #f6f0e7;
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2rem, 5vw, 3.4rem);
   line-height: 1;
 }
 
@@ -281,14 +270,13 @@
 
 .pokemonIdBadge,
 .typePill,
-.badge,
 .statValue {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 34px;
   padding: 0.35rem 0.8rem;
-  border-radius: 3px;
+  border-radius: 6px;
   color: #fff;
 }
 
@@ -300,52 +288,87 @@
 .typePill {
   font-size: 0.82rem;
   font-weight: 700;
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.closeButton {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(212, 164, 94, 0.22);
+  border-radius: 6px;
+  background: rgba(28, 20, 15, 0.98);
+  color: #f6f0e7;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.modalScrollArea {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 1.2rem 1.35rem 1.35rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 164, 94, 0.7) rgba(255, 255, 255, 0.06);
+}
+
+.modalScrollArea::-webkit-scrollbar {
+  width: 10px;
+}
+
+.modalScrollArea::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 999px;
+}
+
+.modalScrollArea::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(212, 164, 94, 0.8), rgba(139, 94, 52, 0.88));
+  border-radius: 999px;
+}
+
+.modalHero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .heroArtworkPanel {
   display: grid;
   place-items: center;
-  min-height: 280px;
+  min-height: 360px;
+  padding: 1rem;
   border: 1px solid rgba(212, 164, 94, 0.14);
-  border-radius: 3px;
+  border-radius: 6px;
   background:
     radial-gradient(circle at center, rgba(212, 164, 94, 0.18), transparent 62%),
     linear-gradient(180deg, rgba(42, 28, 18, 0.96), rgba(22, 16, 12, 0.96));
 }
 
 .modalImage {
-  width: min(100%, 280px);
+  width: min(100%, 320px);
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 14px 20px rgba(0, 0, 0, 0.35));
 }
 
-.modalImagePlaceholder,
-.detailsLoader {
+.heroSummary {
   display: grid;
-  place-items: center;
-  min-height: 220px;
-  gap: 0.75rem;
-}
-
-.modalBody {
-  max-height: calc(92vh - 340px);
-  overflow-y: auto;
-  padding: 1rem 1.5rem 1.5rem;
+  gap: 0.85rem;
 }
 
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.85rem;
-  margin-bottom: 1rem;
 }
 
 .statCard,
-.sectionCard {
+.detailCard {
   padding: 1rem;
   border: 1px solid rgba(212, 164, 94, 0.12);
-  border-radius: 3px;
+  border-radius: 6px;
   background: rgba(26, 19, 14, 0.9);
 }
 
@@ -361,21 +384,14 @@
 .statMainValue {
   margin: 0;
   color: #f6f0e7;
-  font-size: 1.2rem;
+  font-size: 2rem;
   font-weight: 700;
-}
-
-.detailGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.85rem;
-  margin-bottom: 0.85rem;
 }
 
 .sectionTitle {
   margin: 0 0 0.75rem;
   color: #f6f0e7;
-  font-size: 0.98rem;
+  font-size: 1rem;
 }
 
 .badgeContainer {
@@ -384,28 +400,33 @@
   gap: 0.55rem;
 }
 
-.badge {
-  background: rgba(67, 45, 83, 0.98);
+.abilityPill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0.35rem 0.8rem;
+  border-radius: 6px;
+  color: #fff;
   font-size: 0.82rem;
-}
-
-.abilityBadge {
   background: rgba(83, 56, 104, 0.98);
 }
 
-.audioWrap {
-  display: flex;
-  align-items: center;
+.detailSectionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 0.85rem;
 }
 
 .statsList {
   display: grid;
-  gap: 0.65rem;
+  gap: 0.7rem;
 }
 
 .statBar {
-  padding: 0.75rem;
-  border-radius: 3px;
+  padding: 0.8rem;
+  border-radius: 6px;
   background: rgba(18, 13, 10, 0.8);
 }
 
@@ -413,7 +434,7 @@
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.55rem;
 }
 
 .statName {
@@ -426,7 +447,7 @@
 }
 
 .statBarContainer {
-  height: 8px;
+  height: 10px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.09);
   overflow: hidden;
@@ -436,6 +457,12 @@
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(90deg, #8b5e34, #d4a45e);
+  transform-origin: left center;
+}
+
+.audioWrap {
+  display: flex;
+  align-items: center;
 }
 
 .spritesGrid {
@@ -449,7 +476,7 @@
   justify-items: center;
   gap: 0.45rem;
   padding: 0.75rem;
-  border-radius: 3px;
+  border-radius: 6px;
   background: rgba(17, 12, 9, 0.78);
   border: 1px solid rgba(212, 164, 94, 0.08);
 }
@@ -466,6 +493,11 @@
   color: rgba(246, 240, 231, 0.66);
 }
 
+.loadMoreSentinel {
+  width: 100%;
+  height: 1px;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -475,7 +507,7 @@
 @media (max-width: 960px) {
   .header,
   .modalHero,
-  .detailGrid {
+  .detailSectionGrid {
     grid-template-columns: 1fr;
   }
 
@@ -483,8 +515,9 @@
     grid-template-columns: 1fr;
   }
 
-  .modalBody {
-    max-height: calc(92vh - 420px);
+  .modalContent {
+    width: min(100%, 92vw);
+    height: min(94vh, 960px);
   }
 }
 
@@ -511,54 +544,17 @@
     min-height: 214px;
   }
 
-  .modalHero,
-  .modalBody {
+  .modalHeader,
+  .modalScrollArea {
     padding-left: 1rem;
     padding-right: 1rem;
   }
 
-  .modalBody {
-    max-height: calc(92vh - 390px);
+  .modalTitle {
+    font-size: 2.3rem;
   }
-}
 
-.loadMoreSentinel {
-  width: 100%;
-  height: 1px;
-}
-
-.detailSectionGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.85rem;
-  margin-bottom: 0.85rem;
-}
-
-.detailCard {
-  padding: 1rem;
-  border: 1px solid rgba(212, 164, 94, 0.12);
-  border-radius: 3px;
-  background: rgba(26, 19, 14, 0.9);
-}
-
-.abilityPill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 34px;
-  padding: 0.35rem 0.8rem;
-  border-radius: 3px;
-  color: #fff;
-  font-size: 0.82rem;
-  background: rgba(83, 56, 104, 0.98);
-}
-
-.statRow {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.75rem;
-  border-radius: 3px;
-  background: rgba(18, 13, 10, 0.8);
-  color: rgba(246, 240, 231, 0.86);
+  .heroArtworkPanel {
+    min-height: 260px;
+  }
 }

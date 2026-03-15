@@ -1,33 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './Card.module.css';
 
-export default function Card(props) {
-  const [cards] = useState([{ id: 0 }, { id: 1 }, { id: 2 }]);
-  const [winningNum, setWinningNum] = useState('');
-
-  function handleClick() {
-    if (!props.gameOver) {
-      setWinningNum(Math.floor(Math.random() * 3));
-    }
-  }
-
+export default function Card({ card, disabled, onClick, registerRef }) {
   return (
-    <div className={styles.cardContainer}>
-      {cards.map((card) => (
-        <div
-          className={`${styles.cardFace} ${props.cardData === card.id ? '' : styles.cardBack}`}
-          id="mainDiv1"
-          key={card.id}
-          data-card-data={card.id}
-          data-get-truth={winningNum === card.id}
-          onClick={props.handleClick}
-          onMouseDown={handleClick}
-        >
-          <h2 className={styles.heading} data-card-data={card.id} id="header">
-            {winningNum === card.id ? 'WIN' : 'LOSE'}
-          </h2>
+    <button
+      ref={registerRef}
+      type="button"
+      className={styles.cardButton}
+      onClick={onClick}
+      disabled={disabled}
+      aria-label={card.revealed ? (card.isWinner ? 'Winning card' : 'Losing card') : 'Face-down card'}
+    >
+      <div className={`${styles.cardInner} ${card.revealed ? styles.revealed : ''}`}>
+        <div className={`${styles.cardFace} ${styles.cardBack}`}>
+          <span className={styles.cardMark}>★</span>
+          <div className={styles.cardBackCenter}>
+            <span className={styles.cardBackPill}>Flip</span>
+            <strong className={styles.cardBackTitle}>Mystery card</strong>
+            <span className={styles.cardBackCopy}>Tap to reveal your result</span>
+          </div>
+          <span className={styles.cardCorner}>A</span>
         </div>
-      ))}
-    </div>
+
+        <div className={`${styles.cardFace} ${card.isWinner ? styles.cardFrontWin : styles.cardFrontLose}`}>
+          <span className={styles.frontIcon}>{card.isWinner ? '🏆' : '✕'}</span>
+          <strong className={styles.frontTitle}>{card.isWinner ? 'WIN' : 'LOSE'}</strong>
+          <span className={styles.frontCopy}>
+            {card.isWinner ? 'Confetti unlocked.' : 'Try again next round.'}
+          </span>
+        </div>
+      </div>
+    </button>
   );
 }

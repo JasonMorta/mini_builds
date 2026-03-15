@@ -1,84 +1,395 @@
-.root {
+
+.expandBuild {
+  display: grid;
+  gap: 1rem;
+  width: min(100%, 1080px);
+  margin: 0 auto;
+}
+
+.hero,
+.panel {
+  border-radius: 6px;
+  border: 1px solid rgba(212, 164, 94, 0.14);
+  background:
+    radial-gradient(circle at top left, rgba(212, 164, 94, 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(22, 16, 12, 0.98), rgba(11, 8, 7, 0.98));
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(250px, 0.9fr);
+  gap: 1rem;
+  padding: 1.15rem 1.2rem;
+}
+
+.eyebrow,
+.panelEyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(212, 164, 94, 0.88);
+}
+
+.hero h2,
+.panel h3,
+.textBlock h4,
+.galleryCaption strong,
+.storyStepCard strong,
+.statCard strong {
+  margin: 0;
+  color: #f7f2eb;
+}
+
+.heroCopy,
+.panelSummaryRow p,
+.textBlock li,
+.heroMeta span,
+.nestedBody p,
+.galleryCaption p,
+.storyStepCard p,
+.statCard p,
+.statCard span {
+  color: rgba(243, 235, 226, 0.76);
+  line-height: 1.65;
+}
+
+.heroMeta {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+}
+
+.heroMeta span,
+.statCard,
+.storyStepCard,
+.textBlock,
+.nestedCard,
+.thumbCard,
+.galleryHero,
+.storyMediaWrap {
+  border-radius: 6px;
+  border: 1px solid rgba(212, 164, 94, 0.12);
+}
+
+.heroMeta span {
+  padding: 0.8rem 0.9rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.panelStack {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.panelTrigger {
+  width: 100%;
+  display: grid;
+  gap: 0.8rem;
+  padding: 1rem 1.1rem;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.panelSummaryRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: start;
+}
+
+.panelSummaryRow p,
+.nestedBody p,
+.galleryCaption p,
+.storyStepCard p,
+.statCard p {
+  margin: 0;
+}
+
+.chevron,
+.nestedChevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: rgba(212, 164, 94, 0.16);
+  color: #f7f2eb;
+  font-size: 1.25rem;
+  flex: 0 0 auto;
+}
+
+.panelContentWrap,
+.nestedBodyWrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows 260ms ease;
+}
+
+.panelOpen .panelContentWrap,
+.nestedCardOpen .nestedBodyWrap {
+  grid-template-rows: 1fr;
+}
+
+.panelContent {
+  min-height: 0;
+  overflow: hidden;
+  display: grid;
+  gap: 1rem;
+  padding: 0 1.1rem 0;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 220ms ease, transform 260ms ease, padding 260ms ease;
+}
+
+.panelOpen .panelContent {
+  padding: 0.7rem 1.1rem 1.1rem;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.metricRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.metricPill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(212, 164, 94, 0.16);
+  color: rgba(247, 242, 235, 0.92);
+  font-size: 0.78rem;
+}
+
+.galleryLayout,
+.storyLayout,
+.faqLayout,
+.boardLayout {
   display: grid;
   gap: 1rem;
 }
 
-.headerCard {
-  padding: 1rem;
-  border: 1px solid color-mix(in srgb, var(--build-accent) 24%, transparent);
-  background: linear-gradient(180deg, rgba(34, 29, 22, 0.96), rgba(18, 14, 10, 0.96));
-  border-radius: 3px;
+.galleryLayout {
+  grid-template-columns: minmax(0, 1.2fr) minmax(250px, 0.8fr);
 }
 
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 0.65rem;
-  flex-wrap: nowrap;
-  overflow: auto;
-  padding-bottom: 0.25rem;
-  min-height: 420px;
-}
-
-.content {
-  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.28);
-  height: min(50vh, 420px);
-  width: 56px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  border-radius: 3px;
-  cursor: pointer;
-  margin: 0;
-  transition: 0.45s ease-in;
-  position: relative;
-  border: 1px solid color-mix(in srgb, var(--build-accent) 18%, transparent);
-  color: inherit;
+.galleryHero,
+.storyMediaWrap {
+  background: rgba(9, 8, 7, 0.96);
   overflow: hidden;
 }
 
-.content::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(15, 11, 8, 0.88), transparent 58%);
+.galleryHero {
+  display: grid;
+  min-height: 360px;
 }
 
-.content:active {
-  transform: scale(.98);
-  transition: .2s;
+.galleryCaption {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.9rem 1rem;
+  border-top: 1px solid rgba(212, 164, 94, 0.1);
+  background: rgba(255, 255, 255, 0.02);
 }
 
-.active {
-  width: min(500px, 70vw) !important;
+.galleryRail {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
 }
 
-.text {
-  color: #f2d9b4;
-  font-size: clamp(1rem, 2vw, 1.6rem);
-  margin: 0;
+.thumbCard {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: center;
+  padding: 0.65rem;
+  background: rgba(255, 255, 255, 0.03);
+  color: #f7f2eb;
+  text-align: left;
+  cursor: pointer;
+}
+
+.thumbCardActive {
+  border-color: rgba(212, 164, 94, 0.35);
+  background: linear-gradient(180deg, rgba(49, 35, 25, 0.96), rgba(19, 14, 11, 0.96));
+}
+
+.thumbImage {
+  width: 78px;
+  height: 78px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+.storyLayout {
+  grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.1fr);
+}
+
+.storyMediaWrap {
+  min-height: 320px;
+}
+
+.storySteps {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.storyStepCard {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.95rem 1rem;
+  background: linear-gradient(180deg, rgba(31, 23, 17, 0.96), rgba(15, 12, 9, 0.96));
+}
+
+.storyStepIndex {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  min-height: 28px;
+  border-radius: 999px;
+  background: rgba(212, 164, 94, 0.18);
+  color: #f7f2eb;
+  font-size: 0.75rem;
+}
+
+.faqLayout {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+}
+
+.textBlock,
+.nestedCard {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.textBlock {
+  padding: 1rem;
+}
+
+.textBlock ul {
+  margin: 0.75rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.nestedStack {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.nestedCard {
+  padding: 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(30, 22, 17, 0.95), rgba(17, 13, 10, 0.95));
+}
+
+.nestedTrigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border: 0;
+  background: transparent;
+  color: #f7f2eb;
+  text-align: left;
+  cursor: pointer;
+}
+
+.nestedTrigger span:first-child {
+  font-weight: 600;
+}
+
+.nestedBody {
+  min-height: 0;
+  overflow: hidden;
+  padding: 0 1rem 0;
   opacity: 0;
-  transition: 0.3s ease-in;
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translate(-50%, 0%);
-  white-space: nowrap;
-  z-index: 1;
+  transform: translateY(-6px);
+  transition: opacity 200ms ease, transform 240ms ease, padding 240ms ease;
 }
 
-.activeText {
-  opacity: 1 !important;
-  transition: 1.5s ease-in;
+.nestedCardOpen .nestedBody {
+  padding: 0 1rem 1rem;
+  opacity: 1;
+  transform: translateY(0);
 }
 
-@media (max-width: 640px) {
-  .container {
-    min-height: 320px;
+.boardLayout {
+  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
+}
+
+.statGrid {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+}
+
+.statCard {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.95rem 1rem;
+  background: linear-gradient(180deg, rgba(34, 25, 19, 0.96), rgba(16, 12, 9, 0.96));
+}
+
+.statCard strong {
+  font-size: 1.7rem;
+}
+
+.media {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .galleryLayout,
+  .storyLayout,
+  .faqLayout,
+  .boardLayout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero,
+  .panelTrigger,
+  .panelContent {
+    padding-left: 0.95rem;
+    padding-right: 0.95rem;
   }
 
-  .active {
-    width: min(280px, 78vw) !important;
+  .panelOpen .panelContent {
+    padding-top: 0.65rem;
+    padding-bottom: 0.95rem;
+  }
+
+  .media,
+  .galleryHero,
+  .storyMediaWrap {
+    min-height: 220px;
+  }
+
+  .thumbCard {
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+
+  .thumbImage {
+    width: 64px;
+    height: 64px;
   }
 }
