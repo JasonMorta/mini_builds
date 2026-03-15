@@ -1,14 +1,17 @@
 /*
   PokemonViewer.jsx
-  - Uses the local sprite sheet manifest for the card list so the full grid can render without hitting the API.
-  - Filters by name prefix only.
-  - Calls the PokéAPI only after the user selects a Pokémon card.
+  - Loads the full Pokémon name list once, then reveals more cards progressively as the user scrolls.
+  - Keeps modal detail requests on-demand so the heavier API fetch only happens after card selection.
+  - Uses prefix-only searching so every Pokémon starting with the entered text can be shown.
 */
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./PokemonViewer.module.css";
 import MiniPlayer from "../../audioPlayer/MiniPlayer";
 import typeColors from "./TypeColors";
-import localPokemonManifest from "./localPokemonManifest";
+
+const INITIAL_BATCH_SIZE = 30;
+const LOAD_MORE_BATCH_SIZE = 30;
+const POKEDEX_LIMIT = 1302;
 
 const formatName = (name) =>
   name
@@ -23,29 +26,107 @@ const getTypeColor = (typeName) => {
   return match ? match.color : "#8b5e34";
 };
 
+const buildSpriteUrl = (id) =>
+  `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+
 export default function PokemonViewer() {
+  const [allPokemon, setAllPokemon] = useState([]);
+  const [listLoading, setListLoading] = useState(true);
+  const [listError, setListError] = useState("");
   const [searchValue, setSearchValue] = useState("");
+  const [visibleCount, setVisibleCount] = useState(INITIAL_BATCH_SIZE);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [pokemonDetails, setPokemonDetails] = useState(null);
   const [detailsLoading, setDetailsLoading] = useState(false);
-  const [detailsError, setDetailsError] = useState(null);
+  const [detailsError, setDetailsError] = useState("");
+  const loadMoreRef = useRef(null);
+
+  useEffect(() => {
+    let isActive = true;
+
+    const fetchPokemonList = async () => {
+      setListLoading(true);
+      setListError("");
+
+      try {
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${POKEDEX_LIMIT}&offset=0`);
+        if (!response.ok) {
+          throw new Error("Pokémon list request failed.");
+        }
+
+        const data = await response.json();
+        const mappedList = data.results.map((entry, index) => {
+          const idFromUrl = entry.url.match(/\/pokemon\/(\d+)\//)?.[1];
+          const id = Number(idFromUrl || index + 1);
+
+          return {
+            id,
+            apiName: entry.name,
+            displayName: formatName(entry.name),
+            thumbnail: buildSpriteUrl(id),
+          };
+        });
+
+        if (!isActive) return;
+        setAllPokemon(mappedList);
+      } catch (error) {
+        if (!isActive) return;
+        console.error("Error fetching Pokémon list:", error);
+        setListError("Could not load the Pokémon list. Reload and try again.");
+      } finally {
+        if (isActive) {
+          setListLoading(false);
+        }
+      }
+    };
+
+    fetchPokemonList();
+
+    return () => {
+      isActive = false;
+    };
+  }, []);
 
   const filteredPokemon = useMemo(() => {
     const query = searchValue.trim().toLowerCase();
-    if (!query) return localPokemonManifest;
+    if (!query) return allPokemon;
 
-    // Prefix-only filtering keeps the result set aligned with the requested behavior.
-    return localPokemonManifest.filter((entry) =>
-      entry.slug.toLowerCase().startsWith(query)
-    );
+    return allPokemon.filter((entry) => entry.apiName.startsWith(query));
+  }, [allPokemon, searchValue]);
+
+  useEffect(() => {
+    setVisibleCount(INITIAL_BATCH_SIZE);
   }, [searchValue]);
 
-  const fetchPokemonDetails = async (slug) => {
-    setDetailsLoading(true);
-    setDetailsError(null);
+  useEffect(() => {
+    const target = loadMoreRef.current;
+    if (!target) return undefined;
 
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          setVisibleCount((current) => Math.min(current + LOAD_MORE_BATCH_SIZE, filteredPokemon.length));
+        });
+      },
+      { rootMargin: "320px 0px" }
+    );
+
+    observer.observe(target);
+
+    return () => observer.disconnect();
+  }, [filteredPokemon.length]);
+
+  const visiblePokemon = useMemo(
+    () => filteredPokemon.slice(0, visibleCount),
+    [filteredPokemon, visibleCount]
+  );
+
+  const fetchPokemonDetails = async (apiName) => {
+    setDetailsLoading(true);
+    setDetailsError("");
     try {
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${slug}`);
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${apiName}`);
       if (!response.ok) {
         throw new Error("Pokémon details request failed.");
       }
@@ -53,7 +134,7 @@ export default function PokemonViewer() {
       setPokemonDetails(data);
     } catch (error) {
       console.error("Error fetching Pokémon details:", error);
-      setDetailsError("Could not load that Pokémon's full details right now.");
+      setDetailsError("Could not load that Pokémon's details right now.");
     } finally {
       setDetailsLoading(false);
     }
@@ -62,18 +143,18 @@ export default function PokemonViewer() {
   const openModal = (entry) => {
     setSelectedPokemon(entry);
     setPokemonDetails(null);
-    setDetailsError(null);
-    fetchPokemonDetails(entry.slug);
+    setDetailsError("");
+    fetchPokemonDetails(entry.apiName);
   };
 
   const closeModal = () => {
     setSelectedPokemon(null);
     setPokemonDetails(null);
     setDetailsLoading(false);
-    setDetailsError(null);
+    setDetailsError("");
   };
 
-  const totalCountLabel = `${filteredPokemon.length} of ${localPokemonManifest.length} Pokémon`;
+  const totalCountLabel = `${visiblePokemon.length} shown of ${filteredPokemon.length} matched Pokémon`;
 
   return (
     <div className={styles.container}>
@@ -82,8 +163,8 @@ export default function PokemonViewer() {
           <p className={styles.eyebrow}>Pokédex mini build</p>
           <h1 className={styles.title}>Pokémon Explorer</h1>
           <p className={styles.subtitle}>
-            Browse the full local sprite list instantly, then open any card to pull
-            live stats, cries, artwork, and battle details from the API.
+            Load the full Pokédex list progressively as you scroll, then open any card to fetch richer details,
+            cries, stats, and artwork on demand.
           </p>
         </div>
 
@@ -96,70 +177,66 @@ export default function PokemonViewer() {
               id="pokemon-search"
               type="text"
               value={searchValue}
-              onChange={(event) => setSearchValue(event.target.value)}
+              onChange={(event) => setSearchValue(event.target.value.toLowerCase())}
               className={styles.searchInput}
               placeholder="Try b, bul, char..."
               autoComplete="off"
             />
             {searchValue && (
-              <button
-                type="button"
-                className={styles.clearButton}
-                onClick={() => setSearchValue("")}
-              >
-                Clear
-              </button>
+              <button type="button" className={styles.clearButton} onClick={() => setSearchValue("")}>Clear</button>
             )}
           </div>
           <p className={styles.searchMeta}>{totalCountLabel}</p>
         </div>
       </header>
 
-      {filteredPokemon.length === 0 ? (
+      {listLoading ? (
+        <div className={styles.loaderPanel}>
+          <div className={styles.spinner}></div>
+          <p className={styles.loaderText}>Loading the full Pokémon list…</p>
+        </div>
+      ) : listError ? (
+        <div className={styles.error}>{listError}</div>
+      ) : visiblePokemon.length === 0 ? (
         <div className={styles.emptyState}>
           <h2>No Pokémon match that starting text.</h2>
           <p>Prefix filtering is active, so results must start with what you type.</p>
         </div>
       ) : (
-        <div className={styles.pokemonGrid}>
-          {filteredPokemon.map((entry, index) => (
-            <button
-              type="button"
-              key={entry.slug}
-              onClick={() => openModal(entry)}
-              className={styles.pokemonCard}
-            >
-              <div className={styles.cardTopRow}>
-                <span className={styles.cardNumber}>#{index + 1}</span>
-              </div>
-              <div className={styles.imageContainer}>
-                <img
-                  loading="lazy"
-                  src={entry.spritePath}
-                  alt={entry.displayName}
-                  className={styles.pokemonImage}
-                />
-              </div>
-              <div className={styles.cardFooter}>
-                <h2 className={styles.pokemonName}>{entry.displayName}</h2>
-              </div>
-            </button>
-          ))}
-        </div>
+        <>
+          <div className={styles.pokemonGrid}>
+            {visiblePokemon.map((entry) => (
+              <button
+                type="button"
+                key={`${entry.apiName}-${entry.id}`}
+                onClick={() => openModal(entry)}
+                className={styles.pokemonCard}
+              >
+                <div className={styles.cardTopRow}>
+                  <span className={styles.cardNumber}>#{entry.id}</span>
+                </div>
+                <div className={styles.imageContainer}>
+                  <img
+                    loading="lazy"
+                    src={entry.thumbnail}
+                    alt={entry.displayName}
+                    className={styles.pokemonImage}
+                  />
+                </div>
+                <div className={styles.cardFooter}>
+                  <h2 className={styles.pokemonName}>{entry.displayName}</h2>
+                </div>
+              </button>
+            ))}
+          </div>
+          <div ref={loadMoreRef} className={styles.loadMoreSentinel} aria-hidden="true" />
+        </>
       )}
 
       {selectedPokemon && (
         <div className={styles.modalOverlay} onClick={closeModal}>
-          <div
-            className={styles.modalContent}
-            onClick={(event) => event.stopPropagation()}
-          >
-            <button
-              type="button"
-              onClick={closeModal}
-              className={styles.closeButton}
-              aria-label="Close Pokémon details"
-            >
+          <div className={styles.modalContent} onClick={(event) => event.stopPropagation()}>
+            <button type="button" onClick={closeModal} className={styles.closeButton} aria-label="Close Pokémon details">
               ×
             </button>
 
@@ -172,11 +249,7 @@ export default function PokemonViewer() {
                     {pokemonDetails?.id ? `#${pokemonDetails.id}` : selectedPokemon.displayName}
                   </span>
                   {pokemonDetails?.types?.map((type) => (
-                    <span
-                      key={type.type.name}
-                      className={styles.typePill}
-                      style={{ backgroundColor: getTypeColor(type.type.name) }}
-                    >
+                    <span key={type.type.name} className={styles.typePill} style={{ backgroundColor: getTypeColor(type.type.name) }}>
                       {formatName(type.type.name)}
                     </span>
                   ))}
@@ -186,20 +259,13 @@ export default function PokemonViewer() {
               <div className={styles.heroArtworkPanel}>
                 {pokemonDetails && !detailsLoading ? (
                   <img
-                    src={
-                      pokemonDetails.sprites.other["official-artwork"]
-                        .front_default || pokemonDetails.sprites.front_default
-                    }
+                    src={pokemonDetails.sprites.other["official-artwork"].front_default || pokemonDetails.sprites.front_default}
                     alt={selectedPokemon.displayName}
                     className={styles.modalImage}
                   />
                 ) : (
                   <div className={styles.modalImagePlaceholder}>
-                    <img
-                      src={selectedPokemon.spritePath}
-                      alt={selectedPokemon.displayName}
-                      className={styles.modalImage}
-                    />
+                    <img src={selectedPokemon.thumbnail} alt={selectedPokemon.displayName} className={styles.modalImage} />
                   </div>
                 )}
               </div>
@@ -213,15 +279,11 @@ export default function PokemonViewer() {
                   <div className={styles.statsGrid}>
                     <div className={styles.statCard}>
                       <span className={styles.statLabel}>Height</span>
-                      <p className={styles.statMainValue}>
-                        {(pokemonDetails.height / 10).toFixed(1)} m
-                      </p>
+                      <p className={styles.statMainValue}>{(pokemonDetails.height / 10).toFixed(1)} m</p>
                     </div>
                     <div className={styles.statCard}>
                       <span className={styles.statLabel}>Weight</span>
-                      <p className={styles.statMainValue}>
-                        {(pokemonDetails.weight / 10).toFixed(1)} kg
-                      </p>
+                      <p className={styles.statMainValue}>{(pokemonDetails.weight / 10).toFixed(1)} kg</p>
                     </div>
                     <div className={styles.statCard}>
                       <span className={styles.statLabel}>Base XP</span>
